@@ -8,7 +8,9 @@ export const palindrome = (string) => {
             .join('')
 }
 
-const Button = ({ primary, label, backgroundColor, onClick }) =>{
+const Button = props => {
+    const { primary, label, backgroundColor, onClick } = props;
+
     const classes = primary? 'outline' : 'none'
     const style = {background: backgroundColor}
 
