@@ -1,0 +1,21 @@
+@import '../../styles/colors';
+
+button {
+    padding: 10px 20px;
+    box-sizing: border-box;
+    font-size: 15px;
+    border-radius: 10px;
+    outline:0;
+}
+
+.transparent-btn {
+    background: $dark_blue;
+    color: $light_blue;
+    border: 1px solid $light_blue;
+    box-shadow: 0px 0px 20px rgba(131, 151, 223, 0.25);
+}
+
+.solid-btn {
+    background: $light_blue;
+    border: none;
+}

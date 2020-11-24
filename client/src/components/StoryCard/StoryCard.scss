@@ -1,0 +1,35 @@
+@import '../../styles/colors';
+
+.storyCard {
+    text-align: center;
+    flex-basis: 25%;
+    padding: 20px;
+    box-sizing: border-box;
+    max-width: 200px;
+
+    .profile-img {
+        width: 100%;
+        border-radius: 50%;
+        box-shadow: 0px 3px 5px 1px rgba(131, 151, 223, 0.8);
+    }
+
+    .profile-img:after {
+        content: "";
+        display: block;
+        padding-bottom: 100%;
+    }
+
+    h1 {
+        font-size: 20px;
+        line-height: 25px;
+        font-weight: bold;
+        margin: 0px;
+        margin-top: 20px;
+    }
+
+    h2 {
+        font-size: 14px;
+        line-height: 25px;
+        margin: 0px;
+    }
+}

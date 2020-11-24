@@ -1,0 +1,14 @@
+@import '../../styles/colors';
+
+.storyCards {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: 75px;
+}
+
+.login-btn {
+    position: absolute;
+    right: 50px;
+}
