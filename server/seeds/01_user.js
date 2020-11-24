@@ -1,3 +1,5 @@
+const users = require('./users')
+
 exports.seed = (knex) => {
   return knex('users')
     .del()
