@@ -1,16 +1,16 @@
 const express = require('express')
 const logger = require('morgan')
 
-const indexRouter = require('./routes/index')
-const usersRouter = require('./routes/users')
+const indexRouter = require('./api/index')
+const usersRouter = require('./api/users')
 
 const app = express()
 
-app.use(logger('dev'))
+app.use(logger('tiny'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 
-app.use('/api', indexRouter)
+app.use('/', indexRouter)
 app.use('/users', usersRouter)
 
 module.exports = app

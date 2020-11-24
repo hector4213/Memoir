@@ -10,5 +10,11 @@ module.exports = {
       password: config.PG_KEY,
       database: config.PG_DB,
     },
+    migrations: {
+      directory: './db/migrations',
+    },
+    seeds: {
+      directory: './db/seeds',
+    },
   },
 }
