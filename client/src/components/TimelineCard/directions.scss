@@ -1,0 +1,69 @@
+@import '../../styles/colors';
+
+
+// TOP
+.top {
+    justify-content: center;
+
+    .topcontainer {
+        display: flex;
+        justify-content: center;
+    }
+
+    .timelineCircles {
+        left: calc(50% - 13px);
+        z-index: 1;
+    }
+}
+
+// LEFT
+.left {
+    justify-content:flex-start;
+
+    h1, h2, p {
+        text-align: right;
+    }
+
+    .text {
+        padding-right: 30px;
+    }
+
+    .leftcontainer {
+        border-right: 5px solid $light_blue;
+        flex-direction: row;
+    }
+
+    .lefttimelineCircle {
+        left:0px;
+    }
+
+    .righttimelineCircle {
+        right: -17px;
+    }
+}
+
+// RIGHT
+.right {
+    justify-content: flex-end;
+
+    h1, h2, p {
+        text-align: left;
+    }
+
+    .text {
+        padding-left: 30px;
+    }
+
+    .rightcontainer {
+        border-left: 5px solid $light_blue;
+        flex-direction: row-reverse;
+    }
+
+    .lefttimelineCircle {
+        left:-17px;
+    }
+
+    .righttimelineCircle {
+        right: 0px;
+    }
+}

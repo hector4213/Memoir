@@ -1,0 +1,51 @@
+@import '../../styles/colors';
+
+.entryRow {
+    width: 100%;
+    display: flex;
+    position: relative;
+}
+
+.entryPositioner {
+    width: calc(50% + 2.5px);
+    height: 50%;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.entryCard {
+    width: 50%;
+
+    h1, h2 {
+        text-align: center;
+        margin: 0px;
+        padding: 0px;
+    }
+
+    h1 {
+        font-size: 20px;
+        line-height: 25px;
+    }
+
+    h2 {
+        font-size: 14px;
+        line-height: 20px;
+    }
+}
+
+.horizontalLine {
+    border-bottom: 5px solid $light_blue;
+    width: 50%;
+    position: relative;
+}
+
+.timelineCircles {
+    width: 20px;
+    height: 20px;
+    border-radius: 20px;
+    border: 5px solid $light_blue;
+    background: $dark_blue;
+    position: absolute;
+    bottom: -17px;
+}
