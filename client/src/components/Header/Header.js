@@ -9,7 +9,7 @@ return(
                 <h1>Memoir</h1>
                 <p>
                     Learn someone’s story <br/>
-                    Increase your empathy and motivation
+                    Increase your motivation and empathy
                 </p>
             </div>
         </div>
