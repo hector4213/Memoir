@@ -1,9 +1,9 @@
 const users = require('./seedData/users')
 
 exports.seed = function (knex, Promise) {
-  return knex('user')
+  return knex('users')
     .del()
     .then(() => {
-      return knex('user').insert(users)
+      return knex('users').insert(users)
     })
 }
