@@ -1,0 +1,53 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "http://example.com/example.json",
+    "type": "object",
+    "title": "User",
+    "description": "The user",
+    "default": {},
+    "required": [
+        "username",
+        "email",
+        "password"
+    ],
+    "properties": {
+        "id": {
+            "$id": "#/properties/id",
+            "type": "integer",
+            "title": "The ID",
+            "description": "The users id which is unique",
+            "default": 0,
+            "examples": [
+                1
+            ]
+        },
+        "username": {
+            "$id": "#/properties/username",
+            "type": "string",
+            "title": "username",
+            "description": "The users entered username",
+            "default": "",
+            "examples": [
+                "somedude99"
+            ]
+        },
+        "email": {
+            "$id": "#/properties/email",
+            "type": "string",
+            "title": "The email schema",
+            "description": "The users email must be unique",
+            "default": "",
+            "examples": [
+                "chillinman342@mail.edu.org"
+            ]
+        },
+        "password": {
+            "$id": "#/properties/password",
+            "type": "string",
+            "title": "password",
+            "description": "The users hashed password",
+            "default": ""
+        }
+    },
+    "additionalProperties": false
+}

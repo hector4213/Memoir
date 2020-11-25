@@ -7,7 +7,7 @@ const router = express.Router()
 router.get('/', async (req, res, next) => {
   const users = await User.query().select('id', 'username', 'email')
   console.log(users)
-  res.json(users)
+  res.status(200).json(users)
 })
 
 module.exports = router
