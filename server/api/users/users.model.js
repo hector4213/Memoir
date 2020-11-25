@@ -6,10 +6,6 @@ class User extends Model {
   static get tableName() {
     return tableNames.users
   }
-
-  static get jsonSchema() {
-    return schema
-  }
 }
 
 module.exports = User
