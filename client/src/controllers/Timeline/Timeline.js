@@ -46,6 +46,20 @@ const Timeline = props => {
                     description: 'On Christmas I got my first balloon.'
                 }}
             />
+
+            <TimelineCard
+                {...{
+                    position: 'bottom',
+                    mediaType: 'text',
+                    title: 'My First Balloon',
+                    date: 'December 25, 1900',
+                    description: 'On Christmas I got my first balloon.'
+                }}
+            />
+
+            <div className='progress'>
+
+            </div>
         </div>
     )
 }

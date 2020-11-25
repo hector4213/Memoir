@@ -1,5 +1,8 @@
+@import '../../styles/defaults';
 @import '../../styles/colors';
+@import '../../styles/sizes';
 
+$circle_offset: -17px;
 
 // TOP
 .top {
@@ -29,7 +32,7 @@
     }
 
     .leftcontainer {
-        border-right: 5px solid $light_blue;
+        border-right: $border;
         flex-direction: row;
     }
 
@@ -38,7 +41,7 @@
     }
 
     .righttimelineCircle {
-        right: -17px;
+        right: $circle_offset;
     }
 }
 
@@ -55,15 +58,31 @@
     }
 
     .rightcontainer {
-        border-left: 5px solid $light_blue;
+        border-left: $border;
         flex-direction: row-reverse;
     }
 
     .lefttimelineCircle {
-        left:-17px;
+        left: $circle_offset;
     }
 
     .righttimelineCircle {
         right: 0px;
+    }
+}
+
+// BOTTOM
+.bottom {
+    justify-content: center;
+
+    .bottomcontainer {
+        display: flex;
+        justify-content: center;
+    }
+
+    .timelineCircles {
+        left: calc(50% - 13px);
+        top: -13px;
+        z-index: 1;
     }
 }

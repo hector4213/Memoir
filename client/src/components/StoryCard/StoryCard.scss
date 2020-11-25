@@ -1,4 +1,5 @@
 @import '../../styles/colors';
+@import '../../styles/sizes';
 
 .storyCard {
     text-align: center;
@@ -20,16 +21,17 @@
     }
 
     h1 {
-        font-size: 20px;
-        line-height: 25px;
+        font-size: $subtitle_size;
+        line-height: $subtitle_lineheight_size;
         font-weight: bold;
         margin: 0px;
         margin-top: 20px;
     }
 
     h2 {
-        font-size: 14px;
-        line-height: 25px;
+        font-size: $text_size;
+        line-height: $text_lineheight_size;
         margin: 0px;
+        font-weight: normal;
     }
 }

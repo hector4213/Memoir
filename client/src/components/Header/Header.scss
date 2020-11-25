@@ -1,4 +1,5 @@
 @import '../../styles/colors';
+@import '../../styles/sizes';
 
 .header {
     text-align: center;
@@ -27,15 +28,15 @@
     margin-right: -80px;
 
     h1 {
-        font-size: 75px;
+        font-size: $title_size;
         font-weight: bold;
         margin: 0px;
         padding: 0px;
     }
 
     p {
-        font-size: 20px;
-        line-height: 30px;
+        font-size: $subtitle_size;
+        line-height: $subtitle_lineheight_size;
         margin: 0px;
         padding: 0px;
     }
