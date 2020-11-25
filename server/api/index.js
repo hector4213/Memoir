@@ -4,7 +4,7 @@ const router = express.Router()
 const users = require('./users/users.routes')
 
 /* GET home page. */
-router.get('/', (req, res, next) => {
+router.get('/', async (req, res) => {
   res.json({ msg: 'Memoir API' })
 })
 
