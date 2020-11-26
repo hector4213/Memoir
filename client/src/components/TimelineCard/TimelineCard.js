@@ -27,7 +27,13 @@ const TimelineCard = props => {
                         <div className='timelineCircles lefttimelineCircle' />
                         <div className='timelineCircles righttimelineCircle' />
                     </div> :
-                    <div className='horizontalLine' />
+                    <div className='horizontalLine'>
+                        {
+                            position === 'right'?
+                            <div className='timelineCircles lefttimelineCircle' /> :
+                            <div className='timelineCircles righttimelineCircle' />
+                        }
+                    </div>
         } else {
             return <div className='timelineCircles' />
         }
