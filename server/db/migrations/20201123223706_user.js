@@ -3,7 +3,7 @@ const tableNames = require('../../constants/tableNames')
 exports.up = async (knex) => {
   await Promise.all([
     knex.schema.createTable(tableNames.users, (table) => {
-      table.increments().notNullable()
+      table.increments().primary()
       table.string('email').notNullable().unique()
       table.string('username').notNullable().unique()
       table.string('password', 127).notNullable()
@@ -14,7 +14,7 @@ exports.up = async (knex) => {
 exports.down = async (knex) => {
   await Promise.all(
     [
-      tableNames.user,
+      tableNames.users,
       tableNames.story,
       tableNames.entry,
       tableNames.format,
