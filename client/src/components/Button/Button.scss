@@ -1,9 +1,10 @@
 @import '../../styles/colors';
+@import '../../styles/sizes';
 
 button {
     padding: 10px 20px;
     box-sizing: border-box;
-    font-size: 15px;
+    font-size: $text_size;
     border-radius: 10px;
     outline:0;
 }

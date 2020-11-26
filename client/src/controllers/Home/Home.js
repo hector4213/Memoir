@@ -25,7 +25,7 @@ const Index = () => {
     }
 
     return (
-    <div>
+    <div className='home'>
 
         <Button
             {...{

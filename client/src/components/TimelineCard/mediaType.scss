@@ -1,0 +1,44 @@
+@import '../../styles/defaults';
+@import '../../styles/colors';
+@import '../../styles/sizes';
+
+.picture {
+    img {
+        border: $border;
+        width: 100%;
+        min-height: 200px;
+    }
+}
+
+.video {
+    width: 90%;
+
+    iframe {
+        width: 100%;
+        min-height: 200px;
+        border: $border;
+    }
+}
+
+.sound {
+    iframe {
+        border: $border;
+        height: 115px;
+    }
+}
+
+.soundcontainer {
+    align-items:flex-start;
+
+    .horizontalLine {
+        height: 50px;
+    }
+}
+
+.text {
+    width: 50%;
+
+    .caption {
+        padding: 0px;
+    }
+}
