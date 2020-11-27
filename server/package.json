@@ -5,7 +5,7 @@
   "scripts": {
     "start": "node index",
     "dev": "nodemon index.js",
-    "test": "mocha api/**/*.js"
+    "test": "NODE_ENV=test mocha api/**/*.js"
   },
   "dependencies": {
     "bcrypt": "^5.0.0",
