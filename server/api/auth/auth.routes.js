@@ -51,7 +51,38 @@ router.post('/signup', async (req, res, next) => {
 })
 
 router.post('/login', async (req, res, next) => {
-  res.json({ msg: 'login' })
+  const { email, password } = req.body
+  try {
+    await schema.validate({
+      username: 'user',
+      email,
+      password,
+    })
+    const user = await User.query().where({ email }).first()
+    if (!user) {
+      const error = new Error('User does not exist')
+      res.status(401)
+      throw error
+    }
+    const validPassword = await bcrypt.compare(password, user.password)
+    if (!validPassword) {
+      const error = new Error('invalid password')
+      res.status(401)
+      throw error
+    }
+    const payload = {
+      id: user.id,
+      username: user.username,
+      email,
+    }
+    const token = await jwt.sign(payload)
+    res.json({
+      user: payload,
+      token,
+    })
+  } catch (error) {
+    next(error)
+  }
 })
 
 module.exports = router
