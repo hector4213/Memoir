@@ -1,16 +1,20 @@
 const express = require('express')
+const middleware = require('./utils/middleware')
 const logger = require('morgan')
+const cors = require('cors')
 
-const indexRouter = require('./routes/index')
-const usersRouter = require('./routes/users')
+const api = require('./api')
 
 const app = express()
 
-app.use(logger('dev'))
+app.use(logger('tiny'))
+app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 
-app.use('/api', indexRouter)
-app.use('/users', usersRouter)
+app.use('/api', api)
+app.use(middleware.errorHandler)
+app.use(middleware.tokenExtractor)
+app.use(middleware.unknownEndpoint)
 
 module.exports = app
