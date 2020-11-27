@@ -17,4 +17,19 @@ module.exports = {
       directory: './db/seeds',
     },
   },
+  test: {
+    client: 'pg',
+    connection: {
+      host: config.PG_HOST,
+      user: config.PG_USER,
+      password: config.PG_KEY,
+      database: config.TEST_DB,
+    },
+    migrations: {
+      directory: './db/migrations',
+    },
+    seeds: {
+      directory: './db/seeds',
+    },
+  },
 }
