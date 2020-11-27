@@ -9,7 +9,7 @@ class Story extends Model {
   static get relationMappings() {
     const User = require('../users/users.model')
     return {
-      id: {
+      users: {
         relation: Model.BelongsToOneRelation,
         modelClass: User,
         join: {
