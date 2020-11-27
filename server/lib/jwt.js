@@ -15,6 +15,17 @@ const sign = (payload) => {
     )
   })
 }
+
+const verify = (token) => {
+  return new Promise((resolve, reject) => {
+    jwt.verify(token, process.env.JWT_SECRET),
+      (error, token) => {
+        if (error) return reject(error)
+        return resolve(token)
+      }
+  })
+}
 module.exports = {
   sign,
+  verify,
 }
