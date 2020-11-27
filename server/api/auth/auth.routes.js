@@ -76,7 +76,7 @@ router.post('/login', async (req, res, next) => {
       email,
     }
     const token = await jwt.sign(payload)
-    res.json({
+    res.status(200).json({
       user: payload,
       token,
     })

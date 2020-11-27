@@ -32,5 +32,9 @@ describe('POST for /auth', () => {
       username: 'testthedb',
       password: 'React!123',
     }
+    const response = await supertest(
+      app.post('/api/auth/login').send(userLogin)
+    )
+    expect(response.status).to.eql(200)
   })
 })
