@@ -14,6 +14,12 @@ const RegisterForm = props => {
                 }}
             />
 
+            <input type='email' placeholder='Enter your E-mail'
+                onChange={ e =>{
+                setFormInfo( {...formInfo, email : e.target.value })
+                }}
+            />
+
             <input type='password' placeholder='Enter your Password'
                 onChange={ e =>{
                     setFormInfo( {...formInfo, password : e.target.value })
