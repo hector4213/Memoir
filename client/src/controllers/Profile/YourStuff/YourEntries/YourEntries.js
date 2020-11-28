@@ -4,7 +4,7 @@ import './YourEntries.scss'
 
 const YourEntries = props => {
     return (
-        <div className='yourEntries'>
+        <div className='entries'>
             <label> Your Entries: </label>
 
             <div className='listEntries'>
