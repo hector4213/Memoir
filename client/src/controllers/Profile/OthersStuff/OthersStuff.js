@@ -13,17 +13,22 @@ const OthersStuff = props => {
                     <ListEntry {...{
                         entryName:'The name of the first entry',
                         storyName: 'Michael Angelo',
-                        visible: true
+                        visible: true,
+                        belongsToOtherPerson: true
                     }}/>
+
                     <ListEntry {...{
                         entryName:'The name of the second entry',
                         storyName: 'Raphael',
-                        visible: false
+                        visible: false,
+                        belongsToOtherPerson: true
                     }}/>
+
                     <ListEntry {...{
                         entryName:'The name of the third entry',
                         storyName: 'Leonardo',
-                        visible: true
+                        visible: true,
+                        belongsToOtherPerson: true
                     }}/>
                 </div>
             </div>
@@ -57,17 +62,20 @@ const OthersStuff = props => {
                     <ListEntry {...{
                         entryName:'The name of the first entry',
                         storyName: 'Michael Angelo',
-                        visible: true
+                        visible: true,
+                        belongsToOtherPerson: true
                     }}/>
                     <ListEntry {...{
                         entryName:'The name of the second entry',
                         storyName: 'Raphael',
-                        visible: false
+                        visible: false,
+                        belongsToOtherPerson: true
                     }}/>
                     <ListEntry {...{
                         entryName:'The name of the third entry',
                         storyName: 'Leonardo',
-                        visible: true
+                        visible: true,
+                        belongsToOtherPerson: true
                     }}/>
                 </div>
             </div>
