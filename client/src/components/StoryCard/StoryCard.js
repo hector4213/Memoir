@@ -16,7 +16,6 @@ const StoryCard = props => {
         history.push(to)
     }, [history])
 
-
     return (
         // <Link to="/timeline">
         <div
