@@ -1,0 +1,33 @@
+@import '../../styles/colors';
+@import '../../styles/sizes';
+
+.listEntry {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    position: relative;
+    box-sizing: border-box;
+
+    h1, h2 {
+        font-size: $text_size !important;
+    }
+
+    h2 {
+        font-weight: normal;
+    }
+
+    .listEntryRight {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        align-items: baseline;
+
+        svg {
+            width: 25px;
+            height: 25px;
+            margin-left: 50px;
+            align-self: center;
+        }
+    }
+
+}
