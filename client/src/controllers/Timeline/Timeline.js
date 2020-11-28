@@ -1,19 +1,37 @@
-import React from 'react'
+import React, {useCallback} from 'react'
 import './Timeline.scss'
 
+import { useHistory } from "react-router-dom";
+
+import Button from '../../components/Button/Button'
 import StoryCard from '../../components/StoryCard/StoryCard'
 import TimelineCard from '../../components/TimelineCard/TimelineCard'
 
 const Timeline = props => {
+
+    const history = useHistory()
+    const onClick = useCallback(() => {
+        const to = `/`
+        history.push(to)
+    }, [history])
+
     return (
         <div className='timeline'>
+            <Button onClick= {onClick}
+                {...{
+                    label: 'Back',
+                    transparent : true,
+                    extraClass: 'back-btn',
+                }}
+            />
+
             <StoryCard
                 {...{
                     imageUrl:'https://tinyurl.com/y5qnh2ey',
                     name:'Carl Fredricksen',
                     occupation:'Balloon Salesman',
                     specialStyle:{margin: 'auto'},
-                    onClick: ()=>console.log('Clicked the old man')
+                    inTimeline: true
                 }}
             />
 
