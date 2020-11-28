@@ -2,13 +2,15 @@ import React from 'react'
 import './App.scss';
 import Home from './controllers/Home/Home'
 // import Timeline from './controllers/Timeline/Timeline';
+import Profile from './controllers/Profile/Profile'
 
 const App = () => {
 
   return (
     <div className="App">
-      <Home />
+      {/* <Home /> */}
       {/* <Timeline /> */}
+      <Profile />
     </div>
   )
 }

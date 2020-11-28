@@ -1,9 +1,11 @@
 import React from 'react'
 import './StoryCard.scss'
 
+import { HiOutlineXCircle } from "react-icons/hi";
+
 const StoryCard = props => {
 
-    const {imageUrl, name, occupation, specialStyle, onClick} = props
+    const {imageUrl, name, occupation, specialStyle, onClick, deleteCard} = props
 
     return (
         <div
@@ -11,6 +13,8 @@ const StoryCard = props => {
             style={specialStyle}
             onClick={onClick}
             >
+            {deleteCard? <div className='delete'> <HiOutlineXCircle/> </div>:''}
+
             <div
                 className='profile-img'
                 style={{backgroundImage:`url(${imageUrl})`, backgroundSize: 'cover'}}

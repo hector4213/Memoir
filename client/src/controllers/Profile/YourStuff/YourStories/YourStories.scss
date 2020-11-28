@@ -1,0 +1,46 @@
+@import '../../../../styles/colors';
+@import '../../../../styles/sizes';
+
+.yourStories {
+    margin-bottom: 100px;
+
+    .cards {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin-top: 50px;
+
+        .storyCard {
+            padding: 30px;
+            position: relative;
+        }
+
+        .addStory {
+            $addstory_btn: $light_blue;
+            flex-basis: 25% !important;
+
+            .addStoryPlus {
+                width: 100%;
+                border-radius: 50%;
+                background: $medium_blue;
+                position: relative;
+                border: 5px solid $addstory_btn;
+
+                svg {
+                    width: 50px;
+                    height: 50px;
+                    position: absolute;
+                    top: calc(50% - 25px);
+                    left: calc(50% - 25px);
+                    color: $addstory_btn;
+                }
+            }
+        }
+
+        .addStoryPlus:after {
+            content: "";
+            display: block;
+            padding-bottom: 100%;
+        }
+    }
+}

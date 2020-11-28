@@ -17,7 +17,7 @@
     .profile-img:after {
         content: "";
         display: block;
-        padding-bottom: 100%;
+        padding-bottom: 95%;
     }
 
     h1 {
@@ -33,5 +33,22 @@
         line-height: $text_lineheight_size;
         margin: 0px;
         font-weight: normal;
+    }
+
+    .delete{
+        $deletebtn_size: 35px;
+        width: $deletebtn_size;
+        height: $deletebtn_size;
+        border-radius: $deletebtn_size;
+        position: absolute;
+        right: 0;
+        color: $pink;
+        z-index: 5;
+        cursor: pointer;
+
+        svg {
+            width: 100%;
+            height: 100%;
+        }
     }
 }
