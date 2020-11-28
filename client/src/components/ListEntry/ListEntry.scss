@@ -9,7 +9,7 @@
     box-sizing: border-box;
 
     h1, h2 {
-        font-size: $text_size !important;
+        font-size: $subtitle_size !important;
     }
 
     h2 {
@@ -27,6 +27,7 @@
             height: 25px;
             margin-left: 50px;
             align-self: center;
+            cursor: pointer;
         }
     }
 

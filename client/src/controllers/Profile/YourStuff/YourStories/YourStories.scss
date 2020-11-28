@@ -11,34 +11,20 @@
         margin-top: 50px;
 
         .storyCard {
-            flex-basis: 25% !important;
             padding: 30px;
             position: relative;
-
-            .delete{
-                $deletebtn_size: 35px;
-                width: $deletebtn_size;
-                height: $deletebtn_size;
-                border-radius: $deletebtn_size;
-                position: absolute;
-                right: 0;
-                color: $pink;
-                z-index: 5;
-                svg {
-                    width: 100%;
-                    height: 100%;
-                }
-            }
         }
 
         .addStory {
+            $addstory_btn: $light_blue;
             flex-basis: 25% !important;
 
             .addStoryPlus {
                 width: 100%;
                 border-radius: 50%;
-                background: rgb(197, 197, 197);
+                background: $medium_blue;
                 position: relative;
+                border: 5px solid $addstory_btn;
 
                 svg {
                     width: 50px;
@@ -46,7 +32,7 @@
                     position: absolute;
                     top: calc(50% - 25px);
                     left: calc(50% - 25px);
-                    color: rgb(156, 156, 156);
+                    color: $addstory_btn;
                 }
             }
         }
