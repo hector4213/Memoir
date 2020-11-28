@@ -11,10 +11,10 @@ app.use(logger('tiny'))
 app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
+app.use(middleware.tokenExtractor)
 
 app.use('/api', api)
 app.use(middleware.errorHandler)
-app.use(middleware.tokenExtractor)
 app.use(middleware.unknownEndpoint)
 
 module.exports = app
