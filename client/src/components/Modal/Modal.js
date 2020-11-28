@@ -11,7 +11,7 @@ const Modal = props => {
     return (
         <div className='modal' onClick={()=>showModal(false)}>
             <div className='modal-content' onClick={e => e.stopPropagation()}>
-                <div className='tabs'>
+                <div className='modalTabs'>
                     <button
                         className={registerTab? 'active' : '' }
                         onClick={()=>isRegisterTab(true)}

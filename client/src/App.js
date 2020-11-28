@@ -1,15 +1,15 @@
 import React from 'react'
 import './App.scss';
 import Home from './controllers/Home/Home'
-// import Timeline from './controllers/Timeline/Timeline';
+import Timeline from './controllers/Timeline/Timeline';
 import Profile from './controllers/Profile/Profile'
 
 const App = () => {
 
   return (
     <div className="App">
-      {/* <Home /> */}
-      {/* <Timeline /> */}
+      <Home />
+      <Timeline />
       <Profile />
     </div>
   )

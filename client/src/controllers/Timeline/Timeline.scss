@@ -6,8 +6,11 @@
 
 .timeline {
     margin-bottom: -10px;
-    max-width: 1200px;
     margin: auto;
+    max-width: 1200px;
+    width: 100%;
+    padding: 0px 50px;
+    box-sizing: border-box;
 }
 
 .progress {
