@@ -1,0 +1,60 @@
+@import '../../../../styles/colors';
+@import '../../../../styles/sizes';
+
+.yourStories {
+    margin-bottom: 100px;
+
+    .cards {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+
+        .storyCard {
+            flex-basis: 25% !important;
+            padding: 30px;
+            position: relative;
+
+            .delete{
+                $deletebtn_size: 35px;
+                width: $deletebtn_size;
+                height: $deletebtn_size;
+                border-radius: $deletebtn_size;
+                position: absolute;
+                right: 0;
+                color: $pink;
+                z-index: 5;
+                svg {
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+        }
+
+        .addStory {
+            flex-basis: 25% !important;
+            padding: 30px;
+
+            .addStoryPlus {
+                width: 100%;
+                border-radius: 50%;
+                background: rgb(197, 197, 197);
+                position: relative;
+
+                svg {
+                    width: 50px;
+                    height: 50px;
+                    position: absolute;
+                    top: calc(50% - 25px);
+                    left: calc(50% - 25px);
+                    color: rgb(156, 156, 156);
+                }
+            }
+        }
+
+        .addStoryPlus:after {
+            content: "";
+            display: block;
+            padding-bottom: 100%;
+        }
+    }
+}

@@ -1,8 +1,8 @@
 @import '../../styles/colors';
-
+@import '../../styles/sizes';
 
 .home {
-    max-width: 800px;
+    max-width: $app_width;
     margin: auto;
 }
 
