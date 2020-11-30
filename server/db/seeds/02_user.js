@@ -5,6 +5,6 @@ exports.seed = function (knex, Promise) {
   return knex(tableNames.users)
     .del()
     .then(() => {
-      return knex('users').insert(users)
+      return knex(tableNames.users).insert(users)
     })
 }
