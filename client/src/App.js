@@ -1,6 +1,8 @@
 import React from 'react'
 import './App.scss';
 
+import axios from 'axios'
+
 import {
   BrowserRouter as Router,
   Switch,
@@ -12,6 +14,14 @@ import Timeline from './controllers/Timeline/Timeline';
 import Profile from './controllers/Profile/Profile'
 
 const App = () => {
+
+  const getBackEnd = async () => {
+    const res = await axios.get('http://localhost:3001/api/users')
+    console.log('users:')
+    console.log(res)
+  }
+
+  getBackEnd()
 
   return (
     <div className="App">

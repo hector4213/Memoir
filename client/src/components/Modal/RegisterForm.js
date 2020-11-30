@@ -2,8 +2,24 @@ import React, {useState} from 'react'
 import Button from '../Button/Button'
 // label, onClick, transparent, extraClass
 
+import axios from 'axios'
+
 const RegisterForm = props => {
     const [formInfo, setFormInfo] = useState()
+
+    const registerRequest = async e => {
+        e.preventDefault()
+
+        if(formInfo.password === formInfo.confirmPassword){
+
+            delete formInfo.confirmPassword
+
+            const sign = await axios.post('http://localhost:3001/api/auth/signup', formInfo)
+
+            console.log('signup: ')
+            console.log(sign)
+        }
+    }
 
     return (
         <form>
@@ -35,10 +51,7 @@ const RegisterForm = props => {
             <Button {...{
                 label:'Submit',
                 transparent: false,
-                onClick: e => {
-                    e.preventDefault()
-                    console.log(formInfo)
-                }
+                onClick: registerRequest
             }}/>
         </form>
     )
