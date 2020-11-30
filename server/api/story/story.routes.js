@@ -2,9 +2,10 @@ const express = require('express')
 const jwt = require('../../lib/jwt')
 const Story = require('./story.model')
 const User = require('../users/users.model')
+const entries = require('../entry/entry.routes')
 const yup = require('yup')
 
-const router = express.Router()
+const router = express.Router({ mergeParams: true })
 
 const schema = yup.object().shape({
   title: yup.string().trim().min(3).required(),
@@ -15,13 +16,13 @@ const schema = yup.object().shape({
 router.get('/', async (req, res, next) => {
   try {
     const allStories = await Story.query()
-      .withGraphFetched('entries')
       .withGraphFetched('user(userInfo)')
       .modifiers({
         userInfo(builder) {
           builder.select('id', 'username')
         },
       })
+      .withGraphFetched('entries')
     res.status(200).json(allStories)
   } catch (error) {
     next(error)
@@ -30,19 +31,19 @@ router.get('/', async (req, res, next) => {
 
 //GET ONE STORY
 
-router.get('/:id', async (req, res, next) => {
-  const { id } = req.params
+router.get('/:storyId', async (req, res, next) => {
+  const { storyId } = req.params
   // need token?
   try {
     const story = await Story.query()
-      .withGraphFetched('entries')
       .withGraphFetched('user(userInfo)')
       .modifiers({
         userInfo(builder) {
           builder.select('id', 'username')
         },
       })
-      .findById(id)
+      .withGraphFetched('entries')
+      .findById(storyId)
 
     res.status(200).json(story)
   } catch (error) {
@@ -72,6 +73,6 @@ router.post('/create', async (req, res, next) => {
   }
 })
 
-router.put('/edit', async () => {})
+router.use('/:storyId/entries', entries)
 
 module.exports = router
