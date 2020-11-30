@@ -5,3 +5,16 @@ Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hb
 {
     "title": "my first story"
 }
+
+#####
+
+GET http://localhost:3001/api/stories
+Content-Type: application/json
+
+
+#####
+GET http://localhost:3001/api/stories/2
+Content-Type: application/json
+
+#####
+PUT http://localhost:3001/api/stories/edit/
