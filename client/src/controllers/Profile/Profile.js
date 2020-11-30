@@ -19,9 +19,9 @@ const Profile = props => {
         <div className='profile'>
             <Button
                 {...{
-                    label: 'back',
+                    label: 'Home',
                     transparent : true,
-                    // extraClass: 'login-btn',
+                    extraClass: 'back-btn',
                     onClick: goHome
                 }}
             />
@@ -29,7 +29,7 @@ const Profile = props => {
                 {...{
                     label: 'Log Out',
                     transparent : true,
-                    // extraClass: 'login-btn',
+                    extraClass: 'logout-btn',
                     onClick: () => {
                         logOut()
                         goHome()

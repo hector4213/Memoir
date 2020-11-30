@@ -19,7 +19,7 @@ const Timeline = props => {
         <div className='timeline'>
             <Button onClick= {onClick}
                 {...{
-                    label: 'Back',
+                    label: 'Home',
                     transparent : true,
                     extraClass: 'back-btn',
                 }}
