@@ -1,22 +1,17 @@
 import React, {useState} from 'react'
 import Button from '../Button/Button'
 
-import axios from 'axios'
+import {connect} from 'react-redux'
+import {logInAction} from '../../redux/actions/profile'
+
 
 const LogInForm = props => {
     const [formInfo, setFormInfo] = useState()
+    const {logIn} = props
 
     const loginRequest = async e => {
         e.preventDefault()
-
-        try{
-            const log = await axios.post('http://localhost:3001/api/auth/login', formInfo)
-            console.log(log)
-        }
-        catch(error){
-            console.log(error.response.data.error)
-            console.log(error)
-        }
+        logIn(formInfo)
     }
 
     return (
@@ -43,4 +38,16 @@ const LogInForm = props => {
     )
 }
 
-export default LogInForm
+
+const mapStateToProps = state => {
+    return {
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        logIn: profile => dispatch(logInAction(profile))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(LogInForm)

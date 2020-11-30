@@ -6,10 +6,10 @@ import LogInForm from './LogInForm'
 
 const Modal = props => {
     const [registerTab, isRegisterTab] = useState(true)
-    const {showModal} = props
+    const {toggleModal} = props
 
     return (
-        <div className='modal' onClick={()=>showModal(false)}>
+        <div className='modal' onClick={toggleModal}>
             <div className='modal-content' onClick={e => e.stopPropagation()}>
                 <div className='modalTabs'>
                     <button

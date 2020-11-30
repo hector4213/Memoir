@@ -1,24 +1,16 @@
 import React, {useState} from 'react'
+import {connect} from 'react-redux'
 import Button from '../Button/Button'
-// label, onClick, transparent, extraClass
 
-import axios from 'axios'
+import {registerUserAction} from '../../redux/actions/profile'
 
 const RegisterForm = props => {
     const [formInfo, setFormInfo] = useState()
+    const {registerUser} = props
 
     const registerRequest = async e => {
         e.preventDefault()
-
-        if(formInfo.password === formInfo.confirmPassword){
-
-            delete formInfo.confirmPassword
-
-            const sign = await axios.post('http://localhost:3001/api/auth/signup', formInfo)
-
-            console.log('signup: ')
-            console.log(sign)
-        }
+        registerUser(formInfo)
     }
 
     return (
@@ -57,4 +49,15 @@ const RegisterForm = props => {
     )
 }
 
-export default RegisterForm
+const mapStateToProps = state => {
+    return {
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        registerUser: formInfo => dispatch(registerUserAction(formInfo))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(RegisterForm)
