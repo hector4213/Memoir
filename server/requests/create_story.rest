@@ -1,0 +1,7 @@
+POST http://localhost:3001/api/stories/create
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJ0ZXN0dGhlZGIiLCJlbWFpbCI6InRlc3QxQHRlc3R5LmNvbSIsImlhdCI6MTYwNjUxMTE2NywiZXhwIjoxNjA2NTk3NTY3fQ.GwwW1kgkS_TNj15LYEZmXZxf4UDNvUqPzLpUJPdryPg
+
+{
+    "title": "my first story"
+}

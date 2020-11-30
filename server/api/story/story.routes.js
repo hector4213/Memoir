@@ -28,10 +28,11 @@ router.get('/', async (req, res, next) => {
   }
 })
 
-//GET all single story
+//GET ONE STORY
 
 router.get('/:id', async (req, res, next) => {
   const { id } = req.params
+  // need token?
   try {
     const story = await Story.query()
       .withGraphFetched('entries')
