@@ -7,9 +7,11 @@ import Button from '../../components/Button/Button'
 import YourStuff from './YourStuff/YourStuff'
 import OthersStuff from './OthersStuff/OthersStuff'
 
+import {logOutAction} from '../../redux/actions/profile'
+
 const Profile = props => {
     const [yourStuff, isYourStuff] = useState(true)
-    const {user} = props
+    const {user, logOut} = props
     const history = useHistory()
     const goHome = useCallback(() => history.push(`/`), [history])
 
@@ -21,6 +23,17 @@ const Profile = props => {
                     transparent : true,
                     // extraClass: 'login-btn',
                     onClick: goHome
+                }}
+            />
+            <Button
+                {...{
+                    label: 'Log Out',
+                    transparent : true,
+                    // extraClass: 'login-btn',
+                    onClick: () => {
+                        logOut()
+                        goHome()
+                    }
                 }}
             />
             <h1 className='pageTitle'>{user?user.username:'Not Logged In'}</h1>
@@ -52,6 +65,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
+        logOut: () => dispatch(logOutAction())
     }
 }
 

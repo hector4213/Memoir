@@ -46,6 +46,13 @@ export const logInAction = formInfo => {
 	}
 }
 
+export const logOutAction = () => {
+    console.log('inside of logout action')
+	return async (dispatch, getState) => {
+        dispatch({ type: 'REMOVE_PROFILE'})
+    }
+}
+
 export const registerUserAction = formInfo => {
 	return async (dispatch, getState) => {
 
