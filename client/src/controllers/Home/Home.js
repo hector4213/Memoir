@@ -1,4 +1,4 @@
-import React, {useState, useCallback} from 'react'
+import React, {useEffect, useCallback} from 'react'
 import { useHistory } from "react-router-dom";
 import './Home.scss'
 
@@ -9,13 +9,19 @@ import Modal from '../../components/Modal/Modal'
 
 import {connect} from 'react-redux'
 import {toggleModalAction} from '../../redux/actions/page'
+import {storedProfileAction} from '../../redux/actions/profile'
 
 const Index = props => {
-    const {toggleModal} = props
+    const {toggleModal, storedProfile} = props
     const {user, modal} = props
 
     const history = useHistory()
     const goToProfile = useCallback(() => history.push(`/profile`), [history])
+
+
+    useEffect(()=>{
+        storedProfile()
+    }, [storedProfile])
 
     let cards = []
 
@@ -81,6 +87,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         toggleModal: profile => dispatch(toggleModalAction()),
+        storedProfile: () => dispatch(storedProfileAction())
     }
 }
 

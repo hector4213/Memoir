@@ -9,6 +9,21 @@ export const clearErrorAction = () => {
 	}
 }
 
+export const storedProfileAction = formInfo => {
+	return async (dispatch, getState) => {
+        const retrievedProfile = localStorage.getItem('profile');
+        if(retrievedProfile){
+            const storedProfile = JSON.parse(retrievedProfile)
+            dispatch({
+                type: 'ADD_PROFILE',
+                payload: storedProfile
+            })
+        }
+    }
+}
+
+
+
 export const logInAction = formInfo => {
 	return async (dispatch, getState) => {
 
@@ -28,6 +43,9 @@ export const logInAction = formInfo => {
                     type: 'TOGGLE_MODAL',
                     payload: !getState().page.modal
                 })
+
+                localStorage.setItem('profile', JSON.stringify(response.data));
+
             }
             catch(error){
                 console.log(error.response.data.error)
@@ -47,7 +65,7 @@ export const logInAction = formInfo => {
 }
 
 export const logOutAction = () => {
-    console.log('inside of logout action')
+    localStorage.clear()
 	return async (dispatch, getState) => {
         dispatch({ type: 'REMOVE_PROFILE'})
     }
