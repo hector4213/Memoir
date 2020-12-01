@@ -9,7 +9,7 @@ const LogInForm = props => {
     const [formInfo, setFormInfo] = useState()
     const {logIn} = props
 
-    const loginRequest = async e => {
+    const loginRequest = e => {
         e.preventDefault()
         logIn(formInfo)
     }
