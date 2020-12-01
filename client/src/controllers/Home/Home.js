@@ -10,9 +10,10 @@ import Modal from '../../components/Modal/Modal'
 import {connect} from 'react-redux'
 import {toggleModalAction} from '../../redux/actions/page'
 import {storedProfileAction} from '../../redux/actions/profile'
+import {logOutAction} from '../../redux/actions/profile'
 
 const Index = props => {
-    const {toggleModal, storedProfile} = props
+    const {toggleModal, storedProfile, logOut} = props
     const {user, modal} = props
 
     const history = useHistory()
@@ -48,6 +49,7 @@ const Index = props => {
 
         {
         user?
+        <>
         <Button
             {...{
                 label: user.username,
@@ -55,7 +57,18 @@ const Index = props => {
                 extraClass: 'login-btn',
                 onClick: goToProfile
             }}
-        />:
+        />
+        <Button
+                {...{
+                    label: 'Log Out',
+                    transparent : true,
+                    extraClass: 'logout-btn',
+                    onClick: () => {
+                        logOut()
+                    }
+                }}
+        />
+        </> :
         <Button
             {...{
                 label: 'Register | Log In',
@@ -87,7 +100,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         toggleModal: profile => dispatch(toggleModalAction()),
-        storedProfile: () => dispatch(storedProfileAction())
+        storedProfile: () => dispatch(storedProfileAction()),
+        logOut: () => dispatch(logOutAction())
     }
 }
 
