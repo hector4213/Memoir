@@ -1,21 +1,5 @@
 module.exports = [
   {
-    story_id: 0,
-    format_id: 1,
-    title: 'i started school',
-    date: '2020-1-21',
-    description: 'school is the bomb',
-    embed: 'https://i.imgur.com/u4dJKj2.png',
-  },
-  {
-    story_id: 0,
-    format_id: 3,
-    title: 'got my first gf',
-    date: '2020-1-21',
-    description: 'Met her at a diner, gave her my number',
-    embed: 'text',
-  },
-  {
     story_id: 1,
     format_id: 1,
     title: 'Going Fast',
