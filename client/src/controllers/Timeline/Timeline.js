@@ -1,4 +1,4 @@
-import React, {useCallback} from 'react'
+import React, {useCallback, useState} from 'react'
 import './Timeline.scss'
 
 import { useHistory } from "react-router-dom";
@@ -14,6 +14,17 @@ const Timeline = props => {
         const to = `/`
         history.push(to)
     }, [history])
+
+    const [currentProgress, setCurrentProgress] = useState(0)
+    window.addEventListener('scroll', e => {
+        const height = document.body.clientHeight - window.innerHeight
+        const current= window.scrollY
+        setCurrentProgress( (current/height)*100 )
+    })
+
+    let progressStyle = {
+        width: `${currentProgress}%`
+    }
 
     return (
         <div className='timeline'>
@@ -78,8 +89,9 @@ const Timeline = props => {
                 }}
             />
 
-            <div className='progress'>
-
+            <div className='progress-container'>
+                <div className='progress' style={progressStyle}>
+                </div>
             </div>
         </div>
     )
