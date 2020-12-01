@@ -6,6 +6,15 @@ const yup = require('yup')
 
 const router = express.Router({ mergeParams: true })
 
+const schema = yup.object().shape({
+  title: yup.string().trim().min(3).required(),
+  description: yup.string().trim().min(3).required(),
+  date: yup.string(),
+  embed: yup.string().trim().min(5).required(),
+  format_id: yup.number().integer().required(),
+  storyId: yup.number().integer().required(),
+})
+
 //Post new entry
 router.post('/', async (req, res, next) => {
   const { storyId } = req.params
@@ -14,8 +23,16 @@ router.post('/', async (req, res, next) => {
   const story = await Story.query().findById(storyId)
   const isVerified = decodedToken.id === story.author_id
   try {
+    await schema.validate({
+      title,
+      description,
+      date,
+      embed,
+      format_id,
+      storyId,
+    })
     if (isVerified) {
-      const newEntry = await Entry.query().insert({
+      await Entry.query().insert({
         title,
         description,
         date,
@@ -56,16 +73,21 @@ router.put('/edit/:id', async (req, res, next) => {
   if (!editItem) return res.status(401).json({ error: 'item does not exist' })
   const isVerified = decodedToken.id === editItem.story.author_id
   try {
+    await schema.validate({
+      title,
+      description,
+      date,
+      embed,
+      format_id,
+      storyId,
+    })
     if (isVerified) {
-      const updateEntry = await Entry.query()
-        .where({ id })
-        .andWhere('story_id', storyId)
-        .patch({
-          title,
-          description,
-          date,
-          embed,
-        })
+      await Entry.query().where({ id }).andWhere('story_id', storyId).patch({
+        title,
+        description,
+        date,
+        embed,
+      })
       return res.status(200).json({ msg: `${editItem.title} updated` })
     }
     return res.status(401).json({ error: 'unauthenticated' })
