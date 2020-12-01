@@ -18,5 +18,15 @@
 
 .login-btn {
     position: absolute;
+    top: 50px;
     right: 50px;
+    text-transform:capitalize;
+}
+
+.logout-btn{
+    position: absolute;
+    top: 120px;
+    right: 50px;
+    border-color: $red !important;
+    color: $red !important;
 }

@@ -3,7 +3,7 @@
 
 .profile {
     max-width: $app_width;
-    margin: 100px auto;
+    margin: 50px auto;
 
     label {
         font-size: $subtitle_size;
@@ -14,6 +14,8 @@
     font-size: $title_size;
     text-align: center;
     font-weight: normal;
+    margin: 100px 0px;
+    text-transform:capitalize;
 }
 
 .tabs {
@@ -36,3 +38,4 @@
 .active {
     color: $light_blue !important;
 }
+

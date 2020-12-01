@@ -1,9 +1,10 @@
-
+@import '../../../styles/colors';
+@import '../../../styles/sizes';
 
 .approved {
-    color: #a2f3a2;
+    color: $green;
 }
 
 .denied {
-    color: #ff8a8a;
+    color: $red;
 }

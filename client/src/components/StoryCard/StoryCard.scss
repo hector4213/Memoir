@@ -7,6 +7,7 @@
     padding: 20px;
     box-sizing: border-box;
     max-width: 200px;
+    border: 2px solid rgba(255, 0, 0, 0);
     cursor: pointer;
 
     .profile-img {
@@ -44,7 +45,7 @@
         height: $deletebtn_size;
         border-radius: $deletebtn_size;
         position: absolute;
-        right: 0;
+        right: 10px;
         color: $pink;
         z-index: 5;
         cursor: pointer;

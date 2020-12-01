@@ -1,8 +1,18 @@
 import React, {useState} from 'react'
 import Button from '../Button/Button'
 
+import {connect} from 'react-redux'
+import {logInAction} from '../../redux/actions/profile'
+
+
 const LogInForm = props => {
     const [formInfo, setFormInfo] = useState()
+    const {logIn} = props
+
+    const loginRequest = e => {
+        e.preventDefault()
+        logIn(formInfo)
+    }
 
     return (
         <form>
@@ -22,13 +32,22 @@ const LogInForm = props => {
             <Button {...{
                 label:'Submit',
                 transparent: false,
-                onClick: e => {
-                    e.preventDefault()
-                    console.log(formInfo)
-                }
+                onClick: loginRequest
             }}/>
         </form>
     )
 }
 
-export default LogInForm
+
+const mapStateToProps = state => {
+    return {
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        logIn: profile => dispatch(logInAction(profile))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(LogInForm)

@@ -1,4 +1,5 @@
-import React, {useState} from 'react'
+import React, {useEffect, useCallback} from 'react'
+import { useHistory } from "react-router-dom";
 import './Home.scss'
 
 import Button from '../../components/Button/Button'
@@ -6,9 +7,22 @@ import Header from '../../components/Header/Header'
 import StoryCard from '../../components/StoryCard/StoryCard'
 import Modal from '../../components/Modal/Modal'
 
-const Index = () => {
-    const [modal, showModal] = useState(false)
+import {connect} from 'react-redux'
+import {toggleModalAction} from '../../redux/actions/page'
+import {storedProfileAction} from '../../redux/actions/profile'
+import {logOutAction} from '../../redux/actions/profile'
 
+const Index = props => {
+    const {toggleModal, storedProfile, logOut} = props
+    const {user, modal} = props
+
+    const history = useHistory()
+    const goToProfile = useCallback(() => history.push(`/profile`), [history])
+
+
+    useEffect(()=>{
+        storedProfile()
+    }, [storedProfile])
 
     let cards = []
 
@@ -20,26 +34,50 @@ const Index = () => {
                     key: i,
                     imageUrl: 'https://tinyurl.com/y37j647a',
                     name: 'Jack Jack',
-                    occupation: 'The Incredibles',
-                    onClick: () => console.log('Story Card was Clicked')
+                    occupation: 'The Incredibles'
                 }}
             />
         )
     }
 
+
+
     return (
     <div className='home'>
 
-        {modal? <Modal showModal={showModal} /> : ''}
+        {modal? <Modal {...{toggleModal}} /> : ''}
 
+        {
+        user?
+        <>
+        <Button
+            {...{
+                label: `${user.username}'s Profile`,
+                transparent : true,
+                extraClass: 'login-btn',
+                onClick: goToProfile
+            }}
+        />
+        <Button
+                {...{
+                    label: 'Log Out',
+                    transparent : true,
+                    extraClass: 'logout-btn',
+                    onClick: () => {
+                        logOut()
+                    }
+                }}
+        />
+        </> :
         <Button
             {...{
                 label: 'Register | Log In',
                 transparent : true,
                 extraClass: 'login-btn',
-                onClick: () => showModal(true)
+                onClick: toggleModal
             }}
         />
+        }
 
         <Header />
 
@@ -51,4 +89,20 @@ const Index = () => {
     )
 }
 
-export default Index;
+const mapStateToProps = state => {
+    console.log(state)
+    return {
+        user: state.profile.user,
+        modal: state.page.modal
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        toggleModal: profile => dispatch(toggleModalAction()),
+        storedProfile: () => dispatch(storedProfileAction()),
+        logOut: () => dispatch(logOutAction())
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Index)

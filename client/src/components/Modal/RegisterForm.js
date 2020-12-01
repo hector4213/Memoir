@@ -1,9 +1,17 @@
 import React, {useState} from 'react'
+import {connect} from 'react-redux'
 import Button from '../Button/Button'
-// label, onClick, transparent, extraClass
+
+import {registerUserAction} from '../../redux/actions/profile'
 
 const RegisterForm = props => {
     const [formInfo, setFormInfo] = useState()
+    const {registerUser} = props
+
+    const registerRequest = async e => {
+        e.preventDefault()
+        registerUser(formInfo)
+    }
 
     return (
         <form>
@@ -35,13 +43,21 @@ const RegisterForm = props => {
             <Button {...{
                 label:'Submit',
                 transparent: false,
-                onClick: e => {
-                    e.preventDefault()
-                    console.log(formInfo)
-                }
+                onClick: registerRequest
             }}/>
         </form>
     )
 }
 
-export default RegisterForm
+const mapStateToProps = state => {
+    return {
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        registerUser: formInfo => dispatch(registerUserAction(formInfo))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(RegisterForm)

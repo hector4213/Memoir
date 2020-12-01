@@ -1,17 +1,30 @@
 import React from 'react'
 import './App.scss';
+import {connect} from 'react-redux'
+
+import axios from 'axios'
 
 import {
   BrowserRouter as Router,
   Switch,
-  Route
+  Route,
+  Redirect
 } from "react-router-dom";
 
 import Home from './controllers/Home/Home'
 import Timeline from './controllers/Timeline/Timeline';
 import Profile from './controllers/Profile/Profile'
 
-const App = () => {
+const App = props => {
+  const {user} = props
+
+  const getBackEnd = async () => {
+    const res = await axios.get('http://localhost:3001/api/users')
+    console.log('users:')
+    console.log(res)
+  }
+
+  getBackEnd()
 
   return (
     <div className="App">
@@ -34,7 +47,7 @@ const App = () => {
           {/* - - - - - - - - - - - - - - - - - - - - - - - */}
 
           <Route exact path="/profile">
-            <Profile />
+          {user ?  <Profile />: <Redirect to="/" />}
           </Route>
 
           {/* - - - - - - - - - - - - - - - - - - - - - - - */}
@@ -52,4 +65,10 @@ const App = () => {
   )
 }
 
-export default App;
+const mapStateToProps = state =>{
+  return {
+    user: state.profile.user
+  }
+}
+
+export default connect(mapStateToProps)(App)
