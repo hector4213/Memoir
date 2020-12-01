@@ -1,9 +1,9 @@
 POST http://localhost:3001/api/stories/create
 Content-Type: application/json
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJ0ZXN0dGhlZGIiLCJlbWFpbCI6InRlc3QxQHRlc3R5LmNvbSIsImlhdCI6MTYwNjUxMTE2NywiZXhwIjoxNjA2NTk3NTY3fQ.GwwW1kgkS_TNj15LYEZmXZxf4UDNvUqPzLpUJPdryPg
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTEsInVzZXJuYW1lIjoiaGVjdG9yIiwiZW1haWwiOiJoZWN0b3JAZ21haWwuY29tIiwiaWF0IjoxNjA2NzkzMjU3LCJleHAiOjE2MDY4Nzk2NTd9.5i_SOqwWEuSFJsKod2Tt8pbwCx3GK5I_P_XHsm-POVg
 
 {
-    "title": "my first story"
+    "title": "Hectors Story 2"
 }
 
 #####
@@ -17,4 +17,15 @@ GET http://localhost:3001/api/stories/2
 Content-Type: application/json
 
 #####
-PUT http://localhost:3001/api/stories/edit/
+PUT http://localhost:3001/api/stories/edit/11
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTEsInVzZXJuYW1lIjoiaGVjdG9yIiwiZW1haWwiOiJoZWN0b3JAZ21haWwuY29tIiwiaWF0IjoxNjA2ODQyMDI2LCJleHAiOjE2MDY5Mjg0MjZ9.hCraUhHd8svBgUxjDA_SCme5ei3faD31Xp9BcSWTob4
+
+{
+    "title":"big titties"
+}
+
+#####
+DELETE http://localhost:3001/api/stories/10
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTEsInVzZXJuYW1lIjoiaGVjdG9yIiwiZW1haWwiOiJoZWN0b3JAZ21haWwuY29tIiwiaWF0IjoxNjA2ODQyMDI2LCJleHAiOjE2MDY5Mjg0MjZ9.hCraUhHd8svBgUxjDA_SCme5ei3faD31Xp9BcSWTob4

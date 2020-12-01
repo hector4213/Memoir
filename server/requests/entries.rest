@@ -1,27 +1,35 @@
-PUT http://localhost:3001/api/stories/0/entries/1
+PUT http://localhost:3001/api/stories/10/entries/edit/26
 Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTEsInVzZXJuYW1lIjoiaGVjdG9yIiwiZW1haWwiOiJoZWN0b3JAZ21haWwuY29tIiwiaWF0IjoxNjA2ODQyMDI2LCJleHAiOjE2MDY5Mjg0MjZ9.hCraUhHd8svBgUxjDA_SCme5ei3faD31Xp9BcSWTob4
 
 {
-    "title": "lets update test diff",
-    "description": "i hope this updates",
+    "title": "baby cry and shit",
+    "description": "bad bitcqqwqwehes give me problems",
     "date":"2020-04-20",
     "embed": "google.com"
 }
 
 #####
 
-DELETE http://localhost:3001/api/stories/0/entries/1
+DELETE http://localhost:3001/api/stories/10/entries/25
 Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTEsInVzZXJuYW1lIjoiaGVjdG9yIiwiZW1haWwiOiJoZWN0b3JAZ21haWwuY29tIiwiaWF0IjoxNjA2ODQyMDI2LCJleHAiOjE2MDY5Mjg0MjZ9.hCraUhHd8svBgUxjDA_SCme5ei3faD31Xp9BcSWTob4
+#####
+
+POST http://localhost:3001/api/stories/10/entries
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTEsInVzZXJuYW1lIjoiaGVjdG9yIiwiZW1haWwiOiJoZWN0b3JAZ21haWwuY29tIiwiaWF0IjoxNjA2ODQyMDI2LCJleHAiOjE2MDY5Mjg0MjZ9.hCraUhHd8svBgUxjDA_SCme5ei3faD31Xp9BcSWTob4
+
+{
+    "title": "Baby dont sleep man",
+    "description": "Gonna give it some johnnywalk and the baby going to bed",
+    "date":"2020-05-28",
+    "embed": "gmail.com",
+    "format_id": 2
+}
+
 
 #####
 
-POST http://localhost:3001/api/stories/0/entries
+GET http://localhost:3001/api/stories/7/entries/3
 Content-Type: application/json
-
-{
-    "title": "new test entry",
-    "description": "ii hope this works hope this updates",
-    "date":"2020-04-28",
-    "embed": "redtube.com",
-    "format_id": 2
-}
