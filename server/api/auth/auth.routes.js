@@ -27,9 +27,7 @@ router.post('/signup', async (req, res, next) => {
     await schema.validate(newUser)
     const existingUser = await User.query().where({ email }).first()
     if (existingUser) {
-      const error = new Error('Email already in use')
-      res.status(403)
-      throw error
+      res.status(403).json({ error: 'email already in use' })
     }
     const hashedPassword = await bcrypt.hash(password, 12)
     const insertUser = await User.query().insert({
@@ -60,15 +58,11 @@ router.post('/login', async (req, res, next) => {
     })
     const user = await User.query().where({ email }).first()
     if (!user) {
-      const error = new Error('User does not exist')
-      res.status(401)
-      throw error
+      res.status(401).json({ error: 'user not found' })
     }
     const validPassword = await bcrypt.compare(password, user.password)
     if (!validPassword) {
-      const error = new Error('invalid password')
-      res.status(401)
-      throw error
+      res.status(401).json({ error: 'incorrect password' })
     }
     const payload = {
       id: user.id,
