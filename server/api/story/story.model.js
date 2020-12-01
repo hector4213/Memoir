@@ -8,7 +8,7 @@ class Story extends Model {
   }
 
   static get relationMappings() {
-    const Entry = require('../entry/entry.model')
+    const Entry = require('./entry/entry.model')
     const User = require('../users/users.model')
     return {
       entries: {
