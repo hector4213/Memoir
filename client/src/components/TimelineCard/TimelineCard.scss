@@ -20,6 +20,8 @@
 .entryCard {
     width: 80%;
     z-index: 1;
+    border-radius: 5px;
+    cursor: pointer;
 
     h1, h2 {
         text-align: center;
@@ -43,6 +45,10 @@
         padding: 20px;
         box-sizing: border-box;
     }
+}
+
+.entryCard:hover {
+    background: $medium_blue;
 }
 
 .horizontalLine, .textHorizontalLine, .soundHorizontalLine {

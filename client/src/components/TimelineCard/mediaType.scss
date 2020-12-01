@@ -7,6 +7,7 @@
         border: $border;
         width: 100%;
         min-height: 200px;
+        box-sizing: border-box;
     }
 }
 
@@ -17,6 +18,7 @@
         width: 100%;
         min-height: 200px;
         border: $border;
+        box-sizing: border-box;
     }
 }
 
@@ -24,6 +26,7 @@
     iframe {
         border: $border;
         height: 115px;
+        box-sizing: border-box;
     }
 }
 
@@ -37,6 +40,7 @@
 
 .text {
     width: 50%;
+    padding: 20px;
 
     .caption {
         padding: 0px;
