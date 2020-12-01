@@ -52,7 +52,7 @@ const Index = props => {
         <>
         <Button
             {...{
-                label: user.username,
+                label: `${user.username}'s Profile`,
                 transparent : true,
                 extraClass: 'login-btn',
                 onClick: goToProfile
