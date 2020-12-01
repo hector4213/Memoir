@@ -7,6 +7,7 @@ const yup = require('yup')
 
 const router = express.Router({ mergeParams: true })
 
+// Edit an entry
 router.put('/:id', async (req, res, next) => {
   const { id, storyId } = req.params
   const { title, description, date, embed } = req.body
@@ -26,6 +27,7 @@ router.put('/:id', async (req, res, next) => {
   }
 })
 
+//Delete an entry
 router.delete('/:id', async (req, res, next) => {
   const { id, storyId } = req.params
   try {
@@ -34,9 +36,12 @@ router.delete('/:id', async (req, res, next) => {
       .where({ id })
       .andWhere('story_id', storyId)
     res.status(204).json({ msg: 'deleted' })
-  } catch (error) {}
+  } catch (error) {
+    next(error)
+  }
 })
 
+//Post new entry
 router.post('/', async (req, res, next) => {
   const { id, storyId } = req.params
   const { title, description, date, embed, format_id } = req.body
