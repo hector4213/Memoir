@@ -58,11 +58,10 @@ router.post('/create', async (req, res, next) => {
   try {
     await schema.validate({ title })
     const decodedToken = await jwt.verify(req.token)
-    if (!req.token) {
-      const error = new Error('token missing or invalid')
-      res.status(401)
-      throw error
+    if (!req.token || !decodedToken) {
+      res.status(401).json({ error: 'missing token' })
     }
+    console.log(decodedToken)
     const newStory = await Story.query().insert({
       title,
       author_id: decodedToken.id,
