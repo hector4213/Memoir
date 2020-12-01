@@ -1,9 +1,9 @@
 POST http://localhost:3001/api/stories/create
 Content-Type: application/json
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTEsInVzZXJuYW1lIjoiaGVjdG9yIiwiZW1haWwiOiJoZWN0b3JAZ21haWwuY29tIiwiaWF0IjoxNjA2NzkzMjU3LCJleHAiOjE2MDY4Nzk2NTd9.5i_SOqwWEuSFJsKod2Tt8pbwCx3GK5I_P_XHsm-POVg
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTEsInVzZXJuYW1lIjoiaGVjdG9yIiwiZW1haWwiOiJoZWN0b3JAZ21haWwuY29tIiwiaWF0IjoxNjA2ODUzMTcyLCJleHAiOjE2MDY5Mzk1NzJ9.VoomnyJqGp6Fm0BOlSFlIRBjbG6VX5fPgX_HsO8b30s
 
 {
-    "title": "Hectors Story 2"
+    "title": "Lost my job..."
 }
 
 #####
@@ -22,7 +22,7 @@ Content-Type: application/json
 Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTEsInVzZXJuYW1lIjoiaGVjdG9yIiwiZW1haWwiOiJoZWN0b3JAZ21haWwuY29tIiwiaWF0IjoxNjA2ODQyMDI2LCJleHAiOjE2MDY5Mjg0MjZ9.hCraUhHd8svBgUxjDA_SCme5ei3faD31Xp9BcSWTob4
 
 {
-    "title":"big titties"
+    "title":"Got my first job"
 }
 
 #####
