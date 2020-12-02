@@ -9,6 +9,7 @@ const router = express.Router({ mergeParams: true })
 
 const schema = yup.object().shape({
   title: yup.string().trim().min(3).required(),
+  date: yup.string().trim().min(6).required(),
 })
 
 // GET ALL USER STORIES
@@ -42,15 +43,16 @@ router.get('/', async (req, res, next) => {
 
 //Create a new story
 router.post('/create', async (req, res, next) => {
-  const { title } = req.body
+  const { title, date } = req.body
   try {
-    await schema.validate({ title })
+    await schema.validate({ title, date })
     const decodedToken = await jwt.verify(req.token)
     if (!req.token || !decodedToken) {
       res.status(401).json({ error: 'missing token' })
     }
     const newStory = await Story.query().insert({
       title,
+      date,
       author_id: decodedToken.id,
     })
     res.status(201).json({ msg: `${title} created!` })
@@ -84,17 +86,18 @@ router.get('/:storyId', async (req, res, next) => {
 //EDIT Story title
 router.put('/edit/:storyId', async (req, res, next) => {
   const { storyId } = req.params
-  const { title } = req.body
+  const { title, date } = req.body
   const decodedToken = await jwt.verify(req.token)
   const story = await Story.query().findById(storyId)
   const isVerified = decodedToken.id === story.author_id
   if (!story) return res.status(401).json({ error: 'Story does not exist' })
   try {
     if (isVerified) {
+      await schema.validate({ title, date })
       const updateStory = await Story.query()
         .where({ id: storyId })
-        .patch({ title })
-      return res.status(200).json({ msg: 'Story title updated' })
+        .patch({ title, date })
+      return res.status(200).json({ msg: 'Story  updated' })
     }
     return res.status(401).json({ error: 'unauthenticated' })
   } catch (error) {
@@ -104,15 +107,17 @@ router.put('/edit/:storyId', async (req, res, next) => {
 
 //DELETE story
 
-router.delete('/:id', async (req, res, next) => {
-  const { id } = req.params
-  const story = await Story.query().findById(id)
+router.delete('/:storyId', async (req, res, next) => {
+  const { storyId } = req.params
+  const story = await Story.query().findById(storyId)
+  if (!story) return res.status(404).json({ error: 'Story does not exist' })
+  console.log(story)
   const decodedToken = await jwt.verify(req.token)
   const isVerified = decodedToken.id === story.author_id
-  if (!story) return res.status(404).json({ error: 'Story does not exist' })
+
   try {
     if (isVerified) {
-      await Story.query().del().where({ id })
+      await Story.query().deleteById(storyId)
       return res.status(200).json({ msg: 'Story deleted' })
     }
     return res.status(401).json({ msg: 'unauthenticated' })
