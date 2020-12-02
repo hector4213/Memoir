@@ -5,7 +5,8 @@
   "scripts": {
     "start": "node index",
     "dev": "nodemon index.js",
-    "test": "NODE_ENV=test mocha api/**/*.js"
+    "test": "NODE_ENV=test mocha api/**/*.js",
+    "resetdb":"knex migrate:rollback && knex migrate:latest && knex seed:run"
   },
   "dependencies": {
     "bcrypt": "^5.0.0",
