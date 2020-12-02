@@ -21,7 +21,7 @@ router.post('/', async (req, res, next) => {
   const { title, description, date, embed, format_id } = req.body
   const decodedToken = await jwt.verify(req.token)
   const story = await Story.query().findById(storyId)
-  const isVerified = decodedToken.id === story.author_id
+
   try {
     await schema.validate({
       title,
@@ -31,18 +31,19 @@ router.post('/', async (req, res, next) => {
       format_id,
       storyId,
     })
-    if (isVerified) {
+    if (story) {
       await Entry.query().insert({
         title,
         description,
         date,
         embed,
         format_id,
+        user_id: decodedToken.id,
         story_id: storyId,
       })
       return res.status(201).json({ msg: `Entry added to ${story.title}` })
     }
-    return res.status(401).json({ error: 'unauthenticated' })
+    return res.status(401).json({ error: 'Story not found' })
   } catch (error) {
     next(error)
   }
@@ -51,7 +52,14 @@ router.post('/', async (req, res, next) => {
 // Get one entry
 router.get('/:id', async (req, res, next) => {
   const { id, storyId } = req.params
-  const entry = await Entry.query().withGraphFetched('story').findById(id)
+  const entry = await Entry.query()
+    .withGraphFetched('[story, user(nameAndId)]')
+    .modifiers({
+      nameAndId(builder) {
+        builder.select('id', 'username')
+      },
+    })
+    .findById(id)
 
   try {
     if (!entry) {
