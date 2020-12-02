@@ -16,7 +16,7 @@ const schema = yup.object().shape({
 
 router.get('/', async (req, res, next) => {
   const allStories = await Story.query()
-    .select('id', 'title', 'created')
+    .select('id', 'title', 'date')
     .withGraphFetched(
       '[user(userInfo), entries.[user(nameAndId),format(onlyType)]]'
     )
