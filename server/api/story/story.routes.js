@@ -15,13 +15,19 @@ const schema = yup.object().shape({
 
 router.get('/', async (req, res, next) => {
   const allStories = await Story.query()
-    .withGraphFetched('[user(userInfo), entries.user(nameAndId)]')
+    .select('id', 'title', 'created')
+    .withGraphFetched(
+      '[user(userInfo), entries.[user(nameAndId),format(onlyType)]]'
+    )
     .modifiers({
       userInfo(builder) {
         builder.select('id', 'username')
       },
       nameAndId(builder) {
         builder.select('id', 'username')
+      },
+      onlyType(builder) {
+        builder.select('type')
       },
     })
   try {
