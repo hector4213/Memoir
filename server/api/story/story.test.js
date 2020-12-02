@@ -15,7 +15,7 @@ describe('POST /story/create', () => {
   })
 
   it('User can successfull create a new story', async () => {
-    const response = supertest(app)
+    const response = await supertest(app)
       .get('/api/story/create')
       .expect('Content-type', /json/)
       .expect(201)
