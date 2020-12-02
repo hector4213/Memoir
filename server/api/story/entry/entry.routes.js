@@ -15,7 +15,7 @@ const schema = yup.object().shape({
   storyId: yup.number().integer().required(),
 })
 
-//Post new entry
+//Post new entry to story
 router.post('/', async (req, res, next) => {
   const { storyId } = req.params
   const { title, description, date, embed, format_id } = req.body
@@ -79,7 +79,7 @@ router.put('/edit/:id', async (req, res, next) => {
   const decodedToken = await jwt.verify(req.token)
   const editItem = await Entry.query().withGraphFetched('story').findById(id)
   if (!editItem) return res.status(401).json({ error: 'item does not exist' })
-  const isVerified = decodedToken.id === editItem.story.author_id
+  const isVerified = decodedToken.id === editItem.user_id
   try {
     await schema.validate({
       title,
@@ -95,6 +95,7 @@ router.put('/edit/:id', async (req, res, next) => {
         description,
         date,
         embed,
+        user_id: decodedToken.id,
       })
       return res.status(200).json({ msg: `${editItem.title} updated` })
     }
@@ -106,11 +107,12 @@ router.put('/edit/:id', async (req, res, next) => {
 
 //Delete an entry from a story
 router.delete('/:id', async (req, res, next) => {
-  const { id, storyId } = req.params
+  const { id } = req.params
   const decodedToken = await jwt.verify(req.token)
   const item = await Entry.query().withGraphFetched('story').findById(id)
   if (!item) return res.status(404).json({ error: 'item not found' })
-  const isVerified = decodedToken.id === item.story.author_id
+  const isVerified =
+    decodedToken.id === item.story.author_id || decodedToken.id === item.user_id
   try {
     if (isVerified) {
       await Entry.query().del().where({ id })
