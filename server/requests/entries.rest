@@ -1,31 +1,32 @@
-PUT http://localhost:3001/api/stories/10/entries/edit/26
+PUT http://localhost:3001/api/stories/10/entries/edit/19
 Content-Type: application/json
 Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTEsInVzZXJuYW1lIjoiaGVjdG9yIiwiZW1haWwiOiJoZWN0b3JAZ21haWwuY29tIiwiaWF0IjoxNjA2ODQyMDI2LCJleHAiOjE2MDY5Mjg0MjZ9.hCraUhHd8svBgUxjDA_SCme5ei3faD31Xp9BcSWTob4
 
 {
-    "title": "Man this sucks",
+    "title": "Man this REALLY sucks",
     "description": "Who would have known, stealing peoples lunches from the fridge would get me fired",
     "date":"2020-04-20",
-    "embed": "google.com"
+    "embed": "google.com",
+    "format_id": 2
 }
 
 #####
 
-DELETE http://localhost:3001/api/stories/10/entries/25
+DELETE http://localhost:3001/api/stories/10/entries/19
 Content-Type: application/json
 Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTEsInVzZXJuYW1lIjoiaGVjdG9yIiwiZW1haWwiOiJoZWN0b3JAZ21haWwuY29tIiwiaWF0IjoxNjA2ODQyMDI2LCJleHAiOjE2MDY5Mjg0MjZ9.hCraUhHd8svBgUxjDA_SCme5ei3faD31Xp9BcSWTob4
 #####
 
 POST http://localhost:3001/api/stories/10/entries
 Content-Type: application/json
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTEsInVzZXJuYW1lIjoiaGVjdG9yIiwiZW1haWwiOiJoZWN0b3JAZ21haWwuY29tIiwiaWF0IjoxNjA2ODUzMTcyLCJleHAiOjE2MDY5Mzk1NzJ9.VoomnyJqGp6Fm0BOlSFlIRBjbG6VX5fPgX_HsO8b30s
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwidXNlcm5hbWUiOiJ0ZXN0IiwiZW1haWwiOiJ0ZXN0bWFuQGdtYWlsLmNvbSIsImlhdCI6MTYwNjg3Njg4NCwiZXhwIjoxNjA2OTYzMjg0fQ.9NcYVgM8YNPHp8tF-e98D4XbaDzcbCuUDb9snVYOV_Y
 
 {
-    "title": "Another one",
-    "description": "Today I fought with a patient about dentures ",
+    "title": "el to the OH EL",
+    "description": "Hey fool, next time try and remember. You know what forget it, i cant even remember what i had for breakfast",
     "date":"2020-05-28",
-    "embed": "gmail.com",
-    "format_id": 2
+    "embed": "somtext",
+    "format_id": 3
 }
 
 

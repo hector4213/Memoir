@@ -1,9 +1,9 @@
 POST http://localhost:3001/api/stories/create
 Content-Type: application/json
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTEsInVzZXJuYW1lIjoiaGVjdG9yIiwiZW1haWwiOiJoZWN0b3JAZ21haWwuY29tIiwiaWF0IjoxNjA2ODUzMTcyLCJleHAiOjE2MDY5Mzk1NzJ9.VoomnyJqGp6Fm0BOlSFlIRBjbG6VX5fPgX_HsO8b30s
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTEsInVzZXJuYW1lIjoiaGVjdG9yIiwiZW1haWwiOiJoZWN0b3JAZ21haWwuY29tIiwiaWF0IjoxNjA2ODU1MDQ3LCJleHAiOjE2MDY5NDE0NDd9.BsbZ8wklZRe2G48kc8NZfOPj-huHMbma0CAWmqxcKeE
 
 {
-    "title": "Lost my job..."
+    "title": "let my job again....:("
 }
 
 #####

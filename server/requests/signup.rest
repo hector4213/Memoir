@@ -9,10 +9,10 @@ Content-Type: application/json
 
 #########
 
-POSt http://localhost:3001/api/auth/login
+POST http://localhost:3001/api/auth/login
 Content-Type: application/json
 
 {
-    "email":"hector@gmail.com",
+    "email":"testman@gmail.com",
     "password":"React!123" 
 }
