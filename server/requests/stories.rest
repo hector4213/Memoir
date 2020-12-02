@@ -1,9 +1,10 @@
 POST http://localhost:3001/api/stories/create
 Content-Type: application/json
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTEsInVzZXJuYW1lIjoiaGVjdG9yIiwiZW1haWwiOiJoZWN0b3JAZ21haWwuY29tIiwiaWF0IjoxNjA2ODU1MDQ3LCJleHAiOjE2MDY5NDE0NDd9.BsbZ8wklZRe2G48kc8NZfOPj-huHMbma0CAWmqxcKeE
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTEsInVzZXJuYW1lIjoiaGVjdG9yIiwiZW1haWwiOiJoZWN0b3JAZ21haWwuY29tIiwiaWF0IjoxNjA2OTM0MDEyLCJleHAiOjE2MDcwMjA0MTJ9.4CEMxfPavUAK2N6XxaWTXY1XQ3gZq7O2xr54bUBhtOs
 
 {
-    "title": "let my job again....:("
+    "title": "Never forget your relation and look at your ERD",
+    "date": "2020-01-02"
 }
 
 #####
@@ -26,6 +27,6 @@ Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTEsInVzZXJuY
 }
 
 #####
-DELETE http://localhost:3001/api/stories/10
+DELETE http://localhost:3001/api/stories/11
 Content-Type: application/json
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTEsInVzZXJuYW1lIjoiaGVjdG9yIiwiZW1haWwiOiJoZWN0b3JAZ21haWwuY29tIiwiaWF0IjoxNjA2ODQyMDI2LCJleHAiOjE2MDY5Mjg0MjZ9.hCraUhHd8svBgUxjDA_SCme5ei3faD31Xp9BcSWTob4
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTEsInVzZXJuYW1lIjoiaGVjdG9yIiwiZW1haWwiOiJoZWN0b3JAZ21haWwuY29tIiwiaWF0IjoxNjA2OTM0MzY3LCJleHAiOjE2MDcwMjA3Njd9.LHeiyuzZn0L9YYSl5ETdAQ37mC8_myyABl4r3bp41EQ
