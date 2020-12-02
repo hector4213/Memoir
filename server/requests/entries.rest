@@ -1,0 +1,36 @@
+PUT http://localhost:3001/api/stories/10/entries/edit/23
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwidXNlcm5hbWUiOiJ0ZXN0IiwiZW1haWwiOiJ0ZXN0bWFuQGdtYWlsLmNvbSIsImlhdCI6MTYwNjg3Njg4NCwiZXhwIjoxNjA2OTYzMjg0fQ.9NcYVgM8YNPHp8tF-e98D4XbaDzcbCuUDb9snVYOV_Y
+
+{
+    "title": "LOL",
+    "description": "I changed the title, next time dont forget son.",
+    "date":"2020-04-20",
+    "embed": "google.com",
+    "format_id": 2
+}
+
+#####
+
+DELETE http://localhost:3001/api/stories/10/entries/22
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTEsInVzZXJuYW1lIjoiaGVjdG9yIiwiZW1haWwiOiJoZWN0b3JAZ21haWwuY29tIiwiaWF0IjoxNjA2ODc4MDE1LCJleHAiOjE2MDY5NjQ0MTV9.9Mjj-8a1SyldxM_SHxFc_FwfewwgHyYeU11fKYnybUg
+#####
+
+POST http://localhost:3001/api/stories/10/entries
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwidXNlcm5hbWUiOiJ0ZXN0IiwiZW1haWwiOiJ0ZXN0bWFuQGdtYWlsLmNvbSIsImlhdCI6MTYwNjg3Njg4NCwiZXhwIjoxNjA2OTYzMjg0fQ.9NcYVgM8YNPHp8tF-e98D4XbaDzcbCuUDb9snVYOV_Y
+
+{
+    "title": "el to the OH EL",
+    "description": "Hey fool, next time try and remember. You know what forget it, i cant even remember what i had for breakfast",
+    "date":"2020-05-28",
+    "embed": "somtext",
+    "format_id": 3
+}
+
+
+#####
+
+GET http://localhost:3001/api/stories/7/entries/3
+Content-Type: application/json

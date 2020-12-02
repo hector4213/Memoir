@@ -14,8 +14,8 @@ exports.up = async (knex) => {
 exports.down = async (knex) => {
   await Promise.all(
     [
-      tableNames.users,
       tableNames.story,
+      tableNames.users,
       tableNames.entry,
       tableNames.format,
     ].map((tableName) => knex.schema.dropTableIfExists(tableName))

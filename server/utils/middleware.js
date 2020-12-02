@@ -13,14 +13,13 @@ const tokenExtractor = (req, res, next) => {
   next()
 }
 // eslint-disable-next-line consistent-return
-const errorHandler = (error, request, response, next) => {
+const errorHandler = (error, req, res, next) => {
   logger.error(error.message)
-
   if (error.name === 'ValidationError') {
-    return response.status(400).json({ error: error.message })
+    return res.status(400).json(error.message)
   }
   if (error.name === 'JsonWebTokenError') {
-    return response.status(401).json({ error: 'invalid token' })
+    return res.status(401).json(error.message)
   }
 
   next(error)

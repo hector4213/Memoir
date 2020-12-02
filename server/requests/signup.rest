@@ -1,0 +1,18 @@
+POST http://localhost:3001/api/auth/signup
+Content-Type: application/json
+
+{
+    "username": "hector",
+    "email":"hector@gmail.com",
+    "password":"React!123"   
+}
+
+#########
+
+POST http://localhost:3001/api/auth/login
+Content-Type: application/json
+
+{
+    "email":"testman@gmail.com",
+    "password":"React!123" 
+}

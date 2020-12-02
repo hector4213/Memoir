@@ -15,10 +15,9 @@ module.exports = [
     password: 'Gasdf2',
   },
   {
-    username: 'testthedb',
-    email: 'test1@testy.com',
-    password:
-      '"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIsInVzZXJuYW1lIjoidGVzdHRoZWRiIiwiZW1haWwiOiJ0ZXN0MUB0ZXN0eS5jb20iLCJpYXQiOjE2MDY0NDcwNTgsImV4cCI6MTYwNjUzMzQ1OH0.MkT2RWIRMd_arRQm-oYPmbCsnV4kM_DaRAA1acsrsWI"',
+    username: 'test',
+    email: 'testman@gmail.com',
+    password: '$2b$12$fufiIE8JzYZsQrQeM3Vf6eRoii4Opz1J/U/twkPCYRDeRETFJpfwy',
   },
   {
     username: 'ROCKSTAR_32',
