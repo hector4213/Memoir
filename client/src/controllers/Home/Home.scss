@@ -1,9 +1,11 @@
 @import '../../styles/colors';
-
+@import '../../styles/sizes';
 
 .home {
-    max-width: 800px;
+    max-width: $app_width;
     margin: auto;
+    box-sizing: border-box;
+    padding: 50px 0px;
 }
 
 .storyCards {
@@ -16,5 +18,15 @@
 
 .login-btn {
     position: absolute;
+    top: 50px;
     right: 50px;
+    text-transform:capitalize;
+}
+
+.logout-btn{
+    position: absolute;
+    top: 120px;
+    right: 50px;
+    border-color: $red !important;
+    color: $red !important;
 }

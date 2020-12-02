@@ -9,7 +9,7 @@ module.exports = {
       user: config.PG_USER,
       password: config.PG_KEY,
       database: config.PG_DB,
-      port: config.PG_PORT,
+      port: config.PG_PORT
     },
     migrations: {
       directory: './db/migrations',

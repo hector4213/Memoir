@@ -5,8 +5,14 @@ body {
   background: $dark_blue;
   color: $light_blue;
   font-family: $font_fam;
-  padding: 50px 0px;
+  font-size: $text_size;
 }
 
 .App {
+}
+
+.back-btn {
+  position: absolute;
+  top: 50px;
+  left: 50px;
 }

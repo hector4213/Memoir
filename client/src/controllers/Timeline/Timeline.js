@@ -1,19 +1,48 @@
-import React from 'react'
+import React, {useCallback, useState} from 'react'
 import './Timeline.scss'
 
+import { useHistory } from "react-router-dom";
+
+import Button from '../../components/Button/Button'
 import StoryCard from '../../components/StoryCard/StoryCard'
 import TimelineCard from '../../components/TimelineCard/TimelineCard'
 
 const Timeline = props => {
+
+    const history = useHistory()
+    const onClick = useCallback(() => {
+        const to = `/`
+        history.push(to)
+    }, [history])
+
+    const [currentProgress, setCurrentProgress] = useState(0)
+    window.addEventListener('scroll', e => {
+        const height = document.body.clientHeight - window.innerHeight
+        const current= window.scrollY
+        setCurrentProgress( (current/height)*100 )
+    })
+
+    let progressStyle = {
+        width: `${currentProgress}%`
+    }
+
     return (
         <div className='timeline'>
+            <Button onClick= {onClick}
+                {...{
+                    label: 'Home',
+                    transparent : true,
+                    extraClass: 'back-btn',
+                }}
+            />
+
             <StoryCard
                 {...{
                     imageUrl:'https://tinyurl.com/y5qnh2ey',
                     name:'Carl Fredricksen',
                     occupation:'Balloon Salesman',
                     specialStyle:{margin: 'auto'},
-                    onClick: ()=>console.log('Clicked the old man')
+                    inTimeline: true
                 }}
             />
 
@@ -60,8 +89,9 @@ const Timeline = props => {
                 }}
             />
 
-            <div className='progress'>
-
+            <div className='progress-container'>
+                <div className='progress' style={progressStyle}>
+                </div>
             </div>
         </div>
     )
