@@ -11,7 +11,7 @@ exports.up = async (knex) => {
         .notNullable()
         .onDelete('CASCADE')
       table.string('title').notNullable()
-      table.datetime('created').defaultTo(knex.fn.now())
+      table.date('date', { useTz: false })
     }), //entry table
     knex.schema.createTable(tableNames.entry, (table) => {
       table.increments().primary()
