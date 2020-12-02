@@ -1,5 +1,7 @@
 const { Model } = require('../../../db/config')
 const tableNames = require('../../../constants/tableNames')
+const User = require('../../users/users.model')
+const { entry } = require('../../../constants/tableNames')
 
 class Entry extends Model {
   static get tableName() {
@@ -23,6 +25,14 @@ class Entry extends Model {
         join: {
           from: 'entry.format_id',
           to: 'format.id',
+        },
+      },
+      user: {
+        relation: Model.BelongsToOneRelation,
+        modelClass: User,
+        join: {
+          from: 'entry.user_id',
+          to: 'users.id',
         },
       },
     }
