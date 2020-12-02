@@ -56,13 +56,13 @@ router.post('/create', async (req, res, next) => {
 router.get('/:storyId', async (req, res, next) => {
   const { storyId } = req.params
   const story = await Story.query()
-    .withGraphFetched('user(userInfo)')
+    .withGraphFetched('[entries.user(nameAndId), user(nameAndId)]')
     .modifiers({
-      userInfo(builder) {
+      nameAndId(builder) {
         builder.select('id', 'username')
       },
     })
-    .withGraphFetched('entries')
+
     .findById(storyId)
   try {
     if (!story) {
@@ -74,7 +74,7 @@ router.get('/:storyId', async (req, res, next) => {
   }
 })
 
-//EDIT Story
+//EDIT Story title
 router.put('/edit/:storyId', async (req, res, next) => {
   const { storyId } = req.params
   const { title } = req.body
