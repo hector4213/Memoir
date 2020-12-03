@@ -18,8 +18,8 @@ describe('POST for /auth', () => {
 
   it('Creates a new user /signup', async () => {
     const newUser = {
-      username: 'testy',
-      email: 'testy@testy.com',
+      username: 'somedude',
+      email: 'dude@test.com',
       password: 'Hello!123',
     }
     const response = await supertest(app).post('/api/auth/signup').send(newUser)
@@ -27,14 +27,18 @@ describe('POST for /auth', () => {
     expect(response.body).to.include.keys('user', 'token')
   })
 
-  it('test if user can log in /login', async () => {
+  it('test if user can /login, receives token and userinfo', async () => {
     const userLogin = {
-      username: 'testthedb',
+      //this user is already in DB
+      email: 'tester@test.com',
       password: 'React!123',
     }
-    const response = await supertest(
-      app.post('/api/auth/login').send(userLogin)
-    )
+    const response = await supertest(app)
+      .post('/api/auth/login')
+      .send(userLogin)
+
     expect(response.status).to.eql(200)
+    expect(response.body).to.include.keys('user', 'token')
+    expect(response.body.user.email).to.eql(userLogin.email)
   })
 })

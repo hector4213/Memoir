@@ -55,8 +55,8 @@ module.exports = [
     password: 'xqw2156g7ij',
   },
   {
-    username: 'MAC434',
-    email: 'spicyasdXX@nba.com',
-    password: 'xqw2156g7ij',
+    username: 'tester',
+    email: 'tester@test.com',
+    password: '$2b$12$GOXm7xAT2dcB3sEjeCMQ9ekJd.3QZyCwk2KGbskgjV.lwxdwAX7XG',
   },
 ]

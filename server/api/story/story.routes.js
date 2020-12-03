@@ -18,18 +18,10 @@ const schema = yup.object().shape({
 router.get('/', async (req, res, next) => {
   const allStories = await Story.query()
     .select('id', 'name', 'occupation')
-    .withGraphFetched(
-      '[user(userInfo), entries.[user(nameAndId),format(onlyType)]]'
-    )
+    .withGraphFetched('user(userInfo)')
     .modifiers({
       userInfo(builder) {
         builder.select('id', 'username')
-      },
-      nameAndId(builder) {
-        builder.select('id', 'username')
-      },
-      onlyType(builder) {
-        builder.select('type')
       },
     })
   try {
@@ -68,7 +60,8 @@ router.post('/create', async (req, res, next) => {
 router.get('/:storyId', async (req, res, next) => {
   const { storyId } = req.params
   const story = await Story.query()
-    .withGraphFetched('[entries.user(nameAndId), user(nameAndId)]')
+    .select('id', 'name', 'occupation', 'story_img')
+    .withGraphFetched('user(nameAndId)')
     .modifiers({
       nameAndId(builder) {
         builder.select('id', 'username')
