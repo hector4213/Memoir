@@ -90,7 +90,7 @@ module.exports = [
     story_img: 'http://dummyimage.com/142x204.bmp/ff4444/ffffff',
   },
   {
-    author_id: 1,
+    author_id: 12,
     name: 'Anne-marie',
     occupation: 'Human Resources Manager',
     story_img: 'http://dummyimage.com/170x169.jpg/ff4444/ffffff',
