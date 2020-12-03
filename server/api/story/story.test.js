@@ -3,7 +3,7 @@ const supertest = require('supertest')
 const { knex } = require('../../db/config')
 const app = require('../../app')
 
-describe('POST /story/create', () => {
+describe('CRUD /story', () => {
   beforeEach(async () => {
     await knex.migrate.rollback()
     await knex.migrate.latest()
@@ -33,5 +33,15 @@ describe('POST /story/create', () => {
       .expect('Content-type', /json/)
       .expect(201)
     expect(response.body.msg).to.eql(`Story for ${testStory.name} created!`)
+  })
+
+  it('can fetch ONE story', async () => {
+    const testId = 2
+    const response = await supertest(app)
+      .get(`/api/stories/${testId}`)
+      .expect('Content-Type', /json/)
+      .expect(200)
+    const { id } = response.body
+    expect(id).to.equal(testId)
   })
 })
