@@ -15,11 +15,23 @@ describe('POST /story/create', () => {
   })
 
   it('User can successfull create a new story', async () => {
+    const login = await supertest(app)
+      .post('/api/auth/login')
+      .send({ email: 'tester@test.com', password: 'React!123' })
+
+    const testStory = {
+      name: 'Micheal Jordan',
+      occupation: 'baller',
+      story_img: 'https://i.imgur.com/YLyEJB7.jpeg',
+    }
+    const { token } = login.body
+
     const response = await supertest(app)
-      .get('/api/story/create')
+      .post('/api/stories/create')
+      .set('Authorization', `bearer ${token}`)
+      .send(testStory)
       .expect('Content-type', /json/)
       .expect(201)
-
-    expect(response.body).to.not.be.undefined()
+    expect(response.body.msg).to.eql(`Story for ${testStory.name} created!`)
   })
 })
