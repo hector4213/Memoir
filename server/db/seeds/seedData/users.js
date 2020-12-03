@@ -49,4 +49,14 @@ module.exports = [
     email: 'spicyp@nba.com',
     password: 'xqw2156g7ij',
   },
+  {
+    username: 'Bignuts',
+    email: 'spicyXX@nba.com',
+    password: 'xqw2156g7ij',
+  },
+  {
+    username: 'MAC434',
+    email: 'spicyasdXX@nba.com',
+    password: 'xqw2156g7ij',
+  },
 ]

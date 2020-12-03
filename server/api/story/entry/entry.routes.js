@@ -41,7 +41,9 @@ router.post('/', async (req, res, next) => {
         user_id: decodedToken.id,
         story_id: storyId,
       })
-      return res.status(201).json({ msg: `Entry added to ${story.title}` })
+      return res
+        .status(201)
+        .json({ msg: `Entry added to ${story.name}'s story` })
     }
     return res.status(401).json({ error: 'Story not found' })
   } catch (error) {

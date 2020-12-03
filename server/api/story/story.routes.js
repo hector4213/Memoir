@@ -8,15 +8,16 @@ const yup = require('yup')
 const router = express.Router({ mergeParams: true })
 
 const schema = yup.object().shape({
-  title: yup.string().trim().min(3).required(),
-  date: yup.string().trim().min(6).required(),
+  name: yup.string().trim().min(3).required(),
+  occupation: yup.string().trim().min(2).required(),
+  story_img: yup.string().trim().min(4).required(),
 })
 
 // GET ALL USER STORIES
 
 router.get('/', async (req, res, next) => {
   const allStories = await Story.query()
-    .select('id', 'title', 'date')
+    .select('id', 'name', 'occupation')
     .withGraphFetched(
       '[user(userInfo), entries.[user(nameAndId),format(onlyType)]]'
     )
@@ -32,7 +33,7 @@ router.get('/', async (req, res, next) => {
       },
     })
   try {
-    if (allStories) {
+    if (allStories.length) {
       return res.status(200).json(allStories)
     }
     return res.status(404).json({ error: 'No stories found' })
@@ -43,19 +44,20 @@ router.get('/', async (req, res, next) => {
 
 //Create a new story
 router.post('/create', async (req, res, next) => {
-  const { title, date } = req.body
+  const { name, occupation, story_img } = req.body
   try {
-    await schema.validate({ title, date })
+    await schema.validate({ name, occupation, story_img })
     const decodedToken = await jwt.verify(req.token)
     if (!req.token || !decodedToken) {
       res.status(401).json({ error: 'missing token' })
     }
     const newStory = await Story.query().insert({
-      title,
-      date,
+      name,
+      occupation,
+      story_img,
       author_id: decodedToken.id,
     })
-    res.status(201).json({ msg: `${title} created!` })
+    res.status(201).json({ msg: `Story for ${name} created!` })
   } catch (error) {
     next(error)
   }
@@ -83,21 +85,21 @@ router.get('/:storyId', async (req, res, next) => {
   }
 })
 
-//EDIT Story title
+//EDIT Story
 router.put('/edit/:storyId', async (req, res, next) => {
   const { storyId } = req.params
-  const { title, date } = req.body
+  const { name, occupation, story_img } = req.body
   const decodedToken = await jwt.verify(req.token)
   const story = await Story.query().findById(storyId)
   const isVerified = decodedToken.id === story.author_id
   if (!story) return res.status(401).json({ error: 'Story does not exist' })
   try {
     if (isVerified) {
-      await schema.validate({ title, date })
+      await schema.validate({ name, date })
       const updateStory = await Story.query()
         .where({ id: storyId })
-        .patch({ title, date })
-      return res.status(200).json({ msg: 'Story  updated' })
+        .patch({ name, occupation, story_img })
+      return res.status(200).json({ msg: `Story for ${name} updated` })
     }
     return res.status(401).json({ error: 'unauthenticated' })
   } catch (error) {
