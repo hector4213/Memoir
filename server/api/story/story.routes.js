@@ -9,7 +9,6 @@ const router = express.Router({ mergeParams: true })
 
 const schema = yup.object().shape({
   name: yup.string().trim().min(3).required(),
-  date: yup.string().trim().min(6).required(),
   occupation: yup.string().trim().min(2).required(),
   story_img: yup.string().trim().min(4).required(),
 })
@@ -47,7 +46,7 @@ router.get('/', async (req, res, next) => {
 router.post('/create', async (req, res, next) => {
   const { name, occupation, story_img } = req.body
   try {
-    await schema.validate({ name })
+    await schema.validate({ name, occupation, story_img })
     const decodedToken = await jwt.verify(req.token)
     if (!req.token || !decodedToken) {
       res.status(401).json({ error: 'missing token' })
