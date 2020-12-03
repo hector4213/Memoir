@@ -20,7 +20,7 @@ class Entry extends Model {
         },
       },
       format: {
-        relation: Model.HasManyRelation,
+        relation: Model.BelongsToOneRelation,
         modelClass: Format,
         join: {
           from: 'entry.format_id',
