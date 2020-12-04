@@ -1,9 +1,7 @@
-process.env.NODE_ENV = 'test'
 const { expect } = require('chai')
 const supertest = require('supertest')
 const app = require('../../app')
 const { knex } = require('../../db/config')
-const User = require('../users/users.model')
 
 describe('POST for /auth', () => {
   beforeEach(async () => {
