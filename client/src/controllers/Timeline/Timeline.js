@@ -41,43 +41,28 @@ const Timeline = props => {
         return <div> Sorry we could not find that story. </div>
     } else {
         const entryComponents = []
-
         if(story.entries.length > 0){
             story.entries.forEach( (entry, i) => {
-                if(i === 0){ // first entry
-                    entryComponents.push(<TimelineCard
-                    {...{
-                        key: `entry_${entry.id}`,
-                        position: 'top',
-                        entry: entry
-                    }} />)
+                let position
+                if(i === 0){ position = 'top' }   // first entry
+                else if(i === story.entries.length -1){ position = 'bottom' }   // last entry
+                else {   // middle entries
+                    if(i%2 === 0){ position = 'left' }
+                    else { position = 'right' }
                 }
-                else if(i === story.entries.length -1){ // last entry
-                    entryComponents.push(<TimelineCard
-                    {...{
-                        key: `entry_${entry.id}`,
-                        position: 'bottom',
-                        entry: entry
-                    }} />)
-                }
-                else { // middle entries
-                    if(i%2 === 0){
-                        entryComponents.push(<TimelineCard
-                            {...{
-                                key: `entry_${entry.id}`,
-                                position: 'left',
-                                entry: entry
-                            }} />)
-                    } else {
-                        entryComponents.push(<TimelineCard
-                            {...{
-                                key: `entry_${entry.id}`,
-                                position: 'right',
-                                entry: entry
-                            }} />)
-                    }
-                }
+
+                entryComponents.push(
+                    <TimelineCard
+                        {...{
+                            key: `entry_${entry.id}`,
+                            position: position,
+                            entry: entry
+                        }}
+                    />
+                )
             })
+        } else {
+            entryComponents.push(<div className='no-stories'> Seems this story doesn't have any entries yet. </div>)
         }
 
         return (

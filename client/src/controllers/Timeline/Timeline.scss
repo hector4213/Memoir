@@ -1,4 +1,5 @@
 @import '../../styles/colors';
+@import '../../styles/sizes';
 
 .timeline {
     padding: 20px;
@@ -21,4 +22,10 @@
     width: 50%;
     height: 100%;
     background: $light_blue;
+}
+
+.no-stories {
+    text-align: center;
+    font-size: $subtitle_size;
+    padding: 50px;
 }
