@@ -9,12 +9,11 @@ import Modal from '../../components/Modal/Modal'
 
 import {connect} from 'react-redux'
 import {toggleModalAction} from '../../redux/actions/page'
-import {storedProfileAction} from '../../redux/actions/profile'
 import {logOutAction} from '../../redux/actions/profile'
 import {getAllStoriesAction} from '../../redux/actions/get'
 
 const Index = props => {
-    const {toggleModal, storedProfile, logOut, getAllStories} = props
+    const {toggleModal, logOut, getAllStories} = props
     const {user, modal, stories} = props
 
     const history = useHistory()
@@ -22,8 +21,7 @@ const Index = props => {
 
     useEffect(()=>{
         getAllStories()
-        storedProfile()
-    }, [storedProfile, getAllStories])
+    }, [getAllStories])
 
     let cards = []
 
@@ -101,7 +99,6 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         toggleModal: profile => dispatch(toggleModalAction()),
-        storedProfile: () => dispatch(storedProfileAction()),
         logOut: () => dispatch(logOutAction()),
         getAllStories: () => dispatch(getAllStoriesAction()),
     }

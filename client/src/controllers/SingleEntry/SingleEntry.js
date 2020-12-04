@@ -29,6 +29,7 @@ const SingleEntry = props => {
 }
 
 const mapStateToProps = state => {
+    console.log(state)
     return {
         current: state.page.current
     }

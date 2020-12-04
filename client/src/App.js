@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import './App.scss';
 import {connect} from 'react-redux'
 
@@ -17,16 +17,21 @@ import Profile from './controllers/Profile/Profile'
 import SingleEntry from './controllers/SingleEntry/SingleEntry'
 import FourZeroFour from './controllers/FourZeroFour/FourZeroFour'
 
+import {storedProfileAction} from './redux/actions/profile'
+
 const App = props => {
   const {user} = props
-
-  const getBackEnd = async () => {
+  const {storedProfile} = props
+  // const getBackEnd = async () => {
     // const res = await axios.get('http://localhost:3001/api/users')
     // console.log('users:')
     // console.log(res)
-  }
+  // }
+  // getBackEnd()
 
-  getBackEnd()
+  useEffect(()=>{
+      storedProfile()
+  }, [storedProfile])
 
   return (
     <div className="App">
@@ -78,4 +83,10 @@ const mapStateToProps = state =>{
   }
 }
 
-export default connect(mapStateToProps)(App)
+const mapDispatchToProps = dispatch => {
+  return {
+    storedProfile: () => dispatch(storedProfileAction())
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App)
