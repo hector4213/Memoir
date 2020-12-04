@@ -14,6 +14,7 @@ import {
 import Home from './controllers/Home/Home'
 import Timeline from './controllers/Timeline/Timeline';
 import Profile from './controllers/Profile/Profile'
+import SingleEntry from './controllers/SingleEntry/SingleEntry'
 
 const App = props => {
   const {user} = props
@@ -40,8 +41,15 @@ const App = props => {
           {/* - - - - - - - - - - - - - - - - - - - - - - - */}
 
 
-          <Route path="/story/:storyId">
+          <Route exact path="/story/:storyId">
             <Timeline />
+          </Route>
+
+          {/* - - - - - - - - - - - - - - - - - - - - - - - */}
+
+
+          <Route exact path="/story/:storyId/entry/:entryId">
+            <SingleEntry />
           </Route>
 
           {/* - - - - - - - - - - - - - - - - - - - - - - - */}

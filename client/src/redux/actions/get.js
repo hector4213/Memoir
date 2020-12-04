@@ -30,3 +30,19 @@ export const getSingleStoryAction = storyId => {
         }
     }
 }
+
+export const getSingleEntryAction = (storyId, entryId) => {
+	return async (dispatch, getState) => {
+        try {
+            const res = await axios.get(`http://localhost:3001/api/stories/${storyId}/entries/${entryId}`)
+
+            dispatch({
+                type: 'CURRENT_ENTRY',
+                payload: res.data
+            })
+        }
+        catch(error){
+            console.log(error)
+        }
+    }
+}
