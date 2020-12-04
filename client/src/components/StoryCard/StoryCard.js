@@ -1,39 +1,53 @@
 import React, {useCallback} from 'react'
 import './StoryCard.scss'
 
+import {connect} from 'react-redux'
+
 import { useHistory } from "react-router-dom";
 
 import { HiOutlineXCircle } from "react-icons/hi";
 
 const StoryCard = props => {
-
-    const {imageUrl, name, occupation, specialStyle, deleteCard, inTimeline} = props
-    // const {imageUrl, name, occupation, specialStyle, onClick, deleteCard} = props
+    const {story, specialStyle, deleteCard, inTimeline} = props
 
     const history = useHistory()
-    const onClick = useCallback(() => {
-        const to = `/timeline`
+    const goToStory = useCallback(() => {
+        const to = `/story/${story.id}`
         history.push(to)
-    }, [history])
+    }, [history, story])
+
+    if(!story){
+        return <div></div>
+    }
 
     return (
         // <Link to="/timeline">
         <div
             className='storyCard'
             style={specialStyle}
-            onClick={inTimeline? '' : onClick}
+            onClick={inTimeline? ()=>{} : goToStory}
             >
             {deleteCard? <div className='delete'> <HiOutlineXCircle/> </div>:''}
 
             <div
                 className='profile-img'
-                style={{backgroundImage:`url(${imageUrl})`, backgroundSize: 'cover'}}
+                style={{backgroundImage:`url(${story.story_img})`, backgroundSize: 'cover'}}
             />
-            <h1> {name} </h1>
-            <h2> {occupation} </h2>
+            <h1> {story.name} </h1>
+            <h2> {story.occupation} </h2>
         </div>
         // </Link>
     )
 }
 
-export default StoryCard
+const mapStateToProps = state => {
+    return {
+
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(StoryCard)

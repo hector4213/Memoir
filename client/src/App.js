@@ -1,8 +1,8 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import './App.scss';
 import {connect} from 'react-redux'
 
-import axios from 'axios'
+// import axios from 'axios'
 
 import {
   BrowserRouter as Router,
@@ -14,17 +14,18 @@ import {
 import Home from './controllers/Home/Home'
 import Timeline from './controllers/Timeline/Timeline';
 import Profile from './controllers/Profile/Profile'
+import SingleEntry from './controllers/SingleEntry/SingleEntry'
+import FourZeroFour from './controllers/FourZeroFour/FourZeroFour'
+
+import {storedProfileAction} from './redux/actions/profile'
 
 const App = props => {
   const {user} = props
+  const {storedProfile} = props
 
-  const getBackEnd = async () => {
-    const res = await axios.get('http://localhost:3001/api/users')
-    console.log('users:')
-    console.log(res)
-  }
-
-  getBackEnd()
+  useEffect(()=>{
+      storedProfile()
+  }, [storedProfile])
 
   return (
     <div className="App">
@@ -40,8 +41,15 @@ const App = props => {
           {/* - - - - - - - - - - - - - - - - - - - - - - - */}
 
 
-          <Route exact path="/timeline">
+          <Route exact path="/story/:storyId">
             <Timeline />
+          </Route>
+
+          {/* - - - - - - - - - - - - - - - - - - - - - - - */}
+
+
+          <Route exact path="/story/:storyId/entry/:entryId">
+            <SingleEntry />
           </Route>
 
           {/* - - - - - - - - - - - - - - - - - - - - - - - */}
@@ -53,9 +61,7 @@ const App = props => {
           {/* - - - - - - - - - - - - - - - - - - - - - - - */}
 
 
-          <Route path="/">
-            <Home />
-          </Route>
+          <Route component={FourZeroFour} />
 
           {/* - - - - - - - - - - - - - - - - - - - - - - - */}
 
@@ -71,4 +77,10 @@ const mapStateToProps = state =>{
   }
 }
 
-export default connect(mapStateToProps)(App)
+const mapDispatchToProps = dispatch => {
+  return {
+    storedProfile: () => dispatch(storedProfileAction())
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App)

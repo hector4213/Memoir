@@ -1,0 +1,28 @@
+@import '../../styles/colors';
+@import '../../styles/sizes';
+
+.single-entry {
+    width: $app_width;
+    margin: 300px auto;
+}
+
+.gotostory-btn {
+    position: absolute;
+    top: 120px;
+    left: 50px;
+}
+
+.entry-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    img {
+        max-width: 100%;
+        margin: 0px auto 50px auto;
+    }
+}
+
+.entry-caption {
+    width: 100%;
+}

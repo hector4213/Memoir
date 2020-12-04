@@ -2,16 +2,11 @@
 @import '../../styles/colors';
 @import '../../styles/sizes';
 
-.picture {
-    img {
-        border: $border;
-        width: 100%;
-        min-height: 200px;
-        box-sizing: border-box;
-    }
-}
+// MEDIA TYPES: 1:VIDE0 , 2:TEXT , 3:AUDIO , 4:IMAGE
 
-.video {
+
+// VIDEO
+.mediaType-1 {
     width: 90%;
 
     iframe {
@@ -22,7 +17,18 @@
     }
 }
 
-.sound {
+// TEXT
+.mediaType-2 {
+    width: 50%;
+    padding: 20px;
+
+    .caption {
+        padding: 0px;
+    }
+}
+
+// AUDIO
+.mediaType-3 {
     iframe {
         border: $border;
         height: 115px;
@@ -30,7 +36,7 @@
     }
 }
 
-.soundcontainer {
+.mediaType-3container {
     align-items:flex-start;
 
     .horizontalLine {
@@ -38,11 +44,12 @@
     }
 }
 
-.text {
-    width: 50%;
-    padding: 20px;
-
-    .caption {
-        padding: 0px;
+// IMAGE
+.mediaType-4 {
+    img {
+        border: $border;
+        max-width: 100%;
+        min-height: 200px;
+        box-sizing: border-box;
     }
 }

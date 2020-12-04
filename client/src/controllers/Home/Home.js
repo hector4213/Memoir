@@ -9,37 +9,34 @@ import Modal from '../../components/Modal/Modal'
 
 import {connect} from 'react-redux'
 import {toggleModalAction} from '../../redux/actions/page'
-import {storedProfileAction} from '../../redux/actions/profile'
 import {logOutAction} from '../../redux/actions/profile'
+import {getAllStoriesAction} from '../../redux/actions/get'
 
 const Index = props => {
-    const {toggleModal, storedProfile, logOut} = props
-    const {user, modal} = props
+    const {toggleModal, logOut, getAllStories} = props
+    const {user, modal, stories} = props
 
     const history = useHistory()
     const goToProfile = useCallback(() => history.push(`/profile`), [history])
 
-
     useEffect(()=>{
-        storedProfile()
-    }, [storedProfile])
+        getAllStories()
+    }, [getAllStories])
 
     let cards = []
 
-    // dummy cards
-    for(let i=0; i<8; i++){
-        cards.push(
-            <StoryCard
-                {...{
-                    key: i,
-                    imageUrl: 'https://tinyurl.com/y37j647a',
-                    name: 'Jack Jack',
-                    occupation: 'The Incredibles'
-                }}
-            />
-        )
+    if(stories){
+        stories.forEach((story, i) => {
+            cards.push(
+                <StoryCard
+                    {...{
+                        key: i,
+                        story: story
+                    }}
+                />
+            )
+        })
     }
-
 
 
     return (
@@ -68,7 +65,8 @@ const Index = props => {
                     }
                 }}
         />
-        </> :
+        </>
+        :
         <Button
             {...{
                 label: 'Register | Log In',
@@ -93,15 +91,16 @@ const mapStateToProps = state => {
     console.log(state)
     return {
         user: state.profile.user,
-        modal: state.page.modal
+        modal: state.page.modal,
+        stories: state.page.stories
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
         toggleModal: profile => dispatch(toggleModalAction()),
-        storedProfile: () => dispatch(storedProfileAction()),
-        logOut: () => dispatch(logOutAction())
+        logOut: () => dispatch(logOutAction()),
+        getAllStories: () => dispatch(getAllStoriesAction()),
     }
 }
 
