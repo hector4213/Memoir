@@ -1,11 +1,12 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useCallback} from 'react'
 import './SingleEntry.scss'
 
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import {connect} from 'react-redux'
 
 import {getSingleEntryAction} from '../../redux/actions/get'
 import HomeButton from '../../components/HomeButton/HomeButton'
+import Button from '../../components/Button/Button';
 
 const SingleEntry = props => {
     const {getSingleEntry} = props
@@ -16,6 +17,13 @@ const SingleEntry = props => {
         getSingleEntry(storyId, entryId)
     }, [getSingleEntry, storyId, entryId])
 
+    const history = useHistory()
+    const goToStory = useCallback(() => {
+        const to = `/story/${storyId}`
+        console.log(to)
+        history.push(to)
+    }, [history, storyId])
+
     if(!current || !current.entry){ return <div> This entry does not exist </div> }
     else {
         const entry = current.entry[0]
@@ -23,6 +31,7 @@ const SingleEntry = props => {
         return (
             <div className='single-entry'>
                 <HomeButton />
+                <Button {...{ label:'Back to Story', onClick:goToStory, transparent:true, extraClass:'gotostory-btn' }}/>
                 <h1>{entry.title}</h1>
                 <p>{entry.title}</p>
             </div>

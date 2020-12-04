@@ -25,7 +25,6 @@ const TimelineCard = props => {
         return {__html: embed};
     }
 
-    console.log('entry: ',props.entry)
     const history = useHistory()
     const goToEntry = useCallback(() => {
         const to = `/story/${story_id}/entry/${id}`

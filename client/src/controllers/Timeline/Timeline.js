@@ -3,7 +3,6 @@ import './Timeline.scss'
 import {connect} from 'react-redux'
 import {useParams } from "react-router-dom";
 
-import Button from '../../components/Button/Button'
 import StoryCard from '../../components/StoryCard/StoryCard'
 import TimelineCard from '../../components/TimelineCard/TimelineCard'
 
@@ -82,6 +81,7 @@ const Timeline = props => {
 }
 
 const mapStateToProps = (state, ownProps) => {
+    console.log(state)
     return {
         current: state.page.current
     }

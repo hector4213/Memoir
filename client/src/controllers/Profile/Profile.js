@@ -1,4 +1,4 @@
-import React, {useState, useCallback} from 'react'
+import React, {useState} from 'react'
 import {connect} from 'react-redux'
 import './Profile.scss'
 
@@ -36,6 +36,7 @@ const Profile = props => {
 }
 
 const mapStateToProps = state => {
+    console.log(state)
     return {
         user: state.profile.user
     }
