@@ -19,9 +19,9 @@ const App = props => {
   const {user} = props
 
   const getBackEnd = async () => {
-    const res = await axios.get('http://localhost:3001/api/users')
-    console.log('users:')
-    console.log(res)
+    // const res = await axios.get('http://localhost:3001/api/users')
+    // console.log('users:')
+    // console.log(res)
   }
 
   getBackEnd()

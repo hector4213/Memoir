@@ -11,33 +11,36 @@ import {connect} from 'react-redux'
 import {toggleModalAction} from '../../redux/actions/page'
 import {storedProfileAction} from '../../redux/actions/profile'
 import {logOutAction} from '../../redux/actions/profile'
+import {getAllStoriesAction} from '../../redux/actions/get'
 
 const Index = props => {
-    const {toggleModal, storedProfile, logOut} = props
-    const {user, modal} = props
+    const {toggleModal, storedProfile, logOut, getAllStories} = props
+    const {user, modal, stories} = props
 
     const history = useHistory()
     const goToProfile = useCallback(() => history.push(`/profile`), [history])
 
-
     useEffect(()=>{
+        getAllStories()
         storedProfile()
-    }, [storedProfile])
+    }, [storedProfile, getAllStories])
 
     let cards = []
 
-    // dummy cards
-    for(let i=0; i<8; i++){
-        cards.push(
-            <StoryCard
-                {...{
-                    key: i,
-                    imageUrl: 'https://tinyurl.com/y37j647a',
-                    name: 'Jack Jack',
-                    occupation: 'The Incredibles'
-                }}
-            />
-        )
+    if(stories){
+        for(let i=0; i<8; i++){
+            const story = stories[i]
+            cards.push(
+                <StoryCard
+                    {...{
+                        key: i,
+                        imageUrl: 'https://tinyurl.com/y37j647a',
+                        name: story.name,
+                        occupation: story.occupation
+                    }}
+                />
+            )
+        }
     }
 
 
@@ -93,7 +96,8 @@ const mapStateToProps = state => {
     console.log(state)
     return {
         user: state.profile.user,
-        modal: state.page.modal
+        modal: state.page.modal,
+        stories: state.page.stories
     }
 }
 
@@ -101,7 +105,8 @@ const mapDispatchToProps = dispatch => {
     return {
         toggleModal: profile => dispatch(toggleModalAction()),
         storedProfile: () => dispatch(storedProfileAction()),
-        logOut: () => dispatch(logOutAction())
+        logOut: () => dispatch(logOutAction()),
+        getAllStories: () => dispatch(getAllStoriesAction()),
     }
 }
 

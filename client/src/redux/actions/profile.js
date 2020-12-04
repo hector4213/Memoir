@@ -48,8 +48,6 @@ export const logInAction = formInfo => {
 
             }
             catch(error){
-                console.log(error.response.data.error)
-                console.log(error)
                 dispatch({
                     type: 'PROFILE_ERROR',
                     payload: error.response.data.error
@@ -96,8 +94,6 @@ export const registerUserAction = formInfo => {
                 }
 
                 catch(error){
-                    console.log(error.response.data.error)
-                    console.log(error)
                     dispatch({
                         type: 'PROFILE_ERROR',
                         payload: error.response.data.error
