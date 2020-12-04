@@ -98,6 +98,7 @@ router.put('/edit/:id', async (req, res, next) => {
         description,
         date,
         embed,
+        format_id,
         user_id: decodedToken.id,
       })
       return res.status(200).json({ msg: `${editItem.title} updated` })
