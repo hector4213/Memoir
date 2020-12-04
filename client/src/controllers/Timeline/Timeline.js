@@ -20,18 +20,22 @@ const Timeline = props => {
         getSingleStory(storyId)
     }, [getSingleStory, storyId])
 
+    // Route to go home
     const history = useHistory()
     const goHome = useCallback(() => {
         const to = `/`
         history.push(to)
     }, [history])
 
+    // Progress Bar
     const [currentProgress, setCurrentProgress] = useState(0)
-    window.addEventListener('scroll', e => {
-        const height = document.body.clientHeight - window.innerHeight
-        const current= window.scrollY
-        setCurrentProgress( (current/height)*100 )
-    })
+    useEffect(()=>{
+        window.addEventListener('scroll', e => {
+            const height = document.body.clientHeight - window.innerHeight
+            const current= window.scrollY
+            setCurrentProgress( (current/height)*100 )
+        })
+    }, [])
 
     if(!story){
         return <div> Sorry we could not find that story. </div>
@@ -45,11 +49,7 @@ const Timeline = props => {
                     {...{
                         key: `entry_${entry.id}`,
                         position: 'top',
-                        mediaType: 'text',
-                        // mediaType: entry.formatID,
-                        title: entry.title,
-                        date: entry.date,
-                        description: entry.description
+                        entry: entry
                     }} />)
                 }
                 else if(i === story.entries.length -1){ // last entry
@@ -57,11 +57,7 @@ const Timeline = props => {
                     {...{
                         key: `entry_${entry.id}`,
                         position: 'bottom',
-                        mediaType: 'text',
-                        // mediaType: entry.formatID,
-                        title: entry.title,
-                        date: entry.date,
-                        description: entry.description
+                        entry: entry
                     }} />)
                 }
                 else { // middle entries
@@ -70,22 +66,14 @@ const Timeline = props => {
                             {...{
                                 key: `entry_${entry.id}`,
                                 position: 'left',
-                                mediaType: 'text',
-                                // mediaType: entry.formatID,
-                                title: entry.title,
-                                date: entry.date,
-                                description: entry.description
+                                entry: entry
                             }} />)
                     } else {
                         entryComponents.push(<TimelineCard
                             {...{
                                 key: `entry_${entry.id}`,
                                 position: 'right',
-                                mediaType: 'text',
-                                // mediaType: entry.formatID,
-                                title: entry.title,
-                                date: entry.date,
-                                description: entry.description
+                                entry: entry
                             }} />)
                     }
                 }

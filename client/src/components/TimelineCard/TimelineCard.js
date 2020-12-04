@@ -5,24 +5,24 @@ import './mediaType.scss'
 
 const TimelineCard = props => {
 
-    // types of cards T-top R-right and L-left
-    // media type sets different styles Picture, Video, Sound, and Text
+    // MEDIA TYPES: 1:VIDE0 , 2:TEXT , 3:AUDIO , 4:IMAGE
 
-    const {position, mediaType, mediaUrl, title, date, description} = props
+    const {entry, position} = props
+    const {format_id, embed, title, date, description} = entry
 
     let timelineCardClass = 'entryRow '
     timelineCardClass += `${position} `
 
     let entryCardClasses = 'entryCard '
-    entryCardClasses += `${mediaType} `
+    entryCardClasses += `mediaType-${format_id} `
 
     const createMarkup = () => {
-        return {__html: mediaUrl};
+        return {__html: embed};
     }
 
     const line = () => {
         if(position === 'left' || position === 'right'){
-            return mediaType === 'text'?
+            return format_id === 2 ? // TEXT
                     <div className='textHorizontalLine'>
                         <div className='timelineCircles lefttimelineCircle' />
                         <div className='timelineCircles righttimelineCircle' />
@@ -41,14 +41,17 @@ const TimelineCard = props => {
 
     return (
         <div className={timelineCardClass}>
-            <div className={`entryPositioner ${position}container ${mediaType}container`}>
+            <div className={`entryPositioner ${position}container mediaType-${format_id}container`}>
                 <div className={entryCardClasses}>
-                    {mediaType === 'picture'? <img alt={title} src={mediaUrl}/> : ''}
+                    {
+                        format_id === 4 ? <img alt={title} src={embed}/> : '' // IMAGE
+                    }
 
                     {
-                        mediaType === 'video' || mediaType === 'sound'?
+                        format_id === 1 || format_id === 3? // VIDEO OR AUDIO
                         <div dangerouslySetInnerHTML={createMarkup()} /> : ''
                     }
+
                     <div className='caption'>
                         <h1>{title}</h1>
                         <h2>{date}</h2>
