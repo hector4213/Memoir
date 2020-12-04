@@ -38,7 +38,7 @@ const Timeline = props => {
     }, [])
 
     if(!story){
-        return <div> Sorry we could not find that story. </div>
+        return <div className='notfound'> Sorry we could not find that story. </div>
     } else {
         const entryComponents = []
         if(story.entries.length > 0){
@@ -62,7 +62,7 @@ const Timeline = props => {
                 )
             })
         } else {
-            entryComponents.push(<div className='no-stories'> Seems this story doesn't have any entries yet. </div>)
+            entryComponents.push(<div className='notfound'> Seems this story doesn't have any entries yet. </div>)
         }
 
         return (
