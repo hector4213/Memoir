@@ -2,6 +2,7 @@ const { expect } = require('chai')
 const supertest = require('supertest')
 const { knex } = require('../../db/config')
 const app = require('../../app')
+const Story = require('./story.model')
 
 describe('CRUD /story', () => {
   beforeEach(async () => {
@@ -15,6 +16,8 @@ describe('CRUD /story', () => {
   })
 
   it('User can successfull create a new story', async () => {
+    const dbStoriesAtStart = await Story.query()
+
     const login = await supertest(app)
       .post('/api/auth/login')
       .send({ email: 'tester@test.com', password: 'React!123' })
@@ -32,7 +35,10 @@ describe('CRUD /story', () => {
       .send(testStory)
       .expect('Content-type', /json/)
       .expect(201)
-    expect(response.body.msg).to.eql(`Story for ${testStory.name} created!`)
+
+    const dbStoriesAtEnd = await Story.query()
+    expect(dbStoriesAtEnd.length).to.equal(dbStoriesAtStart.length + 1)
+    expect(response.body.msg).to.equal(`Story for ${testStory.name} created!`)
   })
 
   it('can fetch ONE story', async () => {
@@ -43,5 +49,19 @@ describe('CRUD /story', () => {
       .expect(200)
     const { id } = response.body
     expect(id).to.equal(testId)
+  })
+
+  it('deletes their own story', async () => {
+    const login = await supertest(app)
+      .post('/api/auth/login')
+      .send({ email: 'tester@test.com', password: 'React!123' })
+
+    const storyId = 16
+    const { token } = login.body
+    const response = supertest(app)
+      .delete(`/api/stories/${storyId}`)
+      .set('Authorization', `bearer ${token}`)
+      .expect(200)
+      .expect()
   })
 })
