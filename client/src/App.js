@@ -15,6 +15,7 @@ import Home from './controllers/Home/Home'
 import Timeline from './controllers/Timeline/Timeline';
 import Profile from './controllers/Profile/Profile'
 import SingleEntry from './controllers/SingleEntry/SingleEntry'
+import FourZeroFour from './controllers/FourZeroFour/FourZeroFour'
 
 const App = props => {
   const {user} = props
@@ -61,9 +62,7 @@ const App = props => {
           {/* - - - - - - - - - - - - - - - - - - - - - - - */}
 
 
-          <Route path="/">
-            <Home />
-          </Route>
+          <Route component={FourZeroFour} />
 
           {/* - - - - - - - - - - - - - - - - - - - - - - - */}
 
