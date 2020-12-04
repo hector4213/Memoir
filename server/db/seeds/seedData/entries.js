@@ -201,8 +201,8 @@ module.exports = [
     embed: 'http://dummyimage.com/229x117.jpg/ff4444/ffffff',
   },
   {
-    story_id: 2,
-    user_id: 3,
+    story_id: 1,
+    user_id: 12,
     format_id: 2,
     title: 'In eleifend quam a odio.',
     description:
