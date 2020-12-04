@@ -88,11 +88,11 @@ router.put('/edit/:storyId', async (req, res, next) => {
   if (!story) return res.status(401).json({ error: 'Story does not exist' })
   try {
     if (isVerified) {
-      await schema.validate({ name, date })
+      await schema.validate({ name, occupation, story_img })
       const updateStory = await Story.query()
         .where({ id: storyId })
         .patch({ name, occupation, story_img })
-      return res.status(200).json({ msg: `Story for ${name} updated` })
+      return res.status(201).json({ msg: `Story for ${name} updated` })
     }
     return res.status(401).json({ error: 'unauthenticated' })
   } catch (error) {
