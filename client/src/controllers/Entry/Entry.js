@@ -1,5 +1,5 @@
 import React, {useEffect, useCallback} from 'react'
-import './SingleEntry.scss'
+import './Entry.scss'
 
 import { useParams, useHistory } from "react-router-dom";
 import {connect} from 'react-redux'

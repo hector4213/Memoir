@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import './Timeline.scss'
+import './Story.scss'
 import {connect} from 'react-redux'
 import {useParams } from "react-router-dom";
 

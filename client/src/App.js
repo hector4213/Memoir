@@ -12,9 +12,9 @@ import {
 } from "react-router-dom";
 
 import Home from './controllers/Home/Home'
-import Timeline from './controllers/Timeline/Timeline';
+import Story from './controllers/Story/Story';
 import Profile from './controllers/Profile/Profile'
-import SingleEntry from './controllers/SingleEntry/SingleEntry'
+import Entry from './controllers/Entry/Entry'
 import FourZeroFour from './controllers/FourZeroFour/FourZeroFour'
 
 import {storedProfileAction} from './redux/actions/profile'
@@ -42,14 +42,14 @@ const App = props => {
 
 
           <Route exact path="/story/:storyId">
-            <Timeline />
+            <Story />
           </Route>
 
           {/* - - - - - - - - - - - - - - - - - - - - - - - */}
 
 
           <Route exact path="/story/:storyId/entry/:entryId">
-            <SingleEntry />
+            <Entry />
           </Route>
 
           {/* - - - - - - - - - - - - - - - - - - - - - - - */}
