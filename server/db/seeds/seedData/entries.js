@@ -10,7 +10,7 @@ module.exports = [
     embed: 'http://dummyimage.com/173x217.png/5fa2dd/ffffff',
   },
   {
-    story_id: 2,
+    story_id: 16,
     user_id: 4,
     format_id: 2,
     title: 'Morbi porttitor lorem id ligula.',
@@ -131,7 +131,7 @@ module.exports = [
     embed: 'http://dummyimage.com/125x203.bmp/5fa2dd/ffffff',
   },
   {
-    story_id: 11,
+    story_id: 16,
     user_id: 3,
     format_id: 3,
     title: 'Quisque ut erat.',
