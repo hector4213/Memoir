@@ -2,7 +2,7 @@ import React from 'react'
 import './App.scss';
 import {connect} from 'react-redux'
 
-import axios from 'axios'
+// import axios from 'axios'
 
 import {
   BrowserRouter as Router,
@@ -40,7 +40,7 @@ const App = props => {
           {/* - - - - - - - - - - - - - - - - - - - - - - - */}
 
 
-          <Route exact path="/timeline">
+          <Route path="/timeline/:storyId">
             <Timeline />
           </Route>
 

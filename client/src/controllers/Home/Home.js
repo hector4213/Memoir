@@ -28,21 +28,17 @@ const Index = props => {
     let cards = []
 
     if(stories){
-        for(let i=0; i<8; i++){
-            const story = stories[i]
+        stories.forEach((story, i) => {
             cards.push(
                 <StoryCard
                     {...{
                         key: i,
-                        imageUrl: story.story_img,
-                        name: story.name,
-                        occupation: story.occupation
+                        story: story
                     }}
                 />
             )
-        }
+        })
     }
-
 
 
     return (
@@ -71,7 +67,8 @@ const Index = props => {
                     }
                 }}
         />
-        </> :
+        </>
+        :
         <Button
             {...{
                 label: 'Register | Log In',
