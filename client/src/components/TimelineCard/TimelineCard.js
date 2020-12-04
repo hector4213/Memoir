@@ -51,9 +51,9 @@ const TimelineCard = props => {
     }
 
     return (
-        <div className={timelineCardClass} onClick={goToEntry}>
+        <div className={timelineCardClass}>
             <div className={`entryPositioner ${position}container mediaType-${format_id}container`}>
-                <div className={entryCardClasses}>
+                <div className={entryCardClasses} onClick={goToEntry}>
                     {
                         format_id === 4 ? <img alt={title} src={embed}/> : '' // IMAGE
                     }

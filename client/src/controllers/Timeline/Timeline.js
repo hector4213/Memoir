@@ -65,7 +65,7 @@ const Timeline = props => {
                 <StoryCard
                     {...{
                         story: story,
-                        specialStyle:{margin: 'auto'},
+                        specialStyle:{margin: '0px auto 50px auto', border:'none', cursor:'auto'},
                         inTimeline: true
                     }}
                 />

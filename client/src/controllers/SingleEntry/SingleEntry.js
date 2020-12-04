@@ -20,20 +20,39 @@ const SingleEntry = props => {
     const history = useHistory()
     const goToStory = useCallback(() => {
         const to = `/story/${storyId}`
-        console.log(to)
         history.push(to)
     }, [history, storyId])
 
     if(!current || !current.entry){ return <div> This entry does not exist </div> }
     else {
         const entry = current.entry[0]
-        console.log(entry)
+        const {format_id, title, description, embed, date, user} = entry
+
+        // const createMarkup = () => {
+        //     return {__html: embed};
+        // }
+
+        const d = new Date(date)
+        const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+        const formattedDate = `${months[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}`
+
+        // MEDIA TYPES: 1:VIDE0 , 2:TEXT , 3:AUDIO , 4:IMAGE
         return (
             <div className='single-entry'>
                 <HomeButton />
                 <Button {...{ label:'Back to Story', onClick:goToStory, transparent:true, extraClass:'gotostory-btn' }}/>
-                <h1>{entry.title}</h1>
-                <p>{entry.title}</p>
+
+                <div className='entry-container'>
+                    {format_id === 1 || format_id === 3? 'this is a video or audio that will be embeded once i have real embeds' :''}
+                    {/* {format_id === 1 || format_id === 3? <div dangerouslySetInnerHTML={createMarkup()} /> :''} */}
+                    {format_id === 4? <img alt={title} src={embed}/>:''}
+                    <div className='entry-caption'>
+                        <h1>{title}</h1>
+                        <h2>{formattedDate}</h2>
+                        <p>{description}</p>
+                    </div>
+                    <p>This entry was written by: {user.username}</p>
+                </div>
             </div>
         )
     }

@@ -48,7 +48,7 @@
 .mediaType-4 {
     img {
         border: $border;
-        width: 100%;
+        max-width: 100%;
         min-height: 200px;
         box-sizing: border-box;
     }

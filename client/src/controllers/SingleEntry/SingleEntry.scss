@@ -11,3 +11,18 @@
     top: 120px;
     left: 50px;
 }
+
+.entry-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    img {
+        max-width: 100%;
+        margin: 0px auto 50px auto;
+    }
+}
+
+.entry-caption {
+    width: 100%;
+}
