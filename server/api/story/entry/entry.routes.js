@@ -55,13 +55,14 @@ router.post('/', async (req, res, next) => {
 router.get('/:id', async (req, res, next) => {
   const { id, storyId } = req.params
   const entry = await Entry.query()
+    .where({ id })
+    .andWhere({ story_id: storyId })
     .withGraphFetched('[story, user(nameAndId)]')
     .modifiers({
       nameAndId(builder) {
         builder.select('id', 'username')
       },
     })
-    .findById(id)
 
   try {
     if (!entry) {
