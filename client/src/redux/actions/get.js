@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-export const getAllStoriesAction = formInfo => {
+export const getAllStoriesAction = () => {
 	return async (dispatch, getState) => {
         try {
             const res = await axios.get('http://localhost:3001/api/stories')

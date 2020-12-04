@@ -8,7 +8,7 @@ const profile = (state = initialState, action) => {
 
         case 'REMOVE_PROFILE':
             return {}
-        
+
         case 'ADD_PROFILE':
             return {...state, ...action.payload}
 

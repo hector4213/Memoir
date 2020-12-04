@@ -6,6 +6,7 @@ import Button from '../../components/Button/Button'
 import Header from '../../components/Header/Header'
 import StoryCard from '../../components/StoryCard/StoryCard'
 import Modal from '../../components/Modal/Modal'
+import LogInRegisterModal from '../../components/LogInRegister/LogInRegister'
 
 import {connect} from 'react-redux'
 import {toggleModalAction} from '../../redux/actions/page'
@@ -42,7 +43,7 @@ const Index = props => {
     return (
     <div className='home'>
 
-        {modal? <Modal {...{toggleModal}} /> : ''}
+        {modal? <Modal> <LogInRegisterModal/> </Modal> : ''}
 
         {
         user?
