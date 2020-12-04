@@ -1,4 +1,6 @@
-import React from 'react'
+import React, {useCallback} from 'react'
+import { useHistory } from "react-router-dom";
+
 import './TimelineCard.scss'
 import './directions.scss'
 import './mediaType.scss'
@@ -8,7 +10,7 @@ const TimelineCard = props => {
     // MEDIA TYPES: 1:VIDE0 , 2:TEXT , 3:AUDIO , 4:IMAGE
 
     const {entry, position} = props
-    const {format_id, embed, title, date, description} = entry
+    const {format_id, embed, title, date, description, id, story_id} = entry
     const d = new Date(date)
     const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
     const formattedDate = `${months[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}`
@@ -22,6 +24,13 @@ const TimelineCard = props => {
     const createMarkup = () => {
         return {__html: embed};
     }
+
+    console.log('entry: ',props.entry)
+    const history = useHistory()
+    const goToEntry = useCallback(() => {
+        const to = `/story/${story_id}/entry/${id}`
+        history.push(to)
+    }, [history, id, story_id])
 
     const line = () => {
         if(position === 'left' || position === 'right'){
@@ -43,7 +52,7 @@ const TimelineCard = props => {
     }
 
     return (
-        <div className={timelineCardClass}>
+        <div className={timelineCardClass} onClick={goToEntry}>
             <div className={`entryPositioner ${position}container mediaType-${format_id}container`}>
                 <div className={entryCardClasses}>
                     {

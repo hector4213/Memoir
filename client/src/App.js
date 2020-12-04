@@ -40,7 +40,7 @@ const App = props => {
           {/* - - - - - - - - - - - - - - - - - - - - - - - */}
 
 
-          <Route path="/timeline/:storyId">
+          <Route path="/story/:storyId">
             <Timeline />
           </Route>
 

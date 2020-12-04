@@ -11,8 +11,8 @@ const StoryCard = props => {
     const {story, specialStyle, deleteCard, inTimeline} = props
 
     const history = useHistory()
-    const onClick = useCallback(() => {
-        const to = `/timeline/${story.id}`
+    const goToStory = useCallback(() => {
+        const to = `/story/${story.id}`
         history.push(to)
     }, [history, story])
 
@@ -25,7 +25,7 @@ const StoryCard = props => {
         <div
             className='storyCard'
             style={specialStyle}
-            onClick={inTimeline? ()=>{} : onClick}
+            onClick={inTimeline? ()=>{} : goToStory}
             >
             {deleteCard? <div className='delete'> <HiOutlineXCircle/> </div>:''}
 
