@@ -17,7 +17,7 @@ const schema = yup.object().shape({
 
 router.get('/', async (req, res, next) => {
   const allStories = await Story.query()
-    .select('id', 'name', 'occupation')
+    .select('id', 'name', 'occupation', 'story_img')
     .withGraphFetched('user(userInfo)')
     .modifiers({
       userInfo(builder) {
@@ -88,11 +88,11 @@ router.put('/edit/:storyId', async (req, res, next) => {
   if (!story) return res.status(401).json({ error: 'Story does not exist' })
   try {
     if (isVerified) {
-      await schema.validate({ name, date })
+      await schema.validate({ name, occupation, story_img })
       const updateStory = await Story.query()
         .where({ id: storyId })
         .patch({ name, occupation, story_img })
-      return res.status(200).json({ msg: `Story for ${name} updated` })
+      return res.status(201).json({ msg: `Story for ${name} updated` })
     }
     return res.status(401).json({ error: 'unauthenticated' })
   } catch (error) {
@@ -106,7 +106,6 @@ router.delete('/:storyId', async (req, res, next) => {
   const { storyId } = req.params
   const story = await Story.query().findById(storyId)
   if (!story) return res.status(404).json({ error: 'Story does not exist' })
-  console.log(story)
   const decodedToken = await jwt.verify(req.token)
   const isVerified = decodedToken.id === story.author_id
 

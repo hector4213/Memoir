@@ -1,5 +1,17 @@
 module.exports = [
   {
+    author_id: 12,
+    name: 'WaylenHunter',
+    occupation: 'Staff Gangsta II',
+    story_img: 'http://dummyimage.com/195x132.png/5fa2dd/ffffff',
+  },
+  {
+    author_id: 12,
+    name: 'Miguel Santos',
+    occupation: 'Head Paletero II',
+    story_img: 'http://dummyimage.com/195x132.png/5fa2dd/ffffff',
+  },
+  {
     author_id: 6,
     name: 'Axel',
     occupation: 'Administrative Assistant II',
