@@ -34,7 +34,7 @@ const Index = props => {
                 <StoryCard
                     {...{
                         key: i,
-                        imageUrl: 'https://tinyurl.com/y37j647a',
+                        imageUrl: story.story_img,
                         name: story.name,
                         occupation: story.occupation
                     }}

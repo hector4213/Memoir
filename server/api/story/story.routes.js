@@ -17,7 +17,7 @@ const schema = yup.object().shape({
 
 router.get('/', async (req, res, next) => {
   const allStories = await Story.query()
-    .select('id', 'name', 'occupation')
+    .select('id', 'name', 'occupation', 'story_img')
     .withGraphFetched('user(userInfo)')
     .modifiers({
       userInfo(builder) {
