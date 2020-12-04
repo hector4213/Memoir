@@ -9,6 +9,9 @@ const TimelineCard = props => {
 
     const {entry, position} = props
     const {format_id, embed, title, date, description} = entry
+    const d = new Date(date)
+    const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+    const formattedDate = `${months[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}`
 
     let timelineCardClass = 'entryRow '
     timelineCardClass += `${position} `
@@ -54,8 +57,8 @@ const TimelineCard = props => {
 
                     <div className='caption'>
                         <h1>{title}</h1>
-                        <h2>{date}</h2>
-                        {description? <p>{description}</p> : ''}
+                        <h2>{formattedDate}</h2>
+                        {format_id === 2 ? <p>{description}</p> : ''}
                     </div>
                 </div>
 
