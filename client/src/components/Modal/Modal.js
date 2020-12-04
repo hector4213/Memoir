@@ -1,17 +1,12 @@
-import React, {useState} from 'react'
+import React from 'react'
 import './Modal.scss'
 
 import {connect} from 'react-redux'
-
-import RegisterForm from './RegisterForm'
-import LogInForm from './LogInForm'
-
+import {toggleModalAction} from '../../redux/actions/page'
 import {clearErrorAction} from '../../redux/actions/profile'
 
 const Modal = props => {
-    const [registerTab, isRegisterTab] = useState(true)
-    const {error} = props
-    const {toggleModal, clearError} = props
+    const {toggleModal, clearError, error} = props
 
     return (
         <div className='modal' onClick={()=>{
@@ -19,27 +14,7 @@ const Modal = props => {
             clearError()
         }}>
             <div className='modal-content' onClick={e => e.stopPropagation()}>
-                <div className='modalTabs'>
-                    <button
-                        className={registerTab? 'active' : '' }
-                        onClick={()=>{
-                            clearError()
-                            isRegisterTab(true)
-                        }}
-                    >
-                    Register </button>
-
-                    <button
-                        className={registerTab? '' : 'active' }
-                        onClick={()=>{
-                            clearError()
-                            isRegisterTab(false)
-                        }}
-                    >
-                    Log In </button>
-                </div>
-
-                {registerTab? <RegisterForm /> : <LogInForm />}
+                {props.children}
                 {error? <div className='error'> {error} </div>:''}
             </div>
         </div>
@@ -54,6 +29,7 @@ const mapStateToProps = state =>{
 
 const mapDispatchToProps = dispatch =>{
     return {
+        toggleModal: () => dispatch(toggleModalAction()),
         clearError: () => dispatch(clearErrorAction())
     }
 }

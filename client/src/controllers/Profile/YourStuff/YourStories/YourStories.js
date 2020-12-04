@@ -2,10 +2,17 @@ import React from 'react'
 import { HiPlus } from "react-icons/hi";
 import StoryCard from '../../../../components/StoryCard/StoryCard'
 import './YourStories.scss'
+import {connect} from 'react-redux'
+import { toggleModalAction } from '../../../../redux/actions/page';
+import Modal from '../../../../components/Modal/Modal';
+import StoryCreate from '../../../../components/StoryCreate/StoryCreate';
 
 const YourStories = props => {
+    const {toggleModal, modal} = props
+
     return (
         <div className='yourStories'>
+            {modal? <Modal><StoryCreate/></Modal>: ''}
             <label> Your Stories: </label>
                 <div className='cards'>
                     <StoryCard {...{
@@ -42,7 +49,7 @@ const YourStories = props => {
 
                     <div
                         className='storyCard addStory'
-                        onClick={()=>console.log('add a story')}
+                        onClick={toggleModal}
                     >
                         <div className='addStoryPlus'>
                         <HiPlus/>
@@ -54,4 +61,16 @@ const YourStories = props => {
     )
 }
 
-export default YourStories
+const mapStateToProps = state => {
+    return {
+        modal: state.page.modal
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        toggleModal: () => dispatch(toggleModalAction())
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(YourStories)

@@ -22,8 +22,6 @@ export const storedProfileAction = formInfo => {
     }
 }
 
-
-
 export const logInAction = formInfo => {
 	return async (dispatch, getState) => {
 
