@@ -106,7 +106,6 @@ router.delete('/:storyId', async (req, res, next) => {
   const { storyId } = req.params
   const story = await Story.query().findById(storyId)
   if (!story) return res.status(404).json({ error: 'Story does not exist' })
-  console.log(story)
   const decodedToken = await jwt.verify(req.token)
   const isVerified = decodedToken.id === story.author_id
 
