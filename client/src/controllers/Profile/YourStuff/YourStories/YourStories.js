@@ -12,7 +12,9 @@ const YourStories = props => {
 
     return (
         <div className='yourStories'>
-            {modal? <Modal><StoryCreate/></Modal>: ''}
+
+            {modal? <Modal> <StoryCreate/> </Modal>: ''}
+
             <label> Your Stories: </label>
                 <div className='cards'>
                     <StoryCard {...{

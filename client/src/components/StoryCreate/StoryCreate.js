@@ -15,14 +15,14 @@ const StoryCreate = props => {
                 <div className='story-img-picture' style={storyImg?{background:`url(${storyImg})`}:{}}/>
             </div>
 
-            <input type='text' placeholder='Enter the link to the picture for the story'
+            <input type='text' placeholder='Enter the story image link'
                 onChange={ e => {
                     setStoryImg(e.target.value)
                     setFormInfo( {...formInfo, story_img: e.target.value })
                 }}
             />
 
-            <input type='text' placeholder='Enter the name of the person you want to create a story for'
+            <input type='text' placeholder='Enter story name'
                 onChange={ e => setFormInfo( {...formInfo, name: e.target.value })}
             />
 
