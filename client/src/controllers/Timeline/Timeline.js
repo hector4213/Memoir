@@ -1,13 +1,14 @@
-import React, {useCallback, useState, useEffect} from 'react'
+import React, {useState, useEffect} from 'react'
 import './Timeline.scss'
 import {connect} from 'react-redux'
-import { useHistory, useParams } from "react-router-dom";
+import {useParams } from "react-router-dom";
 
 import Button from '../../components/Button/Button'
 import StoryCard from '../../components/StoryCard/StoryCard'
 import TimelineCard from '../../components/TimelineCard/TimelineCard'
 
 import {getSingleStoryAction} from '../../redux/actions/get'
+import HomeButton from '../../components/HomeButton/HomeButton';
 
 const Timeline = props => {
     const {getSingleStory} = props
@@ -19,13 +20,6 @@ const Timeline = props => {
     useEffect(()=>{
         getSingleStory(storyId)
     }, [getSingleStory, storyId])
-
-    // Route to go home
-    const history = useHistory()
-    const goHome = useCallback(() => {
-        const to = `/`
-        history.push(to)
-    }, [history])
 
     // Progress Bar
     const [currentProgress, setCurrentProgress] = useState(0)
@@ -67,14 +61,7 @@ const Timeline = props => {
 
         return (
             <div className='timeline'>
-                <Button
-                    {...{
-                        label: 'Home',
-                        transparent : true,
-                        extraClass: 'back-btn',
-                        onClick: goHome
-                    }}
-                />
+                <HomeButton />
 
                 <StoryCard
                     {...{

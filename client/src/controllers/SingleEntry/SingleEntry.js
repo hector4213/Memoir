@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import {connect} from 'react-redux'
 
 import {getSingleEntryAction} from '../../redux/actions/get'
+import HomeButton from '../../components/HomeButton/HomeButton'
 
 const SingleEntry = props => {
     const {getSingleEntry} = props
@@ -21,6 +22,7 @@ const SingleEntry = props => {
         console.log(entry)
         return (
             <div className='single-entry'>
+                <HomeButton />
                 <h1>{entry.title}</h1>
                 <p>{entry.title}</p>
             </div>
