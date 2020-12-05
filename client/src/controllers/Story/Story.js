@@ -67,6 +67,7 @@ const Timeline = props => {
         return (
             <div className='timeline'>
                 <HomeButton />
+
                 {
                     user?
                     <Button {...{
