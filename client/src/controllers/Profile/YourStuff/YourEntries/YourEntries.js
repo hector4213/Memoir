@@ -6,13 +6,17 @@ import {connect} from 'react-redux'
 const YourEntries = props => {
     const {myEntries} = props
 
-    const myEntryCards = myEntries.map( entry => {
-        return <ListEntry {...{
-            entryName: entry.title,
-            storyName: entry.story_id,
-            visible: true
-        }}/>
-    })
+    let myEntryCards;
+    if(myEntries){
+        myEntryCards = myEntries.map( entry => {
+            return <ListEntry {...{
+                key: entry.id,
+                entryName: entry.title,
+                storyName: entry.story_id,
+                visible: true
+            }}/>
+        })
+    }
 
     return (
         <div className='entries'>
