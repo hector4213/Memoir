@@ -21,7 +21,6 @@
             opacity: 1;
 
             .addStoryPlus {
-                width: 100%;
                 border-radius: 50%;
                 background: $medium_blue;
                 position: relative;
@@ -42,6 +41,10 @@
             content: "";
             display: block;
             padding-bottom: 100%;
+        }
+
+        .addStory:hover {
+            border: 2px solid $light_blue;
         }
     }
 }

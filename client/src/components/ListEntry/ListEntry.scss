@@ -36,4 +36,15 @@
 
 .listEntry:hover {
     background: $medium_blue;
+
+    .delete-btn {
+        color: $dark_blue;
+    }
+    .delete-btn:hover {
+        color: $pink;
+    }
+}
+
+.delete-btn {
+    color: $medium_blue;
 }
