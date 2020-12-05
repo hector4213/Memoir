@@ -11,7 +11,7 @@ import {getSingleStoryAction} from '../../redux/actions/get'
 import HomeButton from '../../components/HomeButton/HomeButton'
 import Button from '../../components/Button/Button'
 
-const Timeline = props => {
+const Story = props => {
     const {getSingleStory} = props
     const {current, user} = props
 
@@ -28,20 +28,36 @@ const Timeline = props => {
     // Progress Bar
     const [currentProgress, setCurrentProgress] = useState(0)
     useEffect(()=>{
-        window.addEventListener('scroll', e => {
-            e.preventDefault()
-            const height = document.body.clientHeight - window.innerHeight
-            const current= window.scrollY
-            setCurrentProgress( (current/height)*100 )
-        })
+        window.addEventListener('scroll', changeProgress)
+
+        return () => {
+            window.removeEventListener('scroll', changeProgress)
+        }
     }, [])
+
+    const changeProgress = e => {
+        e.preventDefault()
+        const height = document.body.clientHeight - window.innerHeight
+        const current= window.scrollY
+
+        setCurrentProgress( (current/height)*100 )
+    }
 
     if(!story){
         return <div className='notfound'> Sorry we could not find that story. </div>
     } else {
         const entryComponents = []
         if(story.entries.length > 0){
-            story.entries.forEach( (entry, i) => {
+
+            let sortedEntries = story.entries
+
+            if(sortedEntries.length > 0){
+                sortedEntries = sortedEntries.sort( (a,b) => {
+                    return new Date(b.date) - new Date(a.date);
+                })
+            }
+
+            sortedEntries.forEach( (entry, i) => {
                 let position
                 if(i === 0){ position = 'top' }   // first entry
                 else if(i === story.entries.length -1){ position = 'bottom' }   // last entry
@@ -61,7 +77,7 @@ const Timeline = props => {
                 )
             })
         } else {
-            entryComponents.push(<div className='notfound'> Seems this story doesn't have any entries yet. </div>)
+            entryComponents.push(<div key='0' className='notfound'> Seems this story doesn't have any entries yet. </div>)
         }
 
         return (
@@ -82,7 +98,7 @@ const Timeline = props => {
                 <StoryCard
                     {...{
                         story: story,
-                        specialStyle:{margin: '0px auto 50px auto', border:'none', cursor:'auto'},
+                        specialStyle:{margin: '0px auto 50px auto', border:'none', cursor:'auto', opacity:1},
                         inTimeline: true
                     }}
                 />
@@ -111,4 +127,4 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Timeline)
+export default connect(mapStateToProps, mapDispatchToProps)(Story)

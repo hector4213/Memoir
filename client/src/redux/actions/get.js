@@ -19,7 +19,6 @@ export const getSingleStoryAction = storyId => {
 	return async (dispatch, getState) => {
         try {
             const res = await axios.get(`http://localhost:3001/api/stories/${storyId}`)
-
             dispatch({
                 type: 'CURRENT_STORY',
                 payload: res.data
