@@ -159,7 +159,7 @@ const EntryCreateForm = props => {
                     <input type='text' placeholder='Year'
                         style={year_F?{}: notFilledStyle}
                         onChange={ e =>{
-                            if(e.target.value){
+                            if(e.target.value && !isNaN(e.target.value) && e.target.value.length===4){
                                 setDate({...date, year:e.target.value, year_F:true})
                             } else {
                                 setDate({...date, year:e.target.value, year_F:false})
