@@ -8,7 +8,21 @@ import Modal from '../../../../components/Modal/Modal';
 import StoryCreate from '../../../../components/StoryCreate/StoryCreate';
 
 const YourStories = props => {
-    const {toggleModal, modal} = props
+    const {toggleModal, modal, myStories} = props
+
+    let myEntryCards = []
+
+    if(myStories){
+        myEntryCards = myStories.map(story => {
+            return <StoryCard {...{
+                key: story.id,
+                story: story,
+                specialStyle: {opacity: 1},
+                // onClick: () => console.log('person clicked'),
+                deleteCard: true
+            }}/>
+        })
+    }
 
     return (
         <div className='yourStories'>
@@ -17,38 +31,7 @@ const YourStories = props => {
 
             <label> Your Stories: </label>
                 <div className='cards'>
-                    <StoryCard {...{
-                        imageUrl: 'https://tinyurl.com/yy23tqm5',
-                        name: 'Michael Angelo',
-                        occupation: 'Ninja Turtle',
-                        onClick: () => console.log('person clicked'),
-                        deleteCard: true
-                    }}/>
-
-                    <StoryCard {...{
-                        imageUrl: 'https://static.wikia.nocookie.net/tmnt2012series/images/1/1f/2DRaph.jpeg',
-                        name: 'Raphael',
-                        occupation: 'Ninja Turtle',
-                        onClick: () => console.log('person clicked'),
-                        deleteCard: true
-                    }} />
-
-                    <StoryCard {...{
-                        imageUrl: 'https://tinyurl.com/y2ur64kv',
-                        name: 'Leonardo',
-                        occupation: 'Ninja Turtle',
-                        onClick: () => console.log('person clicked'),
-                        deleteCard: true
-                    }} />
-
-                    <StoryCard {...{
-                        imageUrl: 'https://media.giphy.com/media/cFdHXXm5GhJsc/source.gif',
-                        name: 'Donatello',
-                        occupation: 'Ninja Turtle',
-                        onClick: () => console.log('person clicked'),
-                        deleteCard: true
-                    }} />
-
+                    {myEntryCards}
                     <div
                         className='storyCard addStory'
                         onClick={toggleModal}
@@ -65,7 +48,8 @@ const YourStories = props => {
 
 const mapStateToProps = state => {
     return {
-        modal: state.page.modal
+        modal: state.page.modal,
+        myStories: state.profile.myStories
     }
 }
 

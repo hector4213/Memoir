@@ -8,6 +8,7 @@
     position: relative;
     box-sizing: border-box;
     padding: 0px 10px;
+    cursor: pointer;
 
     h1, h2 {
         font-size: $subtitle_size !important;
@@ -35,4 +36,15 @@
 
 .listEntry:hover {
     background: $medium_blue;
+
+    .delete-btn {
+        color: $dark_blue;
+    }
+    .delete-btn:hover {
+        color: $pink;
+    }
+}
+
+.delete-btn {
+    color: $medium_blue;
 }

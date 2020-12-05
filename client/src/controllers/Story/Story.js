@@ -53,7 +53,7 @@ const Story = props => {
 
             if(sortedEntries.length > 0){
                 sortedEntries = sortedEntries.sort( (a,b) => {
-                    return new Date(b.date) - new Date(a.date);
+                    return new Date(a.date) - new Date(b.date);
                 })
             }
 
