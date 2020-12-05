@@ -13,7 +13,7 @@ import Button from '../../components/Button/Button'
 
 const Timeline = props => {
     const {getSingleStory} = props
-    const {current} = props
+    const {current, user} = props
 
     const story = current? current.story : null
     const { storyId } = useParams()
@@ -29,6 +29,7 @@ const Timeline = props => {
     const [currentProgress, setCurrentProgress] = useState(0)
     useEffect(()=>{
         window.addEventListener('scroll', e => {
+            e.preventDefault()
             const height = document.body.clientHeight - window.innerHeight
             const current= window.scrollY
             setCurrentProgress( (current/height)*100 )
@@ -63,17 +64,19 @@ const Timeline = props => {
             entryComponents.push(<div className='notfound'> Seems this story doesn't have any entries yet. </div>)
         }
 
-        
-
         return (
             <div className='timeline'>
                 <HomeButton />
-                <Button {...{
-                    label: 'Add an Entry',
-                    transparent: true,
-                    extraClass:'add-entry-btn',
-                    onClick: gotoCreate
-                }} />
+                {
+                    user?
+                    <Button {...{
+                        label: 'Add an Entry',
+                        transparent: true,
+                        extraClass:'add-entry-btn',
+                        onClick: gotoCreate
+                    }} />
+                    : ''
+                }
 
                 <StoryCard
                     {...{
@@ -96,7 +99,8 @@ const Timeline = props => {
 const mapStateToProps = (state, ownProps) => {
     console.log(state)
     return {
-        current: state.page.current
+        current: state.page.current,
+        user: state.profile.user
     }
 }
 
