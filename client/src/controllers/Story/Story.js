@@ -11,7 +11,7 @@ import {getSingleStoryAction} from '../../redux/actions/get'
 import HomeButton from '../../components/HomeButton/HomeButton'
 import Button from '../../components/Button/Button'
 
-const Timeline = props => {
+const Story = props => {
     const {getSingleStory} = props
     const {current, user} = props
 
@@ -120,4 +120,4 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Timeline)
+export default connect(mapStateToProps, mapDispatchToProps)(Story)
