@@ -7,3 +7,12 @@ export const toggleModalAction = () => {
         })
 	}
 }
+
+export const setErrorAction = errorMessage => {
+	return async (dispatch, getState) => {
+        dispatch({
+            type: 'ERROR',
+            payload: errorMessage
+        })
+	}
+}

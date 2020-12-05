@@ -61,8 +61,8 @@ const App = props => {
 
           {/* - - - - - - - - - - - - - - - - - - - - - - - */}
 
-          <Route exact path="/create">
-          {user ?  <EntryCreate /> : <Redirect to="/" />}
+          <Route exact path="/story/:storyId/addEntry">
+          <EntryCreate />
           </Route>
 
           {/* - - - - - - - - - - - - - - - - - - - - - - - */}

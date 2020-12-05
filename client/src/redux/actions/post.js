@@ -42,7 +42,10 @@ export const createEntryAction = entryInfo => {
             })
         }
         catch(error){
-            console.log(error)
+            dispatch({
+                type: 'ERROR',
+                payload: error.response.data.error
+            })
         }
     }
 }

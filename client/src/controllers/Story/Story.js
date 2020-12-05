@@ -19,7 +19,7 @@ const Timeline = props => {
     const { storyId } = useParams()
 
     const history = useHistory()
-    const gotoCreate = useCallback(() => history.push(`/create`), [history])
+    const gotoCreate = useCallback(() => history.push(`/story/${storyId}/addEntry`), [history, storyId])
 
     useEffect(()=>{
         getSingleStory(storyId)

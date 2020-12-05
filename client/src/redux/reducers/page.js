@@ -5,6 +5,9 @@ export const initialState = {
 
 const page = (state = initialState, action) => {
     switch (action.type) {
+        case 'ERROR':
+            return {...state, error:action.payload}
+
         case 'TOGGLE_MODAL':
             return {...state, modal:action.payload}
 
