@@ -5,6 +5,7 @@ import {useHistory} from 'react-router-dom'
 import Button from '../Button/Button'
 
 const HomeButton = props => {
+    const {extraFunction} = props
     const history = useHistory()
     const goHome = useCallback(() => history.push(`/`), [history])
 

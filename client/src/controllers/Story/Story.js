@@ -28,13 +28,20 @@ const Story = props => {
     // Progress Bar
     const [currentProgress, setCurrentProgress] = useState(0)
     useEffect(()=>{
-        window.addEventListener('scroll', e => {
-            e.preventDefault()
-            const height = document.body.clientHeight - window.innerHeight
-            const current= window.scrollY
-            setCurrentProgress( (current/height)*100 )
-        })
+        window.addEventListener('scroll', changeProgress)
+
+        return () => {
+            window.removeEventListener('scroll', changeProgress)
+        }
     }, [])
+
+    const changeProgress = e => {
+        e.preventDefault()
+        const height = document.body.clientHeight - window.innerHeight
+        const current= window.scrollY
+
+        setCurrentProgress( (current/height)*100 )
+    }
 
     if(!story){
         return <div className='notfound'> Sorry we could not find that story. </div>
