@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import './Profile.scss'
 
 import YourStuff from './YourStuff/YourStuff'
-import OthersStuff from './OthersStuff/OthersStuff'
+// import OthersStuff from './OthersStuff/OthersStuff'
 import HomeButton from '../../components/HomeButton/HomeButton';
 
 const Profile = props => {
@@ -17,20 +17,22 @@ const Profile = props => {
             <h1 className='pageTitle'>{user?user.username:'Not Logged In'}</h1>
 
             <div className='tabs'>
-                    <button
-                        className={yourStuff? 'active' : '' }
-                        onClick={()=>isYourStuff(true)}
-                    >
-                    Your Stuff </button>
+                <button
+                    className={yourStuff? 'active' : '' }
+                    onClick={()=>isYourStuff(true)}
+                >
+                Your Stuff </button>
 
-                    <button
-                        className={yourStuff? '' : 'active' }
-                        onClick={()=>isYourStuff(false)}
-                    >
-                    Others Stuff </button>
-                </div>
+                {/* <button
+                    className={yourStuff? '' : 'active' }
+                    onClick={()=>isYourStuff(false)}
+                >
+                Others Stuff </button> */}
+            </div>
 
-            {yourStuff? <YourStuff/> : <OthersStuff/> }
+
+            <YourStuff/>
+            {/* {yourStuff? <YourStuff/> : <OthersStuff/> } */}
         </div>
     )
 }

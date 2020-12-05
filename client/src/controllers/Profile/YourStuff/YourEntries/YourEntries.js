@@ -1,31 +1,39 @@
 import React from 'react'
 import ListEntry from '../../../../components/ListEntry/ListEntry'
 import './YourEntries.scss'
+import {connect} from 'react-redux'
 
 const YourEntries = props => {
+    const {myEntries} = props
+
+    const myEntryCards = myEntries.map( entry => {
+        return <ListEntry {...{
+            entryName: entry.title,
+            storyName: entry.story_id,
+            visible: true
+        }}/>
+    })
+
     return (
         <div className='entries'>
             <label> Your Entries: </label>
 
             <div className='listEntries'>
-                <ListEntry {...{
-                    entryName:'The name of the first entry',
-                    storyName: 'Michael Angelo',
-                    visible: true
-                }}/>
-                <ListEntry {...{
-                    entryName:'The name of the second entry',
-                    storyName: 'Raphael',
-                    visible: false
-                }}/>
-                <ListEntry {...{
-                    entryName:'The name of the third entry',
-                    storyName: 'Leonardo',
-                    visible: true
-                }}/>
+                {myEntryCards}
             </div>
         </div>
     )
 }
 
-export default YourEntries
+const mapStateToProps = state => {
+    console.log(state)
+    return {
+        myEntries: state.profile.myEntries
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(YourEntries)
