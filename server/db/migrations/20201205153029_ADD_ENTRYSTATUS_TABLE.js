@@ -1,8 +1,13 @@
+const tableNames = require('../../constants/tableNames')
+exports.up = async (knex) => {
+  await Promise.all([
+    knex.schema.createTable(tableNames.entryStatus, (table) => {
+      table.increments()
+      table.string('status')
+    }),
+  ])
+}
 
-exports.up = function(knex) {
-  
-};
-
-exports.down = function(knex) {
-  
-};
+exports.down = async (knex) => {
+  await knex.schema.dropTableIfExists(tableNames.entryStatus)
+}

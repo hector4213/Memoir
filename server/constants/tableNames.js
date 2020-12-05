@@ -3,5 +3,5 @@ module.exports = {
   story: 'story',
   entry: 'entry',
   format: 'format',
-  entryStatus: 'entryStatus',
+  entryStatus: 'entry_status',
 }
