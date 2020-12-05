@@ -28,6 +28,16 @@ $circle_offset: -17px;
         text-align: right;
     }
 
+    .entryCard {
+        display: flex;
+        flex-direction: column;
+
+        img{
+            width: fit-content;
+            align-self: flex-end;
+        }
+    }
+
     .text {
         padding-right: 30px;
     }
