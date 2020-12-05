@@ -76,6 +76,7 @@
 
     input {
         width: 100%;
+        text-align: center;
     }
     select {
         width: 100%;
@@ -87,5 +88,6 @@
         border: 1px solid #8397DF;
         box-shadow: 0px 0px 20px rgba(131, 151, 223, 0.25);
         margin-bottom: 20px;
+        text-align: center;
     }
 }

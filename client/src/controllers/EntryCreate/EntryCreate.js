@@ -10,6 +10,8 @@ import StoryCard from '../../components/StoryCard/StoryCard'
 
 const EntryCreate = props => {
     const [formInfo, setFormInfo] = useState({format_id:0})
+    const [date, setDate] = useState()
+
     const {createEntry, story} = props
 
     console.log(story)
@@ -63,7 +65,7 @@ const EntryCreate = props => {
 
 
             <form>
-                <input type='text' placeholder='Enter embed'
+                <input type='text' placeholder='Enter the embed link'
                     onChange={ e =>{
                         setFormInfo( {...formInfo, embed: e.target.value })
                     }}
@@ -83,8 +85,7 @@ const EntryCreate = props => {
 
                 <div className='date'>
                     <select name="months" className="months" onChange={e =>{
-                            console.log(e.target.value)
-                            // setFormInfo( {...formInfo, date: e.target.value })
+                            setDate({...date, month:e.target.value})
                         }}>
                         <option value="">Month:</option>
                         <option value="01">January</option>
@@ -102,12 +103,12 @@ const EntryCreate = props => {
                     </select>
                     <input type='text' placeholder='Day'
                     onChange={ e =>{
-                        setFormInfo( {...formInfo, description: e.target.value })
+                        setDate({...date, day:e.target.value})
                     }}
                     />
                     <input type='text' placeholder='Year'
                         onChange={ e =>{
-                            setFormInfo( {...formInfo, description: e.target.value })
+                            setDate({...date, year:e.target.value})
                         }}
                     />
                 </div>
@@ -118,7 +119,9 @@ const EntryCreate = props => {
                     transparent: false,
                     onClick: e => {
                         e.preventDefault()
-                        createEntry(formInfo)
+                        console.log(date)
+                        console.log(formInfo)
+                        // createEntry(formInfo)
                     }
                 }}/>
             </form>
