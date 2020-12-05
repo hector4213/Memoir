@@ -44,7 +44,7 @@ const Story = props => {
 
             let sortedEntries = story.entries
 
-            if(sortedEntries.length >1){
+            if(sortedEntries.length > 0){
                 sortedEntries = sortedEntries.sort( (a,b) => {
                     return new Date(b.date) - new Date(a.date);
                 })
@@ -70,7 +70,7 @@ const Story = props => {
                 )
             })
         } else {
-            entryComponents.push(<div className='notfound'> Seems this story doesn't have any entries yet. </div>)
+            entryComponents.push(<div key='0' className='notfound'> Seems this story doesn't have any entries yet. </div>)
         }
 
         return (
