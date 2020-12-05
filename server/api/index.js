@@ -10,7 +10,7 @@ router.get('/', async (req, res) => {
   res.json({ msg: 'Memoir API' })
 })
 
-router.use('/users', users)
+router.use('/profile', users)
 router.use('/auth', auth)
 router.use('/stories', story)
 module.exports = router
