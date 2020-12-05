@@ -30,7 +30,7 @@ const EntryCreate = props => {
 
             <StoryCard {...{
                 story: story,
-                specialStyle:{margin:'50px auto'},
+                specialStyle:{margin:'0px auto', opacity:1},
                 // deleteCard: ,
                 // inTimeline:false
             }}/>
