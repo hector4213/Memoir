@@ -8,6 +8,7 @@ class User extends Model {
 
   static get relationMappings() {
     const Story = require('../story/story.model')
+    const Entry = require('../story/entry/entry.model')
     return {
       stories: {
         relation: Model.HasManyRelation,
@@ -15,6 +16,14 @@ class User extends Model {
         join: {
           from: 'users.id',
           to: 'story.author_id',
+        },
+      },
+      userEntries: {
+        relation: Model.HasManyRelation,
+        modelClass: Entry,
+        join: {
+          from: 'users.id',
+          to: 'entry.user_id',
         },
       },
     }
