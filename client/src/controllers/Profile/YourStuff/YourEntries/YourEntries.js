@@ -11,9 +11,7 @@ const YourEntries = props => {
         myEntryCards = myEntries.map( entry => {
             return <ListEntry {...{
                 key: entry.id,
-                entryName: entry.title,
-                storyName: entry.story_id,
-                visible: true
+                entry: entry
             }}/>
         })
     }

@@ -15,6 +15,8 @@ const StoryCreate = props => {
                 <div className='story-img-picture' style={storyImg?{background:`url(${storyImg})`}:{}}/>
             </div>
 
+            <h2>Create a new Story</h2>
+
             <input type='text' placeholder='Enter the story image link'
                 onChange={ e => {
                     setStoryImg(e.target.value)

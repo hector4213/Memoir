@@ -50,7 +50,7 @@
         border-radius: $deletebtn_size;
         position: absolute;
         right: 10px;
-        color: $pink;
+        color: $medium_blue;
         z-index: 5;
         cursor: pointer;
 
@@ -60,7 +60,7 @@
         }
     }
     .delete:hover {
-        color: white;
+        color: $pink;
     }
 }
 

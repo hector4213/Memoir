@@ -33,7 +33,7 @@ const StoryCard = props => {
                 e.preventDefault()
                 e.stopPropagation()
                 // eslint-disable-next-line no-restricted-globals
-                if (confirm(`Are you sure you want to delete ${story.name}?`)) {
+                if (confirm(`Are you sure you want to delete ${story.name}'s story?`)) {
                     deleteStory(story.id)
                 } else {
                     console.log('delete was cancelled')
