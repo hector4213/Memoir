@@ -81,11 +81,37 @@ const EntryCreate = props => {
                     }}
                 />
 
-                <input type='text' placeholder='Enter the date'
+                <div className='date'>
+                    <select name="months" className="months" onChange={e =>{
+                            console.log(e.target.value)
+                            // setFormInfo( {...formInfo, date: e.target.value })
+                        }}>
+                        <option value="">Month:</option>
+                        <option value="01">January</option>
+                        <option value="02">February</option>
+                        <option value="03">March</option>
+                        <option value="04">April</option>
+                        <option value="05">May</option>
+                        <option value="06">June</option>
+                        <option value="07">July</option>
+                        <option value="08">August</option>
+                        <option value="09">September</option>
+                        <option value="10">October</option>
+                        <option value="11">November</option>
+                        <option value="12">December</option>
+                    </select>
+                    <input type='text' placeholder='Day'
                     onChange={ e =>{
-                        setFormInfo( {...formInfo, date: e.target.value })
+                        setFormInfo( {...formInfo, description: e.target.value })
                     }}
-                />
+                    />
+                    <input type='text' placeholder='Year'
+                        onChange={ e =>{
+                            setFormInfo( {...formInfo, description: e.target.value })
+                        }}
+                    />
+                </div>
+
 
                 <Button {...{
                     label:'Submit',
