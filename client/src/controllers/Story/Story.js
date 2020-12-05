@@ -1,20 +1,25 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useCallback} from 'react'
 import './Story.scss'
 import {connect} from 'react-redux'
-import {useParams } from "react-router-dom";
+import {useParams, useHistory} from "react-router-dom";
 
 import StoryCard from '../../components/StoryCard/StoryCard'
 import TimelineCard from '../../components/TimelineCard/TimelineCard'
 
 import {getSingleStoryAction} from '../../redux/actions/get'
-import HomeButton from '../../components/HomeButton/HomeButton';
+
+import HomeButton from '../../components/HomeButton/HomeButton'
+import Button from '../../components/Button/Button'
 
 const Timeline = props => {
     const {getSingleStory} = props
-    const {current} = props
+    const {current, user} = props
 
     const story = current? current.story : null
     const { storyId } = useParams()
+
+    const history = useHistory()
+    const gotoCreate = useCallback(() => history.push(`/story/${storyId}/addEntry`), [history, storyId])
 
     useEffect(()=>{
         getSingleStory(storyId)
@@ -24,6 +29,7 @@ const Timeline = props => {
     const [currentProgress, setCurrentProgress] = useState(0)
     useEffect(()=>{
         window.addEventListener('scroll', e => {
+            e.preventDefault()
             const height = document.body.clientHeight - window.innerHeight
             const current= window.scrollY
             setCurrentProgress( (current/height)*100 )
@@ -62,6 +68,17 @@ const Timeline = props => {
             <div className='timeline'>
                 <HomeButton />
 
+                {
+                    user?
+                    <Button {...{
+                        label: 'Add an Entry',
+                        transparent: true,
+                        extraClass:'add-entry-btn',
+                        onClick: gotoCreate
+                    }} />
+                    : ''
+                }
+
                 <StoryCard
                     {...{
                         story: story,
@@ -83,7 +100,8 @@ const Timeline = props => {
 const mapStateToProps = (state, ownProps) => {
     console.log(state)
     return {
-        current: state.page.current
+        current: state.page.current,
+        user: state.profile.user
     }
 }
 

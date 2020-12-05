@@ -6,10 +6,7 @@ import Button from '../Button/Button'
 
 const HomeButton = props => {
     const history = useHistory()
-    const goHome = useCallback(() => {
-        const to = `/`
-        history.push(to)
-    }, [history])
+    const goHome = useCallback(() => history.push(`/`), [history])
 
     return (
         <Button

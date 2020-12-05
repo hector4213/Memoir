@@ -16,7 +16,6 @@ const LogInForm = props => {
 
     return (
         <form>
-
             <input type='text' placeholder='Enter your E-mail'
                 onChange={ e =>{
                     setFormInfo( {...formInfo, email : e.target.value })
