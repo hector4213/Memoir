@@ -18,6 +18,7 @@ import Entry from './controllers/Entry/Entry'
 import FourZeroFour from './controllers/FourZeroFour/FourZeroFour'
 
 import {storedProfileAction} from './redux/actions/profile'
+import EntryCreate from './controllers/EntryCreate/EntryCreate';
 
 const App = props => {
   const {user} = props
@@ -55,7 +56,13 @@ const App = props => {
           {/* - - - - - - - - - - - - - - - - - - - - - - - */}
 
           <Route exact path="/profile">
-          {user ?  <Profile />: <Redirect to="/" />}
+          {user ?  <Profile /> : <Redirect to="/" />}
+          </Route>
+
+          {/* - - - - - - - - - - - - - - - - - - - - - - - */}
+
+          <Route exact path="/create">
+          {user ?  <EntryCreate /> : <Redirect to="/" />}
           </Route>
 
           {/* - - - - - - - - - - - - - - - - - - - - - - - */}

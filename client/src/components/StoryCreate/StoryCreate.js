@@ -7,7 +7,7 @@ import {createStoryAction} from '../../redux/actions/post'
 const StoryCreate = props => {
     const [formInfo, setFormInfo] = useState()
     const [storyImg, setStoryImg] = useState()
-    const {createStory, token} = props
+    const {createStory} = props
 
     return (
         <form>
@@ -35,7 +35,7 @@ const StoryCreate = props => {
                 transparent: false,
                 onClick: e => {
                     e.preventDefault()
-                    createStory(formInfo, token)
+                    createStory(formInfo)
                 }
             }}/>
         </form>
@@ -43,14 +43,12 @@ const StoryCreate = props => {
 }
 
 const mapStateToProps = state => {
-    return {
-        token: state.profile.token
-    }
+    return {}
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        createStory: (formInfo, token) => dispatch(createStoryAction(formInfo, token))
+        createStory: (formInfo) => dispatch(createStoryAction(formInfo))
     }
 }
 

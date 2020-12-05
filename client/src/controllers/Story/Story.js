@@ -1,13 +1,15 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useCallback} from 'react'
 import './Story.scss'
 import {connect} from 'react-redux'
-import {useParams } from "react-router-dom";
+import {useParams, useHistory} from "react-router-dom";
 
 import StoryCard from '../../components/StoryCard/StoryCard'
 import TimelineCard from '../../components/TimelineCard/TimelineCard'
 
 import {getSingleStoryAction} from '../../redux/actions/get'
-import HomeButton from '../../components/HomeButton/HomeButton';
+
+import HomeButton from '../../components/HomeButton/HomeButton'
+import Button from '../../components/Button/Button'
 
 const Timeline = props => {
     const {getSingleStory} = props
@@ -15,6 +17,9 @@ const Timeline = props => {
 
     const story = current? current.story : null
     const { storyId } = useParams()
+
+    const history = useHistory()
+    const gotoCreate = useCallback(() => history.push(`/create`), [history])
 
     useEffect(()=>{
         getSingleStory(storyId)
@@ -58,9 +63,17 @@ const Timeline = props => {
             entryComponents.push(<div className='notfound'> Seems this story doesn't have any entries yet. </div>)
         }
 
+        
+
         return (
             <div className='timeline'>
                 <HomeButton />
+                <Button {...{
+                    label: 'Add an Entry',
+                    transparent: true,
+                    extraClass:'add-entry-btn',
+                    onClick: gotoCreate
+                }} />
 
                 <StoryCard
                     {...{
