@@ -10,7 +10,7 @@ import Modal from '../Modal/Modal'
 import StoryEdit from '../StoryEdit/StoryEdit';
 
 const StoryButtons = props => {
-    const {storyId, toggleModal, modal, userId, authorId} = props
+    const {storyId, toggleModal, modal, user, userId, authorId} = props
 
     const history = useHistory()
     const gotoProfile = useCallback(() => history.push(`/profile`), [history])
@@ -32,7 +32,6 @@ const StoryButtons = props => {
                 onClick: gotoCreate
             }} />
 
-
             {userId === authorId?
                 <>
                 <Button {...{
@@ -53,6 +52,7 @@ const StoryButtons = props => {
 const mapStateToProps = state => {
     return {
         modal: state.page.modal,
+        user: state.profile.user,
         userId: state.profile.user.id,
         authorId: state.page.current.story.user.id
     }
