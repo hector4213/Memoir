@@ -10,6 +10,11 @@ export const deleteStoryAction = storyId => {
             }
             const res = await axios.delete(`http://localhost:3001/api/stories/${storyId}`, {headers: headers})
             console.log(res)
+
+            dispatch({
+                type: 'TOGGLE_MODAL',
+                payload: false
+            })
         }
         catch(error){
             dispatch({
@@ -23,6 +28,7 @@ export const deleteStoryAction = storyId => {
 export const deleteEntryAction = (storyId, entryId) => {
 	return async (dispatch, getState) => {
         const token = getState().profile.token
+
         try {
             const headers = {
                 'Content-Type': 'application/json',
