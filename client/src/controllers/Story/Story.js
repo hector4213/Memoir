@@ -1,7 +1,7 @@
-import React, {useState, useEffect, useCallback} from 'react'
+import React, {useState, useEffect} from 'react'
 import './Story.scss'
 import {connect} from 'react-redux'
-import {useParams, useHistory} from "react-router-dom";
+import {useParams} from "react-router-dom";
 
 import StoryCard from '../../components/StoryCard/StoryCard'
 import TimelineCard from '../../components/TimelineCard/TimelineCard'
@@ -9,7 +9,7 @@ import TimelineCard from '../../components/TimelineCard/TimelineCard'
 import {getSingleStoryAction} from '../../redux/actions/get'
 
 import HomeButton from '../../components/HomeButton/HomeButton'
-import Button from '../../components/Button/Button'
+import StoryButtons from '../../components/StoryButtons/StoryButtons';
 
 const Story = props => {
     const {getSingleStory} = props
@@ -17,9 +17,6 @@ const Story = props => {
 
     const story = current? current.story : null
     const { storyId } = useParams()
-
-    const history = useHistory()
-    const gotoCreate = useCallback(() => history.push(`/story/${storyId}/addEntry`), [history, storyId])
 
     useEffect(()=>{
         getSingleStory(storyId)
@@ -82,18 +79,9 @@ const Story = props => {
 
         return (
             <div className='timeline'>
-                <HomeButton />
 
-                {
-                    user?
-                    <Button {...{
-                        label: 'Add an Entry',
-                        transparent: true,
-                        extraClass:'add-entry-btn',
-                        onClick: gotoCreate
-                    }} />
-                    : ''
-                }
+                <HomeButton />
+                {user? <StoryButtons {...{storyId}}/> : ''}
 
                 <StoryCard
                     {...{

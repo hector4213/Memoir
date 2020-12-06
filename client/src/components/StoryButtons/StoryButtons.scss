@@ -1,0 +1,13 @@
+
+.story-buttons {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    position: absolute;
+    top: 50px;
+    right: 50px;
+
+    button {
+        margin-bottom: 10px;
+    }
+}
