@@ -8,7 +8,8 @@ import {deleteStoryAction} from '../../redux/actions/delete'
 import Button from '../Button/Button'
 
 const StoryEdit = props => {
-    const {story, editStory, deleteStory} = props
+    const {story} = props
+    const {editStory, deleteStory} = props
     const [formInfo, setFormInfo] = useState({
         name: story.name,
         occupation: story.occupation,
@@ -44,7 +45,12 @@ const StoryEdit = props => {
                     extraClass: 'delete-story',
                     onClick: e => {
                         e.preventDefault()
-                        deleteStory(story.id)
+                        // eslint-disable-next-line no-restricted-globals
+                        if (confirm(`Are you sure you want to delete ${story.name}'s story?`)) {
+                            deleteStory(story.id)
+                        } else {
+                            console.log('delete was cancelled')
+                        }
                     }
                 }}/>
 

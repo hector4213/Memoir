@@ -10,7 +10,7 @@ import Modal from '../Modal/Modal'
 import StoryEdit from '../StoryEdit/StoryEdit';
 
 const StoryButtons = props => {
-    const {storyId, toggleModal, modal} = props
+    const {storyId, toggleModal, modal, userId, authorId} = props
 
     const history = useHistory()
     const gotoProfile = useCallback(() => history.push(`/profile`), [history])
@@ -26,20 +26,25 @@ const StoryButtons = props => {
             }} />
 
             <Button {...{
-                label: 'Edit Story',
-                transparent: true,
-                extraClass:'',
-                onClick: toggleModal
-            }} />
-
-            <Button {...{
                 label: 'Add an Entry',
                 transparent: true,
                 extraClass:'',
                 onClick: gotoCreate
             }} />
 
-            {modal? <Modal> <StoryEdit/> </Modal> : ''}
+
+            {userId === authorId?
+                <>
+                <Button {...{
+                    label: 'Edit Story',
+                    transparent: true,
+                    extraClass:'',
+                    onClick: toggleModal
+                }} />
+                {modal? <Modal> <StoryEdit/> </Modal> : ''}
+                </>
+                : ''
+            }
 
         </div>
     )
@@ -47,7 +52,9 @@ const StoryButtons = props => {
 
 const mapStateToProps = state => {
     return {
-        modal: state.page.modal
+        modal: state.page.modal,
+        userId: state.profile.user.id,
+        authorId: state.page.current.story.user.id
     }
 }
 
