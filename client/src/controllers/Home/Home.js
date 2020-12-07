@@ -10,11 +10,11 @@ import LogInRegisterModal from '../../components/LogInRegister/LogInRegister'
 
 import {connect} from 'react-redux'
 import {toggleModalAction} from '../../redux/actions/page'
-import {logOutAction} from '../../redux/actions/profile'
 import {getAllStoriesAction} from '../../redux/actions/get'
+import LogOutButton from '../../components/ButtonTypes/LogOutButton/LogOutButton'
 
 const Home = props => {
-    const {toggleModal, logOut, getAllStories} = props
+    const {toggleModal, getAllStories} = props
     const {user, modal, stories} = props
 
     useEffect(()=>{
@@ -44,17 +44,10 @@ const Home = props => {
 
         {
         user?
-        <>
+        <div className='home-buttons'>
         <GoToProfileButton />
-        <Button
-            {...{
-                label: 'Log Out',
-                transparent : true,
-                extraClass: 'logout-btn',
-                onClick: logOut
-            }}
-        />
-        </>
+        <LogOutButton />
+        </div>
         :
         <Button
             {...{
@@ -88,7 +81,6 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         toggleModal: profile => dispatch(toggleModalAction()),
-        logOut: () => dispatch(logOutAction()),
         getAllStories: () => dispatch(getAllStoriesAction()),
     }
 }

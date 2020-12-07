@@ -1,0 +1,10 @@
+@import '../../../styles/colors';
+@import '../../../styles/sizes';
+
+.logout-btn{
+    // position: absolute;
+    // top: 120px;
+    // right: 50px;
+    border-color: $red !important;
+    color: $red !important;
+}
