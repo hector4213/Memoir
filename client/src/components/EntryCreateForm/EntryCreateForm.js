@@ -45,7 +45,7 @@ const EntryCreateForm = props => {
     }
 
     const [date, setDate] = useState({
-        month: edit?  editDate.getMonth() : '' ,
+        month: edit?  editDate.getMonth()+1 : '' ,
         day: edit?  editDate.getDate() : '',
         year: edit?  editDate.getFullYear() : '',
         month_F: true,
