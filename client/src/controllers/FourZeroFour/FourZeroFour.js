@@ -1,10 +1,10 @@
 import React from 'react'
-import HomeButton from '../../components/HomeButton/HomeButton'
+import GoHomeButton from '../../components/ButtonTypes/GoHomeButton/GoHomeButton'
 
 const FourZeroFour = props => {
     return (
         <div>
-            <HomeButton />
+            <GoHomeButton />
             <h1>Page not found</h1>
         </div>
     )

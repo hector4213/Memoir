@@ -1,10 +1,10 @@
 import React, {useCallback} from 'react'
-import './HomeButton.scss'
+import './GoHomeButton.scss'
 
 import {useHistory} from 'react-router-dom'
-import Button from '../Button/Button'
+import Button from '../../Button/Button'
 
-const HomeButton = props => {
+const GoHomeButton = props => {
     const history = useHistory()
     const goHome = useCallback(() => history.push(`/`), [history])
 
@@ -20,4 +20,4 @@ const HomeButton = props => {
     )
 }
 
-export default HomeButton
+export default GoHomeButton

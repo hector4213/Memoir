@@ -5,10 +5,10 @@ import { useParams } from "react-router-dom";
 import {connect} from 'react-redux'
 
 import {getSingleEntryAction} from '../../redux/actions/get'
-import HomeButton from '../../components/HomeButton/HomeButton'
-import GoToStoryButton from '../../components/GoToStoryButton/GoToStoryButton';
+import GoHomeButton from '../../components/ButtonTypes/GoHomeButton/GoHomeButton'
+import GoToStoryButton from '../../components/ButtonTypes/GoToStoryButton/GoToStoryButton'
 
-const SingleEntry = props => {
+const Entry = props => {
     const {getSingleEntry} = props
     const {current} = props
 
@@ -35,7 +35,7 @@ const SingleEntry = props => {
         // MEDIA TYPES: 1:VIDE0 , 2:TEXT , 3:AUDIO , 4:IMAGE
         return (
             <div className='single-entry'>
-                <HomeButton />
+                <GoHomeButton />
                 <GoToStoryButton />
 
                 <div className='entry-container'>
@@ -67,4 +67,4 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(SingleEntry)
+export default connect(mapStateToProps, mapDispatchToProps)(Entry)

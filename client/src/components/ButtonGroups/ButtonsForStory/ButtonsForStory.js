@@ -1,5 +1,5 @@
 import React, {useCallback} from 'react'
-import './StoryButtons.scss'
+import './ButtonsForStory.scss'
 
 import {useHistory} from "react-router-dom";
 import {connect} from 'react-redux'
@@ -7,10 +7,10 @@ import {toggleModalAction} from '../../../redux/actions/page'
 
 import Button from '../../Button/Button'
 import Modal from '../../Modal/Modal'
-import StoryEdit from '../StoryEdit/StoryEdit';
-import GoToProfile from '../GoToProfileButton/GoToProfileButton';
+import StoryEdit from '../../../controllers/StoryEdit/StoryEdit'
+import GoToProfile from '../..//ButtonTypes/GoToProfileButton/GoToProfileButton'
 
-const StoryButtons = props => {
+const ButtonsForStory = props => {
     const {storyId, toggleModal, modal, userId, authorId} = props
 
     const history = useHistory()
@@ -23,7 +23,7 @@ const StoryButtons = props => {
             <Button {...{
                 label: 'Add an Entry',
                 transparent: true,
-                extraClass:'',
+                extraClass:'add-entry-btn',
                 onClick: gotoCreate
             }} />
 
@@ -59,4 +59,4 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(StoryButtons)
+export default connect(mapStateToProps, mapDispatchToProps)(ButtonsForStory)

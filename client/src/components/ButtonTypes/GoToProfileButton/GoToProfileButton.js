@@ -3,9 +3,9 @@ import './GoToProfileButton.scss'
 import {connect} from 'react-redux'
 
 import {useHistory} from 'react-router-dom'
-import Button from '../Button/Button'
+import Button from '../../Button/Button'
 
-const GoToProfile = props => {
+const GoToProfileButton = props => {
     const {name} = props
     const history = useHistory()
     const goProfile = useCallback(() => history.push(`/profile`), [history])
@@ -27,4 +27,4 @@ const mapStateToProps = state => {
         name: state.profile.user.username
     }
 }
-export default connect(mapStateToProps)(GoToProfile)
+export default connect(mapStateToProps)(GoToProfileButton)

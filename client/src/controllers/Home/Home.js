@@ -2,7 +2,7 @@ import React, {useEffect} from 'react'
 import './Home.scss'
 
 import Button from '../../components/Button/Button'
-import GoToProfileButton from '../../components/GoToProfileButton/GoToProfileButton'
+import GoToProfileButton from '../../components/ButtonTypes/GoToProfileButton/GoToProfileButton'
 import Header from '../../components/Header/Header'
 import StoryCard from '../../components/StoryCard/StoryCard'
 import Modal from '../../components/Modal/Modal'
@@ -13,7 +13,7 @@ import {toggleModalAction} from '../../redux/actions/page'
 import {logOutAction} from '../../redux/actions/profile'
 import {getAllStoriesAction} from '../../redux/actions/get'
 
-const Index = props => {
+const Home = props => {
     const {toggleModal, logOut, getAllStories} = props
     const {user, modal, stories} = props
 
@@ -93,4 +93,4 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Index)
+export default connect(mapStateToProps, mapDispatchToProps)(Home)

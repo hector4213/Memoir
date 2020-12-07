@@ -5,7 +5,7 @@ import './YourStories.scss'
 import {connect} from 'react-redux'
 import { toggleModalAction } from '../../../../redux/actions/page';
 import Modal from '../../../../components/Modal/Modal';
-import StoryCreate from '../../../../components/StoryCreate/StoryCreate';
+import StoryCreate from '../../../StoryCreate/StoryCreate'
 
 const YourStories = props => {
     const {toggleModal, modal, myStories} = props

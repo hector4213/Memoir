@@ -6,8 +6,8 @@ import {connect} from 'react-redux'
 import {getSingleStoryAction} from '../../redux/actions/get'
 
 import EntryCreateForm from './EntryCreateForm'
-import HomeButton from '../../components/HomeButton/HomeButton'
-import GoToStoryButton from '../../components/GoToStoryButton/GoToStoryButton'
+import GoHomeButton from '../../components/ButtonTypes/GoHomeButton/GoHomeButton'
+import GoToStoryButton from '../../components/ButtonTypes/GoToStoryButton/GoToStoryButton'
 import StoryCard from '../../components/StoryCard/StoryCard'
 
 const EntryCreate = props => {
@@ -27,7 +27,7 @@ const EntryCreate = props => {
 
     return (
         <div className='entry-create'>
-            <HomeButton/>
+            <GoHomeButton/>
             <GoToStoryButton />
 
             <StoryCard {...{

@@ -1,3 +1,5 @@
+@import '../../../styles/colors';
+@import '../../../styles/sizes';
 
 .story-buttons {
     display: flex;
@@ -14,4 +16,9 @@
     .profile-btn {
         position: static;
     }
+}
+
+.add-entry-btn{
+    color: $green;
+    border-color: $green;
 }
