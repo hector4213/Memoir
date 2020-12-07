@@ -1,9 +1,12 @@
 import React from 'react'
-import './ProfileUpdate.scss'
+import './ProfileEdit.scss'
+
 
 const ProfileEdit = props => {
+
     return (
-        <div></div>
+        <div className='profile-edit'>
+        </div>
     )
 }
 

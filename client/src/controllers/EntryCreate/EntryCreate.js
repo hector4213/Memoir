@@ -5,7 +5,7 @@ import {useParams} from "react-router-dom";
 import {connect} from 'react-redux'
 import {getSingleStoryAction} from '../../redux/actions/get'
 
-import EntryCreateForm from './EntryCreateForm'
+import EntryCreateForm from '../../components/EntryCreateForm/EntryCreateForm'
 import GoHomeButton from '../../components/ButtonTypes/GoHomeButton/GoHomeButton'
 import GoToStoryButton from '../../components/ButtonTypes/GoToStoryButton/GoToStoryButton'
 import StoryCard from '../../components/StoryCard/StoryCard'
