@@ -40,7 +40,7 @@ const StoryEdit = props => {
 
             <div className='story-story-btns'>
                 <Button {...{
-                    label:'Delete Entry',
+                    label:'Delete Story',
                     transparent: true,
                     extraClass: 'delete-story',
                     onClick: e => {

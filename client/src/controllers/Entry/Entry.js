@@ -20,7 +20,7 @@ const Entry = props => {
     }, [getSingleEntry, storyId, entryId])
 
 
-    if(!current || !current.entry){ return <div> This entry does not exist </div> }
+    if(!current || !current.entry || !current.entry[0]){ return <div> This entry does not exist </div> }
     else {
         const entry = current.entry[0]
         const {format_id, title, description, embed, date, user} = entry
