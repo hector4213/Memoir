@@ -3,7 +3,7 @@ import './EntryEdit.scss'
 
 const EntryEdit = props => {
     return (
-
+        <div>Entry Edit !</div>
     )
 }
 

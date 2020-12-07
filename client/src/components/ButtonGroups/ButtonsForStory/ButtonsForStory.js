@@ -30,7 +30,7 @@ const ButtonsForStory = props => {
             {userId === authorId?
                 <>
                 <Button {...{
-                    label: 'Edit Story',
+                    label: 'Edit this Story',
                     transparent: true,
                     extraClass:'',
                     onClick: toggleModal
@@ -39,7 +39,6 @@ const ButtonsForStory = props => {
                 </>
                 : ''
             }
-
         </div>
     )
 }

@@ -7,6 +7,7 @@ import {connect} from 'react-redux'
 import {getSingleEntryAction} from '../../redux/actions/get'
 import GoHomeButton from '../../components/ButtonTypes/GoHomeButton/GoHomeButton'
 import GoToStoryButton from '../../components/ButtonTypes/GoToStoryButton/GoToStoryButton'
+import ButtonsForEntry from '../../components/ButtonGroups/ButtonsForEntry/ButtonsForEntry';
 
 const Entry = props => {
     const {getSingleEntry} = props
@@ -37,6 +38,7 @@ const Entry = props => {
             <div className='single-entry'>
                 <GoHomeButton />
                 <GoToStoryButton />
+                <ButtonsForEntry />
 
                 <div className='entry-container'>
                     {format_id === 1 || format_id === 3? 'this is a video or audio that will be embeded once i have real embeds' :''}
