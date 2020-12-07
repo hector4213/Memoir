@@ -1,5 +1,6 @@
 @import '../../styles/colors';
 @import '../../styles/sizes';
+@import '../../styles/defaults';
 
 .entry-create {
     width: 600px;
@@ -16,7 +17,7 @@
         box-sizing: border-box;
         align-items: flex-end;
 
-        input {
+        input, textarea {
             width: 100%;
             padding: 20px;
             box-sizing: border-box;
@@ -28,8 +29,9 @@
             margin-bottom: 20px;
         }
 
-        input::placeholder {
+        input::placeholder, textarea::placeholder {
             color: $light_blue;
+            font-family: $font_fam;
         }
 
         button {

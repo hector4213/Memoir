@@ -1,10 +1,10 @@
 import React from 'react'
 import './ProfileUpdate.scss'
 
-const ProfileUpdate = props => {
+const ProfileEdit = props => {
     return (
         <div></div>
     )
 }
 
-export default ProfileUpdate
+export default ProfileEdit

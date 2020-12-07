@@ -1,12 +1,12 @@
-import React, {useEffect, useCallback} from 'react'
+import React, {useEffect} from 'react'
 import './Entry.scss'
 
-import { useParams, useHistory } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import {connect} from 'react-redux'
 
 import {getSingleEntryAction} from '../../redux/actions/get'
 import HomeButton from '../../components/HomeButton/HomeButton'
-import Button from '../../components/Button/Button';
+import GoToStoryButton from '../../components/GoToStoryButton/GoToStoryButton';
 
 const SingleEntry = props => {
     const {getSingleEntry} = props
@@ -17,11 +17,6 @@ const SingleEntry = props => {
         getSingleEntry(storyId, entryId)
     }, [getSingleEntry, storyId, entryId])
 
-    const history = useHistory()
-    const goToStory = useCallback(() => {
-        const to = `/story/${storyId}`
-        history.push(to)
-    }, [history, storyId])
 
     if(!current || !current.entry){ return <div> This entry does not exist </div> }
     else {
@@ -40,7 +35,7 @@ const SingleEntry = props => {
         return (
             <div className='single-entry'>
                 <HomeButton />
-                <Button {...{ label:'Back to Story', onClick:goToStory, transparent:true, extraClass:'gotostory-btn' }}/>
+                <GoToStoryButton />
 
                 <div className='entry-container'>
                     {format_id === 1 || format_id === 3? 'this is a video or audio that will be embeded once i have real embeds' :''}

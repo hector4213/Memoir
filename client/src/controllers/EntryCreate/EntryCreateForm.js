@@ -105,7 +105,7 @@ const EntryCreateForm = props => {
                     }}
                 />
 
-                <input style={description_F? {} : notFilledStyle} type='text' placeholder='Enter the description'
+                <textarea rows="6" style={description_F? {} : notFilledStyle} type='text' placeholder='Enter the description'
                     onChange={ e =>{
                         if(e.target.value){
                             setFormInfo( {...formInfo, description: e.target.value, description_F:true })
