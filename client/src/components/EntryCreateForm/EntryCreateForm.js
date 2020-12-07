@@ -10,6 +10,7 @@ import MediaType from './MediaType'
 import DateEntry from './DateEntry'
 import SubmitCreate from './SubmitCreate'
 import TextEntry from './TextEntry'
+import SubmitEdit from './SubmitEdit'
 
 const EntryCreateForm = props => {
     // props from redux
@@ -43,7 +44,7 @@ const EntryCreateForm = props => {
         editDate = new Date(entry.date)
     }
 
-    const [date, setDate] = useState({        description: edit? entry.description: '',
+    const [date, setDate] = useState({
         month: edit?  editDate.getMonth() : '' ,
         day: edit?  editDate.getDate() : '',
         year: edit?  editDate.getFullYear() : '',
@@ -63,16 +64,12 @@ const EntryCreateForm = props => {
 
     const  {story} = current
 
-    if(entry){
-        console.log(entry)
-    }
-
     return (
         <div className='entry-create-form'>
             {
                 edit?
                 <>
-                <img alt={entry.title} src={entry.embed} />
+                <img alt={entry.title} src={formInfo.embed} />
                 <h1 className='actiontitle'>Edit this Entry</h1>
                 </>
                 :
@@ -83,7 +80,13 @@ const EntryCreateForm = props => {
                 <MediaType {...{format_id_F, setFormInfo, formInfo, notFilledStyle}}/>
                 <TextEntry {...{setFormInfo, notFilledStyle, formInfo, embed_F, title_F, description_F}} />
                 <DateEntry {...{month_F, notFilledStyle, setDate, date, day_F, year_F}} />
-                {edit ? " " : <SubmitCreate {...{ setFormInfo, formInfo, setDate, date }} />}
+
+                {
+                    edit ?
+                    <SubmitEdit {...{ setFormInfo, formInfo, setDate, date }} />
+                    :
+                    <SubmitCreate {...{ setFormInfo, formInfo, setDate, date }} />
+                }
             </form>
 
             {error ? <div className='error'> {error} </div>: ''}

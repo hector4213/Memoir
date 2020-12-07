@@ -14,10 +14,12 @@ input, textarea {
     margin-bottom: 20px;
     font-family: $font_fam;
     font-size: $text_size;
+    line-height: $text_lineheight_size;
 }
 
 input::placeholder, textarea::placeholder {
     color: $light_blue;
     font-family: $font_fam;
     font-size: $text_size;
+    line-height: $text_lineheight_size;
 }
