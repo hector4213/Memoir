@@ -3,10 +3,10 @@ import './StoryButtons.scss'
 
 import {useHistory} from "react-router-dom";
 import {connect} from 'react-redux'
-import {toggleModalAction} from '../../redux/actions/page'
+import {toggleModalAction} from '../../../redux/actions/page'
 
-import Button from '../Button/Button'
-import Modal from '../Modal/Modal'
+import Button from '../../Button/Button'
+import Modal from '../../Modal/Modal'
 import StoryEdit from '../StoryEdit/StoryEdit';
 import GoToProfile from '../GoToProfileButton/GoToProfileButton';
 
