@@ -13,6 +13,7 @@ const SingleEntry = props => {
     const {current} = props
 
     const { storyId, entryId } = useParams()
+
     useEffect(()=>{
         getSingleEntry(storyId, entryId)
     }, [getSingleEntry, storyId, entryId])

@@ -1,8 +1,8 @@
-import React, {useEffect, useCallback} from 'react'
-import { useHistory } from "react-router-dom";
+import React, {useEffect} from 'react'
 import './Home.scss'
 
 import Button from '../../components/Button/Button'
+import GoToProfileButton from '../../components/GoToProfileButton/GoToProfileButton'
 import Header from '../../components/Header/Header'
 import StoryCard from '../../components/StoryCard/StoryCard'
 import Modal from '../../components/Modal/Modal'
@@ -16,9 +16,6 @@ import {getAllStoriesAction} from '../../redux/actions/get'
 const Index = props => {
     const {toggleModal, logOut, getAllStories} = props
     const {user, modal, stories} = props
-
-    const history = useHistory()
-    const goToProfile = useCallback(() => history.push(`/profile`), [history])
 
     useEffect(()=>{
         getAllStories()
@@ -48,23 +45,14 @@ const Index = props => {
         {
         user?
         <>
+        <GoToProfileButton />
         <Button
             {...{
-                label: `${user.username}'s Profile`,
+                label: 'Log Out',
                 transparent : true,
-                extraClass: 'login-btn',
-                onClick: goToProfile
+                extraClass: 'logout-btn',
+                onClick: logOut
             }}
-        />
-        <Button
-                {...{
-                    label: 'Log Out',
-                    transparent : true,
-                    extraClass: 'logout-btn',
-                    onClick: () => {
-                        logOut()
-                    }
-                }}
         />
         </>
         :

@@ -6,6 +6,12 @@
     margin: auto;
     box-sizing: border-box;
     padding: 50px 0px;
+
+    .profile-btn {
+        position: absolute;
+        top: 50px;
+        right: 50px;
+    }
 }
 
 .storyCards {

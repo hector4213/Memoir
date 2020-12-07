@@ -7,6 +7,7 @@ import {getSingleStoryAction} from '../../redux/actions/get'
 
 import EntryCreateForm from './EntryCreateForm'
 import HomeButton from '../../components/HomeButton/HomeButton'
+import GoToStoryButton from '../../components/GoToStoryButton/GoToStoryButton'
 import StoryCard from '../../components/StoryCard/StoryCard'
 
 const EntryCreate = props => {
@@ -27,6 +28,7 @@ const EntryCreate = props => {
     return (
         <div className='entry-create'>
             <HomeButton/>
+            <GoToStoryButton />
 
             <StoryCard {...{
                 story: story,

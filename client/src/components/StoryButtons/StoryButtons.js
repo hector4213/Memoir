@@ -8,22 +8,17 @@ import {toggleModalAction} from '../../redux/actions/page'
 import Button from '../Button/Button'
 import Modal from '../Modal/Modal'
 import StoryEdit from '../StoryEdit/StoryEdit';
+import GoToProfile from '../GoToProfileButton/GoToProfileButton';
 
 const StoryButtons = props => {
-    const {storyId, toggleModal, modal, user, userId, authorId} = props
+    const {storyId, toggleModal, modal, userId, authorId} = props
 
     const history = useHistory()
-    const gotoProfile = useCallback(() => history.push(`/profile`), [history])
     const gotoCreate = useCallback(() => history.push(`/story/${storyId}/addEntry`), [history, storyId])
 
     return (
         <div className='story-buttons'>
-            <Button {...{
-                label: 'Profile',
-                transparent: true,
-                extraClass:'',
-                onClick: gotoProfile
-            }} />
+            <GoToProfile />
 
             <Button {...{
                 label: 'Add an Entry',
