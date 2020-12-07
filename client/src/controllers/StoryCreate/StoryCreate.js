@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import './StoryCreate.scss'
-import Button from '../Button/Button'
+import Button from '../../components/Button/Button'
 import {connect} from 'react-redux'
 import {createStoryAction} from '../../redux/actions/post'
 

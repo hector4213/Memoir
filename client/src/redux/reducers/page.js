@@ -15,10 +15,10 @@ const page = (state = initialState, action) => {
             return {...state, stories:action.payload}
 
         case 'CURRENT_STORY':
-            return {...state, current:{ story: action.payload }}
+            return {...state, current:{ ...state.current, story: action.payload }}
 
         case 'CURRENT_ENTRY':
-            return {...state, current:{ entry: action.payload }}
+            return {...state, current:{ ...state.current, entry: action.payload }}
 
         default:
             return state

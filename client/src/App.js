@@ -2,8 +2,6 @@ import React, {useEffect} from 'react'
 import './App.scss';
 import {connect} from 'react-redux'
 
-// import axios from 'axios'
-
 import {
   BrowserRouter as Router,
   Switch,
@@ -19,6 +17,7 @@ import FourZeroFour from './controllers/FourZeroFour/FourZeroFour'
 
 import {storedProfileAction} from './redux/actions/profile'
 import EntryCreate from './controllers/EntryCreate/EntryCreate';
+import EntryEdit from './controllers/EntryEdit/EntryEdit'
 
 const App = props => {
   const {user} = props
@@ -63,6 +62,12 @@ const App = props => {
 
           <Route exact path="/story/:storyId/addEntry">
           <EntryCreate />
+          </Route>
+
+          {/* - - - - - - - - - - - - - - - - - - - - - - - */}
+
+          <Route exact path="/story/:storyId/entry/:entryId/editEntry">
+          <EntryEdit />
           </Route>
 
           {/* - - - - - - - - - - - - - - - - - - - - - - - */}

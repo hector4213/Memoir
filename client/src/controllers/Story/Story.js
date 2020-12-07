@@ -8,8 +8,8 @@ import TimelineCard from '../../components/TimelineCard/TimelineCard'
 
 import {getSingleStoryAction} from '../../redux/actions/get'
 
-import HomeButton from '../../components/HomeButton/HomeButton'
-import StoryButtons from '../../components/StoryButtons/StoryButtons';
+import GoHomeButton from '../../components/ButtonTypes/GoHomeButton/GoHomeButton'
+import ButtonsForStory from '../../components/ButtonGroups/ButtonsForStory/ButtonsForStory';
 
 const Story = props => {
     const {getSingleStory} = props
@@ -80,13 +80,13 @@ const Story = props => {
         return (
             <div className='timeline'>
 
-                <HomeButton />
-                {user? <StoryButtons {...{storyId}}/> : ''}
+                <GoHomeButton />
+                {user? <ButtonsForStory {...{storyId}}/> : ''}
 
                 <StoryCard
                     {...{
                         story: story,
-                        specialStyle:{margin: '0px auto 50px auto', border:'none', cursor:'auto', opacity:1},
+                        specialStyle:{margin: '0px auto 50px auto', cursor:'auto', opacity:1},
                         inTimeline: true
                     }}
                 />

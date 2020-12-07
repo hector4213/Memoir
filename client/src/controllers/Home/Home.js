@@ -1,8 +1,8 @@
-import React, {useEffect, useCallback} from 'react'
-import { useHistory } from "react-router-dom";
+import React, {useEffect} from 'react'
 import './Home.scss'
 
 import Button from '../../components/Button/Button'
+import GoToProfileButton from '../../components/ButtonTypes/GoToProfileButton/GoToProfileButton'
 import Header from '../../components/Header/Header'
 import StoryCard from '../../components/StoryCard/StoryCard'
 import Modal from '../../components/Modal/Modal'
@@ -10,15 +10,12 @@ import LogInRegisterModal from '../../components/LogInRegister/LogInRegister'
 
 import {connect} from 'react-redux'
 import {toggleModalAction} from '../../redux/actions/page'
-import {logOutAction} from '../../redux/actions/profile'
 import {getAllStoriesAction} from '../../redux/actions/get'
+import LogOutButton from '../../components/ButtonTypes/LogOutButton/LogOutButton'
 
-const Index = props => {
-    const {toggleModal, logOut, getAllStories} = props
+const Home = props => {
+    const {toggleModal, getAllStories} = props
     const {user, modal, stories} = props
-
-    const history = useHistory()
-    const goToProfile = useCallback(() => history.push(`/profile`), [history])
 
     useEffect(()=>{
         getAllStories()
@@ -47,26 +44,10 @@ const Index = props => {
 
         {
         user?
-        <>
-        <Button
-            {...{
-                label: `${user.username}'s Profile`,
-                transparent : true,
-                extraClass: 'login-btn',
-                onClick: goToProfile
-            }}
-        />
-        <Button
-                {...{
-                    label: 'Log Out',
-                    transparent : true,
-                    extraClass: 'logout-btn',
-                    onClick: () => {
-                        logOut()
-                    }
-                }}
-        />
-        </>
+        <div className='home-buttons'>
+        <GoToProfileButton />
+        <LogOutButton />
+        </div>
         :
         <Button
             {...{
@@ -100,9 +81,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         toggleModal: profile => dispatch(toggleModalAction()),
-        logOut: () => dispatch(logOutAction()),
         getAllStories: () => dispatch(getAllStoriesAction()),
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Index)
+export default connect(mapStateToProps, mapDispatchToProps)(Home)

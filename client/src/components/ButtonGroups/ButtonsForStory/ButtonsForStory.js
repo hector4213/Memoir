@@ -1,41 +1,36 @@
 import React, {useCallback} from 'react'
-import './StoryButtons.scss'
+import './ButtonsForStory.scss'
 
 import {useHistory} from "react-router-dom";
 import {connect} from 'react-redux'
-import {toggleModalAction} from '../../redux/actions/page'
+import {toggleModalAction} from '../../../redux/actions/page'
 
-import Button from '../Button/Button'
-import Modal from '../Modal/Modal'
-import StoryEdit from '../StoryEdit/StoryEdit';
+import Button from '../../Button/Button'
+import Modal from '../../Modal/Modal'
+import StoryEdit from '../../../controllers/StoryEdit/StoryEdit'
+import GoToProfile from '../..//ButtonTypes/GoToProfileButton/GoToProfileButton'
 
-const StoryButtons = props => {
-    const {storyId, toggleModal, modal, user, userId, authorId} = props
+const ButtonsForStory = props => {
+    const {storyId, toggleModal, modal, userId, authorId} = props
 
     const history = useHistory()
-    const gotoProfile = useCallback(() => history.push(`/profile`), [history])
     const gotoCreate = useCallback(() => history.push(`/story/${storyId}/addEntry`), [history, storyId])
 
     return (
         <div className='story-buttons'>
-            <Button {...{
-                label: 'Profile',
-                transparent: true,
-                extraClass:'',
-                onClick: gotoProfile
-            }} />
+            <GoToProfile />
 
             <Button {...{
                 label: 'Add an Entry',
                 transparent: true,
-                extraClass:'',
+                extraClass:'add-entry-btn',
                 onClick: gotoCreate
             }} />
 
             {userId === authorId?
                 <>
                 <Button {...{
-                    label: 'Edit Story',
+                    label: 'Edit this Story',
                     transparent: true,
                     extraClass:'',
                     onClick: toggleModal
@@ -44,7 +39,6 @@ const StoryButtons = props => {
                 </>
                 : ''
             }
-
         </div>
     )
 }
@@ -64,4 +58,4 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(StoryButtons)
+export default connect(mapStateToProps, mapDispatchToProps)(ButtonsForStory)

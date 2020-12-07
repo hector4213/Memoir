@@ -16,17 +16,15 @@
     margin-top: 75px;
 }
 
-.login-btn {
+.home-buttons {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
     position: absolute;
     top: 50px;
     right: 50px;
-    text-transform:capitalize;
-}
 
-.logout-btn{
-    position: absolute;
-    top: 120px;
-    right: 50px;
-    border-color: $red !important;
-    color: $red !important;
+    button {
+        margin-bottom: 10px;
+    }
 }

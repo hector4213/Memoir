@@ -8,6 +8,12 @@
     label {
         font-size: $subtitle_size;
     }
+
+    .profile-btns {
+        position: absolute;
+        top: 50px;
+        right: 50px;
+    }
 }
 
 .pageTitle {

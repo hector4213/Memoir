@@ -5,7 +5,7 @@ import {connect} from 'react-redux'
 import {editStoryAction} from '../../redux/actions/put'
 import {deleteStoryAction} from '../../redux/actions/delete'
 
-import Button from '../Button/Button'
+import Button from '../../components/Button/Button'
 
 const StoryEdit = props => {
     const {story} = props
@@ -40,7 +40,7 @@ const StoryEdit = props => {
 
             <div className='story-story-btns'>
                 <Button {...{
-                    label:'Delete Entry',
+                    label:'Delete Story',
                     transparent: true,
                     extraClass: 'delete-story',
                     onClick: e => {

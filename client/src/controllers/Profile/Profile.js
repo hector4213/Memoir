@@ -4,7 +4,8 @@ import './Profile.scss'
 
 import YourStuff from './YourStuff/YourStuff'
 // import OthersStuff from './OthersStuff/OthersStuff'
-import HomeButton from '../../components/HomeButton/HomeButton';
+import GoHomeButton from '../../components/ButtonTypes/GoHomeButton/GoHomeButton'
+import LogOutButton from '../../components/ButtonTypes/LogOutButton/LogOutButton'
 
 const Profile = props => {
     const [yourStuff, isYourStuff] = useState(true)
@@ -12,7 +13,11 @@ const Profile = props => {
 
     return (
         <div className='profile'>
-            <HomeButton />
+            <GoHomeButton />
+
+            <div className='profile-btns'>
+                <LogOutButton />
+            </div>
 
             <h1 className='pageTitle'>{user?user.username:'Not Logged In'}</h1>
 
