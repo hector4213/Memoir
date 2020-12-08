@@ -32,7 +32,6 @@ describe('Routes for /api/stories/*/entries', () => {
     const login = await supertest(app)
       .post('/api/auth/login')
       .send({ email: 'tester@test.com', password: 'React!123' }) //returns the login response with user.token
-    console.log(targetEntry)
     const { token } = login.body
     const updatedEntry = {
       title: 'My upated entry',
