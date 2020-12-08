@@ -2,17 +2,19 @@ import React, {useCallback} from 'react'
 import './ListEntry.scss'
 import {useHistory} from 'react-router-dom'
 
-import { HiOutlineEye, HiOutlineEyeOff, HiOutlineXCircle } from "react-icons/hi";
+import { HiOutlineXCircle } from "react-icons/hi";
+// import { HiOutlineEye, HiOutlineEyeOff } from "react-icons/hi";
 import {connect} from 'react-redux'
 import {deleteEntryAction} from '../../redux/actions/db_delete'
 
 const ListEntry = props => {
-    const {entry, belongsToOtherPerson} = props;
+    const {entry} = props;
+    // const {belongsToOtherPerson} = props;
     const {deleteEntry} = props
 
     // this is for other's entries
-    const visible = true
-    const eye = visible? <HiOutlineEye/> : <HiOutlineEyeOff/>;
+    // const visible = true
+    // const eye = visible? <HiOutlineEye/> : <HiOutlineEyeOff/>;
     // console.log(eye, belongsToOtherPerson)
 
     // redirects
@@ -35,7 +37,9 @@ const ListEntry = props => {
                 e.stopPropagation()
                 // eslint-disable-next-line no-restricted-globals
                 if (confirm(`Are you sure you want to delete '${entry.title}' ?`)) {
-                    deleteEntry(entry.story.id, entry.id)
+                    if(deleteEntry){
+                        deleteEntry(entry.story.id, entry.id)
+                    }
                 } else {
                     console.log('delete was cancelled')
                 }

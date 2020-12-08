@@ -27,7 +27,7 @@ const Profile = props => {
     // END OF REDIRECT
 
     if(!user){
-        return <div></div>
+        return <div>You are not logged in</div>
     }
 
     return (

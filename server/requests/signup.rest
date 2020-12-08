@@ -4,7 +4,7 @@ Content-Type: application/json
 {
     "username": "hector",
     "email":"hector@gmail.com",
-    "password":"React!123"   
+    "password":"React!123"
 }
 
 #########
@@ -14,5 +14,5 @@ Content-Type: application/json
 
 {
     "email":"tester@test.com",
-    "password":"React!123" 
+    "password":"React!123"
 }
