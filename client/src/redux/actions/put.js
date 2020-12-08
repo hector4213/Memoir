@@ -13,6 +13,18 @@ export const editStoryAction = entryInfo => {
             const res = await axios.put(`http://localhost:3001/api/stories/edit/${storyId}`, entryInfo, {headers: headers})
             console.log(res)
 
+            // START OF PATH CHANGE
+            dispatch({
+                type: 'SET_PATH',
+                payload: 'refreshStory'
+            })
+            // needs to be set back to null
+            dispatch({
+                type: 'SET_PATH',
+                payload: null
+            })
+            // END OF PATH CHANGE
+
             dispatch({
                 type: 'TOGGLE_MODAL',
                 payload: false

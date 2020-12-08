@@ -11,10 +11,17 @@ export const deleteStoryAction = storyId => {
             const res = await axios.delete(`http://localhost:3001/api/stories/${storyId}`, {headers: headers})
             console.log(res)
 
+            // START OF PATH CHANGE
             dispatch({
                 type: 'SET_PATH',
                 payload: 'gohome'
             })
+            // needs to be set back to null
+            dispatch({
+                type: 'SET_PATH',
+                payload: null
+            })
+            // END OF PATH CHANGE
 
             dispatch({
                 type: 'TOGGLE_MODAL',

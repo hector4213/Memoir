@@ -22,16 +22,16 @@ const Story = props => {
     const { storyId } = useParams()
 
 
-    // go Home after submit
+    // START OF REDIRECT
     const history = useHistory()
     const goTo = useCallback(() => history.push(`/`), [history])
+    const goToStory = useCallback(() => history.go(0), [history])
 
     useEffect(()=>{
-        if(path === 'gohome'){
-            goTo()
-        }
-    },[goTo, path])
-
+        if(path === 'gohome'){ goTo() }
+        if(path === 'refreshStory'){goToStory()}
+    },[path, goTo, goToStory])
+    // END OF REDIRECT
 
     useEffect(()=>{
         getSingleStory(storyId)
