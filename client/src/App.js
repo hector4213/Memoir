@@ -82,14 +82,10 @@ const App = props => {
   )
 }
 
-const mapStateToProps = state =>{
-  return {}
-}
-
 const mapDispatchToProps = dispatch => {
   return {
     storedProfile: () => dispatch(storedProfileAction())
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(App)
+export default connect(null, mapDispatchToProps)(App)

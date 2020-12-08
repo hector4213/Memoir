@@ -44,14 +44,10 @@ const StoryCreate = props => {
     )
 }
 
-const mapStateToProps = state => {
-    return {}
-}
-
 const mapDispatchToProps = dispatch => {
     return {
         createStory: (formInfo) => dispatch(createStoryAction(formInfo))
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(StoryCreate)
+export default connect(null, mapDispatchToProps)(StoryCreate)

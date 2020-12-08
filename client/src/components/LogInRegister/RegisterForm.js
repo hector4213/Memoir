@@ -49,15 +49,10 @@ const RegisterForm = props => {
     )
 }
 
-const mapStateToProps = state => {
-    return {
-    }
-}
-
 const mapDispatchToProps = dispatch => {
     return {
         registerUser: formInfo => dispatch(registerUserAction(formInfo))
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(RegisterForm)
+export default connect(null, mapDispatchToProps)(RegisterForm)

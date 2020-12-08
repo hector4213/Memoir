@@ -37,16 +37,10 @@ const LogInForm = props => {
     )
 }
 
-
-const mapStateToProps = state => {
-    return {
-    }
-}
-
 const mapDispatchToProps = dispatch => {
     return {
         logIn: profile => dispatch(logInAction(profile))
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(LogInForm)
+export default connect(null, mapDispatchToProps)(LogInForm)
