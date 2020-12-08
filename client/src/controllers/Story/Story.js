@@ -6,7 +6,7 @@ import {useParams} from "react-router-dom";
 import StoryCard from '../../components/StoryCard/StoryCard'
 import TimelineCard from '../../components/TimelineCard/TimelineCard'
 
-import {getSingleStoryAction} from '../../redux/actions/get'
+import {getSingleStoryAction} from '../../redux/actions/db_get'
 
 import GoHomeButton from '../../components/ButtonTypes/GoHomeButton/GoHomeButton'
 import ButtonsForStory from '../../components/ButtonGroups/ButtonsForStory/ButtonsForStory';

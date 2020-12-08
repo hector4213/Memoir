@@ -4,7 +4,7 @@ import {useHistory} from 'react-router-dom'
 
 import { HiOutlineEye, HiOutlineEyeOff, HiOutlineXCircle } from "react-icons/hi";
 import {connect} from 'react-redux'
-import {deleteEntryAction} from '../../redux/actions/delete'
+import {deleteEntryAction} from '../../redux/actions/db_delete'
 
 const ListEntry = props => {
     const {entry, belongsToOtherPerson} = props;
