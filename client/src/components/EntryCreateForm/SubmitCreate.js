@@ -22,7 +22,13 @@ const SubmitCreate = props => {
                 const allFieldsCompleted = areFieldsValid(formInfo, date)
 
                 if(allFieldsCompleted){
-                    const allFields = {...formInfo, date:`${date.month} ${date.day}, ${date.year}`}
+                    const allFields = {
+                        title: formInfo.title,
+                        description: formInfo.description,
+                        date:`${date.year}-${date.month}-${date.day}`,
+                        embed: formInfo.embed,
+                        format_id: formInfo.format_id
+                    }
                     createEntry(allFields)
                     setError(null)
                 }
