@@ -36,7 +36,7 @@ const Entry = props => {
     if(!current || !current.entry || !current.story || !current.entry[0]){ return <div> This entry does not exist </div> }
     else {
         const entry = current.entry[0]
-        const {format_id, title, description, embed, date, user} = entry
+        const {format_id, title, description, embed, date, user, id} = entry
 
         // NEED THIS TO EMBED IFRAME FOR VIDEO AND AUDIO
         // STILL HAVE NOT WORKED ON IT NEED TO ADJUST BACKEND
@@ -45,7 +45,7 @@ const Entry = props => {
         //     return {__html: embed};
         // }
 
-        const [previousEntry, nextEntry] = getNavEntries(current.story.entries, entry)
+        const [previousEntry, nextEntry] = getNavEntries(current.story.entries, id)
         const formattedDate = formatDate(date)
 
         // MEDIA TYPES: 1:VIDE0 , 2:TEXT , 3:AUDIO , 4:IMAGE
@@ -76,13 +76,13 @@ const Entry = props => {
     }
 }
 
-const getNavEntries = (allEntries, single) =>{
+const getNavEntries = (allEntries, entryId) =>{
 
     let back
     let next
 
     for(let i=0; i < allEntries.length; i++){
-        if(single.id === allEntries[i].id){
+        if(entryId === allEntries[i].id){
             if(i>0){
                 back = allEntries[i-1]
             }
@@ -91,6 +91,7 @@ const getNavEntries = (allEntries, single) =>{
             }
         }
     }
+
     return [back, next]
 }
 
