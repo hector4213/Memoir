@@ -10,6 +10,8 @@ class Entry extends Model {
   static get relationMappings() {
     const Story = require('../story.model')
     const Format = require('../../format/format.model')
+    const User = require('../../users/users.model')
+    const Status = require('../entry/status.model')
     return {
       story: {
         relation: Model.BelongsToOneRelation,
@@ -35,9 +37,16 @@ class Entry extends Model {
           to: 'users.id',
         },
       },
+      current: {
+        relation: Model.BelongsToOneRelation,
+        modelClass: Status,
+        join: {
+          from: 'entry.entry_status',
+          to: 'entry_status.id',
+        },
+      },
     }
   }
-  //do relation to story
 }
 
 module.exports = Entry
