@@ -16,7 +16,7 @@ describe('Test Route for /api/profile/*/manage', async () => {
     await knex.migrate.rollback()
   })
 
-  it.only("should fetch an array of entries that belong to user's stories not written by user", async () => {
+  it("should fetch an array of entries that belong to user's stories not written by user", async () => {
     const login = await supertest(app)
       .post('/api/auth/login')
       .send({ email: 'tester@test.com', password: 'React!123' }) //returns the login response with user.token
@@ -38,20 +38,33 @@ describe('Test Route for /api/profile/*/manage', async () => {
     )
   })
 
-  it('should change status from approved to denied', async () => {
+  it.only('should change status from approved to denied', async () => {
     const login = await supertest(app)
       .post('/api/auth/login')
       .send({ email: 'tester@test.com', password: 'React!123' })
     const { token, user } = login.body
-    const userEntry = await Entry.query().where({ user_id: user.id }).first()
 
+    const userStories = Story.query().select('id').where({ author_id: user.id })
+    const foreignEntry = await Entry.query()
+      .whereIn('story_id', userStories)
+      .whereNot({ user_id: user.id })
+      .withGraphFetched('current(noId)')
+      .modifiers({
+        noId(builder) {
+          builder.select('status')
+        },
+      })
+      .first()
+    console.log(user.id)
     const response = await supertest(app)
-      .put(`/api/profile/${user.id}/manage/${userEntry.id}`)
+      .put(`/api/profile/${user.id}/manage/${foreignEntry.id}`)
       .set('Authorization', `bearer ${token}`)
       .send({ entry_status: 3 })
       .expect(200)
 
-    const changedEntry = await Entry.query().where({ user_id: user.id }).first()
-    expect(userEntry.entry_status).to.not.equal(changedEntry.entry_status)
+    const updatedEntry = await Entry.query().where({ id: foreignEntry.id })
+    console.log(updatedEntry)
+    expect(updatedEntry[0].entry_status).to.not.equal(foreignEntry.entry_status)
+    expect(updatedEntry[0].entry_status).to.equal(3)
   })
 })
