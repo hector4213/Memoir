@@ -43,7 +43,7 @@ router.get('/', async (req, res, next) => {
 
 router.put('/:id', async (req, res, next) => {
   const { entry_status } = req.body
-  const { id } = req.params
+  const { id, user } = req.params
   if (!req.token) {
     res.status(401).json({ error: 'unauthenticated' })
   }
