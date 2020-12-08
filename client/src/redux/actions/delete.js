@@ -48,6 +48,18 @@ export const deleteEntryAction = (storyId, entryId) => {
             }
             const res = await axios.delete(`http://localhost:3001/api/stories/${storyId}/entries/${entryId}`, {headers: headers})
             console.log(res)
+
+            // START OF PATH CHANGE
+            dispatch({
+                type: 'SET_PATH',
+                payload: 'deletedEntry'
+            })
+            // needs to be set back to null
+            dispatch({
+                type: 'SET_PATH',
+                payload: null
+            })
+            // END OF PATH CHANGE
         }
         catch(error){
             dispatch({

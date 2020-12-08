@@ -20,8 +20,9 @@ const Profile = props => {
     const refreshPage = useCallback(() => history.go(0), [history])
 
     useEffect(()=>{
-        if(path === 'createdStory'){refreshPage()}
-        if(path === 'deletedStory'){refreshPage()}
+        if(path === 'createdStory' || path === 'deletedStory' || path === 'deletedEntry'){
+            refreshPage()
+        }
     },[path, goTo, refreshPage])
     // END OF REDIRECT
 

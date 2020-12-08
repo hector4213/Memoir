@@ -9,11 +9,24 @@ import GoHomeButton from '../../components/ButtonTypes/GoHomeButton/GoHomeButton
 import GoToStoryButton from '../../components/ButtonTypes/GoToStoryButton/GoToStoryButton'
 import ButtonsForEntry from '../../components/ButtonGroups/ButtonsForEntry/ButtonsForEntry';
 
+import {useCallback} from 'react'
+import {useHistory} from 'react-router-dom'
+
 const Entry = props => {
     const {getSingleEntry} = props
-    const {current} = props
+    const {current, path} = props
 
     const { storyId, entryId } = useParams()
+
+    // START OF REDIRECT
+    const history = useHistory()
+    const refresh = useCallback(() => history.go(0), [history])
+
+    useEffect(()=>{
+        console.log('inside of here')
+        if(path === 'editedEntry'){ refresh() }
+    },[path, refresh])
+    // END OF REDIRECT
 
     useEffect(()=>{
         getSingleEntry(storyId, entryId)
@@ -59,7 +72,8 @@ const Entry = props => {
 const mapStateToProps = state => {
     console.log(state)
     return {
-        current: state.page.current
+        current: state.page.current,
+        path: state.page.path
     }
 }
 

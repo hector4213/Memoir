@@ -54,10 +54,17 @@ export const editEntryAction = entryInfo => {
 
             console.log(res)
 
-            // dispatch({
-            //     type: 'TOGGLE_MODAL',
-            //     payload: false
-            // })
+            // START OF PATH CHANGE
+            dispatch({
+                type: 'SET_PATH',
+                payload: 'editedEntry'
+            })
+            // needs to be set back to null
+            dispatch({
+                type: 'SET_PATH',
+                payload: null
+            })
+            // END OF PATH CHANGE
         }
         catch(error){
             dispatch({

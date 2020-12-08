@@ -48,10 +48,20 @@ export const createEntryAction = entryInfo => {
             const res = await axios.post(`http://localhost:3001/api/stories/${storyId}/entries`, entryInfo, {headers: headers})
             console.log(res)
 
+            console.log('creating entry')
+
+            // START OF PATH CHANGE
             dispatch({
-                type: 'TOGGLE_MODAL',
-                payload: false
+                type: 'SET_PATH',
+                payload: 'createdEntry'
             })
+            // needs to be set back to null
+            dispatch({
+                type: 'SET_PATH',
+                payload: null
+            })
+            // END OF PATH CHANGE
+
         }
         catch(error){
             dispatch({
