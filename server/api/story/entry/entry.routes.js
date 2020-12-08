@@ -21,6 +21,7 @@ router.post('/', async (req, res, next) => {
   const { title, description, date, embed, format_id } = req.body
   const decodedToken = await jwt.verify(req.token)
   const story = await Story.query().findById(storyId)
+  const isStoryAuthor = decodedToken.id === story.author_id ? 1 : 2
 
   try {
     await schema.validate({
@@ -40,6 +41,7 @@ router.post('/', async (req, res, next) => {
         format_id,
         user_id: decodedToken.id,
         story_id: storyId,
+        entry_status: isStoryAuthor,
       })
       return res
         .status(201)
