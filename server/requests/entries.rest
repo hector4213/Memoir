@@ -1,13 +1,13 @@
-PUT http://localhost:3001/api/stories/10/entries/edit/23
+PUT http://localhost:3001/api/stories/16/entries/edit/2
 Content-Type: application/json
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwidXNlcm5hbWUiOiJ0ZXN0IiwiZW1haWwiOiJ0ZXN0bWFuQGdtYWlsLmNvbSIsImlhdCI6MTYwNjg3Njg4NCwiZXhwIjoxNjA2OTYzMjg0fQ.9NcYVgM8YNPHp8tF-e98D4XbaDzcbCuUDb9snVYOV_Y
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwidXNlcm5hbWUiOiJ0ZXN0IiwiZW1haWwiOiJ0ZXN0bWFuQGdtYWlsLmNvbSIsImlhdCI6MTYwNzI3ODIzOCwiZXhwIjoxNjA3MzY0NjM4fQ.hV7HyTmrFtDLUxnbgVNOEfuzDUkr1hCCKokH7CVUaX8
 
 {
-    "title": "LOL",
-    "description": "I changed the title, next time dont forget son.",
-    "date":"2020-04-20",
+    "title": "Testing if i can put with no entry_status",
+    "description": "Entries man",
+    "date":"May 22, 1900",
     "embed": "google.com",
-    "format_id": 2
+    "format_id": 3
 }
 
 #####
@@ -17,16 +17,16 @@ Content-Type: application/json
 Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTEsInVzZXJuYW1lIjoiaGVjdG9yIiwiZW1haWwiOiJoZWN0b3JAZ21haWwuY29tIiwiaWF0IjoxNjA2ODc4MDE1LCJleHAiOjE2MDY5NjQ0MTV9.9Mjj-8a1SyldxM_SHxFc_FwfewwgHyYeU11fKYnybUg
 #####
 
-POST http://localhost:3001/api/stories/10/entries
+POST http://localhost:3001/api/stories/2/entries
 Content-Type: application/json
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwidXNlcm5hbWUiOiJ0ZXN0IiwiZW1haWwiOiJ0ZXN0bWFuQGdtYWlsLmNvbSIsImlhdCI6MTYwNjg3Njg4NCwiZXhwIjoxNjA2OTYzMjg0fQ.9NcYVgM8YNPHp8tF-e98D4XbaDzcbCuUDb9snVYOV_Y
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsInVzZXJuYW1lIjoiaGVjdG9yIiwiZW1haWwiOiJoZWN0b3JAZ21haWwuY29tIiwiaWF0IjoxNjA3NDUyMjUzLCJleHAiOjE2MDc1Mzg2NTN9.8HNJ0IueaSWzl8DUsGtmMdZdvHHXHh3iLZhz0DvAV0g
 
 {
-    "title": "el to the OH EL",
-    "description": "Hey fool, next time try and remember. You know what forget it, i cant even remember what i had for breakfast",
-    "date":"2020-05-28",
+    "title": "yeppp Testman sucks",
+    "description": "You stink",
+    "date":"2020-11-28",
     "embed": "somtext",
-    "format_id": 3
+    "format_id": 2
 }
 
 

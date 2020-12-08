@@ -13,6 +13,6 @@ POST http://localhost:3001/api/auth/login
 Content-Type: application/json
 
 {
-    "email":"testman@gmail.com",
+    "email":"tester@test.com",
     "password":"React!123" 
 }

@@ -1,6 +1,6 @@
-GET http://localhost:3001/api/profile/4
+GET http://localhost:3001/api/profile/12/manage
 Content-Type: application/json
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwidXNlcm5hbWUiOiJ0ZXN0IiwiZW1haWwiOiJ0ZXN0bWFuQGdtYWlsLmNvbSIsImlhdCI6MTYwNzEzNTczMCwiZXhwIjoxNjA3MjIyMTMwfQ.ux-uavdbXH9hFDSkC3icFfDze5HSIc9K6gCLMpdaGfg
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIsInVzZXJuYW1lIjoidGVzdGVyIiwiZW1haWwiOiJ0ZXN0ZXJAdGVzdC5jb20iLCJpYXQiOjE2MDc0MzE5MTIsImV4cCI6MTYwNzUxODMxMn0.XkP-Prv6tb8le9YwSkwtsiQNvLAEAR79r2Qc5lvhe4Y
 
 #####
 GET http://localhost:3001/api/profile/1
