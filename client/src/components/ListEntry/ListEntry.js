@@ -37,7 +37,9 @@ const ListEntry = props => {
                 e.stopPropagation()
                 // eslint-disable-next-line no-restricted-globals
                 if (confirm(`Are you sure you want to delete '${entry.title}' ?`)) {
-                    deleteEntry(entry.story.id, entry.id)
+                    if(deleteEntry){
+                        deleteEntry(entry.story.id, entry.id)
+                    }
                 } else {
                     console.log('delete was cancelled')
                 }
