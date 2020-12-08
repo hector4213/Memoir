@@ -11,12 +11,27 @@ import {getSingleStoryAction} from '../../redux/actions/get'
 import GoHomeButton from '../../components/ButtonTypes/GoHomeButton/GoHomeButton'
 import ButtonsForStory from '../../components/ButtonGroups/ButtonsForStory/ButtonsForStory';
 
+import {useCallback} from 'react'
+import {useHistory} from 'react-router-dom'
+
 const Story = props => {
     const {getSingleStory} = props
-    const {current, user} = props
+    const {current, user, path} = props
 
     const story = current? current.story : null
     const { storyId } = useParams()
+
+
+    // go Home after submit
+    const history = useHistory()
+    const goTo = useCallback(() => history.push(`/`), [history])
+
+    useEffect(()=>{
+        if(path === 'gohome'){
+            goTo()
+        }
+    },[goTo, path])
+
 
     useEffect(()=>{
         getSingleStory(storyId)
@@ -105,7 +120,8 @@ const mapStateToProps = (state, ownProps) => {
     console.log(state)
     return {
         current: state.page.current,
-        user: state.profile.user
+        user: state.profile.user,
+        path: state.page.path
     }
 }
 

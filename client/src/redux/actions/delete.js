@@ -12,6 +12,11 @@ export const deleteStoryAction = storyId => {
             console.log(res)
 
             dispatch({
+                type: 'SET_PATH',
+                payload: 'gohome'
+            })
+
+            dispatch({
                 type: 'TOGGLE_MODAL',
                 payload: false
             })
