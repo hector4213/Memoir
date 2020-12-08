@@ -12,6 +12,18 @@ export const createStoryAction = formInfo => {
             const res = await axios.post(`http://localhost:3001/api/stories/create`, formInfo, {headers: headers})
             console.log(res)
 
+            // START OF PATH CHANGE
+            dispatch({
+                type: 'SET_PATH',
+                payload: 'createdStory'
+            })
+            // needs to be set back to null
+            dispatch({
+                type: 'SET_PATH',
+                payload: null
+            })
+            // END OF PATH CHANGE
+
             dispatch({
                 type: 'TOGGLE_MODAL',
                 payload: false

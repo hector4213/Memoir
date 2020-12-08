@@ -24,13 +24,13 @@ const Story = props => {
 
     // START OF REDIRECT
     const history = useHistory()
-    const goTo = useCallback(() => history.push(`/`), [history])
-    const goToStory = useCallback(() => history.go(0), [history])
+    const goToProfile = useCallback(() => history.push(`/profile`), [history])
+    const refresh = useCallback(() => history.go(0), [history])
 
     useEffect(()=>{
-        if(path === 'gohome'){ goTo() }
-        if(path === 'refreshStory'){goToStory()}
-    },[path, goTo, goToStory])
+        if(path === 'deletedStory'){ goToProfile() }
+        if(path === 'editedStory'){refresh()}
+    },[path, goToProfile, refresh])
     // END OF REDIRECT
 
     useEffect(()=>{

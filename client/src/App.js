@@ -6,7 +6,7 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Redirect
+  // Redirect
 } from "react-router-dom";
 
 import Home from './controllers/Home/Home'
@@ -20,7 +20,6 @@ import EntryCreate from './controllers/EntryCreate/EntryCreate';
 import EntryEdit from './controllers/EntryEdit/EntryEdit'
 
 const App = props => {
-  const {user} = props
   const {storedProfile} = props
 
   useEffect(()=>{
@@ -55,7 +54,7 @@ const App = props => {
           {/* - - - - - - - - - - - - - - - - - - - - - - - */}
 
           <Route exact path="/profile">
-          {user ?  <Profile /> : <Redirect to="/" />}
+            <Profile />
           </Route>
 
           {/* - - - - - - - - - - - - - - - - - - - - - - - */}
@@ -84,9 +83,7 @@ const App = props => {
 }
 
 const mapStateToProps = state =>{
-  return {
-    user: state.profile.user
-  }
+  return {}
 }
 
 const mapDispatchToProps = dispatch => {

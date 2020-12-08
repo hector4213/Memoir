@@ -16,7 +16,7 @@ export const editStoryAction = entryInfo => {
             // START OF PATH CHANGE
             dispatch({
                 type: 'SET_PATH',
-                payload: 'refreshStory'
+                payload: 'editedStory'
             })
             // needs to be set back to null
             dispatch({

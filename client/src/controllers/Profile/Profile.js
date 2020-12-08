@@ -7,9 +7,27 @@ import YourStuff from './YourStuff/YourStuff'
 import GoHomeButton from '../../components/ButtonTypes/GoHomeButton/GoHomeButton'
 import LogOutButton from '../../components/ButtonTypes/LogOutButton/LogOutButton'
 
+import {useCallback, useEffect} from 'react'
+import {useHistory} from 'react-router-dom'
+
 const Profile = props => {
     const [yourStuff, isYourStuff] = useState(true)
-    const {user} = props
+    const {user, path} = props
+
+    // START OF REDIRECT
+    const history = useHistory()
+    const goTo = useCallback(() => history.push(`/`), [history])
+    const refreshPage = useCallback(() => history.go(0), [history])
+
+    useEffect(()=>{
+        if(path === 'createdStory'){refreshPage()}
+        if(path === 'deletedStory'){refreshPage()}
+    },[path, goTo, refreshPage])
+    // END OF REDIRECT
+
+    if(!user){
+        return <div></div>
+    }
 
     return (
         <div className='profile'>
@@ -19,7 +37,7 @@ const Profile = props => {
                 <LogOutButton />
             </div>
 
-            <h1 className='pageTitle'>{user?user.username:'Not Logged In'}</h1>
+            <h1 className='pageTitle'>{user.username}</h1>
 
             <div className='tabs'>
                 <button
@@ -43,15 +61,10 @@ const Profile = props => {
 }
 
 const mapStateToProps = state => {
-    console.log(state)
     return {
-        user: state.profile.user
+        user: state.profile.user,
+        path: state.page.path
     }
 }
 
-const mapDispatchToProps = dispatch => {
-    return {
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Profile)
+export default connect(mapStateToProps)(Profile)

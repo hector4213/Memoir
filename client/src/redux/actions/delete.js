@@ -14,7 +14,7 @@ export const deleteStoryAction = storyId => {
             // START OF PATH CHANGE
             dispatch({
                 type: 'SET_PATH',
-                payload: 'gohome'
+                payload: 'deletedStory'
             })
             // needs to be set back to null
             dispatch({
