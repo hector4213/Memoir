@@ -38,7 +38,7 @@ describe('Test Route for /api/profile/*/manage', async () => {
     )
   })
 
-  it.only('should change status from approved to denied', async () => {
+  it('should change status from approved to denied', async () => {
     const login = await supertest(app)
       .post('/api/auth/login')
       .send({ email: 'tester@test.com', password: 'React!123' })
@@ -55,7 +55,7 @@ describe('Test Route for /api/profile/*/manage', async () => {
         },
       })
       .first()
-    console.log(user.id)
+
     const response = await supertest(app)
       .put(`/api/profile/${user.id}/manage/${foreignEntry.id}`)
       .set('Authorization', `bearer ${token}`)
@@ -63,7 +63,7 @@ describe('Test Route for /api/profile/*/manage', async () => {
       .expect(200)
 
     const updatedEntry = await Entry.query().where({ id: foreignEntry.id })
-    console.log(updatedEntry)
+
     expect(updatedEntry[0].entry_status).to.not.equal(foreignEntry.entry_status)
     expect(updatedEntry[0].entry_status).to.equal(3)
   })
