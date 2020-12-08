@@ -1,8 +1,9 @@
 const express = require('express')
 const User = require('./users.model')
 const jwt = require('../../lib/jwt')
+const manage = require('./manage/manage.routes')
 
-const router = express.Router()
+const router = express.Router({ mergeParams: true })
 
 // GET all users
 router.get('/', async (req, res, next) => {
@@ -50,4 +51,6 @@ router.get('/:id', async (req, res, next) => {
     next(error)
   }
 })
+
+router.use('/:user/manage', manage)
 module.exports = router
