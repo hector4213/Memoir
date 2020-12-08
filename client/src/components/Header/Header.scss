@@ -7,25 +7,26 @@
 
 
 .logo {
-    $logo_size: 300px;
+    $logo_size: 3px;
     width: $logo_size;
     height: $logo_size;
     border-radius: $logo_size;
 
-    background: linear-gradient(to right, $pink, $orange, $yellow);
-    box-shadow: 0px 0px 60px 30px $pink;
+    background: $yellow;
+    box-shadow: 0px 0px 200px 150px $pink;
 
-    margin: auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    z-index: -1;
+    position: absolute;
+    top: 50px;
+    left: 50%;
 }
 
 .title {
     text-align: right;
     width: 350px;
+    padding: 100px 0px;
+    margin: auto;
     color: $dark_blue;
-    margin-right: -80px;
 
     h1 {
         font-size: $title_size;
