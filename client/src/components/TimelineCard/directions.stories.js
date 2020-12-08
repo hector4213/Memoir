@@ -11,7 +11,6 @@ const Template = (args) => <TimelineCard {...args} />
 export const TopEntryCard = Template.bind({})
 TopEntryCard.args = {
     position: 'top',
-    mediaType: 'text',
     entry: {
         format_id: 4,
         embed: 'https://pbs.twimg.com/media/DeX8EoFWkAAx8Db.jpg',
@@ -26,7 +25,6 @@ TopEntryCard.args = {
 export const LeftEntryCard = Template.bind({})
 LeftEntryCard.args = {
     position: 'left',
-    mediaType: 'text',
     entry: {
         format_id: 4,
         embed: 'https://pbs.twimg.com/media/DeX8EoFWkAAx8Db.jpg',
@@ -41,7 +39,6 @@ LeftEntryCard.args = {
 export const RightEntryCard = Template.bind({})
 RightEntryCard.args = {
     position: 'right',
-    mediaType: 'text',
     entry: {
         format_id: 4,
         embed: 'https://pbs.twimg.com/media/DeX8EoFWkAAx8Db.jpg',
@@ -56,7 +53,6 @@ RightEntryCard.args = {
 export const BottomEntryCard = Template.bind({})
 BottomEntryCard.args = {
     position: 'bottom',
-    mediaType: 'text',
     entry: {
         format_id: 4,
         embed: 'https://pbs.twimg.com/media/DeX8EoFWkAAx8Db.jpg',
