@@ -23,7 +23,6 @@ const Entry = props => {
     const refresh = useCallback(() => history.go(0), [history])
 
     useEffect(()=>{
-        console.log('inside of here')
         if(path === 'editedEntry'){ refresh() }
     },[path, refresh])
     // END OF REDIRECT
@@ -70,6 +69,7 @@ const Entry = props => {
 }
 
 const mapStateToProps = state => {
+    console.log(state)
     return {
         current: state.page.current,
         path: state.page.path

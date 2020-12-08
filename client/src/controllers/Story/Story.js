@@ -60,16 +60,7 @@ const Story = props => {
     } else {
         const entryComponents = []
         if(story.entries.length > 0){
-
-            let sortedEntries = story.entries
-
-            if(sortedEntries.length > 0){
-                sortedEntries = sortedEntries.sort( (a,b) => {
-                    return new Date(a.date) - new Date(b.date);
-                })
-            }
-
-            sortedEntries.forEach( (entry, i) => {
+            story.entries.forEach( (entry, i) => {
                 let position
                 if(i === 0){ position = 'top' }   // first entry
                 else if(i === story.entries.length -1){ position = 'bottom' }   // last entry
