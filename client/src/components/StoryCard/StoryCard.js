@@ -54,14 +54,10 @@ const StoryCard = props => {
     )
 }
 
-const mapStateToProps = state => {
-    return {}
-}
-
 const mapDispatchToProps = dispatch => {
     return {
         deleteStory: storyId => dispatch(deleteStoryAction(storyId))
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(StoryCard)
+export default connect(null, mapDispatchToProps)(StoryCard)

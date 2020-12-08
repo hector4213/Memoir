@@ -11,12 +11,27 @@ import {getSingleStoryAction} from '../../redux/actions/get'
 import GoHomeButton from '../../components/ButtonTypes/GoHomeButton/GoHomeButton'
 import ButtonsForStory from '../../components/ButtonGroups/ButtonsForStory/ButtonsForStory';
 
+import {useCallback} from 'react'
+import {useHistory} from 'react-router-dom'
+
 const Story = props => {
     const {getSingleStory} = props
-    const {current, user} = props
+    const {current, user, path} = props
 
     const story = current? current.story : null
     const { storyId } = useParams()
+
+
+    // START OF REDIRECT
+    const history = useHistory()
+    const goToProfile = useCallback(() => history.push(`/profile`), [history])
+    const refresh = useCallback(() => history.go(0), [history])
+
+    useEffect(()=>{
+        if(path === 'deletedStory'){ goToProfile() }
+        if(path === 'editedStory'){refresh()}
+    },[path, goToProfile, refresh])
+    // END OF REDIRECT
 
     useEffect(()=>{
         getSingleStory(storyId)
@@ -102,10 +117,10 @@ const Story = props => {
 }
 
 const mapStateToProps = (state, ownProps) => {
-    console.log(state)
     return {
         current: state.page.current,
-        user: state.profile.user
+        user: state.profile.user,
+        path: state.page.path
     }
 }
 

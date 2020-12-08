@@ -1,8 +1,7 @@
-import React, {useCallback} from 'react'
+import React from 'react'
 import Button from '../Button/Button'
 
 import {connect} from 'react-redux'
-import {useHistory} from 'react-router-dom'
 
 import {createEntryAction} from '../../redux/actions/post'
 import {setErrorAction} from '../../redux/actions/page'
@@ -11,11 +10,7 @@ import {setErrorAction} from '../../redux/actions/page'
 const SubmitCreate = props => {
 
     const { setFormInfo, formInfo, setDate, date } = props
-    const { current, createEntry, setError } = props
-
-    // redirect to go to story
-    const history = useHistory()
-    const gotoStory = useCallback(() => history.push(`/story/${current.story.id}`), [history, current])
+    const { createEntry, setError } = props
 
     return (
         <Button {...{
@@ -30,7 +25,6 @@ const SubmitCreate = props => {
                     const allFields = {...formInfo, date:`${date.month} ${date.day}, ${date.year}`}
                     createEntry(allFields)
                     setError(null)
-                    gotoStory()
                 }
                 else {
                     setFormInfo({

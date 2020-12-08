@@ -21,14 +21,10 @@ const YourStuff = props => {
     )
 }
 
-const mapStateToProps = state => {
-    return {}
-}
-
 const mapDispatchToProps = dispatch => {
     return {
         getMyProfileStuff: () => dispatch(getMyProfileStuffAction())
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(YourStuff)
+export default connect(null, mapDispatchToProps)(YourStuff)

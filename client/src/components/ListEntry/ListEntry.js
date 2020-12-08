@@ -45,14 +45,10 @@ const ListEntry = props => {
     )
 }
 
-const mapStateToProps = state =>{
-    return {}
-}
-
 const mapDispatchToProps = dispatch =>{
     return {
         deleteEntry: (storyId, entryId) => dispatch(deleteEntryAction(storyId, entryId))
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ListEntry)
+export default connect(null, mapDispatchToProps)(ListEntry)

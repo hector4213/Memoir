@@ -70,7 +70,6 @@ const Home = props => {
 }
 
 const mapStateToProps = state => {
-    console.log(state)
     return {
         user: state.profile.user,
         modal: state.page.modal,

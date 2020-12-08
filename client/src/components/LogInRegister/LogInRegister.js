@@ -39,13 +39,9 @@ const LogInRegisterModal = props => {
     )
 }
 
-const mapStateToProps = state =>{
-    return {}
-}
-
 const mapDispatchToProps = dispatch => {
     return {
         clearError: () => dispatch(clearErrorAction())
     }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(LogInRegisterModal)
+export default connect(null, mapDispatchToProps)(LogInRegisterModal)

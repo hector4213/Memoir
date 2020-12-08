@@ -11,6 +11,9 @@ const page = (state = initialState, action) => {
         case 'TOGGLE_MODAL':
             return {...state, modal:action.payload}
 
+        case 'SET_PATH':
+            return {...state, path: action.payload}
+
         case 'SET_ALL_STORIES':
             return {...state, stories:action.payload}
 

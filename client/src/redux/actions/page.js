@@ -1,4 +1,16 @@
 
+
+export const setPathAction = path => {
+	return async (dispatch, getState) => {
+        console.log('inside of set path action')
+
+        dispatch({
+            type: 'SET_PATH',
+            payload: path
+        })
+	}
+}
+
 export const toggleModalAction = () => {
 	return async (dispatch, getState) => {
         dispatch({
