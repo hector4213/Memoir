@@ -28,14 +28,9 @@ const YourEntries = props => {
 }
 
 const mapStateToProps = state => {
-    console.log(state)
     return {
         myEntries: state.profile.myEntries
     }
 }
 
-const mapDispatchToProps = dispatch => {
-    return {}
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(YourEntries)
+export default connect(mapStateToProps)(YourEntries)

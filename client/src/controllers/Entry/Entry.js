@@ -70,7 +70,6 @@ const Entry = props => {
 }
 
 const mapStateToProps = state => {
-    console.log(state)
     return {
         current: state.page.current,
         path: state.page.path
