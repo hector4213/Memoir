@@ -1,18 +1,28 @@
-import React from 'react'
+import React, {useRef, useState} from 'react'
 import './Header.scss'
 
 const Header = props => {
+    const [topPos, setTopPos] = useState()
+    const [leftPos, setLeftPos] = useState()
+    const logo = useRef(null)
+
+    const followMouse = e => {
+        setTopPos(`${e.clientY}px`) //e.pageY
+        setLeftPos(`${e.clientX}px`) //e.pageX
+    }
+
+    const logoStyle = {top:topPos, left:leftPos }
+
 return(
-    <div className='header'>
-        <div className='logo'>
-            <div className='title'>
-                <h1>Memoir</h1>
-                <p>
-                    Learn someone’s story <br/>
-                    Increase your motivation and empathy
-                </p>
-            </div>
+    <div className='header' onMouseMove={followMouse} >
+        <div className='title'>
+            <h1>Memoir</h1>
+            <p>
+                Discover someone’s story
+            </p>
         </div>
+
+        <div className='logo' ref={logo} style={logoStyle}/>
     </div>
 )
 }

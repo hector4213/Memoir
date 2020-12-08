@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import './StoryCreate.scss'
 import Button from '../../components/Button/Button'
 import {connect} from 'react-redux'
-import {createStoryAction} from '../../redux/actions/post'
+import {createStoryAction} from '../../redux/actions/db_post'
 
 const StoryCreate = props => {
     const [formInfo, setFormInfo] = useState()

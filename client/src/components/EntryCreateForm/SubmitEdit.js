@@ -4,9 +4,9 @@ import Button from '../Button/Button'
 import {connect} from 'react-redux'
 import {useHistory} from 'react-router-dom'
 
-import {editEntryAction} from '../../redux/actions/put'
+import {editEntryAction} from '../../redux/actions/db_put'
 import {setErrorAction} from '../../redux/actions/page'
-import {deleteEntryAction} from '../../redux/actions/delete'
+import {deleteEntryAction} from '../../redux/actions/db_delete'
 
 
 

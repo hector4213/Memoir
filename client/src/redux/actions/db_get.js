@@ -19,9 +19,17 @@ export const getSingleStoryAction = storyId => {
 	return async (dispatch, getState) => {
         try {
             const res = await axios.get(`http://localhost:3001/api/stories/${storyId}`)
+            let sortedEntries = res.data.entries
+
+            if(sortedEntries.length > 0){
+                sortedEntries = sortedEntries.sort( (a,b) => {
+                    return new Date(a.date) - new Date(b.date);
+                })
+            }
+
             dispatch({
                 type: 'CURRENT_STORY',
-                payload: res.data
+                payload: {...res.data, entries:sortedEntries }
             })
         }
         catch(error){

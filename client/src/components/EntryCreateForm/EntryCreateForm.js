@@ -4,7 +4,7 @@ import './EntryCreateForm.scss'
 import {connect} from 'react-redux'
 import {useParams} from 'react-router-dom'
 
-import {getSingleStoryAction} from '../../redux/actions/get'
+import {getSingleStoryAction} from '../../redux/actions/db_get'
 
 import MediaType from './MediaType'
 import DateEntry from './DateEntry'

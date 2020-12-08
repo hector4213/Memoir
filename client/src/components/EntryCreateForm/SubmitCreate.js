@@ -3,7 +3,7 @@ import Button from '../Button/Button'
 
 import {connect} from 'react-redux'
 
-import {createEntryAction} from '../../redux/actions/post'
+import {createEntryAction} from '../../redux/actions/db_post'
 import {setErrorAction} from '../../redux/actions/page'
 
 

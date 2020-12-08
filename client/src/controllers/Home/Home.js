@@ -10,7 +10,7 @@ import LogInRegisterModal from '../../components/LogInRegister/LogInRegister'
 
 import {connect} from 'react-redux'
 import {toggleModalAction} from '../../redux/actions/page'
-import {getAllStoriesAction} from '../../redux/actions/get'
+import {getAllStoriesAction} from '../../redux/actions/db_get'
 import LogOutButton from '../../components/ButtonTypes/LogOutButton/LogOutButton'
 
 const Home = props => {

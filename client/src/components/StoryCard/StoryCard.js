@@ -4,7 +4,7 @@ import './StoryCard.scss'
 import {connect} from 'react-redux'
 import { useHistory } from "react-router-dom";
 import { HiOutlineXCircle } from "react-icons/hi";
-import {deleteStoryAction} from '../../redux/actions/delete'
+import {deleteStoryAction} from '../../redux/actions/db_delete'
 
 const StoryCard = props => {
     const {story, specialStyle, deleteCard, inTimeline} = props

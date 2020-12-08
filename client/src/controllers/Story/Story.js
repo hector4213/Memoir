@@ -6,7 +6,7 @@ import {useParams} from "react-router-dom";
 import StoryCard from '../../components/StoryCard/StoryCard'
 import TimelineCard from '../../components/TimelineCard/TimelineCard'
 
-import {getSingleStoryAction} from '../../redux/actions/get'
+import {getSingleStoryAction} from '../../redux/actions/db_get'
 
 import GoHomeButton from '../../components/ButtonTypes/GoHomeButton/GoHomeButton'
 import ButtonsForStory from '../../components/ButtonGroups/ButtonsForStory/ButtonsForStory';
@@ -60,16 +60,7 @@ const Story = props => {
     } else {
         const entryComponents = []
         if(story.entries.length > 0){
-
-            let sortedEntries = story.entries
-
-            if(sortedEntries.length > 0){
-                sortedEntries = sortedEntries.sort( (a,b) => {
-                    return new Date(a.date) - new Date(b.date);
-                })
-            }
-
-            sortedEntries.forEach( (entry, i) => {
+            story.entries.forEach( (entry, i) => {
                 let position
                 if(i === 0){ position = 'top' }   // first entry
                 else if(i === story.entries.length -1){ position = 'bottom' }   // last entry

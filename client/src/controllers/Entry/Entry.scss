@@ -20,3 +20,33 @@
 .entry-caption {
     width: 100%;
 }
+
+.nav-entries {
+    width: 100%;
+    margin-top: 150px;
+    display: flex;
+
+    button {
+        padding: 50px;
+        width: 100%;
+        background: none;
+        border: none;
+        border-radius: 0px;
+        color: $light_blue;
+        font-size: $text_size;
+        line-height: $text_lineheight_size;
+    }
+
+    button:nth-child(1){
+        border-right: 3px solid $light_blue;
+        text-align: right;
+    }
+
+    button:nth-child(2){
+        text-align: left;
+    }
+
+    button:hover {
+        background: $medium_blue;
+    }
+}
