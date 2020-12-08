@@ -21,6 +21,7 @@ const Entry = props => {
     // START OF REDIRECT
     const history = useHistory()
     const refresh = useCallback(() => history.go(0), [history])
+    const goToEntry = useCallback( id => history.push(`/story/${storyId}/entry/${id}`), [history, storyId])
 
     useEffect(()=>{
         if(path === 'editedEntry'){ refresh() }
@@ -67,8 +68,8 @@ const Entry = props => {
                     </div>
 
                     <div className='nav-entries'>
-                        {previousEntry? <p> Previous: {previousEntry.title}</p> : ''}
-                        {nextEntry? <p> Next: {nextEntry.title}</p> : ''}
+                        {previousEntry? <button onClick={()=> goToEntry(previousEntry.id)}> Previous Entry:<br/> {previousEntry.title}</button> : ''}
+                        {nextEntry? <button onClick={()=> goToEntry(nextEntry.id)}> Next Entry:<br/> {nextEntry.title}</button> : ''}
                     </div>
                 </div>
             </div>
@@ -102,7 +103,6 @@ const formatDate = date => {
 }
 
 const mapStateToProps = state => {
-    console.log(state)
     return {
         current: state.page.current,
         path: state.page.path
