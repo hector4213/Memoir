@@ -60,7 +60,6 @@ describe('Routes for /api/stories/*/entries', () => {
       .send({ email: 'tester@test.com', password: 'React!123' })
     const { token } = login.body
     const initialEntries = await Entry.query().where({ story_id: 1 })
-    console.log(initialEntries)
     const response = await supertest(app)
       .delete(`/api/stories/1/entries/15`)
       .set('Authorization', `bearer ${token}`)
