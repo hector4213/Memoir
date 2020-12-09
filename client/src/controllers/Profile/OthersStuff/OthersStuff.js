@@ -2,7 +2,8 @@ import React, {useEffect} from 'react'
 import './OthersStuff.scss'
 import {connect} from 'react-redux'
 
-import {getForeignEntriesAction} from '../../../redux/actions/profile'
+import {getForeignEntriesAction} from '../../../redux/actions/foreignEntries'
+// import {editForeignEntriesAction} from '../../../redux/actions/foreignEntries'
 // import ListEntry from '../../../components/ListEntry/ListEntry'
 
 
@@ -13,18 +14,24 @@ const OthersStuff = props => {
         getForeignEntries()
     }, [getForeignEntries])
 
-    console.log(foreignEntries)
-
     if(!foreignEntries){
         return <div> No foreign entries found </div>
     }
 
-    const needToBeApproved = foreignEntries.filter( entry => entry.format_id === 2)
-    const NTBAEntryCards = needToBeApproved.map( entry => {
+    const needToBeApproved = []
+
+    foreignEntries.forEach( entry => {
+        if(entry.format_id === 2){
+            needToBeApproved.push(entry)
+        }
+    })
+
+    const needToBeApprovedCards = needToBeApproved.map( entry => {
 
         console.log(entry)
-
         return <p key={entry.id}> {entry.title} </p>
+
+
         // return (
         //     <ListEntry {...{
         //         key: entry.id,
@@ -38,32 +45,15 @@ const OthersStuff = props => {
 
             <div className='entries'>
                 <label> Need to be Approved: </label>
-                {NTBAEntryCards? NTBAEntryCards : ''}
+                {needToBeApprovedCards? needToBeApprovedCards : ''}
             </div>
 
             <div className='entries'>
                 <label className='approved'> Approved: </label>
-
-                <div className='listEntries'>
-                    {/* <ListEntry {...{
-                        entryName:'The name of the third entry',
-                        storyName: 'Leonardo',
-                        visible: true
-                    }}/> */}
-                </div>
             </div>
 
             <div className='entries'>
                 <label className='denied'> Denied: </label>
-
-                <div className='listEntries'>
-                    {/* <ListEntry {...{
-                        entryName:'The name of the first entry',
-                        storyName: 'Michael Angelo',
-                        visible: true,
-                        belongsToOtherPerson: true
-                    }}/> */}
-                </div>
             </div>
 
         </div>
@@ -78,7 +68,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch =>{
     return {
-        getForeignEntries: () => dispatch(getForeignEntriesAction())
+        getForeignEntries: () => dispatch(getForeignEntriesAction()),
+        // editForeignEntries: entryId => dispatch(editForeignEntriesAction(entryId)),
     }
 }
 
