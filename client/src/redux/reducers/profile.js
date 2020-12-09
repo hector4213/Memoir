@@ -14,6 +14,9 @@ const profile = (state = initialState, action) => {
         case 'ADD_PROFILE':
             return {...state, ...action.payload}
 
+        case 'EDIT_PROFILE':
+            return {...state, user:action.payload}
+
         case 'ADD_ENTRIES_STORIES':
             return {...state, ...action.payload}
 

@@ -74,3 +74,49 @@ export const editEntryAction = entryInfo => {
         }
     }
 }
+
+// PUT http://localhost:3001/api/profile/12
+// Content-Type: application/json
+
+// {
+//     "username": "usernameChange",
+//     "email": "mychanged@gmail.com"
+// }
+
+export const editProfileAction = profileInfo => {
+	return async (dispatch, getState) => {
+        const token = getState().profile.token
+        const currentUser = getState().profile.user
+
+        try {
+            const headers = {
+                'Content-Type': 'application/json',
+                'Authorization': `bearer ${token}`
+            }
+
+            const res = await axios.put(`http://localhost:3001/api/profile/${profileInfo.id}`, profileInfo, {headers: headers})
+
+            console.log(res)
+
+            dispatch({
+                type: 'EDIT_PROFILE',
+                payload: profileInfo
+            })
+
+            dispatch({
+                type: 'TOGGLE_MODAL',
+                payload: false,
+                showingPage: null
+            })
+
+            localStorage.setItem('profile', JSON.stringify({token:token, user:profileInfo}));
+
+        }
+        catch(error){
+            dispatch({
+                type: 'ERROR',
+                payload: error.response.data.error
+            })
+        }
+    }
+}
