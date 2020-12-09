@@ -28,3 +28,12 @@ export const setErrorAction = errorMessage => {
         })
 	}
 }
+
+export const clearErrorAction = () => {
+	return async (dispatch, getState) => {
+            dispatch({
+                type: 'PROFILE_ERROR',
+                payload: null
+            })
+	}
+}

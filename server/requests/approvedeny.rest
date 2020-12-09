@@ -2,5 +2,5 @@ PUT http://localhost:3001/api/profile/12/manage/1
 Content-Type:application/json
 Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIsInVzZXJuYW1lIjoidGVzdGVyIiwiZW1haWwiOiJ0ZXN0ZXJAdGVzdC5jb20iLCJpYXQiOjE2MDc0NTQxNzUsImV4cCI6MTYwNzU0MDU3NX0.gqYzJmYG8TUqfgN8TtZj5t_1WGI8TxYHuUfxiYziL_Q
 {
- "entry_status": 3
+    "entry_status": 3
 }
