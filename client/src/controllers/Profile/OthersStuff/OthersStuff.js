@@ -25,7 +25,6 @@ const OthersStuff = props => {
 
     if(foreignEntries.length>0){
         foreignEntries.forEach( entry => {
-            console.log(entry)
 
             if(entry.entry_status === 1){
                 approved.push(<ListEntry {...{
