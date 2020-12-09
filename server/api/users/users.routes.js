@@ -6,6 +6,11 @@ const manage = require('./manage/manage.routes')
 
 const router = express.Router({ mergeParams: true })
 
+const schema = yup.object().shape({
+  username: yup.string().trim().min(2).required(),
+  email: yup.string().trim().email().required(),
+})
+
 // GET all users
 router.get('/', async (req, res, next) => {
   const users = await User.query().select('id', 'username')
@@ -57,7 +62,7 @@ router.get('/:id', async (req, res, next) => {
 
       if (isUser) {
         await User.query().deleteById(id)
-        res.json(204)
+        res.status(204)
       }
     } catch (error) {
       next(error)
@@ -66,6 +71,22 @@ router.get('/:id', async (req, res, next) => {
 
   router.put('/:id', async (req, res, next) => {
     const { id } = req.params
+    const { username, email } = req.body
+    try {
+      const decodedToken = await jwt.verify(req.token)
+      const isUser = decodedToken.id === Number(id)
+
+      if (isUser) {
+        await schema.validate({ username, email })
+        await User.query().findById(id).patch({
+          username,
+          email,
+        })
+        res.status(200).json({ msg: 'User updated' })
+      }
+    } catch (error) {
+      next(error)
+    }
   })
 })
 
