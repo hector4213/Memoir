@@ -13,13 +13,27 @@ import {toggleModalAction} from '../../redux/actions/page'
 import {getAllStoriesAction} from '../../redux/actions/db_get'
 import LogOutButton from '../../components/ButtonTypes/LogOutButton/LogOutButton'
 
+import {useCallback} from 'react'
+import {useHistory} from 'react-router-dom'
+
 const Home = props => {
     const {toggleModal, getAllStories} = props
-    const {user, modal, stories} = props
+    const {user, modal, stories, path} = props
 
     useEffect(()=>{
         getAllStories()
     }, [getAllStories])
+
+
+    // START OF REDIRECT
+    const history = useHistory()
+    const goToProfile = useCallback(() => history.push(`/profile`), [history])
+
+    useEffect(()=>{
+        if(path === 'loggedIn'){ goToProfile() }
+    },[path, goToProfile])
+    // END OF REDIRECT
+
 
     let cards = []
 
@@ -73,7 +87,8 @@ const mapStateToProps = state => {
     return {
         user: state.profile.user,
         modal: state.page.modal,
-        stories: state.page.stories
+        stories: state.page.stories,
+        path: state.page.path
     }
 }
 

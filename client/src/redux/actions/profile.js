@@ -66,7 +66,7 @@ export const logInAction = formInfo => {
                 })
                 dispatch({
                     type: 'SET_PATH',
-                    payload: null
+                    payload: 'loggedIn'
                 })
 
                 localStorage.setItem('profile', JSON.stringify(response.data));
