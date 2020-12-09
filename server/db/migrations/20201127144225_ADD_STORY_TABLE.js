@@ -26,6 +26,7 @@ exports.up = async (knex) => {
         .references('id')
         .inTable(tableNames.users)
         .notNullable()
+        .onDelete('CASCADE')
       table
         .integer('format_id')
         .references('id')

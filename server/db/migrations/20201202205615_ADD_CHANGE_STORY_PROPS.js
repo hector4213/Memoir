@@ -7,7 +7,7 @@ exports.up = async (knex) => {
       table.dropColumn('title')
       table.string('name', 128).notNullable()
       table.string('occupation').notNullable()
-      table.string('story_img')
+      table.text('story_img')
     }),
   ])
 }

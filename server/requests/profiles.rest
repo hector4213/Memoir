@@ -3,4 +3,19 @@ Content-Type: application/json
 Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIsInVzZXJuYW1lIjoidGVzdGVyIiwiZW1haWwiOiJ0ZXN0ZXJAdGVzdC5jb20iLCJpYXQiOjE2MDc0MzE5MTIsImV4cCI6MTYwNzUxODMxMn0.XkP-Prv6tb8le9YwSkwtsiQNvLAEAR79r2Qc5lvhe4Y
 
 #####
-GET http://localhost:3001/api/profile/1
+GET http://localhost:3001/api/profile/12
+
+#####
+PUT http://localhost:3001/api/profile/12
+Content-Type: application/json
+
+{
+    "username": "usernameChange",
+    "email": "mychanged@gmail.com"
+}
+
+###
+
+DELETE http://localhost:3001/api/profile/12
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIsInVzZXJuYW1lIjoidGVzdGVyIiwiZW1haWwiOiJ0ZXN0ZXJAdGVzdC5jb20iLCJpYXQiOjE2MDc1MTYyMjgsImV4cCI6MTYwODEyMTAyOH0.9nq_YqZlj5DCmzIryXxqDAd4F4hdQZQyqmFi7rmiXr0
