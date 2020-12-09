@@ -17,7 +17,7 @@ const SubmitEdit = props => {
 
     // redirect to go to story
     const history = useHistory()
-    const gotoEntry = useCallback(() => history.push(`/story/${current.story.id}/entry/${current.entry[0].id}`), [history, current])
+    const gotoEntry = useCallback(() => history.push(`/story/${current.story.id}/entry/${current.entry.id}`), [history, current])
 
     return (
         <div className='submit-edit'>
@@ -29,7 +29,7 @@ const SubmitEdit = props => {
                 e.preventDefault()
                 // eslint-disable-next-line no-restricted-globals
                 if (confirm(`Are you sure you want to delete this entry?`)) {
-                    deleteEntry(current.story.id, current.entry[0].id)
+                    deleteEntry(current.story.id, current.entry.id)
                 } else {
                     console.log('delete was cancelled')
                 }

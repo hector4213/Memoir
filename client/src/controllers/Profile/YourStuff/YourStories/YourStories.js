@@ -8,7 +8,7 @@ import Modal from '../../../../components/Modal/Modal';
 import StoryCreate from '../../../StoryCreate/StoryCreate'
 
 const YourStories = props => {
-    const {toggleModal, modal, myStories} = props
+    const {toggleModal, modal, showingPage, myStories} = props
 
     let myEntryCards = []
 
@@ -27,35 +27,40 @@ const YourStories = props => {
     return (
         <div className='yourStories'>
 
-            {modal? <Modal> <StoryCreate/> </Modal>: ''}
 
             <label> Your Stories: </label>
-                <div className='cards'>
-                    {myEntryCards}
-                    <div
-                        className='storyCard addStory'
-                        onClick={toggleModal}
-                    >
-                        <div className='addStoryPlus'>
-                        <HiPlus/>
-                        </div>
-                        <h1>Add Story</h1>
+            <div className='cards'>
+                {myEntryCards}
+
+                <div
+                    className='storyCard addStory'
+                    onClick={() => toggleModal('addStory')}
+                >
+                    <div className='addStoryPlus'>
+                    <HiPlus/>
                     </div>
+                    <h1>Add Story</h1>
                 </div>
             </div>
+
+            {showingPage === 'addStory' && modal? <Modal> <StoryCreate/> </Modal>: ''}
+
+        </div>
     )
 }
 
 const mapStateToProps = state => {
+    console.log(state)
     return {
         modal: state.page.modal,
-        myStories: state.profile.myStories
+        showingPage: state.page.showingPage,
+        myStories: state.profile.myStories,
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        toggleModal: () => dispatch(toggleModalAction())
+        toggleModal: (showingPage) => dispatch(toggleModalAction(showingPage))
     }
 }
 

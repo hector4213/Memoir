@@ -4,8 +4,8 @@ import './Profile.scss'
 
 import YourStuff from './YourStuff/YourStuff'
 import OthersStuff from './OthersStuff/OthersStuff'
+import ButtonsForProfile from '../../components/ButtonGroups/ButtonsForProfile/ButtonsForProfile'
 import GoHomeButton from '../../components/ButtonTypes/GoHomeButton/GoHomeButton'
-import LogOutButton from '../../components/ButtonTypes/LogOutButton/LogOutButton'
 
 import {useCallback, useEffect} from 'react'
 import {useHistory} from 'react-router-dom'
@@ -34,10 +34,7 @@ const Profile = props => {
     return (
         <div className='profile'>
             <GoHomeButton />
-
-            <div className='profile-btns'>
-                <LogOutButton />
-            </div>
+            <ButtonsForProfile />
 
             <h1 className='pageTitle'>{user.username}</h1>
 
