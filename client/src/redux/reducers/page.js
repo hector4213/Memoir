@@ -9,7 +9,7 @@ const page = (state = initialState, action) => {
             return {...state, error:action.payload}
 
         case 'TOGGLE_MODAL':
-            return {...state, modal:action.payload}
+            return {...state, modal:action.payload, showingPage: action.showingPage}
 
         case 'SET_PATH':
             return {...state, path: action.payload}

@@ -36,7 +36,7 @@ const ButtonsForEntry = props => {
 const mapStateToProps = state => {
     return {
         user: state.profile.user,
-        authorId: state.page.current.entry[0].user.id
+        authorId: state.page.current.entry.user.id
     }
 }
 

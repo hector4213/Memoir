@@ -34,9 +34,9 @@ const Entry = props => {
     }, [getSingleEntry, getSingleStory, storyId, entryId])
 
 
-    if(!current || !current.entry || !current.story || !current.entry[0]){ return <div> This entry does not exist </div> }
+    if(!current || !current.entry || !current.story || !current.entry){ return <div> This entry does not exist </div> }
     else {
-        const entry = current.entry[0]
+        const entry = current.entry
         const {format_id, title, description, embed, date, user, id} = entry
 
         // NEED THIS TO EMBED IFRAME FOR VIDEO AND AUDIO

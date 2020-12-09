@@ -43,7 +43,7 @@ export const editEntryAction = entryInfo => {
 	return async (dispatch, getState) => {
         const token = getState().profile.token
         const storyId = getState().page.current.story.id
-        const entryId = getState().page.current.entry[0].id
+        const entryId = getState().page.current.entry.id
 
         try {
             const headers = {

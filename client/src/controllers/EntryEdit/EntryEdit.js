@@ -39,7 +39,7 @@ const EntryEdit = props => {
         <div className='entry-edit'>
             <GoHomeButton />
             <GoToEntryButton />
-            <EntryCreateForm edit={true} entry={current.entry[0]} />
+            <EntryCreateForm edit={true} entry={current.entry} />
         </div>
     )
 }

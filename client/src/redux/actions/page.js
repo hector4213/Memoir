@@ -11,12 +11,21 @@ export const setPathAction = path => {
 	}
 }
 
-export const toggleModalAction = () => {
+export const toggleModalAction = (showPage) => {
 	return async (dispatch, getState) => {
-        dispatch({
-            type: 'TOGGLE_MODAL',
-            payload: !getState().page.modal
-        })
+        if(showPage){
+            dispatch({
+                type: 'TOGGLE_MODAL',
+                payload: !getState().page.modal,
+                showingPage: showPage
+            })
+        } else {
+            dispatch({
+                type: 'TOGGLE_MODAL',
+                payload: !getState().page.modal,
+                showingPage: null
+            })
+        }
 	}
 }
 
