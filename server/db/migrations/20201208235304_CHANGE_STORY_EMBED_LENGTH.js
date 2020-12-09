@@ -1,3 +1,16 @@
-exports.up = async (knex) => {}
+const tableNames = require('../../constants/tableNames')
 
-exports.down = async (knex) => {}
+exports.up = async (knex) => {
+  await Promise.all([
+    knex.schema.table(tableNames.story, (table) => {
+      table.dropColumn('embed')
+      table.text('embed')
+    }),
+  ])
+}
+
+exports.down = async (knex) => {
+  await knex.schema.table(tableNames.story, (table) => {
+    table.dropColumn('embed')
+  })
+}
