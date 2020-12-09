@@ -22,9 +22,8 @@ describe('Routes for /api/stories/*/entries', () => {
       .get(`/api/stories/1/entries/${targetEntry.id}`)
       .expect('Content-Type', /json/)
       .expect(200)
-
-    expect(response.body).to.have.lengthOf(1)
-    expect(response.body[0].id).to.equal(targetEntry.id)
+    expect(response.body).to.be.a('object')
+    expect(response.body.id).to.equal(targetEntry.id)
   })
 
   it('Can update an entry they  provided token from their story', async () => {
