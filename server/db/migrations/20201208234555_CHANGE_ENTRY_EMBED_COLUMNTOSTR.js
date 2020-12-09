@@ -4,13 +4,15 @@ exports.up = async (knex) => {
   await Promise.all([
     knex.schema.table(tableNames.entry, (table) => {
       table.dropColumn('embed')
+    }),
+    knex.schema.table(tableNames.entry, (table) => {
       table.text('embed')
     }),
   ])
 }
 
 exports.down = async (knex) => {
-  await knex.schema.table(tableNames.entry, (table) => {
+  return knex.schema.table(tableNames.entry, (table) => {
     table.dropColumn('embed')
   })
 }
