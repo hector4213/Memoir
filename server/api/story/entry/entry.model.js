@@ -12,6 +12,7 @@ class Entry extends Model {
     const Format = require('../../format/format.model')
     const User = require('../../users/users.model')
     const Status = require('../entry/status.model')
+    const Hashtag = require('./hashtag/hashtag.model')
     return {
       story: {
         relation: Model.BelongsToOneRelation,
@@ -43,6 +44,18 @@ class Entry extends Model {
         join: {
           from: 'entry.entry_status',
           to: 'entry_status.id',
+        },
+      },
+      hashtags: {
+        relation: Model.ManyToManyRelation,
+        modelClass: Hashtag,
+        join: {
+          from: 'entry.id',
+          through: {
+            from: 'hash_tag_relations.entry_id',
+            to: 'hash_tag_relations.tag_id',
+          },
+          to: 'hashtags.id',
         },
       },
     }
