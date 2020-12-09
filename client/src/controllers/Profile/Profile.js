@@ -23,6 +23,7 @@ const Profile = props => {
         if(path === 'createdStory' || path === 'deletedStory' || path === 'deletedEntry'){
             refreshPage()
         }
+        if(path === 'loggedOut'){ goTo() }
     },[path, goTo, refreshPage])
     // END OF REDIRECT
 
@@ -62,6 +63,7 @@ const Profile = props => {
 }
 
 const mapStateToProps = state => {
+    console.log(state)
     return {
         user: state.profile.user,
         path: state.page.path

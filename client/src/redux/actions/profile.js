@@ -64,6 +64,10 @@ export const logInAction = formInfo => {
                     type: 'TOGGLE_MODAL',
                     payload: !getState().page.modal
                 })
+                dispatch({
+                    type: 'SET_PATH',
+                    payload: null
+                })
 
                 localStorage.setItem('profile', JSON.stringify(response.data));
 
@@ -86,19 +90,14 @@ export const logInAction = formInfo => {
 export const logOutAction = () => {
     localStorage.clear()
 	return async (dispatch, getState) => {
-        dispatch({ type: 'REMOVE_PROFILE'})
 
         // START OF PATH CHANGE
         dispatch({
             type: 'SET_PATH',
-            payload: 'editedStory'
+            payload: 'loggedOut'
         })
-        // needs to be set back to null
-        dispatch({
-            type: 'SET_PATH',
-            payload: null
-        })
-        // END OF PATH CHANGE
+
+        dispatch({ type: 'REMOVE_PROFILE'})
     }
 }
 
