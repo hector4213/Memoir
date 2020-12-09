@@ -6,14 +6,18 @@ import {useHistory} from 'react-router-dom'
 import Button from '../../Button/Button'
 
 const GoToProfileButton = props => {
-    const {name} = props
+    const {user} = props
     const history = useHistory()
     const goProfile = useCallback(() => history.push(`/profile`), [history])
+
+    if(!user){
+        return <div></div>
+    }
 
     return (
         <Button
             {...{
-                label: `${name}'s Profile`,
+                label: `${user.username}'s Profile`,
                 transparent : true,
                 extraClass: 'profile-btn',
                 onClick: goProfile
@@ -24,7 +28,7 @@ const GoToProfileButton = props => {
 
 const mapStateToProps = state => {
     return {
-        name: state.profile.user.username
+        user: state.profile.user
     }
 }
 export default connect(mapStateToProps)(GoToProfileButton)

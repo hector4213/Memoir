@@ -87,6 +87,18 @@ export const logOutAction = () => {
     localStorage.clear()
 	return async (dispatch, getState) => {
         dispatch({ type: 'REMOVE_PROFILE'})
+
+        // START OF PATH CHANGE
+        dispatch({
+            type: 'SET_PATH',
+            payload: 'editedStory'
+        })
+        // needs to be set back to null
+        dispatch({
+            type: 'SET_PATH',
+            payload: null
+        })
+        // END OF PATH CHANGE
     }
 }
 

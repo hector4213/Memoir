@@ -1,5 +1,7 @@
 
-export const initialState = {}
+export const initialState = {
+    user: null
+}
 
 const profile = (state = initialState, action) => {
     switch (action.type) {

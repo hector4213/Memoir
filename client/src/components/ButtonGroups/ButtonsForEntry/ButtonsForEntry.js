@@ -8,8 +8,10 @@ import Button from '../../Button/Button'
 import GoToProfile from '../..//ButtonTypes/GoToProfileButton/GoToProfileButton'
 
 const ButtonsForEntry = props => {
-    const {userId, authorId} = props
+    const {user, authorId} = props
     const { storyId, entryId } = useParams()
+
+    const userId = user? user.id : null
 
     const history = useHistory()
     const gotoEdit = useCallback(() => history.push(`/story/${storyId}/entry/${entryId}/editEntry`), [history, storyId, entryId])
@@ -33,7 +35,7 @@ const ButtonsForEntry = props => {
 
 const mapStateToProps = state => {
     return {
-        userId: state.profile.user.id,
+        user: state.profile.user,
         authorId: state.page.current.entry[0].user.id
     }
 }
