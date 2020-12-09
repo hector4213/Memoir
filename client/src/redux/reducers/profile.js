@@ -17,6 +17,9 @@ const profile = (state = initialState, action) => {
         case 'ADD_ENTRIES_STORIES':
             return {...state, ...action.payload}
 
+        case 'FOREIGN_ENTRIES':
+            return {...state, foreignEntries: action.payload}
+
         default:
             return state
     }

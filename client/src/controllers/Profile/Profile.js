@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import './Profile.scss'
 
 import YourStuff from './YourStuff/YourStuff'
-// import OthersStuff from './OthersStuff/OthersStuff'
+import OthersStuff from './OthersStuff/OthersStuff'
 import GoHomeButton from '../../components/ButtonTypes/GoHomeButton/GoHomeButton'
 import LogOutButton from '../../components/ButtonTypes/LogOutButton/LogOutButton'
 
@@ -48,22 +48,20 @@ const Profile = props => {
                 >
                 Your Stuff </button>
 
-                {/* <button
+                <button
                     className={yourStuff? '' : 'active' }
                     onClick={()=>isYourStuff(false)}
                 >
-                Others Stuff </button> */}
+                Others Stuff </button>
             </div>
 
-
-            <YourStuff/>
-            {/* {yourStuff? <YourStuff/> : <OthersStuff/> } */}
+            {yourStuff? <YourStuff/> : <OthersStuff/> }
         </div>
     )
 }
 
 const mapStateToProps = state => {
-    console.log(state)
+
     return {
         user: state.profile.user,
         path: state.page.path
