@@ -32,9 +32,6 @@ router.get('/:id', async (req, res, next) => {
   if (!req.token && basicInfo) {
     return res.status(200).json(basicInfo).end()
   }
-  if (!basicInfo) {
-    return res.status(404).json({ error: 'no user found' }).end()
-  }
 
   try {
     const decodedToken = await jwt.verify(req.token)
