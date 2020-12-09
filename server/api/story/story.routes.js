@@ -104,12 +104,14 @@ router.put('/edit/:storyId', async (req, res, next) => {
 
 router.delete('/:storyId', async (req, res, next) => {
   const { storyId } = req.params
-  const story = await Story.query().findById(storyId)
-  if (!story) return res.status(404).json({ error: 'Story does not exist' })
-  const decodedToken = await jwt.verify(req.token)
-  const isVerified = decodedToken.id === story.author_id
 
   try {
+    const decodedToken = await jwt.verify(req.token)
+    const story = await Story.query().findById(storyId)
+    if (!story) return res.status(404).json({ error: 'Story does not exist' })
+
+    const isVerified = decodedToken.id === story.author_id
+
     if (isVerified) {
       await Story.query().deleteById(storyId)
       return res.status(200).json({ msg: 'Story deleted' })

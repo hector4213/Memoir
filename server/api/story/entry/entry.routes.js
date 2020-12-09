@@ -81,11 +81,11 @@ router.get('/:id', async (req, res, next) => {
 router.put('/edit/:id', async (req, res, next) => {
   const { id, storyId } = req.params
   const { title, description, date, embed, format_id } = req.body
-  const decodedToken = await jwt.verify(req.token)
-  const editItem = await Entry.query().withGraphFetched('story').findById(id)
-  if (!editItem) return res.status(401).json({ error: 'item does not exist' })
-  const isVerified = decodedToken.id === editItem.user_id
   try {
+    const decodedToken = await jwt.verify(req.token)
+    const editItem = await Entry.query().withGraphFetched('story').findById(id)
+    if (!editItem) return res.status(401).json({ error: 'item does not exist' })
+    const isVerified = decodedToken.id === editItem.user_id
     await schema.validate({
       title,
       description,
