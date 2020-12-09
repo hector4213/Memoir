@@ -1,6 +1,7 @@
 const express = require('express')
 const User = require('./users.model')
 const jwt = require('../../lib/jwt')
+const yup = require('yup')
 const manage = require('./manage/manage.routes')
 
 const router = express.Router({ mergeParams: true })
@@ -61,6 +62,10 @@ router.get('/:id', async (req, res, next) => {
     } catch (error) {
       next(error)
     }
+  })
+
+  router.put('/:id', async (req, res, next) => {
+    const { id } = req.params
   })
 })
 
