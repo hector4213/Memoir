@@ -14,7 +14,7 @@ import {useHistory} from 'react-router-dom'
 
 const Entry = props => {
     const {getSingleEntry, getSingleStory} = props
-    const {current, path} = props
+    const {current, path, loggedInUser} = props
 
     const { storyId, entryId } = useParams()
 
@@ -54,7 +54,7 @@ const Entry = props => {
             <div className='single-entry'>
                 <GoHomeButton />
                 <GoToStoryButton />
-                <ButtonsForEntry />
+                {loggedInUser? <ButtonsForEntry />: ''}
 
                 <div className='entry-container'>
                     {format_id === 1 || format_id === 3? 'this is a video or audio that will be embeded once i have real embeds' :''}
@@ -105,6 +105,7 @@ const formatDate = date => {
 const mapStateToProps = state => {
     return {
         current: state.page.current,
+        loggedInUser: state.profile.user,
         path: state.page.path
     }
 }

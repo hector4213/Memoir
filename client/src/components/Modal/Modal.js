@@ -3,7 +3,7 @@ import './Modal.scss'
 
 import {connect} from 'react-redux'
 import {toggleModalAction} from '../../redux/actions/page'
-import {clearErrorAction} from '../../redux/actions/profile'
+import {clearErrorAction} from '../../redux/actions/page'
 
 const Modal = props => {
     const {toggleModal, clearError, error} = props

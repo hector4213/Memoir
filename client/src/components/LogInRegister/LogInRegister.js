@@ -6,7 +6,7 @@ import {connect} from 'react-redux'
 import RegisterForm from './RegisterForm'
 import LogInForm from './LogInForm'
 
-import {clearErrorAction} from '../../redux/actions/profile'
+import {clearErrorAction} from '../../redux/actions/page'
 
 const LogInRegisterModal = props => {
     const [registerTab, isRegisterTab] = useState(true)

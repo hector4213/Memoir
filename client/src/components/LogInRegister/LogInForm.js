@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import Button from '../Button/Button'
 
 import {connect} from 'react-redux'
-import {logInAction} from '../../redux/actions/profile'
+import {logInAction} from '../../redux/actions/logInOut'
 
 
 const LogInForm = props => {

@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import {connect} from 'react-redux'
 import Button from '../Button/Button'
 
-import {registerUserAction} from '../../redux/actions/profile'
+import {registerUserAction} from '../../redux/actions/register'
 
 const RegisterForm = props => {
     const [formInfo, setFormInfo] = useState()

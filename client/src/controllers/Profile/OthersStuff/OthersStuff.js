@@ -1,87 +1,76 @@
-import React from 'react'
-import ListEntry from '../../../components/ListEntry/ListEntry'
+import React, {useEffect} from 'react'
 import './OthersStuff.scss'
+import {connect} from 'react-redux'
+
+import {getForeignEntriesAction} from '../../../redux/actions/foreignEntries'
+// import {editForeignEntriesAction} from '../../../redux/actions/foreignEntries'
+// import ListEntry from '../../../components/ListEntry/ListEntry'
+
 
 const OthersStuff = props => {
+    const { getForeignEntries, foreignEntries } = props
+
+    useEffect(() => {
+        getForeignEntries()
+    }, [getForeignEntries])
+
+    if(!foreignEntries){
+        return <div> No foreign entries found </div>
+    }
+
+    const needToBeApproved = []
+
+    foreignEntries.forEach( entry => {
+        if(entry.format_id === 2){
+            needToBeApproved.push(entry)
+        }
+    })
+
+    const needToBeApprovedCards = needToBeApproved.map( entry => {
+
+        console.log(entry)
+        return <p key={entry.id}> {entry.title} </p>
+
+
+        // return (
+        //     <ListEntry {...{
+        //         key: entry.id,
+        //         entry: entry
+        //     }}/>
+        // )
+    })
+
     return (
         <div className = 'othersStuff'>
 
             <div className='entries'>
                 <label> Need to be Approved: </label>
-
-                <div className='listEntries'>
-                    <ListEntry {...{
-                        entryName:'The name of the first entry',
-                        storyName: 'Michael Angelo',
-                        visible: true,
-                        belongsToOtherPerson: true
-                    }}/>
-
-                    <ListEntry {...{
-                        entryName:'The name of the second entry',
-                        storyName: 'Raphael',
-                        visible: false,
-                        belongsToOtherPerson: true
-                    }}/>
-
-                    <ListEntry {...{
-                        entryName:'The name of the third entry',
-                        storyName: 'Leonardo',
-                        visible: true,
-                        belongsToOtherPerson: true
-                    }}/>
-                </div>
+                {needToBeApprovedCards? needToBeApprovedCards : ''}
             </div>
 
             <div className='entries'>
                 <label className='approved'> Approved: </label>
-
-                <div className='listEntries'>
-                    <ListEntry {...{
-                        entryName:'The name of the first entry',
-                        storyName: 'Michael Angelo',
-                        visible: true
-                    }}/>
-                    <ListEntry {...{
-                        entryName:'The name of the second entry',
-                        storyName: 'Raphael',
-                        visible: false
-                    }}/>
-                    <ListEntry {...{
-                        entryName:'The name of the third entry',
-                        storyName: 'Leonardo',
-                        visible: true
-                    }}/>
-                </div>
             </div>
 
             <div className='entries'>
                 <label className='denied'> Denied: </label>
-
-                <div className='listEntries'>
-                    <ListEntry {...{
-                        entryName:'The name of the first entry',
-                        storyName: 'Michael Angelo',
-                        visible: true,
-                        belongsToOtherPerson: true
-                    }}/>
-                    <ListEntry {...{
-                        entryName:'The name of the second entry',
-                        storyName: 'Raphael',
-                        visible: false,
-                        belongsToOtherPerson: true
-                    }}/>
-                    <ListEntry {...{
-                        entryName:'The name of the third entry',
-                        storyName: 'Leonardo',
-                        visible: true,
-                        belongsToOtherPerson: true
-                    }}/>
-                </div>
             </div>
 
         </div>
     )
 }
 
-export default OthersStuff
+const mapStateToProps = state => {
+    return {
+        foreignEntries: state.profile.foreignEntries
+    }
+}
+
+const mapDispatchToProps = dispatch =>{
+    return {
+        getForeignEntries: () => dispatch(getForeignEntriesAction()),
+        // editForeignEntries: entryId => dispatch(editForeignEntriesAction(entryId)),
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(OthersStuff)

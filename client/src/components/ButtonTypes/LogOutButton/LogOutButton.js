@@ -2,7 +2,7 @@ import React from 'react'
 import './LogOutButton.scss'
 import {connect} from 'react-redux'
 
-import {logOutAction} from '../../../redux/actions/profile'
+import {logOutAction} from '../../../redux/actions/logInOut'
 import Button from '../../Button/Button'
 
 const LogOutButton = props => {
