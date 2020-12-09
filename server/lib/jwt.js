@@ -6,7 +6,7 @@ const sign = (payload) => {
       payload,
       process.env.JWT_SECRET,
       {
-        expiresIn: '1d',
+        expiresIn: '7d',
       },
       (error, token) => {
         if (error) return reject(error)
