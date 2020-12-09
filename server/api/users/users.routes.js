@@ -8,7 +8,7 @@ const router = express.Router({ mergeParams: true })
 
 const schema = yup.object().shape({
   username: yup.string().trim().min(2).required(),
-  email: yup.string().trim().email().required(),
+  email: yup.string().trim().email(),
 })
 
 // GET all users
@@ -53,41 +53,44 @@ router.get('/:id', async (req, res, next) => {
   } catch (error) {
     next(error)
   }
+})
 
-  router.delete('/:id', async (req, res, next) => {
-    const { id } = req.params
-    try {
-      const decodedToken = jwt.verify(req.token)
-      const isUser = decodedToken.id === Number(id)
-
-      if (isUser) {
-        await User.query().deleteById(id)
-        res.status(204)
-      }
-    } catch (error) {
-      next(error)
+// Delete user account
+router.delete('/:id', async (req, res, next) => {
+  const { id } = req.params
+  try {
+    const decodedToken = await jwt.verify(req.token)
+    const isUser = decodedToken.id === Number(id)
+    console.log(decodedToken.id, id)
+    if (isUser) {
+      await User.query().deleteById(id)
+      return res.status(200).json({ msg: 'User deleted' })
     }
-  })
+  } catch (error) {
+    next(error)
+  }
+})
 
-  router.put('/:id', async (req, res, next) => {
-    const { id } = req.params
-    const { username, email } = req.body
-    try {
-      const decodedToken = await jwt.verify(req.token)
-      const isUser = decodedToken.id === Number(id)
+//Update user account
 
-      if (isUser) {
-        await schema.validate({ username, email })
-        await User.query().findById(id).patch({
-          username,
-          email,
-        })
-        res.status(200).json({ msg: 'User updated' })
-      }
-    } catch (error) {
-      next(error)
+router.put('/:id', async (req, res, next) => {
+  const { id } = req.params
+  const { username, email } = req.body
+  try {
+    const decodedToken = await jwt.verify(req.token)
+    const isUser = decodedToken.id === Number(id)
+    const updatedFields = { username, email }
+    await schema.validate(updatedFields)
+    if (isUser) {
+      await User.query().findById(id).patch({
+        username,
+        email,
+      })
+      return res.status(200).json({ msg: 'User updated' })
     }
-  })
+  } catch (error) {
+    next(error)
+  }
 })
 
 router.use('/:user/manage', manage)
