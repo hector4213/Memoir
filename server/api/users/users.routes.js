@@ -50,6 +50,21 @@ router.get('/:id', async (req, res, next) => {
   } catch (error) {
     next(error)
   }
+
+  router.delete('/:id', async (req, res, next) => {
+    const { id } = req.params
+    try {
+      const decodedToken = jwt.verify(req.token)
+      const isUser = decodedToken.id === Number(id)
+
+      if (isUser) {
+        await User.query().deleteById(id)
+        res.json(204)
+      }
+    } catch (error) {
+      next(error)
+    }
+  })
 })
 
 router.use('/:user/manage', manage)
