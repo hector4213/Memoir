@@ -61,10 +61,9 @@ router.delete('/:id', async (req, res, next) => {
   try {
     const decodedToken = await jwt.verify(req.token)
     const isUser = decodedToken.id === Number(id)
-    console.log(decodedToken.id, id)
     if (isUser) {
       await User.query().deleteById(id)
-      return res.status(200).json({ msg: 'User deleted' })
+      return res.status(204).end()
     }
   } catch (error) {
     next(error)
