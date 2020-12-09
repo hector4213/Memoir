@@ -63,4 +63,35 @@ describe('GET profile /api/users', () => {
     const afterDelete = await User.query().select('id', 'username')
     expect(afterDelete.length).to.equal(allUsers.length - 1)
   })
+
+  it('should update the users profile fields "username" and "password"', async () => {
+    const login = await supertest(app)
+      .post('/api/auth/login')
+      .send({ email: 'tester@test.com', password: 'React!123' })
+    const { token, user } = login.body
+
+    const initialProfile = await User.query()
+      .select('id', 'username')
+      .findById(user.id)
+
+    const updatedFields = {
+      username: 'dummytest',
+      email: 'dummy@dummy.com',
+    }
+
+    const response = await supertest(app)
+      .put(`/api/profile/${user.id}`)
+      .set('Authorization', `bearer ${token}`)
+      .send(updatedFields)
+      .expect(200)
+
+    const updatedProfile = await User.query()
+      .select('id', 'username', 'email')
+      .findById(user.id)
+
+    expect(updatedProfile.username).to.be.equal(updatedFields.username)
+    expect(updatedProfile.email).to.be.equal(updatedFields.email)
+    expect(initialProfile.username).to.not.be.equal(updatedFields.username)
+    expect(initialProfile.email).to.not.be.equal(updatedFields.email)
+  })
 })
