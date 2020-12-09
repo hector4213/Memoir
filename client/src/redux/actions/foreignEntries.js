@@ -40,10 +40,13 @@ export const editForeignEntriesAction = (entryId, entryStatus) => {
             }, {headers: headers})
 
             console.log(response)
-            // dispatch({
-            //     type: 'FOREIGN_ENTRIES',
-            //     payload: response.data
-            // })
+
+            const res = await axios.get(`http://localhost:3001/api/profile/${userId}/manage`, {headers: headers})
+
+            dispatch({
+                type: 'FOREIGN_ENTRIES',
+                payload: res.data
+            })
         }
         catch(error){
             console.log(error)

@@ -74,7 +74,7 @@ const OthersStuff = props => {
 }
 
 const mapStateToProps = state => {
-    console.log(state)
+
     return {
         foreignEntries: state.profile.foreignEntries
     }
@@ -83,7 +83,6 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch =>{
     return {
         getForeignEntries: () => dispatch(getForeignEntriesAction()),
-        // editForeignEntries: entryId => dispatch(editForeignEntriesAction(entryId)),
     }
 }
 
