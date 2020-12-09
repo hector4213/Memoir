@@ -18,38 +18,38 @@ const OthersStuff = props => {
         return <div> No foreign entries found </div>
     }
 
-
-
     // creating entry list cards for approved, denied, pending
     const approved = []
     const pending = []
     const denied = []
 
-    foreignEntries.forEach( entry => {
-        console.log(entry)
+    if(foreignEntries.length>0){
+        foreignEntries.forEach( entry => {
+            console.log(entry)
 
-        if(entry.entry_status === 1){
-            approved.push(<ListEntry {...{
-                key: entry.id,
-                entry: entry,
-                foreign: true
-            }}/>)
-        }
-        else if(entry.entry_status === 2){
-            pending.push(<ListEntry {...{
-                key: entry.id,
-                entry: entry,
-                foreign: true
-            }}/>)
-        }
-        else if(entry.entry_status === 3){
-            denied.push(<ListEntry {...{
-                key: entry.id,
-                entry: entry,
-                foreign: true
-            }}/>)
-        }
-    })
+            if(entry.entry_status === 1){
+                approved.push(<ListEntry {...{
+                    key: entry.id,
+                    entry: entry,
+                    foreign: true
+                }}/>)
+            }
+            else if(entry.entry_status === 2){
+                pending.push(<ListEntry {...{
+                    key: entry.id,
+                    entry: entry,
+                    foreign: true
+                }}/>)
+            }
+            else if(entry.entry_status === 3){
+                denied.push(<ListEntry {...{
+                    key: entry.id,
+                    entry: entry,
+                    foreign: true
+                }}/>)
+            }
+        })
+    }
 
     return (
         <div className = 'othersStuff'>
@@ -74,6 +74,7 @@ const OthersStuff = props => {
 }
 
 const mapStateToProps = state => {
+    console.log(state)
     return {
         foreignEntries: state.profile.foreignEntries
     }
