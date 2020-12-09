@@ -4,4 +4,6 @@ module.exports = {
   entry: 'entry',
   format: 'format',
   entryStatus: 'entry_status',
+  hashTags: 'hashtags',
+  hashTagsRelations: 'hash_tag_relations',
 }
