@@ -21,7 +21,7 @@ router.get('/', async (req, res, next) => {
   const foreignEntries = await Entry.query()
     .whereIn('story_id', userStories)
     .whereNot({ user_id: user })
-    .withGraphFetched('[user(nameAndId), current(noId)]')
+    .withGraphFetched('[user(nameAndId), current(noId), story]')
     .modifiers({
       nameAndId(builder) {
         builder.select('id', 'username')
