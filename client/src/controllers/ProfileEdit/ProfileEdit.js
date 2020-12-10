@@ -14,7 +14,7 @@ const ProfileEdit = props => {
 
     return (
         <div className='profile-edit'>
-            <h1>Profile Edit</h1>
+            <h2>Profile Edit</h2>
             <form>
                 <input type='text' value={profileForm.username} onChange={ e => {
                     e.preventDefault()
@@ -32,7 +32,6 @@ const ProfileEdit = props => {
                         onClick: e => {
                             e.preventDefault()
                             const final = {...user, ...profileForm}
-                            console.log(final)
                             editProfile(final)
                         },
                         transparent: true,
@@ -44,7 +43,6 @@ const ProfileEdit = props => {
                         onClick: e => {
                             e.preventDefault()
                             const final = {...user, ...profileForm}
-                            console.log(final)
                             editProfile(final)
                         },
                         transparent: false,

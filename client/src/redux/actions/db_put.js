@@ -86,7 +86,6 @@ export const editEntryAction = entryInfo => {
 export const editProfileAction = profileInfo => {
 	return async (dispatch, getState) => {
         const token = getState().profile.token
-        const currentUser = getState().profile.user
 
         try {
             const headers = {
