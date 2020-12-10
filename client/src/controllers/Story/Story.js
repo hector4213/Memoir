@@ -9,7 +9,7 @@ import TimelineCard from '../../components/TimelineCard/TimelineCard'
 import {getSingleStoryAction} from '../../redux/actions/db_get'
 
 import GoHomeButton from '../../components/ButtonTypes/GoHomeButton/GoHomeButton'
-import ButtonsForStory from '../../components/ButtonGroups/ButtonsForStory/ButtonsForStory';
+import ButtonsForStory from '../ButtonGroups/ButtonsForStory/ButtonsForStory';
 
 import {useCallback} from 'react'
 import {useHistory} from 'react-router-dom'

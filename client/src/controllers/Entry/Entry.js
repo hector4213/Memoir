@@ -7,7 +7,7 @@ import {connect} from 'react-redux'
 import {getSingleEntryAction, getSingleStoryAction} from '../../redux/actions/db_get'
 import GoHomeButton from '../../components/ButtonTypes/GoHomeButton/GoHomeButton'
 import GoToStoryButton from '../../components/ButtonTypes/GoToStoryButton/GoToStoryButton'
-import ButtonsForEntry from '../../components/ButtonGroups/ButtonsForEntry/ButtonsForEntry';
+import ButtonsForEntry from '../ButtonGroups/ButtonsForEntry/ButtonsForEntry'
 
 import {useCallback} from 'react'
 import {useHistory} from 'react-router-dom'

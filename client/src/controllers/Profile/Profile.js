@@ -4,8 +4,8 @@ import './Profile.scss'
 
 import YourStuff from './YourStuff/YourStuff'
 import OthersStuff from './OthersStuff/OthersStuff'
-import ButtonsForProfile from '../../components/ButtonGroups/ButtonsForProfile/ButtonsForProfile'
 import GoHomeButton from '../../components/ButtonTypes/GoHomeButton/GoHomeButton'
+import ButtonsForProfile from '../ButtonGroups/ButtonsForProfile/ButtonsForProfile'
 
 import {useCallback, useEffect} from 'react'
 import {useHistory} from 'react-router-dom'
