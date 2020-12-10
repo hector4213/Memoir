@@ -14,7 +14,7 @@ export const getAllStoriesAction = () => {
 
             dispatch({
                 type: 'ERROR',
-                payload: error.message
+                payload: error.response? error.response.data.error : error.message
             })
         }
     }
@@ -42,7 +42,7 @@ export const getSingleStoryAction = storyId => {
 
             dispatch({
                 type: 'ERROR',
-                payload: error.message
+                payload: error.response? error.response.data.error : error.message
             })
         }
     }
@@ -63,7 +63,7 @@ export const getSingleEntryAction = (storyId, entryId) => {
 
             dispatch({
                 type: 'ERROR',
-                payload: error.message
+                payload: error.response? error.response.data.error : error.message
             })
         }
     }

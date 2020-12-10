@@ -12,7 +12,7 @@ export const registerUserAction = formInfo => {
                     localStorage.setItem('profile', JSON.stringify(response.data))
 
                     dispatch({
-                        type: 'PROFILE_ERROR',
+                        type: 'ERROR',
                         payload: null
                     })
 
@@ -41,13 +41,13 @@ export const registerUserAction = formInfo => {
 
                 catch(error){
                     dispatch({
-                        type: 'PROFILE_ERROR',
-                        payload: error.response.data.error
+                        type: 'ERROR',
+                        payload: error.response? error.response.data.error : error.message
                     })
                 }
             } else {
                 dispatch({
-                    type: 'PROFILE_ERROR',
+                    type: 'ERROR',
                     payload: 'Password does not match confirmation'
                 })
             }
@@ -55,7 +55,7 @@ export const registerUserAction = formInfo => {
 
         else {
             dispatch({
-                type: 'PROFILE_ERROR',
+                type: 'ERROR',
                 payload: 'All input fields must be filled out'
             })
         }

@@ -8,7 +8,7 @@ export const logInAction = formInfo => {
                 const response = await axios.post('http://localhost:3001/api/auth/login', formInfo)
 
                 dispatch({
-                    type: 'PROFILE_ERROR',
+                    type: 'ERROR',
                     payload: null
                 })
                 dispatch({
@@ -33,13 +33,13 @@ export const logInAction = formInfo => {
             }
             catch(error){
                 dispatch({
-                    type: 'PROFILE_ERROR',
-                    payload: error.response.data.error
+                    type: 'ERROR',
+                    payload: error.response? error.response.data.error : error.message
                 })
             }
         } else {
             dispatch({
-                type: 'PROFILE_ERROR',
+                type: 'ERROR',
                 payload: 'All input fields must be filled out'
             })
         }
