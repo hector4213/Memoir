@@ -16,11 +16,12 @@ import Entry from './controllers/Entry/Entry'
 import FourZeroFour from './controllers/FourZeroFour/FourZeroFour'
 
 import {storedProfileAction} from './redux/actions/profile'
+import {setErrorAction} from './redux/actions/page'
 import EntryCreate from './controllers/EntryCreate/EntryCreate';
 import EntryEdit from './controllers/EntryEdit/EntryEdit'
 
 const App = props => {
-  const {storedProfile, error} = props
+  const {storedProfile, setError, error} = props
 
   useEffect(()=>{
       storedProfile()
@@ -29,7 +30,7 @@ const App = props => {
   return (
     <div className="App">
 
-      {error? <div className='error-message'> {error} </div> : ''}
+      {error? <div className='error-message' onClick={() => setError(null)}> {error} </div> : ''}
 
       <Router>
       <Switch>
@@ -93,7 +94,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    storedProfile: () => dispatch(storedProfileAction())
+    storedProfile: () => dispatch(storedProfileAction()),
+    setError: (message) => dispatch(setErrorAction(message))
   }
 }
 
