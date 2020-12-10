@@ -3,6 +3,7 @@ import './ProfileEdit.scss'
 
 import {connect} from 'react-redux'
 import {editProfileAction} from '../../redux/actions/db_put'
+import Button from '../../components/Button/Button'
 
 const ProfileEdit = props => {
     const {user, editProfile} = props
@@ -13,7 +14,7 @@ const ProfileEdit = props => {
 
     return (
         <div className='profile-edit'>
-            Profile Edit
+            <h1>Profile Edit</h1>
             <form>
                 <input type='text' value={profileForm.username} onChange={ e => {
                     e.preventDefault()
@@ -25,12 +26,32 @@ const ProfileEdit = props => {
                     setProfileForm({...profileForm, email: e.target.value})
                 }}/>
 
-                <button onClick ={ e => {
-                    e.preventDefault()
-                    const final = {...user, ...profileForm}
-                    console.log(final)
-                    editProfile(final)
-                }}> Submit </button>
+                <div className='profile-edit-buttons'>
+                    <Button {...{
+                        label: 'Delete Profile',
+                        onClick: e => {
+                            e.preventDefault()
+                            const final = {...user, ...profileForm}
+                            console.log(final)
+                            editProfile(final)
+                        },
+                        transparent: true,
+                        extraClass: 'delete-profile'
+                    }} />
+
+                    <Button {...{
+                        label: 'Submit',
+                        onClick: e => {
+                            e.preventDefault()
+                            const final = {...user, ...profileForm}
+                            console.log(final)
+                            editProfile(final)
+                        },
+                        transparent: false,
+                        // extraClass
+                    }} />
+                </div>
+
             </form>
         </div>
     )

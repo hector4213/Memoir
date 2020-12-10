@@ -1,4 +1,27 @@
+@import '../../styles/colors';
+@import '../../styles/sizes';
 
 .profile-edit {
     width: 100%;
+
+    h1 {
+        text-align: center;
+    }
+}
+
+.delete-profile {
+    border-color: $medium_blue;
+    color: $medium_blue;
+    margin-right: 10px;
+}
+
+.delete-profile:hover {
+    border-color: $pink;
+    color: $pink;
+}
+
+.profile-edit-buttons {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
 }
