@@ -50,9 +50,9 @@ const Home = props => {
         })
     }
 
-    if(cards.length === 0){
-        return <div>Seems we don't have any cards try reloading the page or the server</div>
-    }
+    // if(cards.length === 0){
+    //     return <div>Seems we don't have any cards try reloading the page or the server</div>
+    // }
 
     return (
     <div className='home'>

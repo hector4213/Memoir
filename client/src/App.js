@@ -20,7 +20,7 @@ import EntryCreate from './controllers/EntryCreate/EntryCreate';
 import EntryEdit from './controllers/EntryEdit/EntryEdit'
 
 const App = props => {
-  const {storedProfile} = props
+  const {storedProfile, error} = props
 
   useEffect(()=>{
       storedProfile()
@@ -28,6 +28,9 @@ const App = props => {
 
   return (
     <div className="App">
+
+      {error? <div className='error-message'> {error} </div> : ''}
+
       <Router>
       <Switch>
 
@@ -82,10 +85,16 @@ const App = props => {
   )
 }
 
+const mapStateToProps = state => {
+  return {
+    error: state.page.error
+  }
+}
+
 const mapDispatchToProps = dispatch => {
   return {
     storedProfile: () => dispatch(storedProfileAction())
   }
 }
 
-export default connect(null, mapDispatchToProps)(App)
+export default connect(mapStateToProps, mapDispatchToProps)(App)
