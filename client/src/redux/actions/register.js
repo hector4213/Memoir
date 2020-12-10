@@ -40,10 +40,17 @@ export const registerUserAction = formInfo => {
                 }
 
                 catch(error){
-                    dispatch({
-                        type: 'ERROR',
-                        payload: error.response? error.response.data.error : error.message
-                    })
+                    if(error.response.data.error){
+                        dispatch({
+                            type: 'ERROR',
+                            payload: error.response? error.response.data.error : error.message
+                        })
+                    } else {
+                        dispatch({
+                            type: 'ERROR',
+                            payload: error.response? error.response.data : error.message
+                        })
+                    }
                 }
             } else {
                 dispatch({
