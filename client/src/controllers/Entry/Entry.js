@@ -67,9 +67,25 @@ const Entry = props => {
                         <p>This entry was written by: {user.username}</p>
                     </div>
 
-                    <div className='nav-entries'>
-                        {previousEntry? <button onClick={()=> goToEntry(previousEntry.id)}> Previous Entry:<br/> {previousEntry.title}</button> : ''}
-                        {nextEntry? <button onClick={()=> goToEntry(nextEntry.id)}> Next Entry:<br/> {nextEntry.title}</button> : ''}
+                    <div className='nav-entries' style={previousEntry? {} : {justifyContent:"flex-end"}} >
+                        {
+                        previousEntry?
+                        <button
+                            onClick={()=> goToEntry(previousEntry.id)}
+                            className='previous-entry'
+                            >
+                            Previous Entry:<br/> {previousEntry.title}
+                        </button> : ''
+                        }
+                        {
+                        nextEntry?
+                        <button
+                            onClick={()=> goToEntry(nextEntry.id)}
+                            className='next-entry'
+                            >
+                            Next Entry:<br/> {nextEntry.title}
+                        </button> : ''
+                        }
                     </div>
                 </div>
             </div>
