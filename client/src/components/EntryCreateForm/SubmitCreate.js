@@ -56,7 +56,12 @@ const SubmitCreate = props => {
 }
 
 const areFieldsValid = (formInfo, date) => {
-    return (formInfo && formInfo.embed && formInfo.format_id && formInfo.title && formInfo.description && date && date.month && date.day && date.year)
+
+    if(formInfo.format_id === 2){
+        return (formInfo && formInfo.format_id && formInfo.title && formInfo.description && date && date.month && date.day && date.year)
+    } else {
+        return (formInfo && formInfo.embed && formInfo.format_id && formInfo.title && formInfo.description && date && date.month && date.day && date.year)
+    }
 }
 
 const mapStateToProps = state => {

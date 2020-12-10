@@ -66,10 +66,19 @@ export const createEntryAction = entryInfo => {
 
         }
         catch(error){
-            dispatch({
-                type: 'ERROR',
-                payload: error.response? error.response.data.error : error.message
-            })
+            console.log({error})
+            if(error.response.data.error){
+                dispatch({
+                    type: 'ERROR',
+                    payload: error.response.data.error
+                })
+
+            } else {
+                dispatch({
+                    type: 'ERROR',
+                    payload: error.response.data
+                })
+            }
         }
     }
 }

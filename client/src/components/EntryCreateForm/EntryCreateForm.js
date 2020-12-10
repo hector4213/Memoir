@@ -88,8 +88,6 @@ const EntryCreateForm = props => {
                     <SubmitCreate {...{ setFormInfo, formInfo, setDate, date }} />
                 }
             </form>
-
-            {error ? <div className='error'> {error} </div>: ''}
         </div>
     )
 }
