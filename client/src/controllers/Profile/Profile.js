@@ -9,6 +9,7 @@ import ButtonsForProfile from '../ButtonGroups/ButtonsForProfile/ButtonsForProfi
 
 import {useCallback, useEffect} from 'react'
 import {useHistory} from 'react-router-dom'
+import ErrorDisplay from '../../components/ErrorDisplay/ErrorDisplay'
 
 const Profile = props => {
     const [yourStuff, isYourStuff] = useState(true)
@@ -28,7 +29,7 @@ const Profile = props => {
     // END OF REDIRECT
 
     if(!user){
-        return <div>You are not logged in</div>
+        return <ErrorDisplay />
     }
 
     return (
