@@ -30,7 +30,7 @@ const Home = props => {
     const goToProfile = useCallback(() => history.push(`/profile`), [history])
 
     useEffect(()=>{
-        if(path === 'loggedIn'){ goToProfile() }
+        if(path === 'loggedIn' || path === 'registeredUser'){ goToProfile() }
     },[path, goToProfile])
     // END OF REDIRECT
 
@@ -50,6 +50,9 @@ const Home = props => {
         })
     }
 
+    if(cards.length === 0){
+        return <div>Seems we don't have any cards try reloading the page or the server</div>
+    }
 
     return (
     <div className='home'>

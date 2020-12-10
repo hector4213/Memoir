@@ -7,21 +7,35 @@ export const registerUserAction = formInfo => {
             if(formInfo.password === formInfo.confirmPassword){
                 delete formInfo.confirmPassword
 
-                try{
+                try {
                     const response = await axios.post('http://localhost:3001/api/auth/signup', formInfo)
 
                     dispatch({
                         type: 'PROFILE_ERROR',
                         payload: null
                     })
+
                     dispatch({
                         type: 'ADD_PROFILE',
                         payload: response.data
                     })
+
                     dispatch({
                         type: 'TOGGLE_MODAL',
                         payload: !getState().page.modal
                     })
+
+                    // START OF PATH CHANGE
+                    dispatch({
+                        type: 'SET_PATH',
+                        payload: 'registeredUser'
+                    })
+                    // needs to be set back to null
+                    dispatch({
+                        type: 'SET_PATH',
+                        payload: null
+                    })
+                    // END OF PATH CHANGE
                 }
 
                 catch(error){
