@@ -9,6 +9,7 @@ export const registerUserAction = formInfo => {
 
                 try {
                     const response = await axios.post('http://localhost:3001/api/auth/signup', formInfo)
+                    localStorage.setItem('profile', JSON.stringify(response.data))
 
                     dispatch({
                         type: 'PROFILE_ERROR',

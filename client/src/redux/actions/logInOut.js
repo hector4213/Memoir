@@ -28,7 +28,7 @@ export const logInAction = formInfo => {
                     payload: null
                 })
 
-                localStorage.setItem('profile', JSON.stringify(response.data));
+                localStorage.setItem('profile', JSON.stringify(response.data))
 
             }
             catch(error){
