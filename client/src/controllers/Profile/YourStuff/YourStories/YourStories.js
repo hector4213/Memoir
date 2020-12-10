@@ -18,7 +18,6 @@ const YourStories = props => {
                 key: story.id,
                 story: story,
                 specialStyle: {opacity: 1},
-                // onClick: () => console.log('person clicked'),
                 deleteCard: true
             }}/>
         })
@@ -50,7 +49,7 @@ const YourStories = props => {
 }
 
 const mapStateToProps = state => {
-    console.log(state)
+
     return {
         modal: state.page.modal,
         showingPage: state.page.showingPage,

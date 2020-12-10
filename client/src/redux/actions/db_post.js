@@ -30,7 +30,10 @@ export const createStoryAction = formInfo => {
             })
         }
         catch(error){
-            console.log(error)
+            dispatch({
+                type: 'ERROR',
+                payload: error.response? error.response.data.error : error.message
+            })
         }
     }
 }
@@ -46,9 +49,8 @@ export const createEntryAction = entryInfo => {
                 'Authorization': `bearer ${token}`
             }
             const res = await axios.post(`http://localhost:3001/api/stories/${storyId}/entries`, entryInfo, {headers: headers})
-            console.log(res)
 
-            console.log('creating entry')
+            console.log(res)
 
             // START OF PATH CHANGE
             dispatch({
@@ -64,10 +66,19 @@ export const createEntryAction = entryInfo => {
 
         }
         catch(error){
-            dispatch({
-                type: 'ERROR',
-                payload: error.response.data.error
-            })
+            console.log({error})
+            if(error.response.data.error){
+                dispatch({
+                    type: 'ERROR',
+                    payload: error.response.data.error
+                })
+
+            } else {
+                dispatch({
+                    type: 'ERROR',
+                    payload: error.response.data
+                })
+            }
         }
     }
 }

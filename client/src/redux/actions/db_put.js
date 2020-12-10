@@ -33,7 +33,7 @@ export const editStoryAction = entryInfo => {
         catch(error){
             dispatch({
                 type: 'ERROR',
-                payload: error.response.data.error
+                payload: error.response? error.response.data.error : error.message
             })
         }
     }
@@ -69,7 +69,7 @@ export const editEntryAction = entryInfo => {
         catch(error){
             dispatch({
                 type: 'ERROR',
-                payload: error.response.data.error
+                payload: error.response? error.response.data.error : error.message
             })
         }
     }
@@ -86,7 +86,6 @@ export const editEntryAction = entryInfo => {
 export const editProfileAction = profileInfo => {
 	return async (dispatch, getState) => {
         const token = getState().profile.token
-        const currentUser = getState().profile.user
 
         try {
             const headers = {
@@ -115,7 +114,7 @@ export const editProfileAction = profileInfo => {
         catch(error){
             dispatch({
                 type: 'ERROR',
-                payload: error.response.data.error
+                payload: error.response? error.response.data.error : error.message
             })
         }
     }

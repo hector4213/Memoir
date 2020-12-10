@@ -46,7 +46,7 @@ const SubmitEdit = props => {
 
                 if(allFieldsCompleted){
                     const allFields = {...formInfo, date:`${date.month} ${date.day}, ${date.year}`}
-                    console.log(allFields)
+
                     editEntry({...allFields})
                     setError(null)
                     gotoEntry()

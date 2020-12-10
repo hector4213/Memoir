@@ -9,10 +9,11 @@ import TimelineCard from '../../components/TimelineCard/TimelineCard'
 import {getSingleStoryAction} from '../../redux/actions/db_get'
 
 import GoHomeButton from '../../components/ButtonTypes/GoHomeButton/GoHomeButton'
-import ButtonsForStory from '../../components/ButtonGroups/ButtonsForStory/ButtonsForStory';
+import ButtonsForStory from '../ButtonGroups/ButtonsForStory/ButtonsForStory';
 
 import {useCallback} from 'react'
 import {useHistory} from 'react-router-dom'
+import ErrorDisplay from '../../components/ErrorDisplay/ErrorDisplay';
 
 const Story = props => {
     const {getSingleStory} = props
@@ -56,7 +57,7 @@ const Story = props => {
     }
 
     if(!story){
-        return <div className='notfound'> Sorry we could not find that story. </div>
+        return <ErrorDisplay />
     } else {
         const entryComponents = []
         if(story.entries.length > 0){

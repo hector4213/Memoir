@@ -30,7 +30,7 @@ const Home = props => {
     const goToProfile = useCallback(() => history.push(`/profile`), [history])
 
     useEffect(()=>{
-        if(path === 'loggedIn'){ goToProfile() }
+        if(path === 'loggedIn' || path === 'registeredUser'){ goToProfile() }
     },[path, goToProfile])
     // END OF REDIRECT
 

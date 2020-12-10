@@ -4,11 +4,12 @@ import './Profile.scss'
 
 import YourStuff from './YourStuff/YourStuff'
 import OthersStuff from './OthersStuff/OthersStuff'
-import ButtonsForProfile from '../../components/ButtonGroups/ButtonsForProfile/ButtonsForProfile'
 import GoHomeButton from '../../components/ButtonTypes/GoHomeButton/GoHomeButton'
+import ButtonsForProfile from '../ButtonGroups/ButtonsForProfile/ButtonsForProfile'
 
 import {useCallback, useEffect} from 'react'
 import {useHistory} from 'react-router-dom'
+import ErrorDisplay from '../../components/ErrorDisplay/ErrorDisplay'
 
 const Profile = props => {
     const [yourStuff, isYourStuff] = useState(true)
@@ -28,7 +29,7 @@ const Profile = props => {
     // END OF REDIRECT
 
     if(!user){
-        return <div>You are not logged in</div>
+        return <ErrorDisplay />
     }
 
     return (

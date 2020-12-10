@@ -28,7 +28,7 @@
 
     button {
         padding: 50px;
-        width: 100%;
+        width: 50%;
         background: none;
         border: none;
         border-radius: 0px;
@@ -37,12 +37,13 @@
         line-height: $text_lineheight_size;
     }
 
-    button:nth-child(1){
-        border-right: 3px solid $light_blue;
+    .previous-entry {
+        border-right: 1.5px solid $light_blue;
         text-align: right;
     }
 
-    button:nth-child(2){
+    .next-entry {
+        border-left: 1.5px solid $light_blue;
         text-align: left;
     }
 

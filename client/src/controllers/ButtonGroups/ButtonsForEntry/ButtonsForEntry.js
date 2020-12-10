@@ -4,8 +4,8 @@ import './ButtonsForEntry.scss'
 import {useHistory, useParams} from "react-router-dom";
 import {connect} from 'react-redux'
 
-import Button from '../../Button/Button'
-import GoToProfile from '../..//ButtonTypes/GoToProfileButton/GoToProfileButton'
+import Button from '../../../components/Button/Button'
+import GoToProfile from '../../../components/ButtonTypes/GoToProfileButton/GoToProfileButton'
 
 const ButtonsForEntry = props => {
     const {user, authorId} = props

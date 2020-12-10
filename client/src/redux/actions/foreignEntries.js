@@ -19,7 +19,10 @@ export const getForeignEntriesAction = () => {
             })
         }
         catch(error){
-            console.log(error)
+            dispatch({
+                type: 'ERROR',
+                payload: error.response? error.response.data.error : error.message
+            })
         }
     }
 }
@@ -49,7 +52,10 @@ export const editForeignEntriesAction = (entryId, entryStatus) => {
             })
         }
         catch(error){
-            console.log(error)
+            dispatch({
+                type: 'ERROR',
+                payload: error.response? error.response.data.error : error.message
+            })
         }
     }
 }

@@ -7,17 +7,20 @@ const TextEntry = props => {
 
     return (
         <>
-            <input style={embed_F? {} : notFilledStyle} type='text' 
-                placeholder='Enter the embed link'
-                value = {formInfo.embed? formInfo.embed: ''}
-                onChange={ e =>{
-                    if(e.target.value){
-                        setFormInfo( {...formInfo, embed: e.target.value, embed_F:true })
-                    } else {
-                        setFormInfo( {...formInfo, embed: e.target.value, embed_F:false })
-                    }
-                }}
-            />
+            {
+                // formInfo.format_id === 2? '' :
+                <input style={embed_F? {} : notFilledStyle} type='text' 
+                    placeholder='Enter the embed link'
+                    value = {formInfo.embed? formInfo.embed: ''}
+                    onChange={ e =>{
+                        if(e.target.value){
+                            setFormInfo( {...formInfo, embed: e.target.value, embed_F:true })
+                        } else {
+                            setFormInfo( {...formInfo, embed: e.target.value, embed_F:false })
+                        }
+                    }}
+                />
+            }
 
             <input style={title_F? {} : notFilledStyle} type='text' placeholder='Enter the title'
                 value = {formInfo.title? formInfo.title: ''}

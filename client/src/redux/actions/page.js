@@ -2,7 +2,6 @@
 
 export const setPathAction = path => {
 	return async (dispatch, getState) => {
-        console.log('inside of set path action')
 
         dispatch({
             type: 'SET_PATH',
@@ -40,9 +39,9 @@ export const setErrorAction = errorMessage => {
 
 export const clearErrorAction = () => {
 	return async (dispatch, getState) => {
-            dispatch({
-                type: 'PROFILE_ERROR',
-                payload: null
-            })
+        dispatch({
+            type: 'ERROR',
+            payload: null
+        })
 	}
 }

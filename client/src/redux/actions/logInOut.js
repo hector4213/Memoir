@@ -8,7 +8,7 @@ export const logInAction = formInfo => {
                 const response = await axios.post('http://localhost:3001/api/auth/login', formInfo)
 
                 dispatch({
-                    type: 'PROFILE_ERROR',
+                    type: 'ERROR',
                     payload: null
                 })
                 dispatch({
@@ -23,19 +23,31 @@ export const logInAction = formInfo => {
                     type: 'SET_PATH',
                     payload: 'loggedIn'
                 })
+                dispatch({
+                    type: 'SET_PATH',
+                    payload: null
+                })
 
-                localStorage.setItem('profile', JSON.stringify(response.data));
+                localStorage.setItem('profile', JSON.stringify(response.data))
 
             }
             catch(error){
-                dispatch({
-                    type: 'PROFILE_ERROR',
-                    payload: error.response.data.error
-                })
+                console.log({error})
+                if(error.response.data.error){
+                    dispatch({
+                        type: 'ERROR',
+                        payload: error.response? error.response.data.error : error.message
+                    })
+                } else {
+                    dispatch({
+                        type: 'ERROR',
+                        payload: error.response? error.response.data : error.message
+                    })
+                }
             }
         } else {
             dispatch({
-                type: 'PROFILE_ERROR',
+                type: 'ERROR',
                 payload: 'All input fields must be filled out'
             })
         }

@@ -7,10 +7,11 @@ import {connect} from 'react-redux'
 import {getSingleEntryAction, getSingleStoryAction} from '../../redux/actions/db_get'
 import GoHomeButton from '../../components/ButtonTypes/GoHomeButton/GoHomeButton'
 import GoToStoryButton from '../../components/ButtonTypes/GoToStoryButton/GoToStoryButton'
-import ButtonsForEntry from '../../components/ButtonGroups/ButtonsForEntry/ButtonsForEntry';
+import ButtonsForEntry from '../ButtonGroups/ButtonsForEntry/ButtonsForEntry'
 
 import {useCallback} from 'react'
 import {useHistory} from 'react-router-dom'
+import ErrorDisplay from '../../components/ErrorDisplay/ErrorDisplay';
 
 const Entry = props => {
     const {getSingleEntry, getSingleStory} = props
@@ -34,7 +35,7 @@ const Entry = props => {
     }, [getSingleEntry, getSingleStory, storyId, entryId])
 
 
-    if(!current || !current.entry || !current.story || !current.entry){ return <div> This entry does not exist </div> }
+    if(!current || !current.entry || !current.story || !current.entry){ return <ErrorDisplay /> }
     else {
         const entry = current.entry
         const {format_id, title, description, embed, date, user, id} = entry
@@ -67,9 +68,25 @@ const Entry = props => {
                         <p>This entry was written by: {user.username}</p>
                     </div>
 
-                    <div className='nav-entries'>
-                        {previousEntry? <button onClick={()=> goToEntry(previousEntry.id)}> Previous Entry:<br/> {previousEntry.title}</button> : ''}
-                        {nextEntry? <button onClick={()=> goToEntry(nextEntry.id)}> Next Entry:<br/> {nextEntry.title}</button> : ''}
+                    <div className='nav-entries' style={previousEntry? {} : {justifyContent:"flex-end"}} >
+                        {
+                        previousEntry?
+                        <button
+                            onClick={()=> goToEntry(previousEntry.id)}
+                            className='previous-entry'
+                            >
+                            Previous Entry:<br/> {previousEntry.title}
+                        </button> : ''
+                        }
+                        {
+                        nextEntry?
+                        <button
+                            onClick={()=> goToEntry(nextEntry.id)}
+                            className='next-entry'
+                            >
+                            Next Entry:<br/> {nextEntry.title}
+                        </button> : ''
+                        }
                     </div>
                 </div>
             </div>

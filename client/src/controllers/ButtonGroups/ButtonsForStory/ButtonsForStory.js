@@ -5,10 +5,10 @@ import {useHistory} from "react-router-dom";
 import {connect} from 'react-redux'
 import {toggleModalAction} from '../../../redux/actions/page'
 
-import Button from '../../Button/Button'
-import Modal from '../../Modal/Modal'
+import Button from '../../../components/Button/Button'
+import Modal from '../../../components/Modal/Modal'
 import StoryEdit from '../../../controllers/StoryEdit/StoryEdit'
-import GoToProfile from '../..//ButtonTypes/GoToProfileButton/GoToProfileButton'
+import GoToProfile from '../../../components/ButtonTypes/GoToProfileButton/GoToProfileButton'
 
 const ButtonsForStory = props => {
     const {storyId, toggleModal, modal, userId, authorId} = props

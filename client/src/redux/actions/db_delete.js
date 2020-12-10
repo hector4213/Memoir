@@ -31,7 +31,7 @@ export const deleteStoryAction = storyId => {
         catch(error){
             dispatch({
                 type: 'ERROR',
-                payload: error.response.data.error
+                payload: error.response? error.response.data.error : error.message
             })
         }
     }
@@ -64,7 +64,7 @@ export const deleteEntryAction = (storyId, entryId) => {
         catch(error){
             dispatch({
                 type: 'ERROR',
-                payload: error.response.data.error
+                payload: error.response? error.response.data.error : error.message
             })
         }
     }

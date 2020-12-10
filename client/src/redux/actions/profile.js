@@ -19,7 +19,10 @@ export const getMyProfileStuffAction = () => {
             })
         }
         catch(error){
-            console.log(error)
+            dispatch({
+                type: 'ERROR',
+                payload: error.response? error.response.data.error : error.message
+            })
         }
     }
 }
