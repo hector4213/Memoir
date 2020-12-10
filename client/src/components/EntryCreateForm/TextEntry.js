@@ -5,6 +5,11 @@ const TextEntry = props => {
 
     const {setFormInfo, notFilledStyle, formInfo, embed_F, title_F, description_F} = props
 
+    const validateSoundEmbed = embedString => {
+        const final = embedString.split('<div')
+        console.log(final[0])
+    }
+
     return (
         <>
             {
@@ -14,9 +19,12 @@ const TextEntry = props => {
                     value = {formInfo.embed? formInfo.embed: ''}
                     onChange={ e =>{
                         if(e.target.value){
-                            setFormInfo( {...formInfo, embed: e.target.value, embed_F:true })
-                        } else {
-                            setFormInfo( {...formInfo, embed: e.target.value, embed_F:false })
+                            let validText
+                            if(formInfo.format_id === 3){ validText = validateSoundEmbed(e.target.value) }
+                            setFormInfo({ ...formInfo, embed: validText? validText:e.target.value, embed_F:true })
+                        }
+                        else {
+                            setFormInfo({ ...formInfo, embed: e.target.value, embed_F:false })
                         }
                     }}
                 />
