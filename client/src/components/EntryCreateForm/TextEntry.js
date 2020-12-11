@@ -54,7 +54,12 @@ const TextEntry = props => {
                 // IF VIDEO OR AUDIO FORMAT ID SHOW EMBED FIELD
                 formInfo.format_id === 1 || formInfo.format_id === 3?
                 <input style={embed_F? {} : notFilledStyle} type='text'
-                    placeholder='Enter the embed link'
+                    placeholder={
+                        formInfo.format_id === 1?
+                        'Paste YouTube embed text here'
+                        :
+                        'Paste SoundCloud embed text here'
+                    }
                     value = {formInfo.embed? formInfo.embed: ''}
                     onChange={ e =>{
                         if(e.target.value){
