@@ -54,7 +54,6 @@ export const createEntryAction = entryInfo => {
                     headers: {
                         'Authorization': `Client-ID 39612fe2e37daed`,
                         'Content-Type': 'image'
-                        // ...data.getHeaders()
                     },
                     data : entryInfo.embed
                 })
@@ -67,16 +66,18 @@ export const createEntryAction = entryInfo => {
             catch(error){
                 console.log(error)
             }
-        // end of imgue
+        // end of imgur
 
         try {
             const headers = {
                 'Content-Type': 'application/json',
                 'Authorization': `bearer ${token}`
             }
-            const res = await axios.post(`http://localhost:3001/api/stories/${storyId}/entries`, entryInfo, {headers: headers})
+            // const res = await axios.post(`http://localhost:3001/api/stories/${storyId}/entries`, entryInfo, {headers: headers})
+            await axios.post(`http://localhost:3001/api/stories/${storyId}/entries`, entryInfo, {headers: headers})
 
-            console.log(res)
+            console.log('entry successfully saved on db')
+            // console.log(res)
 
             // START OF PATH CHANGE
             dispatch({

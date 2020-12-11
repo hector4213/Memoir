@@ -75,13 +75,6 @@ export const editEntryAction = entryInfo => {
     }
 }
 
-// PUT http://localhost:3001/api/profile/12
-// Content-Type: application/json
-
-// {
-//     "username": "usernameChange",
-//     "email": "mychanged@gmail.com"
-// }
 
 export const editProfileAction = profileInfo => {
 	return async (dispatch, getState) => {

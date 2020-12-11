@@ -44,16 +44,13 @@ export const deleteEntryAction = (storyId, entryId) => {
 
         try {
 
-
-            // EXTRACT DELETE HASH AND USE IT TO DELETE PICTURE FROM IMGUR
             if(entry && entry.embed.includes('imgur')){
                 const splitEmbed = entry.embed.split(' ')
                 const hash = splitEmbed[1]
 
-                // console.log(hash)
-
                 try {
-                    const response = await axios({
+
+                    await axios({
                         method: 'DELETE',
                         url: `https://api.imgur.com/3/image/${hash}`,
                         headers: {
@@ -63,7 +60,6 @@ export const deleteEntryAction = (storyId, entryId) => {
                     })
 
                     console.log('image deleted from imgur')
-                    // console.log(response.data)
                 }
                 catch(error){
                     console.log(error)
@@ -74,10 +70,10 @@ export const deleteEntryAction = (storyId, entryId) => {
                 'Content-Type': 'application/json',
                 'Authorization': `bearer ${token}`
             }
-            const res = await axios.delete(`http://localhost:3001/api/stories/${storyId}/entries/${entryId}`, {headers: headers})
+
+            await axios.delete(`http://localhost:3001/api/stories/${storyId}/entries/${entryId}`, {headers: headers})
 
             console.log('entry deleted from database')
-            // console.log(res)
 
             // START OF PATH CHANGE
             dispatch({
