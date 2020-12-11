@@ -29,6 +29,9 @@ const SubmitCreate = props => {
                         embed: formInfo.embed,
                         format_id: formInfo.format_id
                     }
+
+                    console.log(allFields)
+
                     createEntry(allFields)
                     setError(null)
                 }

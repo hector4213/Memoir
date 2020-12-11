@@ -120,6 +120,7 @@ const formatDate = date => {
 }
 
 const mapStateToProps = state => {
+
     return {
         current: state.page.current,
         loggedInUser: state.profile.user,

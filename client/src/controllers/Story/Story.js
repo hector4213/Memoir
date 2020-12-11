@@ -109,6 +109,7 @@ const Story = props => {
 }
 
 const mapStateToProps = (state, ownProps) => {
+
     return {
         current: state.page.current,
         user: state.profile.user,
