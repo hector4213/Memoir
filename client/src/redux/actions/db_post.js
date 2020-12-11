@@ -43,6 +43,32 @@ export const createEntryAction = entryInfo => {
         const token = getState().profile.token
         const storyId = getState().page.current.story.id
 
+
+        // start of imgur
+        // secret : e7679349d19a4645158d98c381a07a859a1e1415
+            try {
+
+                const response = await axios({
+                    method: 'post',
+                    url: 'https://api.imgur.com/3/image',
+                    headers: {
+                        'Authorization': `Client-ID 39612fe2e37daed`,
+                        'Content-Type': 'image'
+                        // ...data.getHeaders()
+                    },
+                    data : entryInfo.embed
+                })
+
+                console.log('picture successfully hosted on imgur')
+                // console.log(response.data)
+
+                entryInfo = { ...entryInfo, embed:`${response.data.data.link} ${response.data.data.deletehash}`}
+            }
+            catch(error){
+                console.log(error)
+            }
+        // end of imgue
+
         try {
             const headers = {
                 'Content-Type': 'application/json',

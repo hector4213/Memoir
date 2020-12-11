@@ -12,32 +12,6 @@ const TextEntry = props => {
         return final[0]
     }
 
-    const handupload = async event => {
-        // secret : e7679349d19a4645158d98c381a07a859a1e1415
-
-        try {
-            console.log('image: ', event.target.files[0])
-            const response = await axios({
-                method: 'post',
-                url: 'https://api.imgur.com/3/image',
-                headers: {
-                    'Authorization': `Client-ID 39612fe2e37daed`,
-                    'Content-Type': 'image'
-                    // ...data.getHeaders()
-                },
-                data : event.target.files[0]
-            })
-
-            console.log('picture successfully hosted on imgur')
-            // console.log(response.data)
-
-            setFormInfo({ ...formInfo, embed:`${response.data.data.link} ${response.data.data.deletehash}`, embed_F:true })
-        }
-        catch(error){
-            console.log(error)
-        }
-    }
-
     return (
         <>
             {
@@ -60,7 +34,9 @@ const TextEntry = props => {
 
             {
                 formInfo.format_id === 4?
-                <input type="file" onChange={handupload} />: ''
+                <input type="file" onChange={ e => {
+                    setFormInfo({ ...formInfo, embed: e.target.files[0], embed_F:true })
+                }} />: ''
             }
 
             <input style={title_F? {} : notFilledStyle} type='text' placeholder='Enter the title'
