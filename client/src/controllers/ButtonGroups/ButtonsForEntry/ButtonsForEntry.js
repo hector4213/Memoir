@@ -6,6 +6,8 @@ import {connect} from 'react-redux'
 
 import Button from '../../../components/Button/Button'
 import GoToProfile from '../../../components/ButtonTypes/GoToProfileButton/GoToProfileButton'
+import GoHomeButton from '../../../components/ButtonTypes/GoHomeButton/GoHomeButton'
+import GoToStoryButton from '../../../components/ButtonTypes/GoToStoryButton/GoToStoryButton'
 
 const ButtonsForEntry = props => {
     const {user, authorId} = props
@@ -17,6 +19,12 @@ const ButtonsForEntry = props => {
     const gotoEdit = useCallback(() => history.push(`/story/${storyId}/entry/${entryId}/editEntry`), [history, storyId, entryId])
 
     return (
+    <>
+        <GoHomeButton />
+        <GoToStoryButton />
+
+        {
+        user ?
         <div className='story-buttons'>
             <GoToProfile />
 
@@ -30,6 +38,9 @@ const ButtonsForEntry = props => {
                 : ''
             }
         </div>
+        : ''
+        }
+    </>
     )
 }
 

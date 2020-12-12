@@ -15,7 +15,7 @@ import ErrorDisplay from '../../components/ErrorDisplay/ErrorDisplay';
 
 const Entry = props => {
     const {getSingleEntry, getSingleStory} = props
-    const {current, path, loggedInUser} = props
+    const {current, path} = props
 
     const { storyId, entryId } = useParams()
 
@@ -40,12 +40,10 @@ const Entry = props => {
         const entry = current.entry
         const {format_id, title, description, embed, date, user, id} = entry
 
-        // NEED THIS TO EMBED IFRAME FOR VIDEO AND AUDIO
-        // STILL HAVE NOT WORKED ON IT NEED TO ADJUST BACKEND
-        // BECAUSE OF STRING SIZE LIMITATION IN EMBED
-        // const createMarkup = () => {
-        //     return {__html: embed};
-        // }
+
+        const createMarkup = () => {
+            return {__html: embed};
+        }
 
         const [previousEntry, nextEntry] = getNavEntries(current.story.entries, id)
         const formattedDate = formatDate(date)
@@ -53,13 +51,11 @@ const Entry = props => {
         // MEDIA TYPES: 1:VIDE0 , 2:TEXT , 3:AUDIO , 4:IMAGE
         return (
             <div className='single-entry'>
-                <GoHomeButton />
-                <GoToStoryButton />
-                {loggedInUser? <ButtonsForEntry />: ''}
+
+                <ButtonsForEntry />
 
                 <div className='entry-container'>
-                    {format_id === 1 || format_id === 3? 'this is a video or audio that will be embeded once i have real embeds' :''}
-                    {/* {format_id === 1 || format_id === 3? <div dangerouslySetInnerHTML={createMarkup()} /> :''} */}
+                    {format_id === 1 || format_id === 3? <div dangerouslySetInnerHTML={createMarkup()} /> :''}
                     {format_id === 4? <img alt={title} src={embed}/>:''}
                     <div className='entry-caption'>
                         <h1>{title}</h1>
@@ -123,7 +119,6 @@ const mapStateToProps = state => {
 
     return {
         current: state.page.current,
-        loggedInUser: state.profile.user,
         path: state.page.path
     }
 }
