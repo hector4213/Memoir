@@ -17,16 +17,17 @@ Content-Type: application/json
 Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTEsInVzZXJuYW1lIjoiaGVjdG9yIiwiZW1haWwiOiJoZWN0b3JAZ21haWwuY29tIiwiaWF0IjoxNjA2ODc4MDE1LCJleHAiOjE2MDY5NjQ0MTV9.9Mjj-8a1SyldxM_SHxFc_FwfewwgHyYeU11fKYnybUg
 #####
 
-POST http://localhost:3001/api/stories/2/entries
+POST http://localhost:3001/api/stories/1/entries
 Content-Type: application/json
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsInVzZXJuYW1lIjoiaGVjdG9yIiwiZW1haWwiOiJoZWN0b3JAZ21haWwuY29tIiwiaWF0IjoxNjA3NDUyMjUzLCJleHAiOjE2MDc1Mzg2NTN9.8HNJ0IueaSWzl8DUsGtmMdZdvHHXHh3iLZhz0DvAV0g
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIsInVzZXJuYW1lIjoidGVzdGVyIiwiZW1haWwiOiJ0ZXN0ZXJAdGVzdC5jb20iLCJpYXQiOjE2MDc3OTYxMTYsImV4cCI6MTYwODQwMDkxNn0.zD2oqGvEqFhI5JncdjJ6cw4iIf40uvib5zz03VwVJUY
 
 {
     "title": "yeppp Testman sucks",
     "description": "You stink",
     "date":"2020-11-28",
     "embed": "somtext",
-    "format_id": 2
+    "format_id": 2,
+    "hashtags": [{"tagname":"love"},{"tagname":"cool"},{"tagname":"niceday"}]
 }
 
 
