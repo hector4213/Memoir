@@ -5,8 +5,6 @@ import { useParams } from "react-router-dom";
 import {connect} from 'react-redux'
 
 import {getSingleEntryAction, getSingleStoryAction} from '../../redux/actions/db_get'
-import GoHomeButton from '../../components/ButtonTypes/GoHomeButton/GoHomeButton'
-import GoToStoryButton from '../../components/ButtonTypes/GoToStoryButton/GoToStoryButton'
 import ButtonsForEntry from '../ButtonGroups/ButtonsForEntry/ButtonsForEntry'
 
 import {useCallback} from 'react'
@@ -15,19 +13,12 @@ import ErrorDisplay from '../../components/ErrorDisplay/ErrorDisplay';
 
 const Entry = props => {
     const {getSingleEntry, getSingleStory} = props
-    const {current, path} = props
+    const {current} = props
 
     const { storyId, entryId } = useParams()
 
-    // START OF REDIRECT
     const history = useHistory()
-    const refresh = useCallback(() => history.go(0), [history])
     const goToEntry = useCallback( id => history.push(`/story/${storyId}/entry/${id}`), [history, storyId])
-
-    useEffect(()=>{
-        if(path === 'editedEntry'){ refresh() }
-    },[path, refresh])
-    // END OF REDIRECT
 
     useEffect(()=>{
         getSingleEntry(storyId, entryId)
@@ -119,7 +110,6 @@ const mapStateToProps = state => {
 
     return {
         current: state.page.current,
-        path: state.page.path
     }
 }
 

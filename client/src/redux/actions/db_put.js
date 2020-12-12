@@ -1,4 +1,5 @@
 import axios from 'axios'
+import {history} from '../../index'
 
 export const editStoryAction = entryInfo => {
 	return async (dispatch, getState) => {
@@ -11,24 +12,16 @@ export const editStoryAction = entryInfo => {
                 'Authorization': `bearer ${token}`
             }
             const res = await axios.put(`http://localhost:3001/api/stories/edit/${storyId}`, entryInfo, {headers: headers})
-            console.log(res)
 
-            // START OF PATH CHANGE
-            dispatch({
-                type: 'SET_PATH',
-                payload: 'editedStory'
-            })
-            // needs to be set back to null
-            dispatch({
-                type: 'SET_PATH',
-                payload: null
-            })
-            // END OF PATH CHANGE
+            console.log(res)
 
             dispatch({
                 type: 'TOGGLE_MODAL',
                 payload: false
             })
+
+            history.go(0)
+
         }
         catch(error){
             dispatch({
@@ -54,17 +47,8 @@ export const editEntryAction = entryInfo => {
 
             console.log(res)
 
-            // START OF PATH CHANGE
-            dispatch({
-                type: 'SET_PATH',
-                payload: 'editedEntry'
-            })
-            // needs to be set back to null
-            dispatch({
-                type: 'SET_PATH',
-                payload: null
-            })
-            // END OF PATH CHANGE
+            history.push(`/story/${storyId}`)
+
         }
         catch(error){
             dispatch({

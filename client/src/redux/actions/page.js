@@ -1,15 +1,4 @@
 
-
-export const setPathAction = path => {
-	return async (dispatch, getState) => {
-
-        dispatch({
-            type: 'SET_PATH',
-            payload: path
-        })
-	}
-}
-
 export const toggleModalAction = (showPage) => {
 	return async (dispatch, getState) => {
         if(showPage){

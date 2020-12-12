@@ -1,4 +1,5 @@
 import axios from 'axios'
+import {history} from '../../index'
 
 export const registerUserAction = formInfo => {
 	return async (dispatch, getState) => {
@@ -26,17 +27,7 @@ export const registerUserAction = formInfo => {
                         payload: !getState().page.modal
                     })
 
-                    // START OF PATH CHANGE
-                    dispatch({
-                        type: 'SET_PATH',
-                        payload: 'registeredUser'
-                    })
-                    // needs to be set back to null
-                    dispatch({
-                        type: 'SET_PATH',
-                        payload: null
-                    })
-                    // END OF PATH CHANGE
+                    history.pushState('/profile')
                 }
 
                 catch(error){

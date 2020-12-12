@@ -1,4 +1,5 @@
 import axios from 'axios'
+import {history} from '../../index'
 
 export const deleteStoryAction = storyId => {
 	return async (dispatch, getState) => {
@@ -9,24 +10,16 @@ export const deleteStoryAction = storyId => {
                 'Authorization': `bearer ${token}`
             }
             const res = await axios.delete(`http://localhost:3001/api/stories/${storyId}`, {headers: headers})
-            console.log(res)
 
-            // START OF PATH CHANGE
-            dispatch({
-                type: 'SET_PATH',
-                payload: 'deletedStory'
-            })
-            // needs to be set back to null
-            dispatch({
-                type: 'SET_PATH',
-                payload: null
-            })
-            // END OF PATH CHANGE
+            console.log(res)
 
             dispatch({
                 type: 'TOGGLE_MODAL',
                 payload: false
             })
+
+            history.push('/profile')
+
         }
         catch(error){
             dispatch({
@@ -75,17 +68,8 @@ export const deleteEntryAction = (storyId, entryId) => {
 
             console.log('entry deleted from database')
 
-            // START OF PATH CHANGE
-            dispatch({
-                type: 'SET_PATH',
-                payload: 'deletedEntry'
-            })
-            // needs to be set back to null
-            dispatch({
-                type: 'SET_PATH',
-                payload: null
-            })
-            // END OF PATH CHANGE
+            history.push(`/story/${storyId}`)
+
         }
         catch(error){
             dispatch({

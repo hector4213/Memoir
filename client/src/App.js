@@ -2,12 +2,7 @@ import React, {useEffect} from 'react'
 import './App.scss';
 import {connect} from 'react-redux'
 
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  // Redirect
-} from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 
 import Home from './controllers/Home/Home'
 import Story from './controllers/Story/Story';
@@ -32,7 +27,6 @@ const App = props => {
 
       {error? <div className='error-message' onClick={() => setError(null)}> {error} </div> : ''}
 
-      <Router>
       <Switch>
 
           {/* - - - - - - - - - - - - - - - - - - - - - - - */}
@@ -81,7 +75,6 @@ const App = props => {
           {/* - - - - - - - - - - - - - - - - - - - - - - - */}
 
         </Switch>
-        </Router>
     </div>
   )
 }

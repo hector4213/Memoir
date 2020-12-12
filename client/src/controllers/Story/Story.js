@@ -11,33 +11,16 @@ import ErrorDisplay from '../../components/ErrorDisplay/ErrorDisplay'
 
 import {getSingleStoryAction} from '../../redux/actions/db_get'
 
-import {useCallback} from 'react'
-import {useHistory} from 'react-router-dom'
-
 const Story = props => {
     const {getSingleStory} = props
-    const {current, path} = props
+    const {current} = props
 
     const story = current? current.story : null
     const { storyId } = useParams()
 
+    useEffect(()=> getSingleStory(storyId), [getSingleStory, storyId])
 
-    // START OF REDIRECT
-    const history = useHistory()
-    const goToProfile = useCallback(() => history.push(`/profile`), [history])
-    const refresh = useCallback(() => history.go(0), [history])
-
-    useEffect(()=>{
-        if(path === 'deletedStory'){ goToProfile() }
-        if(path === 'editedStory'){refresh()}
-    },[path, goToProfile, refresh])
-    // END OF REDIRECT
-
-    useEffect(()=>{
-        getSingleStory(storyId)
-    }, [getSingleStory, storyId])
-
-    // Progress Bar
+    // PROGRESS BAR
     const [currentProgress, setCurrentProgress] = useState(0)
     useEffect(()=>{
         window.addEventListener('scroll', changeProgress)
@@ -55,6 +38,8 @@ const Story = props => {
         setCurrentProgress( (current/height)*100 )
     }
 
+
+    // START DISPLAYING STORY
     if(!story){ return <ErrorDisplay /> }
     else {
         return (
@@ -114,7 +99,6 @@ const mapStateToProps = (state, ownProps) => {
     return {
         current: state.page.current,
         user: state.profile.user,
-        path: state.page.path
     }
 }
 

@@ -1,4 +1,5 @@
 import axios from 'axios'
+import {history} from '../../index'
 
 export const logInAction = formInfo => {
 	return async (dispatch, getState) => {
@@ -19,16 +20,10 @@ export const logInAction = formInfo => {
                     type: 'TOGGLE_MODAL',
                     payload: !getState().page.modal
                 })
-                dispatch({
-                    type: 'SET_PATH',
-                    payload: 'loggedIn'
-                })
-                dispatch({
-                    type: 'SET_PATH',
-                    payload: null
-                })
 
                 localStorage.setItem('profile', JSON.stringify(response.data))
+
+                history.push('/profile')
 
             }
             catch(error){
@@ -57,13 +52,7 @@ export const logInAction = formInfo => {
 export const logOutAction = () => {
     localStorage.clear()
 	return async (dispatch, getState) => {
-
-        // START OF PATH CHANGE
-        dispatch({
-            type: 'SET_PATH',
-            payload: 'loggedOut'
-        })
-
         dispatch({ type: 'REMOVE_PROFILE'})
+        history.push('/')
     }
 }
