@@ -48,6 +48,8 @@ const OthersStuff = props => {
                 }}/>)
             }
         })
+    } else {
+        return <div> There seems to not be any entries from other people. </div>
     }
 
     return (
