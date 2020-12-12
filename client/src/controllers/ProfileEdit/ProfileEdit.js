@@ -3,10 +3,11 @@ import './ProfileEdit.scss'
 
 import {connect} from 'react-redux'
 import {editProfileAction} from '../../redux/actions/db_put'
+import {deleteProfileAction} from '../../redux/actions/profile'
 import Button from '../../components/Button/Button'
 
 const ProfileEdit = props => {
-    const {user, editProfile} = props
+    const {user, editProfile, deleteProfile} = props
     const [profileForm, setProfileForm] = useState({
         username: user.username,
         email: user.email,
@@ -31,8 +32,7 @@ const ProfileEdit = props => {
                         label: 'Delete Profile',
                         onClick: e => {
                             e.preventDefault()
-                            const final = {...user, ...profileForm}
-                            editProfile(final)
+                            deleteProfile()
                         },
                         transparent: true,
                         extraClass: 'delete-profile'
@@ -63,7 +63,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        editProfile: profileInfo => dispatch(editProfileAction(profileInfo))
+        editProfile: profileInfo => dispatch(editProfileAction(profileInfo)),
+        deleteProfile: profileInfo => dispatch(deleteProfileAction(profileInfo))
     }
 }
 

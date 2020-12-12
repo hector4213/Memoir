@@ -21,6 +21,8 @@ const SubmitCreate = props => {
                 e.preventDefault()
                 const allFieldsCompleted = areFieldsValid(formInfo, date)
 
+                console.log(formInfo)
+
                 if(allFieldsCompleted){
                     const allFields = {
                         title: formInfo.title,
@@ -29,6 +31,9 @@ const SubmitCreate = props => {
                         embed: formInfo.embed,
                         format_id: formInfo.format_id
                     }
+
+                    console.log(allFields)
+
                     createEntry(allFields)
                     setError(null)
                 }

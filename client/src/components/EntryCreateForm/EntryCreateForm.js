@@ -15,7 +15,7 @@ import SubmitEdit from './SubmitEdit'
 const EntryCreateForm = props => {
     // props from redux
     const {getSingleStory} = props
-    const {current, error} = props
+    const {current} = props
 
     // props from edit Entry
     const {edit, entry} = props
@@ -95,7 +95,6 @@ const EntryCreateForm = props => {
 
 const mapStateToProps = state => {
     return {
-        error: state.page.error,
         current: state.page.current
     }
 }

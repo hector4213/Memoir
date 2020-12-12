@@ -29,7 +29,7 @@ const SubmitEdit = props => {
                 e.preventDefault()
                 // eslint-disable-next-line no-restricted-globals
                 if (confirm(`Are you sure you want to delete this entry?`)) {
-                    deleteEntry(current.story.id, current.entry.id)
+                    deleteEntry(current.entry)
                 } else {
                     console.log('delete was cancelled')
                 }
@@ -89,7 +89,7 @@ const mapDispatchToProps = dispatch => {
     return {
         setError: errorMessage => dispatch(setErrorAction(errorMessage)),
         editEntry: formInfo => dispatch(editEntryAction(formInfo)),
-        deleteEntry: (storyId, entryId) => dispatch(deleteEntryAction(storyId, entryId)),
+        deleteEntry: (entry) => dispatch(deleteEntryAction(entry)),
     }
 }
 
