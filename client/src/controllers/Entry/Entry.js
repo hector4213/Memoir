@@ -29,7 +29,7 @@ const Entry = props => {
     if(!current || !current.entry || !current.story || !current.entry){ return <ErrorDisplay /> }
     else {
         const entry = current.entry
-        const {format_id, title, description, embed, date, user, id} = entry
+        const {hashtags, format_id, title, description, embed, date, user, id} = entry
 
 
         const createMarkup = () => {
@@ -53,6 +53,13 @@ const Entry = props => {
                         <h2>{formattedDate}</h2>
                         <p>{description}</p>
                         <p>This entry was written by: {user.username}</p>
+                        <ul className='hashtags'>
+                            {
+                                hashtags?hashtags.map(hash => {
+                                    return (<li> {hash.tagname} </li>)
+                                }) : ''
+                            }
+                        </ul>
                     </div>
 
                     <div className='nav-entries' style={previousEntry? {} : {justifyContent:"flex-end"}} >
@@ -107,7 +114,7 @@ const formatDate = date => {
 }
 
 const mapStateToProps = state => {
-
+    console.log(state)
     return {
         current: state.page.current,
     }

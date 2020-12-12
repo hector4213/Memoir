@@ -21,6 +21,24 @@
     width: 100%;
 }
 
+.hashtags {
+    width: 100%;
+    margin: 30px 0px;
+    padding: 0px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    li {
+        list-style-type: none;
+        background: $medium_blue;
+        padding: 10px 20px;
+        width: fit-content;
+        border-radius: 5px;
+        margin-right: 10px;
+    }
+}
+
 .nav-entries {
     width: 100%;
     margin-top: 150px;

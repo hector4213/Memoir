@@ -11,6 +11,7 @@ import DateEntry from './DateEntry'
 import SubmitCreate from './SubmitCreate'
 import TextEntry from './TextEntry'
 import SubmitEdit from './SubmitEdit'
+import TagsEntry from './TagsEntry'
 
 const EntryCreateForm = props => {
     // props from redux
@@ -33,10 +34,11 @@ const EntryCreateForm = props => {
         embed: edit? entry.embed : '',
         title: edit? entry.title: '',
         description: edit? entry.description: '',
+        hashtags: edit? entry.hashtags : '',
         format_id_F: true,
         embed_F: true,
         title_F: true,
-        description_F: true
+        description_F: true,
     })
 
     let editDate
@@ -80,6 +82,7 @@ const EntryCreateForm = props => {
                 <MediaType {...{format_id_F, setFormInfo, formInfo, notFilledStyle}}/>
                 <TextEntry {...{setFormInfo, notFilledStyle, formInfo, embed_F, title_F, description_F}} />
                 <DateEntry {...{month_F, notFilledStyle, setDate, date, day_F, year_F}} />
+                <TagsEntry {...{formInfo, setFormInfo}} />
 
                 {
                     edit ?
