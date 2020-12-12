@@ -18,7 +18,7 @@ const schema = yup.object().shape({
 //Post new entry to story
 router.post('/', async (req, res, next) => {
   const { storyId } = req.params
-  const { title, description, date, embed, format_id } = req.body
+  const { title, description, date, embed, format_id, hashtags } = req.body
   const decodedToken = await jwt.verify(req.token)
   const story = await Story.query().findById(storyId)
   const isStoryAuthor = decodedToken.id === story.author_id ? 1 : 2
@@ -33,13 +33,14 @@ router.post('/', async (req, res, next) => {
       storyId,
     })
     if (story) {
-      await Entry.query().insert({
+      await Entry.query().insertGraph({
         title,
         description,
         date,
         embed,
         format_id,
         user_id: decodedToken.id,
+        hashtags, // array of hashtags from body
         story_id: storyId,
         entry_status: isStoryAuthor,
       })
@@ -58,7 +59,7 @@ router.get('/:id', async (req, res, next) => {
   const { id, storyId } = req.params
   const entry = await Entry.query()
     .where({ story_id: storyId })
-    .withGraphFetched('[story, user(nameAndId)]')
+    .withGraphFetched('[story, user(nameAndId), hashtags(onlyName)]')
     .modifiers({
       nameAndId(builder) {
         builder.select('id', 'username')
