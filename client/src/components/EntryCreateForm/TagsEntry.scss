@@ -39,11 +39,12 @@
 
     input {
         margin: 0px;
+        font-size: $text_size;
     }
 
     .tag-submit {
         font-size: 25px;
-        padding: 20px 40px;
+        padding: 10px 40px;
         background: none;
         border-radius: 0px;
         color: $light_blue;
