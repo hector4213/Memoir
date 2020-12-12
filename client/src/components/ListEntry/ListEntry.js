@@ -59,7 +59,7 @@ const ListEntry = props => {
                     // eslint-disable-next-line no-restricted-globals
                     if (confirm(`Are you sure you want to delete '${entry.title}' ?`)) {
                         if(deleteEntry){
-                            deleteEntry(entry.story.id, entry.id)
+                            deleteEntry(entry)
                         }
                     } else {
                         console.log('delete was cancelled')
@@ -73,7 +73,7 @@ const ListEntry = props => {
 
 const mapDispatchToProps = dispatch =>{
     return {
-        deleteEntry: (storyId, entryId) => dispatch(deleteEntryAction(storyId, entryId)),
+        deleteEntry: (entry) => dispatch(deleteEntryAction(entry)),
         editForeignEntries: (entryId, entryStatus) => dispatch(editForeignEntriesAction(entryId, entryStatus))
     }
 }

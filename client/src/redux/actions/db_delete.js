@@ -18,7 +18,12 @@ export const deleteStoryAction = storyId => {
                 payload: false
             })
 
-            history.push('/profile')
+
+            if(history.location.pathname === '/profile'){
+                history.go(0)
+            } else {
+                history.push('/profile')
+            }
 
         }
         catch(error){
@@ -30,34 +35,35 @@ export const deleteStoryAction = storyId => {
     }
 }
 
-export const deleteEntryAction = (storyId, entryId) => {
+export const deleteEntryAction = (entry) => {
 	return async (dispatch, getState) => {
+
         const token = getState().profile.token
-        const entry = getState().page.current.entry
+
+        console.log(entry)
+        const storyId = entry.story.id
+        const entryId = entry.id
+
 
         try {
+            const splitEmbed = entry.embed.split(' ')
+            const hash = splitEmbed[1]
 
             if(entry && entry.embed.includes('imgur')){
-                const splitEmbed = entry.embed.split(' ')
-                const hash = splitEmbed[1]
 
-                try {
+                await axios({
+                    method: 'DELETE',
+                    url: `https://api.imgur.com/3/image/${hash}`,
+                    headers: {
+                        'Authorization': `Client-ID 39612fe2e37daed`,
+                        'Content-Type': 'image'
+                    },
+                })
 
-                    await axios({
-                        method: 'DELETE',
-                        url: `https://api.imgur.com/3/image/${hash}`,
-                        headers: {
-                            'Authorization': `Client-ID 39612fe2e37daed`,
-                            'Content-Type': 'image'
-                        },
-                    })
-
-                    console.log('image deleted from imgur')
-                }
-                catch(error){
-                    console.log(error)
-                }
+                console.log('image deleted from imgur')
             }
+
+
 
             const headers = {
                 'Content-Type': 'application/json',
@@ -68,7 +74,11 @@ export const deleteEntryAction = (storyId, entryId) => {
 
             console.log('entry deleted from database')
 
-            history.push(`/story/${storyId}`)
+            if(history.location.pathname === '/profile'){
+                history.go(0)
+            } else {
+                history.push(`/story/${storyId}`)
+            }
 
         }
         catch(error){
