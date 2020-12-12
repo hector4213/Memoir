@@ -28,7 +28,7 @@ const SubmitCreate = props => {
                         title: formInfo.title,
                         description: formInfo.description,
                         date:`${date.year}-${date.month}-${date.day}`,
-                        embed: formInfo.embed,
+                        embed: formInfo.format_id === 2? 'THISISATEXTENTRY' : formInfo.embed,
                         format_id: formInfo.format_id
                     }
 
