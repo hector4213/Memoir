@@ -27,11 +27,11 @@ export const registerUserAction = formInfo => {
                         payload: !getState().page.modal
                     })
 
-                    history.pushState('/profile')
+                    history.push('/profile')
                 }
 
                 catch(error){
-                    if(error.response.data.error){
+                    if(error.response && error.response.data.error){
                         dispatch({
                             type: 'ERROR',
                             payload: error.response? error.response.data.error : error.message
