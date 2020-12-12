@@ -40,7 +40,6 @@ export const deleteEntryAction = (entry) => {
 
         const token = getState().profile.token
 
-        console.log(entry)
         const storyId = entry.story.id
         const entryId = entry.id
 

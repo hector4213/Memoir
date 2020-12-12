@@ -21,6 +21,8 @@ const SubmitCreate = props => {
                 e.preventDefault()
                 const allFieldsCompleted = areFieldsValid(formInfo, date)
 
+                console.log(formInfo)
+
                 if(allFieldsCompleted){
                     const allFields = {
                         title: formInfo.title,

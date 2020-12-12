@@ -41,11 +41,12 @@ const TextEntry = props => {
             })
 
             console.log('new picture uploaded to imgur')
-            setFormInfo({ ...formInfo, embed:`${response.data.data.link} ${response.data.data.deletehash}`})
+            setFormInfo({ ...formInfo, embed:`${response.data.data.link} ${response.data.data.deletehash}`, embed_F:true})
             console.log(formInfo)
+        } else {
+            setFormInfo({ ...formInfo, embed: e.target.files[0], embed_F:true })
         }
 
-        // setFormInfo({ ...formInfo, embed: e.target.files[0], embed_F:true })
     }
 
     return (

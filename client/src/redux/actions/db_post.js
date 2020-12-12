@@ -62,7 +62,7 @@ export const createEntryAction = entryInfo => {
 
             console.log('entry successfully saved on db')
 
-            history.push(`/stories/${storyId}`)
+            history.push(`/story/${storyId}`)
 
         }
         catch(error){
