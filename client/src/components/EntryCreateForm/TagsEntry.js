@@ -5,9 +5,9 @@ const TagsEntry = props => {
 
     const {formInfo, setFormInfo} = props
     const tags = formInfo.hashtags ? formInfo.hashtags : [
-        { tagname: "Birthday" },
-        { tagname: "Wedding" },
-        { tagname: "Sample Tag" },
+        // { tagname: "Birthday" },
+        // { tagname: "Wedding" },
+        // { tagname: "Sample Tag" },
     ]
 
     const tagTabs = tags.map( (tag, i) => {
@@ -45,6 +45,7 @@ const TagsEntry = props => {
                 <input type='text' className='tagText' placeholder='Add a Tag' onKeyDown={e=>{
                     if (e.key === 'Enter') {
                         handleTagSubmit(e)
+                        e.target.value = ''
                     }
                 }}/>
                 <button className='tag-submit' onClick={handleTagSubmit}> + </button>
