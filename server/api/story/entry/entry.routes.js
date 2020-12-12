@@ -10,7 +10,7 @@ const schema = yup.object().shape({
   title: yup.string().trim().min(3).required(),
   description: yup.string().trim().min(3).required(),
   date: yup.string(),
-  embed: yup.string().trim().min(5),
+  embed: yup.string(),
   format_id: yup.number().integer().required(),
   storyId: yup.number().integer().required(),
 })
