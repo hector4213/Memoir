@@ -4,7 +4,6 @@ import './Profile.scss'
 
 import YourStuff from './YourStuff/YourStuff'
 import OthersStuff from './OthersStuff/OthersStuff'
-import GoHomeButton from '../../components/ButtonTypes/GoHomeButton/GoHomeButton'
 import ButtonsForProfile from '../ButtonGroups/ButtonsForProfile/ButtonsForProfile'
 
 import {useCallback, useEffect} from 'react'
@@ -34,7 +33,6 @@ const Profile = props => {
 
     return (
         <div className='profile'>
-            <GoHomeButton />
             <ButtonsForProfile />
 
             <h1 className='pageTitle'>{user.username}</h1>
@@ -59,7 +57,7 @@ const Profile = props => {
 }
 
 const mapStateToProps = state => {
-
+    console.log(state)
     return {
         user: state.profile.user,
         path: state.page.path

@@ -4,6 +4,7 @@ import './ButtonsForProfile.scss'
 import {connect} from 'react-redux'
 
 import Button from '../../../components/Button/Button'
+import GoHomeButton from '../../../components/ButtonTypes/GoHomeButton/GoHomeButton'
 import LogOutButton from '../../../components/ButtonTypes/LogOutButton/LogOutButton'
 import { toggleModalAction } from '../../../redux/actions/page'
 import Modal from '../../../components/Modal/Modal'
@@ -14,19 +15,23 @@ const ButtonsForProfile = props => {
     const {toggleModal, modal, showingPage} = props
 
     return (
-        <div className='profile-btns'>
+        <>
+            <GoHomeButton />
 
-            <Button {...{
-                label: 'Edit Profile',
-                onClick: () => toggleModal('editProfile'),
-                transparent: true,
-                extraClass: 'edit-profile-btn'
-            } } />
+            <div className='profile-btns'>
 
-            <LogOutButton />
+                <Button {...{
+                    label: 'Edit Profile',
+                    onClick: () => toggleModal('editProfile'),
+                    transparent: true,
+                    extraClass: 'edit-profile-btn'
+                } } />
 
-            {showingPage === 'editProfile' && modal? <Modal> <ProfileEdit/> </Modal> : ''}
-        </div>
+                <LogOutButton />
+
+                {showingPage === 'editProfile' && modal? <Modal> <ProfileEdit/> </Modal> : ''}
+            </div>
+        </>
     )
 }
 
