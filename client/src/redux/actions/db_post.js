@@ -36,22 +36,23 @@ export const createEntryAction = entryInfo => {
         const storyId = getState().page.current.story.id
 
         try {
+            if(entryInfo.format_id === 4){
+                // POST TO IMGUR
+                const response = await axios({
+                    method: 'post',
+                    url: 'https://api.imgur.com/3/image',
+                    headers: {
+                        'Authorization': `Client-ID 39612fe2e37daed`,
+                        'Content-Type': 'image'
+                    },
+                    data : entryInfo.embed
+                })
 
-            // POST TO IMGUR
-            const response = await axios({
-                method: 'post',
-                url: 'https://api.imgur.com/3/image',
-                headers: {
-                    'Authorization': `Client-ID 39612fe2e37daed`,
-                    'Content-Type': 'image'
-                },
-                data : entryInfo.embed
-            })
+                console.log('picture successfully hosted on imgur')
+                // console.log(response.data)
 
-            console.log('picture successfully hosted on imgur')
-            // console.log(response.data)
-
-            entryInfo = { ...entryInfo, embed:`${response.data.data.link} ${response.data.data.deletehash}`}
+                entryInfo = { ...entryInfo, embed:`${response.data.data.link} ${response.data.data.deletehash}`}
+            }
 
             const headers = {
                 'Content-Type': 'application/json',
