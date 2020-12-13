@@ -52,14 +52,20 @@ const Entry = props => {
                         <h1>{title}</h1>
                         <h2>{formattedDate}</h2>
                         <p>{description}</p>
-                        <p>This entry was written by: {user.username}</p>
-                        <ul className='hashtags'>
-                            {
-                                hashtags?hashtags.map( (hash, i) => {
-                                    return (<li key={i}> {hash.tagname} </li>)
-                                }) : ''
+                        <p className='author'>This entry was written by: {user.username}</p>
+                        {
+                            hashtags?
+                                <>
+                                <label>Tags: </label>
+                                <ul className='hashtags'>
+                                    {
+                                    hashtags.map( (hash, i) => {
+                                            return (<li key={i}> {hash.tagname} </li>)
+                                    })
+                                    }
+                                </ul>
+                                </> : ''
                             }
-                        </ul>
                     </div>
 
                     <div className='nav-entries' style={previousEntry? {} : {justifyContent:"flex-end"}} >
