@@ -45,7 +45,7 @@ export const deleteEntryAction = (entry) => {
 
 
         try {
-            const splitEmbed = entry.embed.split(' ')
+            const splitEmbed = entry.embed? entry.embed.split(' ') : ''
             const hash = splitEmbed[1]
 
             if(entry && entry.embed.includes('imgur')){
@@ -69,6 +69,8 @@ export const deleteEntryAction = (entry) => {
                 'Authorization': `bearer ${token}`
             }
 
+            console.log('up to here')
+
             await axios.delete(`http://localhost:3001/api/stories/${storyId}/entries/${entryId}`, {headers: headers})
 
             console.log('entry deleted from database')
@@ -81,6 +83,7 @@ export const deleteEntryAction = (entry) => {
 
         }
         catch(error){
+            console.log({error})
             dispatch({
                 type: 'ERROR',
                 payload: error.response? error.response.data.error : error.message

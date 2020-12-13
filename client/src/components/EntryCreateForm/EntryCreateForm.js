@@ -30,11 +30,11 @@ const EntryCreateForm = props => {
 
     // form defaults
     const [formInfo, setFormInfo] = useState({
-        format_id: edit? entry.format_id: 0,
-        embed: edit? entry.embed : '',
-        title: edit? entry.title: '',
-        description: edit? entry.description: '',
-        hashtags: edit? entry.hashtags : '',
+        format_id: entry && entry.format_id? entry.format_id: 0,
+        embed: entry && entry.embed? entry.embed : '',
+        title: entry && entry.title? entry.title: '',
+        description: entry && entry.description? entry.description: '',
+        hashtags: entry && entry.hashtags? entry.hashtags : '',
         format_id_F: true,
         embed_F: true,
         title_F: true,
@@ -69,7 +69,7 @@ const EntryCreateForm = props => {
     return (
         <div className='entry-create-form'>
             {
-                edit?
+                entry && entry.format_id === 4?
                 <>
                 <img alt={entry.title} src={formInfo.embed} />
                 <h1 className='actiontitle'>Edit this Entry</h1>
@@ -97,6 +97,7 @@ const EntryCreateForm = props => {
 
 
 const mapStateToProps = state => {
+    console.log(state)
     return {
         current: state.page.current
     }

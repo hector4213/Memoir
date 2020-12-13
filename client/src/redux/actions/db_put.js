@@ -39,15 +39,27 @@ export const editEntryAction = entryInfo => {
         const entryId = getState().page.current.entry.id
 
         try {
+
+            entryInfo = {
+                date: entryInfo.date,
+                description: entryInfo.description,
+                embed: entryInfo.embed,
+                format_id: entryInfo.format_id,
+                hashtags: entryInfo.hashtags,
+                title: entryInfo.title,
+            }
+
             const headers = {
                 'Content-Type': 'application/json',
                 'Authorization': `bearer ${token}`
             }
+
             const res = await axios.put(`http://localhost:3001/api/stories/${storyId}/entries/edit/${entryId}`, entryInfo, {headers: headers})
 
             console.log(res)
 
-            history.push(`/story/${storyId}`)
+            history.push(`/story/${storyId}/entry/${entryId}`)
+            history.go(0)
 
         }
         catch(error){

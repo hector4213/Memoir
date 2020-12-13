@@ -19,6 +19,17 @@
 
 .entry-caption {
     width: 100%;
+
+    .author {
+        margin-top: 50px;
+        text-align: right;
+    }
+}
+
+label {
+    display: block;
+    font-size: $subtitle_size;
+    margin: 50px 0px -20px 10px;
 }
 
 .hashtags {
@@ -35,7 +46,8 @@
         padding: 10px 20px;
         width: fit-content;
         border-radius: 5px;
-        margin-right: 10px;
+        margin: 5px;
+        cursor: default;
     }
 }
 

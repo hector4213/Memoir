@@ -4,9 +4,19 @@ import './ErrorDisplay.scss'
 import GoHomeButton from '../ButtonTypes/GoHomeButton/GoHomeButton'
 
 const ErrorDisplay = props => {
+
+    const {message} = props
+
     return (
-        <div>
+        <div className='error-display'>
             <GoHomeButton />
+            {
+                message?
+                <div className='message'>
+                {message}
+                </div>
+                : ''
+            }
         </div>
     )
 }

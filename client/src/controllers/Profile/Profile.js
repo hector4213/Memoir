@@ -13,7 +13,7 @@ const Profile = props => {
     const {user} = props
 
     if(!user){
-        return <ErrorDisplay />
+        return <ErrorDisplay message='You must log in or register to see your profile'/>
     }
 
     return (
