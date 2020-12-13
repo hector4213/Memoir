@@ -6,6 +6,7 @@ import { HiOutlineXCircle, HiThumbUp, HiThumbDown } from "react-icons/hi";
 import {connect} from 'react-redux'
 import {deleteEntryAction} from '../../redux/actions/db_delete'
 import {editForeignEntriesAction} from '../../redux/actions/foreignEntries'
+import ListEntryTemplate from '../../templates/ListEntryTemplate/ListEntryTemplate';
 
 const ListEntry = props => {
     const {entry, foreign} = props;
@@ -20,15 +21,8 @@ const ListEntry = props => {
     const thumbDownClass = entry.entry_status === 3? 'active' : ''
 
     return (
-    <div className='listEntry' onClick={goToEntry}>
-        <h1>{entry.title}</h1>
-        <div className='listEntryRight'>
-            <h2 onClick={e => {
-                e.preventDefault()
-                e.stopPropagation()
-                goToStory()
-            }}>{entry.story.name}</h2>
-
+    <div>
+            <ListEntryTemplate {...{entry, goToEntry, goToStory}}>
             {
                 foreign?
                 <>
@@ -66,7 +60,7 @@ const ListEntry = props => {
                     }
                 }}/>
             }
-        </div>
+            </ListEntryTemplate>
     </div>
     )
 }
