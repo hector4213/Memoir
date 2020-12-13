@@ -3,44 +3,42 @@
 
 .header {
     text-align: center;
-}
+    cursor: none;
 
+    .logo {
+        $logo_size: 3px;
+        width: $logo_size;
+        height: $logo_size;
+        border-radius: $logo_size;
 
-.logo {
-    $logo_size: 3px;
-    width: $logo_size;
-    height: $logo_size;
-    border-radius: $logo_size;
+        background: $yellow;
+        box-shadow: 0px 0px 200px 150px $pink;
 
-    background: $yellow;
-    box-shadow: 0px 0px 200px 150px $pink;
-
-    z-index: -1;
-    position: absolute;
-    top: 50px;
-    left: 50%;
-}
-
-.title {
-    text-align: right;
-    width: 350px;
-    padding: 100px 0px;
-    margin: auto;
-    color: $dark_blue;
-
-    h1 {
-        font-size: $title_size;
-        font-weight: bold;
-        margin: 0px;
-        padding: 0px;
-        cursor: default;
+        z-index: -1;
+        position: absolute;
+        top: 50px;
+        left: 50%;
     }
 
-    p {
-        font-size: $subtitle_size;
-        line-height: $subtitle_lineheight_size;
-        margin: 0px;
-        padding: 0px;
-        cursor: default;
+    .title {
+        text-align: right;
+        width: 350px;
+        padding: 100px 0px;
+        margin: auto;
+        color: $dark_blue;
+
+        h1 {
+            font-size: $title_size;
+            font-weight: bold;
+            margin: 0px;
+            padding: 0px;
+        }
+
+        p {
+            font-size: $subtitle_size;
+            line-height: $subtitle_lineheight_size;
+            margin: 0px;
+            padding: 0px;
+        }
     }
 }
