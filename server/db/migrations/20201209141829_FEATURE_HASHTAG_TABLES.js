@@ -8,8 +8,16 @@ exports.up = async (knex) => {
     }),
     knex.schema.createTable(tableNames.hashTagsRelations, (table) => {
       table.increments()
-      table.integer('entry_id').references('id').inTable(tableNames.entry)
-      table.integer('tag_id').references('id').inTable(tableNames.hashTags)
+      table
+        .integer('entry_id')
+        .references('id')
+        .inTable(tableNames.entry)
+        .onDelete('cascade')
+      table
+        .integer('tag_id')
+        .references('id')
+        .inTable(tableNames.hashTags)
+        .onDelete('cascade')
     }),
   ])
 }

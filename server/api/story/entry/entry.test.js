@@ -43,6 +43,7 @@ describe('Routes for /api/stories/*/entries', () => {
       .put(`/api/stories/1/entries/edit/${targetEntry.id}`)
       .set('Authorization', `bearer ${token}`)
       .send(updatedEntry)
+      .expect('Content-Type', /json/)
       .expect(200)
 
     const fetchedEntry = await Entry.query().findById(targetEntry.id)
@@ -66,5 +67,48 @@ describe('Routes for /api/stories/*/entries', () => {
 
     const entriesAtEnd = await Entry.query().where({ story_id: 1 })
     expect(entriesAtEnd.length).to.equal(initialEntries.length - 1)
+  })
+
+  it('should be able to edit a users hashtags', async () => {
+    const login = await supertest(app)
+      .post('/api/auth/login')
+      .send({ email: 'tester@test.com', password: 'React!123' })
+
+    const initialEntry = await Entry.query()
+      .withGraphFetched('hashtags')
+      .findById(21)
+    // this is a seeded entry
+    const updatedEntry = {
+      title: 'Updating an entry',
+      description: 'Lets see if this updates',
+      date: '2020-04-28',
+      embed: '',
+      hashtags: [
+        { tagname: 'this' },
+        { tagname: 'is' },
+        { tagname: 'testing' },
+        { tagname: 'put' },
+      ],
+      format_id: 3,
+    }
+
+    const { token, user } = login.body
+
+    const response = await supertest(app)
+      .put(`/api/stories/1/entries/edit/${initialEntry.id}`)
+      .set('Authorization', `bearer ${token}`)
+      .send(updatedEntry)
+      .expect('Content-Type', /json/)
+      .expect(200)
+
+    const afterUpdate = await Entry.query()
+      .withGraphFetched('hashtags(onlyName)')
+      .findById(initialEntry.id)
+
+    expect(initialEntry.id).to.equal(afterUpdate.id)
+    expect(initialEntry.title).to.not.equal(afterUpdate.title)
+    expect(initialEntry.description).to.not.equal(afterUpdate.description)
+    expect(initialEntry.hashtags).to.not.equal(afterUpdate.hashtags)
+    expect(afterUpdate.hashtags).to.be.a('array')
   })
 })
