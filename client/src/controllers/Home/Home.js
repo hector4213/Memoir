@@ -2,7 +2,6 @@ import React, {useEffect} from 'react'
 import './Home.scss'
 
 import Button from '../../components/Button/Button'
-import GoToProfileButton from '../../components/ButtonTypes/GoToProfileButton/GoToProfileButton'
 import Header from '../../components/Header/Header'
 import StoryCard from '../../components/StoryCard/StoryCard'
 import Modal from '../../components/Modal/Modal'
@@ -11,7 +10,7 @@ import LogInRegisterModal from '../../components/LogInRegister/LogInRegister'
 import {connect} from 'react-redux'
 import {toggleModalAction} from '../../redux/actions/page'
 import {getAllStoriesAction} from '../../redux/actions/db_get'
-import LogOutButton from '../../components/ButtonTypes/LogOutButton/LogOutButton'
+import ButtonsForHome from '../ButtonGroups/ButtonsForHome/ButtonsForHome'
 
 const Home = props => {
     const {toggleModal, getAllStories} = props
@@ -42,22 +41,7 @@ const Home = props => {
 
         {modal? <Modal> <LogInRegisterModal/> </Modal> : ''}
 
-        {
-        user?
-        <div className='home-buttons'>
-        <GoToProfileButton />
-        <LogOutButton />
-        </div>
-        :
-        <Button
-            {...{
-                label: 'Register | Log In',
-                transparent : true,
-                extraClass: 'login-btn',
-                onClick: toggleModal
-            }}
-        />
-        }
+        <ButtonsForHome />
 
         <Header />
 
