@@ -89,7 +89,7 @@ const createEntries = story =>{
             )
         })
     } else {
-        entryComponents.push(<div key='0' className='notfound'> Seems this story doesn't have any entries yet. </div>)
+        entryComponents.push(<ErrorDisplay message={`Seems ${story.name} doesn't have any entries yet`}/>)
     }
 
     return entryComponents
