@@ -69,7 +69,7 @@ describe('Routes for /api/stories/*/entries', () => {
     expect(entriesAtEnd.length).to.equal(initialEntries.length - 1)
   })
 
-  it.only('should be able to edit a users hashtags', async () => {
+  it('should be able to edit a users hashtags', async () => {
     const login = await supertest(app)
       .post('/api/auth/login')
       .send({ email: 'tester@test.com', password: 'React!123' })
@@ -110,6 +110,5 @@ describe('Routes for /api/stories/*/entries', () => {
     expect(initialEntry.description).to.not.equal(afterUpdate.description)
     expect(initialEntry.hashtags).to.not.equal(afterUpdate.hashtags)
     expect(afterUpdate.hashtags).to.be.a('array')
-    console.log(afterUpdate)
   })
 })
