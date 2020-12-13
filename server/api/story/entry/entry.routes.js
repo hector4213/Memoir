@@ -2,6 +2,8 @@ const express = require('express')
 const jwt = require('../../../lib/jwt')
 const Entry = require('./entry.model')
 const Story = require('../story.model')
+const HashTags = require('./hashtag/hashtag.model')
+const HashTagRelations = require('./hashtag/hastagrelations.model')
 const yup = require('yup')
 
 const router = express.Router({ mergeParams: true })
@@ -10,7 +12,7 @@ const schema = yup.object().shape({
   title: yup.string().trim().min(3).required(),
   description: yup.string().trim().min(3).required(),
   date: yup.string(),
-  embed: yup.string().trim().min(5),
+  embed: yup.string(),
   format_id: yup.number().integer().required(),
   storyId: yup.number().integer().required(),
 })
@@ -81,10 +83,13 @@ router.get('/:id', async (req, res, next) => {
 // Edit an entry
 router.put('/edit/:id', async (req, res, next) => {
   const { id, storyId } = req.params
-  const { title, description, date, embed, format_id } = req.body
+  const { title, description, date, embed, format_id, hashtags } = req.body
+
   try {
     const decodedToken = await jwt.verify(req.token)
+
     const editItem = await Entry.query().withGraphFetched('story').findById(id)
+    console.log(editItem)
     if (!editItem) return res.status(401).json({ error: 'item does not exist' })
     const isVerified = decodedToken.id === editItem.user_id
     await schema.validate({
@@ -94,16 +99,22 @@ router.put('/edit/:id', async (req, res, next) => {
       embed,
       format_id,
       storyId,
+      //do schema for arr of #tags
     })
     if (isVerified) {
-      await Entry.query().where({ id }).andWhere('story_id', storyId).patch({
-        title,
-        description,
-        date,
-        embed,
-        format_id,
-        user_id: decodedToken.id,
-      })
+      const options = {
+        relate: false,
+        unrelate: true,
+        insertMissing: true,
+        update: true,
+      }
+      const updatedEntry = await Entry.query().upsertGraph(
+        {
+          id,
+          ...req.body,
+        },
+        options
+      )
       return res.status(200).json({ msg: `${editItem.title} updated` })
     }
     return res.status(401).json({ error: 'unauthenticated' })

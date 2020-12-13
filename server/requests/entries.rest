@@ -1,13 +1,14 @@
-PUT http://localhost:3001/api/stories/16/entries/edit/2
+PUT http://localhost:3001/api/stories/1/entries/edit/21
 Content-Type: application/json
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwidXNlcm5hbWUiOiJ0ZXN0IiwiZW1haWwiOiJ0ZXN0bWFuQGdtYWlsLmNvbSIsImlhdCI6MTYwNzI3ODIzOCwiZXhwIjoxNjA3MzY0NjM4fQ.hV7HyTmrFtDLUxnbgVNOEfuzDUkr1hCCKokH7CVUaX8
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIsInVzZXJuYW1lIjoidGVzdGVyIiwiZW1haWwiOiJ0ZXN0ZXJAdGVzdC5jb20iLCJpYXQiOjE2MDc3OTcyNTksImV4cCI6MTYwODQwMjA1OX0.5JPcsCopBptNCgQfU4NAsrm9BPMJjnVcr23p513KNHw
 
 {
-    "title": "Testing if i can put with no entry_status",
-    "description": "Entries man",
-    "date":"May 22, 1900",
-    "embed": "google.com",
-    "format_id": 3
+    "title": "Testing If i can edit this",
+    "description": "Entries man Objection and shiz",
+    "date":"May 22, 1911",
+    "embed": "google.com/suicidewatch",
+    "hashtags": [{"tagname":"hu"},{"tagname":"ma"},{"tagname":"n"}],
+    "format_id": 2
 }
 
 #####
