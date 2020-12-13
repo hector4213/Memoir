@@ -28,12 +28,10 @@ const SubmitCreate = props => {
                         title: formInfo.title,
                         description: formInfo.description,
                         date:`${date.year}-${date.month}-${date.day}`,
-                        embed: formInfo.format_id === 2? 'THISISATEXTENTRY' : formInfo.embed,
+                        embed: formInfo.embed,
                         format_id: formInfo.format_id,
                         hashtags: formInfo.hashtags,
                     }
-
-                    console.log(allFields)
 
                     createEntry(allFields)
                     setError(null)
@@ -62,11 +60,23 @@ const SubmitCreate = props => {
 }
 
 const areFieldsValid = (formInfo, date) => {
-
     if(formInfo.format_id === 2){
-        return (formInfo && formInfo.format_id && formInfo.title && formInfo.description && date && date.month && date.day && date.year)
+        return (
+            formInfo &&
+            formInfo.format_id &&
+            formInfo.title &&
+            formInfo.description &&
+            date && date.month && date.day && date.year
+            )
     } else {
-        return (formInfo && formInfo.embed && formInfo.format_id && formInfo.title && formInfo.description && date && date.month && date.day && date.year)
+        return (
+            formInfo &&
+            formInfo.embed &&
+            formInfo.format_id &&
+            formInfo.title &&
+            formInfo.description &&
+            date && date.month && date.day && date.year
+            )
     }
 }
 

@@ -55,8 +55,8 @@ const Entry = props => {
                         <p>This entry was written by: {user.username}</p>
                         <ul className='hashtags'>
                             {
-                                hashtags?hashtags.map(hash => {
-                                    return (<li> {hash.tagname} </li>)
+                                hashtags?hashtags.map( (hash, i) => {
+                                    return (<li key={i}> {hash.tagname} </li>)
                                 }) : ''
                             }
                         </ul>
@@ -114,7 +114,6 @@ const formatDate = date => {
 }
 
 const mapStateToProps = state => {
-    console.log(state)
     return {
         current: state.page.current,
     }
