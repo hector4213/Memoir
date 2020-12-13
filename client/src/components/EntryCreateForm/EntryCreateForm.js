@@ -97,7 +97,6 @@ const EntryCreateForm = props => {
 
 
 const mapStateToProps = state => {
-    console.log(state)
     return {
         current: state.page.current
     }
