@@ -3,8 +3,8 @@ import './OthersStuff.scss'
 import {connect} from 'react-redux'
 
 import {getForeignEntriesAction} from '../../../redux/actions/foreignEntries'
-// import {editForeignEntriesAction} from '../../../redux/actions/foreignEntries'
 import ListEntry from '../../../components/ListEntry/ListEntry'
+import ErrorDisplay from '../../../components/ErrorDisplay/ErrorDisplay'
 
 
 const OthersStuff = props => {
@@ -14,16 +14,11 @@ const OthersStuff = props => {
         getForeignEntries()
     }, [getForeignEntries])
 
-    if(!foreignEntries){
-        return <div> No foreign entries found </div>
-    }
-
-    // creating entry list cards for approved, denied, pending
     const approved = []
     const pending = []
     const denied = []
 
-    if(foreignEntries.length>0){
+    if(foreignEntries && foreignEntries.length>0){
         foreignEntries.forEach( entry => {
 
             if(entry.entry_status === 1){
@@ -49,7 +44,7 @@ const OthersStuff = props => {
             }
         })
     } else {
-        return <div> There seems to not be any entries from other people. </div>
+        return <ErrorDisplay message='There seems to not be any entries from other people'/>
     }
 
     return (

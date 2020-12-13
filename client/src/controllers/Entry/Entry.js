@@ -54,7 +54,7 @@ const Entry = props => {
                         <p>{description}</p>
                         <p className='author'>This entry was written by: {user.username}</p>
                         {
-                            hashtags?
+                            hashtags.length > 0?
                                 <>
                                 <label>Tags: </label>
                                 <ul className='hashtags'>
