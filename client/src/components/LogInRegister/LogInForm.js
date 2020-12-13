@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import Button from '../Button/Button'
+import Button from '../../templates/Button/Button'
 
 import {connect} from 'react-redux'
 import {logInAction} from '../../redux/actions/logInOut'

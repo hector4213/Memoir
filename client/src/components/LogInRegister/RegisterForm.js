@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import {connect} from 'react-redux'
-import Button from '../Button/Button'
+import Button from '../../templates/Button/Button'
 
 import {registerUserAction} from '../../redux/actions/register'
 

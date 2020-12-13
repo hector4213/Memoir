@@ -3,7 +3,7 @@ import './GoToStoryButton.scss'
 import { useHistory, useParams } from "react-router-dom"
 
 
-import Button from '../../Button/Button';
+import Button from '../../../templates/Button/Button';
 
 const GoToStoryButton = props => {
 

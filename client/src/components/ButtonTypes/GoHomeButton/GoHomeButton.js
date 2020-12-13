@@ -3,7 +3,7 @@ import './GoHomeButton.scss'
 
 import {connect} from 'react-redux'
 import {useHistory} from 'react-router-dom'
-import Button from '../../Button/Button'
+import Button from '../../../templates/Button/Button'
 
 import {clearErrorAction} from '../../../redux/actions/page'
 

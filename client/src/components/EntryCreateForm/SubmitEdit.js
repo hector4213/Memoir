@@ -1,5 +1,5 @@
 import React, {useCallback} from 'react'
-import Button from '../Button/Button'
+import Button from '../../templates/Button/Button'
 
 import {connect} from 'react-redux'
 import {useHistory} from 'react-router-dom'

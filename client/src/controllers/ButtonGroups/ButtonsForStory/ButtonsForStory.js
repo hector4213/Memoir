@@ -5,7 +5,7 @@ import {useHistory} from "react-router-dom";
 import {connect} from 'react-redux'
 import {toggleModalAction} from '../../../redux/actions/page'
 
-import Button from '../../../components/Button/Button'
+import Button from '../../../templates/Button/Button'
 import Modal from '../../../components/Modal/Modal'
 import StoryEdit from '../../../controllers/StoryEdit/StoryEdit'
 import GoToProfile from '../../../components/ButtonTypes/GoToProfileButton/GoToProfileButton'
