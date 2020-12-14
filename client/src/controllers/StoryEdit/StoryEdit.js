@@ -42,6 +42,7 @@ const StoryEdit = props => {
                 <Button {...{
                     label:'Delete Story',
                     transparent: true,
+                    red: true,
                     extraClass: 'delete-story',
                     onClick: e => {
                         e.preventDefault()

@@ -37,10 +37,12 @@
     width: 50%;
     display: flex;
     align-self: flex-end;
+    align-items: flex-end;
     margin-bottom: 20px;
 
     input {
         margin: 0px;
+        padding: 15px 20px;
         font-size: $text_size;
     }
 

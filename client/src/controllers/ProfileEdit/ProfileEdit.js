@@ -35,7 +35,8 @@ const ProfileEdit = props => {
                             deleteProfile()
                         },
                         transparent: true,
-                        extraClass: 'delete-profile'
+                        extraClass: 'delete-profile',
+                        red: true
                     }} />
 
                     <Button {...{

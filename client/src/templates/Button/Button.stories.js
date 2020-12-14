@@ -23,3 +23,10 @@ Non_Transparent.args = {
     label: 'Non-Transparent Button',
     transparent : false
 }
+
+export const Red = Template.bind({})
+Red.args = {
+    label: 'This is a delete button',
+    transparent : true,
+    red: true
+}

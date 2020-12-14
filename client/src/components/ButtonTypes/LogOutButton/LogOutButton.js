@@ -14,7 +14,7 @@ const LogOutButton = props => {
             {...{
                 label: 'Log Out',
                 transparent : true,
-                extraClass: 'logout-btn',
+                red: true,
                 onClick: logOut
             }}
         />

@@ -1,15 +1,6 @@
 @import '../../styles/colors';
 @import '../../styles/sizes';
 
-.delete-story {
-    border-color: $medium_blue;
-    color: $medium_blue;
-}
-.delete-story:hover {
-    border-color: $pink;
-    color: $pink;
-}
-
 .story-story-btns {
     button {
         margin-left: 10px;

@@ -24,6 +24,7 @@ const SubmitEdit = props => {
         <Button {...{
             label:'Delete Entry',
             transparent: true,
+            red: true,
             extraClass: 'delete-story',
             onClick: e => {
 

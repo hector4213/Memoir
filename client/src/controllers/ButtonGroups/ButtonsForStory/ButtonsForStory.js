@@ -31,7 +31,7 @@ const ButtonsForStory = props => {
                     <Button {...{
                         label: 'Add an Entry',
                         transparent: true,
-                        extraClass:'add-entry-btn',
+                        green: true,
                         onClick: gotoCreate
                     }} />
 
