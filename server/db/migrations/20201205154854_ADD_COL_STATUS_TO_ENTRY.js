@@ -7,6 +7,7 @@ exports.up = async (knex) => {
         .references('id')
         .inTable(tableNames.entryStatus)
         .notNullable()
+        .onDelete('CASCADE')
     }),
   ])
 }
