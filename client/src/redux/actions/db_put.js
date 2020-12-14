@@ -1,4 +1,5 @@
 import axios from 'axios'
+import {history} from '../../index'
 
 export const editStoryAction = entryInfo => {
 	return async (dispatch, getState) => {
@@ -11,29 +12,21 @@ export const editStoryAction = entryInfo => {
                 'Authorization': `bearer ${token}`
             }
             const res = await axios.put(`http://localhost:3001/api/stories/edit/${storyId}`, entryInfo, {headers: headers})
-            console.log(res)
 
-            // START OF PATH CHANGE
-            dispatch({
-                type: 'SET_PATH',
-                payload: 'editedStory'
-            })
-            // needs to be set back to null
-            dispatch({
-                type: 'SET_PATH',
-                payload: null
-            })
-            // END OF PATH CHANGE
+            console.log(res)
 
             dispatch({
                 type: 'TOGGLE_MODAL',
                 payload: false
             })
+
+            history.go(0)
+
         }
         catch(error){
             dispatch({
                 type: 'ERROR',
-                payload: error.response.data.error
+                payload: error.response? error.response.data.error : error.message
             })
         }
     }
@@ -43,33 +36,74 @@ export const editEntryAction = entryInfo => {
 	return async (dispatch, getState) => {
         const token = getState().profile.token
         const storyId = getState().page.current.story.id
-        const entryId = getState().page.current.entry[0].id
+        const entryId = getState().page.current.entry.id
+
+        try {
+
+            entryInfo = {
+                date: entryInfo.date,
+                description: entryInfo.description,
+                embed: entryInfo.embed,
+                format_id: entryInfo.format_id,
+                hashtags: entryInfo.hashtags,
+                title: entryInfo.title,
+            }
+
+            const headers = {
+                'Content-Type': 'application/json',
+                'Authorization': `bearer ${token}`
+            }
+
+            const res = await axios.put(`http://localhost:3001/api/stories/${storyId}/entries/edit/${entryId}`, entryInfo, {headers: headers})
+
+            console.log(res)
+
+            history.push(`/story/${storyId}/entry/${entryId}`)
+            history.go(0)
+
+        }
+        catch(error){
+            dispatch({
+                type: 'ERROR',
+                payload: error.response? error.response.data.error : error.message
+            })
+        }
+    }
+}
+
+
+export const editProfileAction = profileInfo => {
+	return async (dispatch, getState) => {
+        const token = getState().profile.token
 
         try {
             const headers = {
                 'Content-Type': 'application/json',
                 'Authorization': `bearer ${token}`
             }
-            const res = await axios.put(`http://localhost:3001/api/stories/${storyId}/entries/edit/${entryId}`, entryInfo, {headers: headers})
+
+            const res = await axios.put(`http://localhost:3001/api/profile/${profileInfo.id}`, profileInfo, {headers: headers})
 
             console.log(res)
 
-            // START OF PATH CHANGE
             dispatch({
-                type: 'SET_PATH',
-                payload: 'editedEntry'
+                type: 'EDIT_PROFILE',
+                payload: profileInfo
             })
-            // needs to be set back to null
+
             dispatch({
-                type: 'SET_PATH',
-                payload: null
+                type: 'TOGGLE_MODAL',
+                payload: false,
+                showingPage: null
             })
-            // END OF PATH CHANGE
+
+            localStorage.setItem('profile', JSON.stringify({token:token, user:profileInfo}));
+
         }
         catch(error){
             dispatch({
                 type: 'ERROR',
-                payload: error.response.data.error
+                payload: error.response? error.response.data.error : error.message
             })
         }
     }

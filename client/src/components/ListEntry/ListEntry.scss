@@ -1,50 +1,7 @@
 @import '../../styles/colors';
 @import '../../styles/sizes';
 
-.listEntry {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    position: relative;
-    box-sizing: border-box;
-    padding: 0px 20px;
-    cursor: pointer;
 
-    h1, h2 {
-        font-size: $subtitle_size !important;
-    }
-
-    h2 {
-        font-weight: normal;
-    }
-
-    .listEntryRight {
-        display: flex;
-        flex-direction: row;
-        justify-content: flex-end;
-        align-items: baseline;
-
-        svg {
-            width: 25px;
-            height: 25px;
-            margin-left: 50px;
-            align-self: center;
-            cursor: pointer;
-        }
-    }
-}
-
-.listEntry:hover {
-    background: $medium_blue;
-    border-radius: 5px;
-
-    .delete-btn {
-        color: $dark_blue;
-    }
-    .delete-btn:hover {
-        color: $pink;
-    }
-}
 
 .delete-btn {
     color: $medium_blue;

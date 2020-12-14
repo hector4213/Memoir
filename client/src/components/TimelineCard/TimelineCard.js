@@ -22,7 +22,7 @@ const TimelineCard = props => {
     entryCardClasses += `mediaType-${format_id} `
 
     const createMarkup = () => {
-        return {__html: embed};
+        return {__html: embed}
     }
 
     const history = useHistory()
@@ -50,12 +50,23 @@ const TimelineCard = props => {
         }
     }
 
+    const showImgurEmbed = entry => {
+        // USE DELETE HASH TO DELETE IMAGE WHEN DELETING POST
+        if(entry.embed.includes('imgur')){
+            const splitEmbed = entry.embed.split(' ')
+            const url = splitEmbed[0]
+            return <img alt={entry.title} src={url}/> 
+        } else {
+            return <img alt={entry.title} src={entry.embed}/> 
+        }
+    }
+
     return (
         <div className={timelineCardClass}>
             <div className={`entryPositioner ${position}container mediaType-${format_id}container`}>
                 <div className={entryCardClasses} onClick={goToEntry}>
                     {
-                        format_id === 4 ? <img alt={title} src={embed}/> : '' // IMAGE
+                        format_id === 4 ? showImgurEmbed(entry) : '' // IMAGE
                     }
 
                     {

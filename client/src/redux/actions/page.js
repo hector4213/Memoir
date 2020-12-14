@@ -1,22 +1,19 @@
 
-
-export const setPathAction = path => {
+export const toggleModalAction = (showPage) => {
 	return async (dispatch, getState) => {
-        console.log('inside of set path action')
-
-        dispatch({
-            type: 'SET_PATH',
-            payload: path
-        })
-	}
-}
-
-export const toggleModalAction = () => {
-	return async (dispatch, getState) => {
-        dispatch({
-            type: 'TOGGLE_MODAL',
-            payload: !getState().page.modal
-        })
+        if(showPage){
+            dispatch({
+                type: 'TOGGLE_MODAL',
+                payload: !getState().page.modal,
+                showingPage: showPage
+            })
+        } else {
+            dispatch({
+                type: 'TOGGLE_MODAL',
+                payload: !getState().page.modal,
+                showingPage: null
+            })
+        }
 	}
 }
 
@@ -31,9 +28,9 @@ export const setErrorAction = errorMessage => {
 
 export const clearErrorAction = () => {
 	return async (dispatch, getState) => {
-            dispatch({
-                type: 'PROFILE_ERROR',
-                payload: null
-            })
+        dispatch({
+            type: 'ERROR',
+            payload: null
+        })
 	}
 }

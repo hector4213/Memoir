@@ -1,0 +1,20 @@
+@import '../../styles/colors';
+@import '../../styles/sizes';
+
+.profile-edit {
+    width: 100%;
+
+    h2 {
+        text-align: center;
+    }
+}
+
+.profile-edit-buttons {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.delete-profile {
+    margin-right: 10px;
+}

@@ -1,4 +1,5 @@
 import axios from 'axios'
+import {history} from '../../index'
 
 export const logInAction = formInfo => {
 	return async (dispatch, getState) => {
@@ -8,7 +9,7 @@ export const logInAction = formInfo => {
                 const response = await axios.post('http://localhost:3001/api/auth/login', formInfo)
 
                 dispatch({
-                    type: 'PROFILE_ERROR',
+                    type: 'ERROR',
                     payload: null
                 })
                 dispatch({
@@ -19,23 +20,29 @@ export const logInAction = formInfo => {
                     type: 'TOGGLE_MODAL',
                     payload: !getState().page.modal
                 })
-                dispatch({
-                    type: 'SET_PATH',
-                    payload: 'loggedIn'
-                })
 
-                localStorage.setItem('profile', JSON.stringify(response.data));
+                localStorage.setItem('profile', JSON.stringify(response.data))
+
+                history.push('/profile')
 
             }
             catch(error){
-                dispatch({
-                    type: 'PROFILE_ERROR',
-                    payload: error.response.data.error
-                })
+                console.log({error})
+                if(error.response.data.error){
+                    dispatch({
+                        type: 'ERROR',
+                        payload: error.response? error.response.data.error : error.message
+                    })
+                } else {
+                    dispatch({
+                        type: 'ERROR',
+                        payload: error.response? error.response.data : error.message
+                    })
+                }
             }
         } else {
             dispatch({
-                type: 'PROFILE_ERROR',
+                type: 'ERROR',
                 payload: 'All input fields must be filled out'
             })
         }
@@ -45,13 +52,7 @@ export const logInAction = formInfo => {
 export const logOutAction = () => {
     localStorage.clear()
 	return async (dispatch, getState) => {
-
-        // START OF PATH CHANGE
-        dispatch({
-            type: 'SET_PATH',
-            payload: 'loggedOut'
-        })
-
         dispatch({ type: 'REMOVE_PROFILE'})
+        history.push('/')
     }
 }

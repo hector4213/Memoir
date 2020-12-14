@@ -1,4 +1,5 @@
 import axios from 'axios'
+import {history} from '../../index'
 
 export const deleteStoryAction = storyId => {
 	return async (dispatch, getState) => {
@@ -9,62 +10,81 @@ export const deleteStoryAction = storyId => {
                 'Authorization': `bearer ${token}`
             }
             const res = await axios.delete(`http://localhost:3001/api/stories/${storyId}`, {headers: headers})
-            console.log(res)
 
-            // START OF PATH CHANGE
-            dispatch({
-                type: 'SET_PATH',
-                payload: 'deletedStory'
-            })
-            // needs to be set back to null
-            dispatch({
-                type: 'SET_PATH',
-                payload: null
-            })
-            // END OF PATH CHANGE
+            console.log(res)
 
             dispatch({
                 type: 'TOGGLE_MODAL',
                 payload: false
             })
+
+
+            if(history.location.pathname === '/profile'){
+                history.go(0)
+            } else {
+                history.push('/profile')
+            }
+
         }
         catch(error){
             dispatch({
                 type: 'ERROR',
-                payload: error.response.data.error
+                payload: error.response? error.response.data.error : error.message
             })
         }
     }
 }
 
-export const deleteEntryAction = (storyId, entryId) => {
+export const deleteEntryAction = (entry) => {
 	return async (dispatch, getState) => {
+
         const token = getState().profile.token
 
+        const storyId = entry.story.id
+        const entryId = entry.id
+
+
         try {
+            const splitEmbed = entry.embed? entry.embed.split(' ') : ''
+            const hash = splitEmbed[1]
+
+            if(entry && entry.embed.includes('imgur')){
+
+                await axios({
+                    method: 'DELETE',
+                    url: `https://api.imgur.com/3/image/${hash}`,
+                    headers: {
+                        'Authorization': `Client-ID 39612fe2e37daed`,
+                        'Content-Type': 'image'
+                    },
+                })
+
+                console.log('image deleted from imgur')
+            }
+
+
+
             const headers = {
                 'Content-Type': 'application/json',
                 'Authorization': `bearer ${token}`
             }
-            const res = await axios.delete(`http://localhost:3001/api/stories/${storyId}/entries/${entryId}`, {headers: headers})
-            console.log(res)
 
-            // START OF PATH CHANGE
-            dispatch({
-                type: 'SET_PATH',
-                payload: 'deletedEntry'
-            })
-            // needs to be set back to null
-            dispatch({
-                type: 'SET_PATH',
-                payload: null
-            })
-            // END OF PATH CHANGE
+            await axios.delete(`http://localhost:3001/api/stories/${storyId}/entries/${entryId}`, {headers: headers})
+
+            console.log('entry deleted from database')
+
+            if(history.location.pathname === '/profile'){
+                history.go(0)
+            } else {
+                history.push(`/story/${storyId}`)
+            }
+
         }
         catch(error){
+            console.log({error})
             dispatch({
                 type: 'ERROR',
-                payload: error.response.data.error
+                payload: error.response? error.response.data.error : error.message
             })
         }
     }

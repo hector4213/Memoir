@@ -10,14 +10,10 @@
         flex-wrap: wrap;
         margin-top: 50px;
 
-        .storyCard {
-            padding: 30px;
-            position: relative;
-        }
-
         .addStory {
             $addstory_btn: $light_blue;
             flex-basis: 25% !important;
+            padding: 30px !important;
             opacity: 1;
 
             .addStoryPlus {

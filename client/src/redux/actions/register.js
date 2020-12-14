@@ -1,4 +1,5 @@
 import axios from 'axios'
+import {history} from '../../index'
 
 export const registerUserAction = formInfo => {
 	return async (dispatch, getState) => {
@@ -7,32 +8,44 @@ export const registerUserAction = formInfo => {
             if(formInfo.password === formInfo.confirmPassword){
                 delete formInfo.confirmPassword
 
-                try{
+                try {
                     const response = await axios.post('http://localhost:3001/api/auth/signup', formInfo)
+                    localStorage.setItem('profile', JSON.stringify(response.data))
 
                     dispatch({
-                        type: 'PROFILE_ERROR',
+                        type: 'ERROR',
                         payload: null
                     })
+
                     dispatch({
                         type: 'ADD_PROFILE',
                         payload: response.data
                     })
+
                     dispatch({
                         type: 'TOGGLE_MODAL',
                         payload: !getState().page.modal
                     })
+
+                    history.push('/profile')
                 }
 
                 catch(error){
-                    dispatch({
-                        type: 'PROFILE_ERROR',
-                        payload: error.response.data.error
-                    })
+                    if(error.response && error.response.data.error){
+                        dispatch({
+                            type: 'ERROR',
+                            payload: error.response? error.response.data.error : error.message
+                        })
+                    } else {
+                        dispatch({
+                            type: 'ERROR',
+                            payload: error.response? error.response.data : error.message
+                        })
+                    }
                 }
             } else {
                 dispatch({
-                    type: 'PROFILE_ERROR',
+                    type: 'ERROR',
                     payload: 'Password does not match confirmation'
                 })
             }
@@ -40,7 +53,7 @@ export const registerUserAction = formInfo => {
 
         else {
             dispatch({
-                type: 'PROFILE_ERROR',
+                type: 'ERROR',
                 payload: 'All input fields must be filled out'
             })
         }

@@ -1,5 +1,5 @@
 import React, {useCallback} from 'react'
-import Button from '../Button/Button'
+import Button from '../../templates/Button/Button'
 
 import {connect} from 'react-redux'
 import {useHistory} from 'react-router-dom'
@@ -8,7 +8,7 @@ import {editEntryAction} from '../../redux/actions/db_put'
 import {setErrorAction} from '../../redux/actions/page'
 import {deleteEntryAction} from '../../redux/actions/db_delete'
 
-
+import {areFieldsValid, parseForm, setFormToNotFilled, setDateToNotFilled} from './helpers'
 
 const SubmitEdit = props => {
 
@@ -17,19 +17,21 @@ const SubmitEdit = props => {
 
     // redirect to go to story
     const history = useHistory()
-    const gotoEntry = useCallback(() => history.push(`/story/${current.story.id}/entry/${current.entry[0].id}`), [history, current])
+    const gotoEntry = useCallback(() => history.push(`/story/${current.story.id}/entry/${current.entry.id}`), [history, current])
 
     return (
         <div className='submit-edit'>
         <Button {...{
             label:'Delete Entry',
             transparent: true,
+            red: true,
             extraClass: 'delete-story',
             onClick: e => {
+
                 e.preventDefault()
                 // eslint-disable-next-line no-restricted-globals
                 if (confirm(`Are you sure you want to delete this entry?`)) {
-                    deleteEntry(current.story.id, current.entry[0].id)
+                    deleteEntry(current.entry)
                 } else {
                     console.log('delete was cancelled')
                 }
@@ -45,38 +47,20 @@ const SubmitEdit = props => {
                 const allFieldsCompleted = areFieldsValid(formInfo, date)
 
                 if(allFieldsCompleted){
-                    const allFields = {...formInfo, date:`${date.month} ${date.day}, ${date.year}`}
-                    console.log(allFields)
-                    editEntry({...allFields})
+                    const allFields = parseForm(formInfo, date)
+                    editEntry(allFields)
                     setError(null)
                     gotoEntry()
                 }
                 else {
-                    setFormInfo({
-                        ...formInfo,
-                        embed_F: formInfo.embed? true: false,
-                        format_id_F: formInfo.format_id? true: false,
-                        title_F: formInfo.title? true: false,
-                        description_F: formInfo.description? true: false,
-                    })
-
-                    setDate({
-                        ...date,
-                        month_F: date.month? true : false,
-                        day_F: date.day? true : false,
-                        year_F: date.year? true : false,
-                    })
-
+                    setFormInfo(setFormToNotFilled(formInfo))
+                    setDate(setDateToNotFilled(date))
                     setError('All fields must be filled out')
                 }
             }
         }} />
         </div>
     )
-}
-
-const areFieldsValid = (formInfo, date) => {
-    return (formInfo && formInfo.embed && formInfo.format_id && formInfo.title && formInfo.description && date && date.month && date.day && date.year)
 }
 
 const mapStateToProps = state => {
@@ -89,7 +73,7 @@ const mapDispatchToProps = dispatch => {
     return {
         setError: errorMessage => dispatch(setErrorAction(errorMessage)),
         editEntry: formInfo => dispatch(editEntryAction(formInfo)),
-        deleteEntry: (storyId, entryId) => dispatch(deleteEntryAction(storyId, entryId)),
+        deleteEntry: (entry) => dispatch(deleteEntryAction(entry)),
     }
 }
 

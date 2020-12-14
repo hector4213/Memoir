@@ -5,28 +5,20 @@ import { useParams } from "react-router-dom";
 import {connect} from 'react-redux'
 
 import {getSingleEntryAction, getSingleStoryAction} from '../../redux/actions/db_get'
-import GoHomeButton from '../../components/ButtonTypes/GoHomeButton/GoHomeButton'
-import GoToStoryButton from '../../components/ButtonTypes/GoToStoryButton/GoToStoryButton'
-import ButtonsForEntry from '../../components/ButtonGroups/ButtonsForEntry/ButtonsForEntry';
+import ButtonsForEntry from '../ButtonGroups/ButtonsForEntry/ButtonsForEntry'
 
 import {useCallback} from 'react'
 import {useHistory} from 'react-router-dom'
+import ErrorDisplay from '../../components/ErrorDisplay/ErrorDisplay';
 
 const Entry = props => {
     const {getSingleEntry, getSingleStory} = props
-    const {current, path, loggedInUser} = props
+    const {current} = props
 
     const { storyId, entryId } = useParams()
 
-    // START OF REDIRECT
     const history = useHistory()
-    const refresh = useCallback(() => history.go(0), [history])
     const goToEntry = useCallback( id => history.push(`/story/${storyId}/entry/${id}`), [history, storyId])
-
-    useEffect(()=>{
-        if(path === 'editedEntry'){ refresh() }
-    },[path, refresh])
-    // END OF REDIRECT
 
     useEffect(()=>{
         getSingleEntry(storyId, entryId)
@@ -34,17 +26,15 @@ const Entry = props => {
     }, [getSingleEntry, getSingleStory, storyId, entryId])
 
 
-    if(!current || !current.entry || !current.story || !current.entry[0]){ return <div> This entry does not exist </div> }
+    if(!current || !current.entry || !current.story || !current.entry){ return <ErrorDisplay /> }
     else {
-        const entry = current.entry[0]
-        const {format_id, title, description, embed, date, user, id} = entry
+        const entry = current.entry
+        const {hashtags, format_id, title, description, embed, date, user, id} = entry
 
-        // NEED THIS TO EMBED IFRAME FOR VIDEO AND AUDIO
-        // STILL HAVE NOT WORKED ON IT NEED TO ADJUST BACKEND
-        // BECAUSE OF STRING SIZE LIMITATION IN EMBED
-        // const createMarkup = () => {
-        //     return {__html: embed};
-        // }
+
+        const createMarkup = () => {
+            return {__html: embed};
+        }
 
         const [previousEntry, nextEntry] = getNavEntries(current.story.entries, id)
         const formattedDate = formatDate(date)
@@ -52,24 +42,51 @@ const Entry = props => {
         // MEDIA TYPES: 1:VIDE0 , 2:TEXT , 3:AUDIO , 4:IMAGE
         return (
             <div className='single-entry'>
-                <GoHomeButton />
-                <GoToStoryButton />
-                {loggedInUser? <ButtonsForEntry />: ''}
+
+                <ButtonsForEntry />
 
                 <div className='entry-container'>
-                    {format_id === 1 || format_id === 3? 'this is a video or audio that will be embeded once i have real embeds' :''}
-                    {/* {format_id === 1 || format_id === 3? <div dangerouslySetInnerHTML={createMarkup()} /> :''} */}
+                    {format_id === 1 || format_id === 3? <div dangerouslySetInnerHTML={createMarkup()} /> :''}
                     {format_id === 4? <img alt={title} src={embed}/>:''}
                     <div className='entry-caption'>
                         <h1>{title}</h1>
                         <h2>{formattedDate}</h2>
                         <p>{description}</p>
-                        <p>This entry was written by: {user.username}</p>
+                        <p className='author'>This entry was written by: {user.username}</p>
+                        {
+                            hashtags.length > 0?
+                                <>
+                                <label>Tags: </label>
+                                <ul className='hashtags'>
+                                    {
+                                    hashtags.map( (hash, i) => {
+                                            return (<li key={i}> {hash.tagname} </li>)
+                                    })
+                                    }
+                                </ul>
+                                </> : ''
+                            }
                     </div>
 
-                    <div className='nav-entries'>
-                        {previousEntry? <button onClick={()=> goToEntry(previousEntry.id)}> Previous Entry:<br/> {previousEntry.title}</button> : ''}
-                        {nextEntry? <button onClick={()=> goToEntry(nextEntry.id)}> Next Entry:<br/> {nextEntry.title}</button> : ''}
+                    <div className='nav-entries' style={previousEntry? {} : {justifyContent:"flex-end"}} >
+                        {
+                        previousEntry?
+                        <button
+                            onClick={()=> goToEntry(previousEntry.id)}
+                            className='previous-entry'
+                            >
+                            Previous Entry:<br/> {previousEntry.title}
+                        </button> : ''
+                        }
+                        {
+                        nextEntry?
+                        <button
+                            onClick={()=> goToEntry(nextEntry.id)}
+                            className='next-entry'
+                            >
+                            Next Entry:<br/> {nextEntry.title}
+                        </button> : ''
+                        }
                     </div>
                 </div>
             </div>
@@ -105,8 +122,6 @@ const formatDate = date => {
 const mapStateToProps = state => {
     return {
         current: state.page.current,
-        loggedInUser: state.profile.user,
-        path: state.page.path
     }
 }
 

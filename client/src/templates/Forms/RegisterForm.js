@@ -1,8 +1,6 @@
 import React, {useState} from 'react'
-import {connect} from 'react-redux'
+import './FormStyle.scss'
 import Button from '../Button/Button'
-
-import {registerUserAction} from '../../redux/actions/register'
 
 const RegisterForm = props => {
     const [formInfo, setFormInfo] = useState()
@@ -49,10 +47,4 @@ const RegisterForm = props => {
     )
 }
 
-const mapDispatchToProps = dispatch => {
-    return {
-        registerUser: formInfo => dispatch(registerUserAction(formInfo))
-    }
-}
-
-export default connect(null, mapDispatchToProps)(RegisterForm)
+export default RegisterForm

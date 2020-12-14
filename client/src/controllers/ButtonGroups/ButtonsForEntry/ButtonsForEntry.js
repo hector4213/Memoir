@@ -4,8 +4,10 @@ import './ButtonsForEntry.scss'
 import {useHistory, useParams} from "react-router-dom";
 import {connect} from 'react-redux'
 
-import Button from '../../Button/Button'
-import GoToProfile from '../..//ButtonTypes/GoToProfileButton/GoToProfileButton'
+import Button from '../../../templates/Button/Button'
+import GoToProfile from '../../../components/ButtonTypes/GoToProfileButton/GoToProfileButton'
+import GoHomeButton from '../../../components/ButtonTypes/GoHomeButton/GoHomeButton'
+import GoToStoryButton from '../../../components/ButtonTypes/GoToStoryButton/GoToStoryButton'
 
 const ButtonsForEntry = props => {
     const {user, authorId} = props
@@ -17,6 +19,12 @@ const ButtonsForEntry = props => {
     const gotoEdit = useCallback(() => history.push(`/story/${storyId}/entry/${entryId}/editEntry`), [history, storyId, entryId])
 
     return (
+    <>
+        <GoHomeButton />
+        <GoToStoryButton />
+
+        {
+        user ?
         <div className='story-buttons'>
             <GoToProfile />
 
@@ -30,13 +38,16 @@ const ButtonsForEntry = props => {
                 : ''
             }
         </div>
+        : ''
+        }
+    </>
     )
 }
 
 const mapStateToProps = state => {
     return {
         user: state.profile.user,
-        authorId: state.page.current.entry[0].user.id
+        authorId: state.page.current.entry.user.id
     }
 }
 

@@ -10,23 +10,11 @@ import GoHomeButton from '../../components/ButtonTypes/GoHomeButton/GoHomeButton
 import GoToStoryButton from '../../components/ButtonTypes/GoToStoryButton/GoToStoryButton'
 import StoryCard from '../../components/StoryCard/StoryCard'
 
-import {useCallback} from 'react'
-import {useHistory} from 'react-router-dom'
-
 const EntryCreate = props => {
 
     const { storyId } = useParams()
 
-    const {getSingleStory, current, user, path} = props
-
-    // START OF REDIRECT
-    const history = useHistory()
-    const goToStory = useCallback(() => history.push(`/story/${storyId}`), [history, storyId])
-
-    useEffect(()=>{
-        if(path === 'createdEntry'){ goToStory() }
-    },[path, goToStory])
-    // END OF REDIRECT
+    const {getSingleStory, current, user} = props
 
     useEffect(()=>{
         getSingleStory(storyId)
@@ -58,7 +46,6 @@ const mapStateToProps = state => {
     return {
         current: state.page.current,
         user: state.profile.user,
-        path: state.page.path
     }
 }
 

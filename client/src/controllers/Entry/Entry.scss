@@ -19,6 +19,36 @@
 
 .entry-caption {
     width: 100%;
+
+    .author {
+        margin-top: 50px;
+        text-align: right;
+    }
+}
+
+label {
+    display: block;
+    font-size: $subtitle_size;
+    margin: 50px 0px -20px 10px;
+}
+
+.hashtags {
+    width: 100%;
+    margin: 30px 0px;
+    padding: 0px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    li {
+        list-style-type: none;
+        background: $medium_blue;
+        padding: 10px 20px;
+        width: fit-content;
+        border-radius: 5px;
+        margin: 5px;
+        cursor: default;
+    }
 }
 
 .nav-entries {
@@ -28,7 +58,7 @@
 
     button {
         padding: 50px;
-        width: 100%;
+        width: 50%;
         background: none;
         border: none;
         border-radius: 0px;
@@ -37,12 +67,13 @@
         line-height: $text_lineheight_size;
     }
 
-    button:nth-child(1){
-        border-right: 3px solid $light_blue;
+    .previous-entry {
+        border-right: 1.5px solid $light_blue;
         text-align: right;
     }
 
-    button:nth-child(2){
+    .next-entry {
+        border-left: 1.5px solid $light_blue;
         text-align: left;
     }
 

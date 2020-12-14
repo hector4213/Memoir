@@ -22,3 +22,18 @@ button {
     background: $light_blue;
     border: none;
 }
+
+.delete {
+    color: $medium_blue;
+    border-color: $medium_blue;
+}
+
+.delete:hover {
+    color: $red;
+    border-color: $red;
+}
+
+.go {
+    color: $green;
+    border-color: $green;
+}

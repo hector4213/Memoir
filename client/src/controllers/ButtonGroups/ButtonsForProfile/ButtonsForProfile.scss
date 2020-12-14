@@ -1,0 +1,11 @@
+.profile-btns {
+    position: absolute;
+    top: 50px;
+    right: 50px;
+    display: flex;
+    flex-direction: column;
+
+    button {
+        margin-bottom: 10px;
+    }
+}

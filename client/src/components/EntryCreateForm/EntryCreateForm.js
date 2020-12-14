@@ -11,11 +11,12 @@ import DateEntry from './DateEntry'
 import SubmitCreate from './SubmitCreate'
 import TextEntry from './TextEntry'
 import SubmitEdit from './SubmitEdit'
+import TagsEntry from './TagsEntry'
 
 const EntryCreateForm = props => {
     // props from redux
     const {getSingleStory} = props
-    const {current, error} = props
+    const {current} = props
 
     // props from edit Entry
     const {edit, entry} = props
@@ -29,14 +30,15 @@ const EntryCreateForm = props => {
 
     // form defaults
     const [formInfo, setFormInfo] = useState({
-        format_id: edit? entry.format_id: 0,
-        embed: edit? entry.embed : '',
-        title: edit? entry.title: '',
-        description: edit? entry.description: '',
+        format_id: entry && entry.format_id? entry.format_id: 0,
+        embed: entry && entry.embed? entry.embed : '',
+        title: entry && entry.title? entry.title: '',
+        description: entry && entry.description? entry.description: '',
+        hashtags: entry && entry.hashtags? entry.hashtags : '',
         format_id_F: true,
         embed_F: true,
         title_F: true,
-        description_F: true
+        description_F: true,
     })
 
     let editDate
@@ -67,12 +69,14 @@ const EntryCreateForm = props => {
     return (
         <div className='entry-create-form'>
             {
-                edit?
-                <>
+                entry && entry.format_id === 4?
                 <img alt={entry.title} src={formInfo.embed} />
-                <h1 className='actiontitle'>Edit this Entry</h1>
-                </>
-                :
+                : ''
+            }
+
+            {
+                edit?
+                <h1 className='actiontitle'>Edit {story.name}'s Entry</h1> :
                 <h1 className='actiontitle'>Add an Entry for {story.name}</h1>
             }
 
@@ -80,6 +84,7 @@ const EntryCreateForm = props => {
                 <MediaType {...{format_id_F, setFormInfo, formInfo, notFilledStyle}}/>
                 <TextEntry {...{setFormInfo, notFilledStyle, formInfo, embed_F, title_F, description_F}} />
                 <DateEntry {...{month_F, notFilledStyle, setDate, date, day_F, year_F}} />
+                <TagsEntry {...{formInfo, setFormInfo}} />
 
                 {
                     edit ?
@@ -88,8 +93,6 @@ const EntryCreateForm = props => {
                     <SubmitCreate {...{ setFormInfo, formInfo, setDate, date }} />
                 }
             </form>
-
-            {error ? <div className='error'> {error} </div>: ''}
         </div>
     )
 }
@@ -97,7 +100,6 @@ const EntryCreateForm = props => {
 
 const mapStateToProps = state => {
     return {
-        error: state.page.error,
         current: state.page.current
     }
 }

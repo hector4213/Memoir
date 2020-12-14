@@ -10,7 +10,12 @@ export const getAllStoriesAction = () => {
             })
         }
         catch(error){
-            console.log(error)
+            console.log({error})
+
+            dispatch({
+                type: 'ERROR',
+                payload: error.response? error.response.data.error : error.message
+            })
         }
     }
 }
@@ -33,7 +38,12 @@ export const getSingleStoryAction = storyId => {
             })
         }
         catch(error){
-            console.log(error)
+            console.log({error})
+
+            dispatch({
+                type: 'ERROR',
+                payload: error.response? error.response.data.error : error.message
+            })
         }
     }
 }
@@ -49,7 +59,12 @@ export const getSingleEntryAction = (storyId, entryId) => {
             })
         }
         catch(error){
-            console.log(error)
+            console.log({error})
+
+            dispatch({
+                type: 'ERROR',
+                payload: error.response? error.response.data.error : error.message
+            })
         }
     }
 }

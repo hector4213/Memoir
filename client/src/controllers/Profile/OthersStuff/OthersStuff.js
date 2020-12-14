@@ -3,8 +3,8 @@ import './OthersStuff.scss'
 import {connect} from 'react-redux'
 
 import {getForeignEntriesAction} from '../../../redux/actions/foreignEntries'
-// import {editForeignEntriesAction} from '../../../redux/actions/foreignEntries'
 import ListEntry from '../../../components/ListEntry/ListEntry'
+import ErrorDisplay from '../../../components/ErrorDisplay/ErrorDisplay'
 
 
 const OthersStuff = props => {
@@ -14,42 +14,38 @@ const OthersStuff = props => {
         getForeignEntries()
     }, [getForeignEntries])
 
-    if(!foreignEntries){
-        return <div> No foreign entries found </div>
-    }
-
-
-
-    // creating entry list cards for approved, denied, pending
     const approved = []
     const pending = []
     const denied = []
 
-    foreignEntries.forEach( entry => {
-        console.log(entry)
+    if(foreignEntries && foreignEntries.length>0){
+        foreignEntries.forEach( entry => {
 
-        if(entry.entry_status === 1){
-            approved.push(<ListEntry {...{
-                key: entry.id,
-                entry: entry,
-                foreign: true
-            }}/>)
-        }
-        else if(entry.entry_status === 2){
-            pending.push(<ListEntry {...{
-                key: entry.id,
-                entry: entry,
-                foreign: true
-            }}/>)
-        }
-        else if(entry.entry_status === 3){
-            denied.push(<ListEntry {...{
-                key: entry.id,
-                entry: entry,
-                foreign: true
-            }}/>)
-        }
-    })
+            if(entry.entry_status === 1){
+                approved.push(<ListEntry {...{
+                    key: entry.id,
+                    entry: entry,
+                    foreign: true
+                }}/>)
+            }
+            else if(entry.entry_status === 2){
+                pending.push(<ListEntry {...{
+                    key: entry.id,
+                    entry: entry,
+                    foreign: true
+                }}/>)
+            }
+            else if(entry.entry_status === 3){
+                denied.push(<ListEntry {...{
+                    key: entry.id,
+                    entry: entry,
+                    foreign: true
+                }}/>)
+            }
+        })
+    } else {
+        return <ErrorDisplay message='There seems to not be any entries from other people'/>
+    }
 
     return (
         <div className = 'othersStuff'>
@@ -74,6 +70,7 @@ const OthersStuff = props => {
 }
 
 const mapStateToProps = state => {
+
     return {
         foreignEntries: state.profile.foreignEntries
     }
@@ -82,7 +79,6 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch =>{
     return {
         getForeignEntries: () => dispatch(getForeignEntriesAction()),
-        // editForeignEntries: entryId => dispatch(editForeignEntriesAction(entryId)),
     }
 }
 

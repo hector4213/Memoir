@@ -3,7 +3,7 @@ import './LogOutButton.scss'
 import {connect} from 'react-redux'
 
 import {logOutAction} from '../../../redux/actions/logInOut'
-import Button from '../../Button/Button'
+import Button from '../../../templates/Button/Button'
 
 const LogOutButton = props => {
 
@@ -14,7 +14,7 @@ const LogOutButton = props => {
             {...{
                 label: 'Log Out',
                 transparent : true,
-                extraClass: 'logout-btn',
+                red: true,
                 onClick: logOut
             }}
         />

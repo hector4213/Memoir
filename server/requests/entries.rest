@@ -34,5 +34,5 @@ Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIsInVzZXJuY
 
 #####
 
-GET http://localhost:3001/api/stories/7/entries/3
+GET http://localhost:3001/api/stories/1/entries/15
 Content-Type: application/json
