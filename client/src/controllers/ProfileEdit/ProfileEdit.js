@@ -48,7 +48,12 @@ const ProfileEdit = props => {
                         label: 'Delete Profile',
                         onClick: e => {
                             e.preventDefault()
-                            deleteProfile()
+                            // eslint-disable-next-line no-restricted-globals
+                            if (confirm(`Are you sure you want to delete ${user.username}'s story?`)) {
+                                deleteProfile()
+                            } else {
+                                console.log('delete was cancelled')
+                            }
                         },
                         transparent: true,
                         extraClass: 'delete-profile',

@@ -39,6 +39,16 @@ const StoryEdit = props => {
             />
 
             <div className='story-story-btns'>
+
+                <Button {...{
+                    label:'Submit',
+                    transparent: false,
+                    onClick: e => {
+                        e.preventDefault()
+                        editStory(formInfo)
+                    }
+                }}/>
+
                 <Button {...{
                     label:'Delete Story',
                     transparent: true,
@@ -52,15 +62,6 @@ const StoryEdit = props => {
                         } else {
                             console.log('delete was cancelled')
                         }
-                    }
-                }}/>
-
-                <Button {...{
-                    label:'Submit',
-                    transparent: false,
-                    onClick: e => {
-                        e.preventDefault()
-                        editStory(formInfo)
                     }
                 }}/>
             </div>
