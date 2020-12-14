@@ -28,6 +28,7 @@ export const getMyProfileStuffAction = () => {
     }
 }
 
+
 export const storedProfileAction = formInfo => {
 	return async (dispatch, getState) => {
         const retrievedProfile = localStorage.getItem('profile');
@@ -40,6 +41,7 @@ export const storedProfileAction = formInfo => {
         }
     }
 }
+
 
 export const deleteProfileAction = () => {
     return async (dispatch, getState) => {
@@ -58,6 +60,44 @@ export const deleteProfileAction = () => {
             localStorage.clear()
             dispatch({ type: 'REMOVE_PROFILE'})
             history.push('/')
+
+        }
+        catch(error){
+            dispatch({
+                type: 'ERROR',
+                payload: error.response? error.response.data.error : error.message
+            })
+        }
+    }
+}
+
+
+export const editProfileAction = profileInfo => {
+	return async (dispatch, getState) => {
+        const token = getState().profile.token
+
+        try {
+            const headers = {
+                'Content-Type': 'application/json',
+                'Authorization': `bearer ${token}`
+            }
+
+            const res = await axios.put(`http://localhost:3001/api/profile/${profileInfo.id}`, profileInfo, {headers: headers})
+
+            console.log(res)
+
+            dispatch({
+                type: 'EDIT_PROFILE',
+                payload: profileInfo
+            })
+
+            dispatch({
+                type: 'TOGGLE_MODAL',
+                payload: false,
+                showingPage: null
+            })
+
+            localStorage.setItem('profile', JSON.stringify({token:token, user:profileInfo}));
 
         }
         catch(error){

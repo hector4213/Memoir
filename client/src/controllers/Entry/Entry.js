@@ -4,7 +4,8 @@ import './Entry.scss'
 import { useParams } from "react-router-dom";
 import {connect} from 'react-redux'
 
-import {getSingleEntryAction, getSingleStoryAction} from '../../redux/actions/db_get'
+import {getSingleEntryAction} from '../../redux/actions/entry'
+import {getSingleStoryAction} from '../../redux/actions/story'
 import ButtonsForEntry from '../ButtonGroups/ButtonsForEntry/ButtonsForEntry'
 
 import {useCallback} from 'react'

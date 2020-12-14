@@ -9,7 +9,8 @@ import TimelineCard from '../../components/TimelineCard/TimelineCard'
 import ButtonsForStory from '../ButtonGroups/ButtonsForStory/ButtonsForStory'
 import ErrorDisplay from '../../components/ErrorDisplay/ErrorDisplay'
 
-import {getSingleStoryAction} from '../../redux/actions/db_get'
+import {getSingleStoryAction} from '../../redux/actions/story'
+import InspiringButton from '../../components/ButtonTypes/InspiringButton/InspiringButton'
 
 const Story = props => {
     const {getSingleStory} = props
@@ -55,11 +56,22 @@ const Story = props => {
                     }}
                 />
 
-                {createEntries(story)}
-
-                <div className='progress-container'>
-                    <div className='progress' style={{width: `${currentProgress}%`}} />
-                </div>
+                {
+                    story.entries.length > 0?
+                    <>
+                    <InspiringButton
+                        inspired={true? true: false}
+                    />
+                    {createEntries(story)}
+                    <div className='progress-container'>
+                        <div className='progress' style={{width: `${currentProgress}%`}} />
+                    </div>
+                    </>
+                    :
+                    <ErrorDisplay
+                        message={`Seems ${story.name} doesn't have any entries yet`}
+                    />
+                }
             </div>
         )
     }
@@ -88,9 +100,7 @@ const createEntries = story =>{
                 />
             )
         })
-    } else {
-        entryComponents.push(<ErrorDisplay key={1} message={`Seems ${story.name} doesn't have any entries yet`}/>)
-    }
+    } else {}
 
     return entryComponents
 }

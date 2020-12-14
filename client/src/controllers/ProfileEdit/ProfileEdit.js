@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import './ProfileEdit.scss'
 
 import {connect} from 'react-redux'
-import {editProfileAction} from '../../redux/actions/db_put'
+import {editProfileAction} from '../../redux/actions/profile'
 import {deleteProfileAction} from '../../redux/actions/profile'
 import Button from '../../templates/Button/Button'
 
@@ -12,6 +12,12 @@ const ProfileEdit = props => {
         username: user.username,
         email: user.email,
     })
+
+    const handleSubmit = e => {
+        e.preventDefault()
+        const final = {...user, ...profileForm}
+        editProfile(final)
+    }
 
     return (
         <div className='profile-edit'>
@@ -28,26 +34,30 @@ const ProfileEdit = props => {
                 }}/>
 
                 <div className='profile-edit-buttons'>
-                    <Button {...{
-                        label: 'Delete Profile',
-                        onClick: e => {
-                            e.preventDefault()
-                            deleteProfile()
-                        },
-                        transparent: true,
-                        extraClass: 'delete-profile',
-                        red: true
-                    }} />
 
                     <Button {...{
                         label: 'Submit',
                         onClick: e => {
                             e.preventDefault()
-                            const final = {...user, ...profileForm}
-                            editProfile(final)
+                            handleSubmit(e)
                         },
                         transparent: false,
-                        // extraClass
+                    }} />
+
+                    <Button {...{
+                        label: 'Delete Profile',
+                        onClick: e => {
+                            e.preventDefault()
+                            // eslint-disable-next-line no-restricted-globals
+                            if (confirm(`Are you sure you want to delete ${user.username}'s story?`)) {
+                                deleteProfile()
+                            } else {
+                                console.log('delete was cancelled')
+                            }
+                        },
+                        transparent: true,
+                        extraClass: 'delete-profile',
+                        red: true
                     }} />
                 </div>
 

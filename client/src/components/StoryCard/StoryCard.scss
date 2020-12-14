@@ -8,6 +8,7 @@
     border: 2px solid rgba(255, 0, 0, 0);
     position: relative;
     cursor: pointer;
+    word-wrap: break-word;
 
     .delete{
         $deletebtn_size: 35px;

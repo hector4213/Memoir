@@ -4,7 +4,7 @@ import './EntryEdit.scss'
 import {connect} from 'react-redux'
 import {useParams} from 'react-router-dom'
 
-import {getSingleEntryAction} from '../../redux/actions/db_get'
+import {getSingleEntryAction} from '../../redux/actions/entry'
 import EntryCreateForm from '../../components/EntryCreateForm/EntryCreateForm'
 import GoHomeButton from '../../components/ButtonTypes/GoHomeButton/GoHomeButton'
 import GoToEntryButton from '../../components/ButtonTypes/GoToEntryButton/GoToEntryButton'

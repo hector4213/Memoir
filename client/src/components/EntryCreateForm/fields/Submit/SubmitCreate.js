@@ -3,7 +3,7 @@ import Button from '../../../../templates/Button/Button'
 
 import {connect} from 'react-redux'
 
-import {createEntryAction} from '../../../../redux/actions/db_post'
+import {createEntryAction} from '../../../../redux/actions/entry'
 import {setErrorAction} from '../../../../redux/actions/page'
 
 import {areFieldsValid, parseForm, setDateToNotFilled, setFormToNotFilled} from './helpers'

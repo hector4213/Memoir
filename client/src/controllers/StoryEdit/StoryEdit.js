@@ -2,8 +2,8 @@ import React, { useState } from 'react'
 import './StoryEdit.scss'
 
 import {connect} from 'react-redux'
-import {editStoryAction} from '../../redux/actions/db_put'
-import {deleteStoryAction} from '../../redux/actions/db_delete'
+import {editStoryAction} from '../../redux/actions/story'
+import {deleteStoryAction} from '../../redux/actions/story'
 
 import Button from '../../templates/Button/Button'
 
@@ -19,15 +19,16 @@ const StoryEdit = props => {
     return (
         <form className='story-edit'>
             <div className='story-img'>
-                <div className='story-img-picture' style={{background:`url(${formInfo.story_img})`}}/>
+                <div
+                    className='story-img-picture'
+                    style={{background:`url(${formInfo.story_img})`}}
+                />
             </div>
 
             <h2>Edit {formInfo.name}'s Story</h2>
 
             <input type='text' value={formInfo.story_img}
-                onChange={ e => {
-                    setFormInfo( {...formInfo, story_img: e.target.value })
-                }}
+                onChange={ e => setFormInfo( {...formInfo, story_img: e.target.value })}
             />
 
             <input type='text' value={formInfo.name}
@@ -39,21 +40,6 @@ const StoryEdit = props => {
             />
 
             <div className='story-story-btns'>
-                <Button {...{
-                    label:'Delete Story',
-                    transparent: true,
-                    red: true,
-                    extraClass: 'delete-story',
-                    onClick: e => {
-                        e.preventDefault()
-                        // eslint-disable-next-line no-restricted-globals
-                        if (confirm(`Are you sure you want to delete ${story.name}'s story?`)) {
-                            deleteStory(story.id)
-                        } else {
-                            console.log('delete was cancelled')
-                        }
-                    }
-                }}/>
 
                 <Button {...{
                     label:'Submit',
@@ -61,6 +47,23 @@ const StoryEdit = props => {
                     onClick: e => {
                         e.preventDefault()
                         editStory(formInfo)
+                    }
+                }}/>
+
+                <Button {...{
+                    label:'Delete Story',
+                    transparent: true,
+                    red: true,
+                    extraClass: 'delete-story',
+                    onClick: e => {
+                        e.preventDefault()
+
+                        // eslint-disable-next-line no-restricted-globals
+                        if (confirm(`Are you sure you want to delete ${story.name}'s story?`)) {
+                            deleteStory(story.id)
+                        } else {
+                            console.log('delete was cancelled')
+                        }
                     }
                 }}/>
             </div>

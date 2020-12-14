@@ -2,6 +2,9 @@
 @import '../../styles/sizes';
 
 .story-story-btns {
+    display: flex;
+    flex-direction: row-reverse;
+
     button {
         margin-left: 10px;
     }
