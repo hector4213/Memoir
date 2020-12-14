@@ -19,15 +19,16 @@ const StoryEdit = props => {
     return (
         <form className='story-edit'>
             <div className='story-img'>
-                <div className='story-img-picture' style={{background:`url(${formInfo.story_img})`}}/>
+                <div
+                    className='story-img-picture'
+                    style={{background:`url(${formInfo.story_img})`}}
+                />
             </div>
 
             <h2>Edit {formInfo.name}'s Story</h2>
 
             <input type='text' value={formInfo.story_img}
-                onChange={ e => {
-                    setFormInfo( {...formInfo, story_img: e.target.value })
-                }}
+                onChange={ e => setFormInfo( {...formInfo, story_img: e.target.value })}
             />
 
             <input type='text' value={formInfo.name}
