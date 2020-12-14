@@ -45,7 +45,7 @@ router.get('/:id', async (req, res, next) => {
     if (isProfileOwner) {
       const profile = await User.query()
         .select('id', 'username', 'email')
-        .withGraphFetched('[stories, userEntries.story]')
+        .withGraphFetched('[stories, userEntries.story, inspires]')
         .findById(id)
 
       return res.status(200).json(profile)
