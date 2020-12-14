@@ -50,20 +50,32 @@ const OthersStuff = props => {
     return (
         <div className = 'othersStuff'>
 
-            <div className='entries'>
-                <label> Need to be Approved: </label>
-                {pending? pending : ''}
-            </div>
+            {
+                pending.length>0?
+                <div className='entries'>
+                    <label> Need to be Approved: </label>
+                    {pending? pending : ''}
+                </div>
+                : ''
+            }
 
-            <div className='entries'>
-                <label className='approved'> Approved: </label>
-                {approved? approved : ''}
-            </div>
+            {
+                approved.length>0?
+                <div className='entries'>
+                    <label className='approved'> Approved: </label>
+                    {approved? approved : ''}
+                </div>
+                : ''
+            }
 
-            <div className='entries'>
-                <label className='denied'> Denied: </label>
-                {denied? denied : ''}
-            </div>
+            {
+                denied.length>0?
+                <div className='entries'>
+                    <label className='denied'> Denied: </label>
+                    {denied? denied : ''}
+                </div>
+                : ''
+            }
 
         </div>
     )
