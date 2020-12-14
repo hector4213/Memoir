@@ -10,6 +10,7 @@ import ButtonsForStory from '../ButtonGroups/ButtonsForStory/ButtonsForStory'
 import ErrorDisplay from '../../components/ErrorDisplay/ErrorDisplay'
 
 import {getSingleStoryAction} from '../../redux/actions/db_get'
+import InspiringButton from '../../components/ButtonTypes/InspiringButton/InspiringButton'
 
 const Story = props => {
     const {getSingleStory} = props
@@ -54,6 +55,8 @@ const Story = props => {
                         inTimeline: true
                     }}
                 />
+
+                <InspiringButton />
 
                 {createEntries(story)}
 

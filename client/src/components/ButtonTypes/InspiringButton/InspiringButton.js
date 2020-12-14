@@ -12,7 +12,7 @@ const InspiringButton = props => {
 
     return (
         <Button {...{
-            label: story ? `Inspiring ${story.id}` : 'Inspiring',
+            label: story ? `${story.id} people found this story inspiring` : 'Inspiring',
             onClick: story ? addInspiring : '',
             transparent: true,
             extraClass: 'insp-btn',
