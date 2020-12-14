@@ -1,7 +1,6 @@
 const express = require('express')
 const jwt = require('../../lib/jwt')
 const Story = require('./story.model')
-const User = require('../users/users.model')
 const entries = require('./entry/entry.routes')
 const yup = require('yup')
 
