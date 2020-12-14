@@ -69,8 +69,6 @@ export const deleteEntryAction = (entry) => {
                 'Authorization': `bearer ${token}`
             }
 
-            console.log('up to here')
-
             await axios.delete(`http://localhost:3001/api/stories/${storyId}/entries/${entryId}`, {headers: headers})
 
             console.log('entry deleted from database')

@@ -1,7 +1,4 @@
-@import '../../../styles/colors';
-@import '../../../styles/sizes';
-
-.story-buttons {
+.home-buttons {
     display: flex;
     flex-direction: column;
     width: fit-content;
@@ -11,9 +8,5 @@
 
     button {
         margin-bottom: 10px;
-    }
-
-    .profile-btn {
-        position: static;
     }
 }

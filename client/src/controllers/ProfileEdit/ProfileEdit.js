@@ -4,7 +4,7 @@ import './ProfileEdit.scss'
 import {connect} from 'react-redux'
 import {editProfileAction} from '../../redux/actions/db_put'
 import {deleteProfileAction} from '../../redux/actions/profile'
-import Button from '../../components/Button/Button'
+import Button from '../../templates/Button/Button'
 
 const ProfileEdit = props => {
     const {user, editProfile, deleteProfile} = props
@@ -35,7 +35,8 @@ const ProfileEdit = props => {
                             deleteProfile()
                         },
                         transparent: true,
-                        extraClass: 'delete-profile'
+                        extraClass: 'delete-profile',
+                        red: true
                     }} />
 
                     <Button {...{

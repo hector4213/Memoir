@@ -3,7 +3,7 @@ import './ButtonsForProfile.scss'
 
 import {connect} from 'react-redux'
 
-import Button from '../../../components/Button/Button'
+import Button from '../../../templates/Button/Button'
 import GoHomeButton from '../../../components/ButtonTypes/GoHomeButton/GoHomeButton'
 import LogOutButton from '../../../components/ButtonTypes/LogOutButton/LogOutButton'
 import { toggleModalAction } from '../../../redux/actions/page'

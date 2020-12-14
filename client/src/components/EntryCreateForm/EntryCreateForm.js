@@ -70,11 +70,13 @@ const EntryCreateForm = props => {
         <div className='entry-create-form'>
             {
                 entry && entry.format_id === 4?
-                <>
                 <img alt={entry.title} src={formInfo.embed} />
-                <h1 className='actiontitle'>Edit this Entry</h1>
-                </>
-                :
+                : ''
+            }
+
+            {
+                edit?
+                <h1 className='actiontitle'>Edit {story.name}'s Entry</h1> :
                 <h1 className='actiontitle'>Add an Entry for {story.name}</h1>
             }
 
@@ -97,7 +99,6 @@ const EntryCreateForm = props => {
 
 
 const mapStateToProps = state => {
-    console.log(state)
     return {
         current: state.page.current
     }

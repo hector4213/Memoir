@@ -4,11 +4,7 @@ import './TagsEntry.scss'
 const TagsEntry = props => {
 
     const {formInfo, setFormInfo} = props
-    const tags = formInfo.hashtags ? formInfo.hashtags : [
-        // { tagname: "Birthday" },
-        // { tagname: "Wedding" },
-        // { tagname: "Sample Tag" },
-    ]
+    const tags = formInfo.hashtags ? formInfo.hashtags : []
 
     const tagTabs = tags.map( (tag, i) => {
         return <li key={i} onClick={ e => {
@@ -25,6 +21,7 @@ const TagsEntry = props => {
     const handleTagSubmit = e => {
         e.preventDefault()
         let val
+
         if (e.key === 'Enter') {
             val = e.target.value
         } else {
@@ -32,8 +29,6 @@ const TagsEntry = props => {
         }
 
         setFormInfo({...formInfo, hashtags: [...formInfo.hashtags, {tagname: val}]})
-
-        console.log(val)
     }
 
     return (

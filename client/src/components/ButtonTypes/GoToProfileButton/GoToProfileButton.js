@@ -3,7 +3,7 @@ import './GoToProfileButton.scss'
 import {connect} from 'react-redux'
 
 import {useHistory} from 'react-router-dom'
-import Button from '../../Button/Button'
+import Button from '../../../templates/Button/Button'
 
 const GoToProfileButton = props => {
     const {user} = props

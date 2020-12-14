@@ -1,5 +1,5 @@
 import React, {useCallback} from 'react'
-import Button from '../Button/Button'
+import Button from '../../templates/Button/Button'
 
 import {connect} from 'react-redux'
 import {useHistory} from 'react-router-dom'
@@ -24,6 +24,7 @@ const SubmitEdit = props => {
         <Button {...{
             label:'Delete Entry',
             transparent: true,
+            red: true,
             extraClass: 'delete-story',
             onClick: e => {
 

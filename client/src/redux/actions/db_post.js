@@ -35,8 +35,6 @@ export const createEntryAction = entryInfo => {
         const token = getState().profile.token
         const storyId = getState().page.current.story.id
 
-        console.log(entryInfo)
-
         try {
             if(entryInfo.format_id === 4){
                 // POST TO IMGUR

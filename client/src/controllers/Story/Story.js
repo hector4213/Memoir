@@ -50,7 +50,7 @@ const Story = props => {
                 <StoryCard
                     {...{
                         story: story,
-                        specialStyle:{margin: '0px auto 50px auto', cursor:'auto', opacity:1},
+                        specialStyle:{margin: '0px auto 50px auto', cursor:'auto', opacity:1, maxWidth:'200px'},
                         inTimeline: true
                     }}
                 />
