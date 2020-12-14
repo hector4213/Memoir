@@ -6,12 +6,12 @@ import {useParams} from 'react-router-dom'
 
 import {getSingleStoryAction} from '../../redux/actions/db_get'
 
-import MediaType from './MediaType'
-import DateEntry from './DateEntry'
-import SubmitCreate from './SubmitCreate'
-import TextEntry from './TextEntry'
-import SubmitEdit from './SubmitEdit'
-import TagsEntry from './TagsEntry'
+import MediaType from './fields/Embed/MediaType'
+import DateEntry from './fields/Date/DateEntry'
+import SubmitCreate from './fields/Submit/SubmitCreate'
+import TextEntry from './fields/Text/TextEntry'
+import SubmitEdit from './fields/Submit/SubmitEdit'
+import TagsEntry from './fields/Tags/TagsEntry'
 
 const EntryCreateForm = props => {
     // props from redux
