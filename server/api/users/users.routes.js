@@ -45,7 +45,12 @@ router.get('/:id', async (req, res, next) => {
     if (isProfileOwner) {
       const profile = await User.query()
         .select('id', 'username', 'email')
-        .withGraphFetched('[stories, userEntries.story, inspires]')
+        .withGraphFetched('[stories, userEntries.story, inspires(one)]')
+        .modifiers({
+          one(builder) {
+            builder.select('name', 'inspiring', 'story.id')
+          },
+        })
         .findById(id)
 
       return res.status(200).json(profile)
