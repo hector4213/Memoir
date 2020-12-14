@@ -3,7 +3,7 @@
 
 export const addInspiringAction = () => {
 	return async (dispatch, getState) => {
-        const token = getState().profile.token
+        // const token = getState().profile.token
         const storyId = getState().page.current.story.id
 
         console.log(`mark story ${storyId} as inspiring`)
