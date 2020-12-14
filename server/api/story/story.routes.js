@@ -62,7 +62,7 @@ router.get('/:storyId', async (req, res, next) => {
   const story = await Story.query()
     .select('id', 'name', 'occupation', 'story_img')
     .withGraphFetched(
-      '[user(nameAndId), entries.[user(nameAndId),hashtags(onlyName)]]'
+      '[user(nameAndId), entries.[user(nameAndId),hashtags(onlyName)], inspiredBy]'
     )
     .modifiers({
       nameAndId(builder) {
