@@ -3,10 +3,10 @@ import './LogInRegister.scss'
 
 import {connect} from 'react-redux'
 
-import RegisterForm from '../../templates/RegisterForm/RegisterForm'
+import RegisterForm from '../../templates/Forms/RegisterForm'
 import {registerUserAction} from '../../redux/actions/register'
 
-import LogInForm from '../../templates/LogInForm/LogInForm'
+import LogInForm from '../../templates/Forms/LogInForm'
 import {logInAction} from '../../redux/actions/logInOut'
 
 import {clearErrorAction} from '../../redux/actions/page'
