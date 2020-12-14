@@ -56,6 +56,7 @@ const StoryEdit = props => {
                     extraClass: 'delete-story',
                     onClick: e => {
                         e.preventDefault()
+
                         // eslint-disable-next-line no-restricted-globals
                         if (confirm(`Are you sure you want to delete ${story.name}'s story?`)) {
                             deleteStory(story.id)
