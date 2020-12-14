@@ -2,8 +2,8 @@ import React, { useState } from 'react'
 import './StoryEdit.scss'
 
 import {connect} from 'react-redux'
-import {editStoryAction} from '../../redux/actions/db_put'
-import {deleteStoryAction} from '../../redux/actions/db_delete'
+import {editStoryAction} from '../../redux/actions/story'
+import {deleteStoryAction} from '../../redux/actions/story'
 
 import Button from '../../templates/Button/Button'
 

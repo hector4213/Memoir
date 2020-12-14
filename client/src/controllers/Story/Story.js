@@ -9,7 +9,7 @@ import TimelineCard from '../../components/TimelineCard/TimelineCard'
 import ButtonsForStory from '../ButtonGroups/ButtonsForStory/ButtonsForStory'
 import ErrorDisplay from '../../components/ErrorDisplay/ErrorDisplay'
 
-import {getSingleStoryAction} from '../../redux/actions/db_get'
+import {getSingleStoryAction} from '../../redux/actions/story'
 import InspiringButton from '../../components/ButtonTypes/InspiringButton/InspiringButton'
 
 const Story = props => {

@@ -4,7 +4,7 @@ import './StoryCard.scss'
 import {connect} from 'react-redux'
 import { useHistory } from "react-router-dom";
 import { HiOutlineXCircle } from "react-icons/hi";
-import {deleteStoryAction} from '../../redux/actions/db_delete'
+import {deleteStoryAction} from '../../redux/actions/story'
 import StoryCardTemplate from '../../templates/StoryCardTemplate/StoryCardTemplate';
 
 const StoryCard = props => {

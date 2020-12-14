@@ -4,9 +4,9 @@ import Button from '../../../../templates/Button/Button'
 import {connect} from 'react-redux'
 import {useHistory} from 'react-router-dom'
 
-import {editEntryAction} from '../../../../redux/actions/db_put'
 import {setErrorAction} from '../../../../redux/actions/page'
-import {deleteEntryAction} from '../../../../redux/actions/db_delete'
+import {editEntryAction} from '../../../../redux/actions/entry'
+import {deleteEntryAction} from '../../../../redux/actions/entry'
 
 import {areFieldsValid, parseForm, setFormToNotFilled, setDateToNotFilled} from './helpers'
 

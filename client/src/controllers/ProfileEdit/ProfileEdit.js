@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import './ProfileEdit.scss'
 
 import {connect} from 'react-redux'
-import {editProfileAction} from '../../redux/actions/db_put'
+import {editProfileAction} from '../../redux/actions/profile'
 import {deleteProfileAction} from '../../redux/actions/profile'
 import Button from '../../templates/Button/Button'
 

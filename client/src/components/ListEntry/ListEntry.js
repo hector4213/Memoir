@@ -4,7 +4,7 @@ import {useHistory} from 'react-router-dom'
 
 import { HiOutlineXCircle, HiThumbUp, HiThumbDown } from "react-icons/hi";
 import {connect} from 'react-redux'
-import {deleteEntryAction} from '../../redux/actions/db_delete'
+import {deleteEntryAction} from '../../redux/actions/entry'
 import {editForeignEntriesAction} from '../../redux/actions/foreignEntries'
 import ListEntryTemplate from '../../templates/ListEntryTemplate/ListEntryTemplate';
 

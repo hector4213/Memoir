@@ -7,7 +7,7 @@ import Header from '../../components/Header/Header'
 import Modal from '../../components/Modal/Modal'
 import LogInRegisterModal from '../../components/LogInRegister/LogInRegister'
 
-import {getAllStoriesAction} from '../../redux/actions/db_get'
+import {getAllStoriesAction} from '../../redux/actions/story'
 import ButtonsForHome from '../ButtonGroups/ButtonsForHome/ButtonsForHome'
 import HomeCards from './HomeCards'
 
