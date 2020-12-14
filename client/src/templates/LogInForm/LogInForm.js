@@ -1,9 +1,6 @@
 import React, {useState} from 'react'
-import Button from '../../templates/Button/Button'
-
-import {connect} from 'react-redux'
-import {logInAction} from '../../redux/actions/logInOut'
-
+import './FormStyle.scss'
+import Button from '../Button/Button'
 
 const LogInForm = props => {
     const [formInfo, setFormInfo] = useState()
@@ -37,10 +34,4 @@ const LogInForm = props => {
     )
 }
 
-const mapDispatchToProps = dispatch => {
-    return {
-        logIn: profile => dispatch(logInAction(profile))
-    }
-}
-
-export default connect(null, mapDispatchToProps)(LogInForm)
+export default LogInForm
