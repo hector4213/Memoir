@@ -13,6 +13,12 @@ const ProfileEdit = props => {
         email: user.email,
     })
 
+    const handleSubmit = e => {
+        e.preventDefault()
+        const final = {...user, ...profileForm}
+        editProfile(final)
+    }
+
     return (
         <div className='profile-edit'>
             <h2>Profile Edit</h2>
@@ -28,6 +34,16 @@ const ProfileEdit = props => {
                 }}/>
 
                 <div className='profile-edit-buttons'>
+
+                    <Button {...{
+                        label: 'Submit',
+                        onClick: e => {
+                            e.preventDefault()
+                            handleSubmit(e)
+                        },
+                        transparent: false,
+                    }} />
+
                     <Button {...{
                         label: 'Delete Profile',
                         onClick: e => {
@@ -37,17 +53,6 @@ const ProfileEdit = props => {
                         transparent: true,
                         extraClass: 'delete-profile',
                         red: true
-                    }} />
-
-                    <Button {...{
-                        label: 'Submit',
-                        onClick: e => {
-                            e.preventDefault()
-                            const final = {...user, ...profileForm}
-                            editProfile(final)
-                        },
-                        transparent: false,
-                        // extraClass
                     }} />
                 </div>
 
