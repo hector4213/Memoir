@@ -56,7 +56,9 @@ const Story = props => {
                     }}
                 />
 
-                <InspiringButton />
+                <InspiringButton
+                    inspired={false? true: false}
+                />
 
                 {createEntries(story)}
 

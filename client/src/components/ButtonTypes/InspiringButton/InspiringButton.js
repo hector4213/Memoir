@@ -8,14 +8,17 @@ import Button from '../../../templates/Button/Button'
 
 const InspiringButton = props => {
 
-    const {story, addInspiring} = props
+    const {story, addInspiring, inspired} = props
+
+    let classes = 'insp-btn '
+    classes += inspired? 'clicked' : ''
 
     return (
         <Button {...{
             label: story ? `${story.id} people found this story inspiring` : 'Inspiring',
             onClick: story ? addInspiring : '',
             transparent: true,
-            extraClass: 'insp-btn',
+            extraClass: classes,
         }}/>
     )
 }
