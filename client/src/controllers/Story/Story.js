@@ -56,15 +56,22 @@ const Story = props => {
                     }}
                 />
 
-                <InspiringButton
-                    inspired={false? true: false}
-                />
-
-                {createEntries(story)}
-
-                <div className='progress-container'>
-                    <div className='progress' style={{width: `${currentProgress}%`}} />
-                </div>
+                {
+                    story.entries.length > 0?
+                    <>
+                    <InspiringButton
+                        inspired={false? true: false}
+                    />
+                    {createEntries(story)}
+                    <div className='progress-container'>
+                        <div className='progress' style={{width: `${currentProgress}%`}} />
+                    </div>
+                    </>
+                    :
+                    <ErrorDisplay
+                        message={`Seems ${story.name} doesn't have any entries yet`}
+                    />
+                }
             </div>
         )
     }
@@ -93,9 +100,7 @@ const createEntries = story =>{
                 />
             )
         })
-    } else {
-        entryComponents.push(<ErrorDisplay key={1} message={`Seems ${story.name} doesn't have any entries yet`}/>)
-    }
+    } else {}
 
     return entryComponents
 }
