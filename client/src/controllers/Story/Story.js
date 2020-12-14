@@ -60,7 +60,7 @@ const Story = props => {
                     story.entries.length > 0?
                     <>
                     <InspiringButton
-                        inspired={false? true: false}
+                        inspired={true? true: false}
                     />
                     {createEntries(story)}
                     <div className='progress-container'>
