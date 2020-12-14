@@ -27,6 +27,19 @@ class Story extends Model {
           to: 'users.id',
         },
       },
+      inspiredBy: {
+        relation: Model.ManyToManyRelation,
+        modelClass: User,
+        join: {
+          from: 'story.id',
+          through: {
+            from: 'inspires.story_id',
+            to: 'inspires.user_id',
+            extra: ['inspiring'],
+          },
+          to: 'users.id',
+        },
+      },
     }
   }
 }
