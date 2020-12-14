@@ -62,7 +62,7 @@ const TextEntry = props => {
                         'Paste SoundCloud embed text here'
                     }
                     value = {formInfo.embed? formInfo.embed: ''}
-                    onChange={ e =>{
+                    onChange={ e => {
                         if(e.target.value){
                             let validText
                             if(formInfo.format_id === 3){ validText = validateSoundEmbed(e.target.value) }
@@ -79,12 +79,12 @@ const TextEntry = props => {
             {
                 // IMAGE FORMAT ID
                 formInfo.format_id === 4?
-                <input type="file" onChange={handFileChange} />: ''
+                <input type="file" onChange={handFileChange} /> : ''
             }
 
             <input style={title_F? {} : notFilledStyle} type='text' placeholder='Enter the title'
-                value = {formInfo.title? formInfo.title: ''}
-                onChange={ e =>{
+                value = {formInfo.title? formInfo.title : ''}
+                onChange={ e => {
                     if(e.target.value){
                         setFormInfo( {...formInfo, title: e.target.value, title_F:true })
                     } else {
@@ -93,9 +93,13 @@ const TextEntry = props => {
                 }}
             />
 
-            <textarea rows="6" style={description_F? {} : notFilledStyle} type='text' placeholder='Enter the description'
-                value = {formInfo.description? formInfo.description: ''}
-                onChange={ e =>{
+            <textarea
+                rows="6"
+                style={description_F? {} : notFilledStyle}
+                type='text'
+                placeholder='Enter the description'
+                value = {formInfo.description? formInfo.description : ''}
+                onChange={ e => {
                     if(e.target.value){
                         setFormInfo( {...formInfo, description: e.target.value, description_F:true })
                     } else {
