@@ -13,13 +13,13 @@ const LogInForm = props => {
 
     return (
         <form>
-            <input type='text' placeholder='Enter your E-mail'
+            <input type='text' name='email' placeholder='Enter your E-mail'
                 onChange={ e =>{
                     setFormInfo( {...formInfo, email : e.target.value })
                 }}
             />
 
-            <input type='password' placeholder='Enter your Password'
+            <input type='password' name='password' placeholder='Enter your Password'
                 onChange={ e =>{
                     setFormInfo( {...formInfo, password : e.target.value })
                 }}
@@ -27,6 +27,7 @@ const LogInForm = props => {
 
             <Button {...{
                 label:'Submit',
+                extraClass:'submit-login',
                 transparent: false,
                 onClick: loginRequest
             }}/>
