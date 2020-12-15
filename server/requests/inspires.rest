@@ -1,0 +1,4 @@
+POST http://localhost:3001/api/stories/19/inspire
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIsInVzZXJuYW1lIjoidGVzdGVyIiwiZW1haWwiOiJ0ZXN0ZXJAdGVzdC5jb20iLCJpYXQiOjE2MDgwMTAzMjQsImV4cCI6MTYwODYxNTEyNH0.qh2Y92YhxSfFNOT91m582gYhVz6Ubw5wYmkvlRK9Q5c
+

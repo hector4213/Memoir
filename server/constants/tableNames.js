@@ -6,4 +6,5 @@ module.exports = {
   entryStatus: 'entry_status',
   hashTags: 'hashtags',
   hashTagsRelations: 'hash_tag_relations',
+  inspires: 'inspires',
 }

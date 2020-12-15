@@ -1,7 +1,7 @@
 const express = require('express')
 const jwt = require('../../lib/jwt')
 const Story = require('./story.model')
-const User = require('../users/users.model')
+const Inspires = require('./storylikes.model')
 const entries = require('./entry/entry.routes')
 const yup = require('yup')
 
@@ -59,18 +59,18 @@ router.post('/create', async (req, res, next) => {
 
 router.get('/:storyId', async (req, res, next) => {
   const { storyId } = req.params
-  const story = await Story.query()
-    .select('id', 'name', 'occupation', 'story_img')
-    .withGraphFetched(
-      '[user(nameAndId), entries.[user(nameAndId),hashtags(onlyName)]]'
-    )
-    .modifiers({
-      nameAndId(builder) {
-        builder.select('id', 'username')
-      },
-    })
-    .findById(storyId)
   try {
+    const story = await Story.query()
+      .select('id', 'name', 'occupation', 'story_img')
+      .withGraphFetched(
+        '[user(nameAndId), entries.[user(nameAndId),hashtags(onlyName)], inspiredBy(noPass)]'
+      )
+      .modifiers({
+        noPass(builder) {
+          builder.select('users.id', 'username', 'inspiring')
+        },
+      })
+      .findById(storyId)
     if (!story) {
       return res.status(404).json({ error: 'Story not found' })
     }
@@ -119,6 +119,35 @@ router.delete('/:storyId', async (req, res, next) => {
       return res.status(200).json({ msg: 'Story deleted' })
     }
     return res.status(401).json({ msg: 'unauthenticated' })
+  } catch (error) {
+    next(error)
+  }
+})
+
+router.post('/:storyId/inspire', async (req, res, next) => {
+  const { storyId } = req.params
+  try {
+    //check if user already liked the story
+    const decodedToken = await jwt.verify(req.token)
+    const hasLiked = await Story.relatedQuery('inspiredBy')
+      .for(storyId)
+      .where('user_id', decodedToken.id)
+      .first()
+    //if they have liked it already toggle
+    if (hasLiked) {
+      await Story.relatedQuery('inspiredBy')
+        .for(storyId)
+        .update({ inspiring: !hasLiked.inspiring })
+        .where('user_id', decodedToken.id)
+      return res.status(200).json({ msg: 'Inspired updated' })
+    }
+    //if not insert a new like
+    await Inspires.query().insert({
+      user_id: decodedToken.id,
+      story_id: storyId,
+      inspiring: true,
+    })
+    res.status(200).json({ msg: 'A new inspire' })
   } catch (error) {
     next(error)
   }
