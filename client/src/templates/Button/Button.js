@@ -3,7 +3,7 @@ import './Button.scss'
 
 const Button = props => {
 
-    const { label, onClick, transparent, extraClass, red, green } = props;
+    const { label, onClick, transparent, extraClass, red, green, icon } = props;
 
     let btnClass = transparent? 'transparent-btn ' : 'solid-btn '
     btnClass += extraClass? `${extraClass} ` : '';
@@ -15,6 +15,7 @@ const Button = props => {
             className={btnClass}
             onClick={onClick}
         >
+            {icon? icon : ''}
             {label ? label : 'hello'}
         </button>
     )
