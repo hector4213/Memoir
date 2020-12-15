@@ -18,8 +18,9 @@ describe('Registers User then Deletes', () => {
     })
 })
 
-describe('Logs In User', () => {
-    it('Logs In', () => {
+describe('Creates an Entry', () => {
+    it('Logs In the creates an entry', () => {
         cy.loginUser('michael', 'michael@email.com', 'hell0World!')
+        cy.createStory()
     })
 })
