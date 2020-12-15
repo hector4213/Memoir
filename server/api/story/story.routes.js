@@ -1,6 +1,7 @@
 const express = require('express')
 const jwt = require('../../lib/jwt')
 const Story = require('./story.model')
+const Inspires = require('./storylikes.model')
 const entries = require('./entry/entry.routes')
 const yup = require('yup')
 
@@ -120,6 +121,44 @@ router.delete('/:storyId', async (req, res, next) => {
     return res.status(401).json({ msg: 'unauthenticated' })
   } catch (error) {
     next(error)
+  }
+})
+
+router.post('/:storyId/inspire', async (req, res, next) => {
+  const { storyId } = req.params
+  try {
+    //check if user already liked the story
+    const decodedToken = await jwt.verify(req.token)
+    const hasLiked = await Story.relatedQuery('inspiredBy')
+      .for(storyId)
+      .where('user_id', decodedToken.id)
+      .first()
+    //if they have liked it already toggle
+    if (hasLiked) {
+      await Story.relatedQuery('inspiredBy')
+        .for(storyId)
+        .update({ inspiring: !hasLiked.inspiring })
+        .where('user_id', decodedToken.id)
+      return res.status(200).json({ msg: 'Inspired updated' })
+    }
+    //if not insert a new like
+    await Inspires.query().insert({
+      user_id: decodedToken.id,
+      story_id: storyId,
+      inspiring: true,
+    })
+    res.status(200).json({ msg: 'A new inspire' })
+  } catch (error) {
+    next(error)
+  }
+
+  console.log('this is initial inspires', hasLiked)
+
+  if (hasLiked) {
+    const toggleInspire = await Story.relatedQuery('inspiredBy')
+      .for(storyId)
+      .update({ inspiring: !hasLiked.inspiring })
+      .where('user_id', 12)
   }
 })
 
