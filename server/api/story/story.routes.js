@@ -151,15 +151,6 @@ router.post('/:storyId/inspire', async (req, res, next) => {
   } catch (error) {
     next(error)
   }
-
-  console.log('this is initial inspires', hasLiked)
-
-  if (hasLiked) {
-    const toggleInspire = await Story.relatedQuery('inspiredBy')
-      .for(storyId)
-      .update({ inspiring: !hasLiked.inspiring })
-      .where('user_id', 12)
-  }
 })
 
 router.use('/:storyId/entries', entries)
