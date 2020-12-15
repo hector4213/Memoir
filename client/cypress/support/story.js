@@ -1,13 +1,8 @@
 /* eslint-disable no-undef */
 
-import Chance from 'chance'
-const chance = Chance()
+const embed = 'https://tinyurl.com/y9k8r33z'
 
-Cypress.Commands.add('createStory', () => {
-    const embed = 'https://tinyurl.com/y9k8r33z'
-    const name = chance.name()
-    const occupation = chance.city()
-
+Cypress.Commands.add('createStory', (name, occupation) => {
     cy.visit('http://localhost:3000/profile')
     cy.get('.addStory').click()
 
@@ -18,6 +13,9 @@ Cypress.Commands.add('createStory', () => {
 
     cy.get('.storycard-template')
         .should('contain', name)
+})
 
-    cy.get(`div[name='${name}']>.delete`).click()
+Cypress.Commands.add('deleteStory', (name) => {
+    cy.visit('http://localhost:3000/profile')
+    cy.get(`div[name='${name}'] > .delete`).click()
 })

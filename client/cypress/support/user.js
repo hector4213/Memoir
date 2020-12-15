@@ -15,7 +15,6 @@ Cypress.Commands.add('registerUser', (username, email, password) => {
 
     cy.get('.pageTitle')
         .should('contain', username)
-
 })
 
 Cypress.Commands.add('deleteUser', () => {
@@ -39,4 +38,12 @@ Cypress.Commands.add('loginUser', (username, email, password) => {
 
     cy.get('.pageTitle')
         .should('contain', username)
+})
+
+Cypress.Commands.add('logoutUser', () => {
+    cy.visit('http://localhost:3000/profile')
+    cy.get('.logout-button').click()
+
+    cy.get('h1')
+        .should('contain', 'Memoir')
 })

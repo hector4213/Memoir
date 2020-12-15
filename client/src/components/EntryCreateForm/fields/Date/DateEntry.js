@@ -56,7 +56,10 @@ const DateEntry = props => {
                 {dayOptions}
             </select>
 
-            <input type='number' placeholder='Year'
+            <input
+                name='year'
+                type='number'
+                placeholder='Year'
                 style={year_F?{}: notFilledStyle}
                 value = {date.year? date.year: ''}
                 onChange={ e =>{

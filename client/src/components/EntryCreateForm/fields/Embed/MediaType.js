@@ -10,6 +10,7 @@ const MediaType = props => {
     return (
         <div style={format_id_F?{}: notFilledStyle} className='media-tabs'>
             <button
+                name='video'
                 className={`embedIcons ${formInfo.format_id===1? 'active' : ''}`}
                 onClick={ e => {
                     e.preventDefault()
@@ -21,6 +22,7 @@ const MediaType = props => {
             </button>
 
             <button
+                name='text'
                 className={`embedIcons ${formInfo.format_id===2? 'active' : ''}`}
                 onClick={ e => {
                     e.preventDefault()
@@ -32,6 +34,7 @@ const MediaType = props => {
             </button>
 
             <button
+                name='audio'
                 className={`embedIcons ${formInfo.format_id===3? 'active' : ''}`}
                 onClick={ e => {
                     e.preventDefault()
@@ -43,6 +46,7 @@ const MediaType = props => {
             </button>
 
             <button
+                name='image'
                 className={`embedIcons ${formInfo.format_id===4? 'active' : ''}`}
                 onClick={ e =>{
                     e.preventDefault()

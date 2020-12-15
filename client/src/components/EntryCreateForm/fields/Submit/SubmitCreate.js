@@ -17,6 +17,7 @@ const SubmitCreate = props => {
         <Button {...{
             label:'Submit',
             transparent: false,
+            extraClass:'submit-createEntry',
             onClick: e => {
 
                 e.preventDefault()
