@@ -19,6 +19,7 @@ const LogInRegisterModal = props => {
         <>
             <div className='modalTabs'>
                 <button
+                    name='register'
                     className={registerTab? 'active' : '' }
                     onClick={()=>{
                         clearError()
@@ -28,6 +29,7 @@ const LogInRegisterModal = props => {
                 Register </button>
 
                 <button
+                    name='login'
                     className={registerTab? '' : 'active' }
                     onClick={()=>{
                         clearError()

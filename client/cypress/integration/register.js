@@ -12,24 +12,14 @@ describe('Registers User then Deletes', () => {
     //     cy.visit('http://localhost:3000')
     // })
 
-    it('Registers User', () => {
-        cy.visit('http://localhost:3000')
-        cy.get('button').click()
-            .should('contain', 'Register')
-
-        cy.get('input[name=username]').type(username)
-        cy.get('input[name=email]').type(email)
-        cy.get('input[name=password]').type(password)
-        cy.get('input[name=repassword]').type(password)
-        cy.get('.submit-register').click()
-
-        cy.contains(username)
+    it('Registers and Delete User', () => {
+        cy.registerUser(username, email, password)
+        cy.deleteUser()
     })
+})
 
-    it('Deletes User', () => {
-        cy.get('.edit-profile-btn').click()
-        cy.get('.delete-profile').click()
-
-        cy.contains('Memoir')
+describe('Logs In User', () => {
+    it('Logs In', () => {
+        cy.loginUser('michael', 'michael@email.com', 'hell0World!')
     })
 })
