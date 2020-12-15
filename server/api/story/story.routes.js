@@ -59,18 +59,18 @@ router.post('/create', async (req, res, next) => {
 
 router.get('/:storyId', async (req, res, next) => {
   const { storyId } = req.params
-  const story = await Story.query()
-    .select('id', 'name', 'occupation', 'story_img')
-    .withGraphFetched(
-      '[user(nameAndId), entries.[user(nameAndId),hashtags(onlyName)], inspiredBy]'
-    )
-    .modifiers({
-      nameAndId(builder) {
-        builder.select('id', 'username')
-      },
-    })
-    .findById(storyId)
   try {
+    const story = await Story.query()
+      .select('id', 'name', 'occupation', 'story_img')
+      .withGraphFetched(
+        '[user(nameAndId), entries.[user(nameAndId),hashtags(onlyName)], inspiredBy(noPass)]'
+      )
+      .modifiers({
+        noPass(builder) {
+          builder.select('users.id', 'username', 'inspiring')
+        },
+      })
+      .findById(storyId)
     if (!story) {
       return res.status(404).json({ error: 'Story not found' })
     }
