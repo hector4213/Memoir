@@ -42,6 +42,13 @@ class User extends Model {
       },
     }
   }
+  static get modifiers() {
+    return {
+      nameAndId(builder) {
+        builder.select('id', 'username')
+      },
+    }
+  }
 }
 
 module.exports = User
