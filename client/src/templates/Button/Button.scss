@@ -9,6 +9,15 @@ button {
     outline:0;
     cursor: pointer;
     text-transform: capitalize;
+    display: flex !important;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    justify-items: center;
+
+    svg {
+        margin-right: 10px;
+    }
 }
 
 .transparent-btn {

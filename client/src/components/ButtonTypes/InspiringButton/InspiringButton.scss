@@ -4,13 +4,8 @@
     display: block;
     width: fit-content;
     padding: 10px 20px;
-    color: $medium_blue;
-    border-color: $dark_blue;
-    box-shadow: none;
-}
-
-.insp-btn:hover, .clicked:hover {
     color: $light_blue;
+    border-color: $dark_blue;
 }
 
 .clicked {
