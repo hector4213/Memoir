@@ -16,7 +16,8 @@ const InspiringButton = props => {
     }
 
     let classes = 'insp-btn '
-    classes += clickedBefore? 'clicked' : ''
+    classes += clickedBefore? 'clicked ' : ''
+    classes += user? '': 'not-clickable '
 
     const inspiredCounter = story.inspiredBy.filter( i => i.inspiring)
 
@@ -34,7 +35,7 @@ const InspiringButton = props => {
     return (
         <Button {...{
             label: inspiredLabel,
-            onClick: addInspiring,
+            onClick: user? addInspiring : ()=>{},
             transparent: true,
             icon: <HiOutlineLightningBolt />,
             extraClass: classes,

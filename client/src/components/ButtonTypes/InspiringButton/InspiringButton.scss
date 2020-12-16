@@ -11,3 +11,7 @@
 .clicked {
     color: $green;
 }
+
+.not-clickable {
+    cursor: default;
+}
