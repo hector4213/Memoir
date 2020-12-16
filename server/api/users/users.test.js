@@ -35,16 +35,25 @@ describe('GET profile /api/users', () => {
       .set('Authorization', `bearer ${token}`)
       .expect(200)
 
-    const { id, username, email, stories, userEntries } = response.body
+    const {
+      id,
+      username,
+      email,
+      stories,
+      userEntries,
+      inspires,
+    } = response.body
     expect(response.body).to.have.all.keys([
       'id',
       'username',
       'email',
       'stories',
+      'inspires',
       'userEntries',
     ])
     expect(stories).to.be.a('array')
     expect(userEntries).to.be.a('array')
+    expect(inspires).to.be.a('array')
   })
 
   it('should delete a users account with a status response of 204 No content ', async () => {

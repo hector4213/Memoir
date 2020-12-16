@@ -3,6 +3,7 @@ const supertest = require('supertest')
 const { knex } = require('../../db/config')
 const app = require('../../app')
 const Story = require('./story.model')
+const Inspires = require('./storylikes.model')
 
 describe('CRUD /story', () => {
   beforeEach(async () => {
@@ -91,5 +92,28 @@ describe('CRUD /story', () => {
 
     const dbStoriesAtEnd = await Story.query()
     expect(dbStoriesAtEnd.length).to.equal(dbStoriesAtStart.length - 1)
+  })
+
+  it('logged in user is able to be inspired(like) by a story', async () => {
+    const login = await supertest(app)
+      .post('/api/auth/login')
+      .send({ email: 'tester@test.com', password: 'React!123' })
+    const { token, user } = login.body
+    const noInspires = await Inspires.query()
+      .where({ user_id: user.id })
+      .andWhere({ story_id: 6 })
+      .first()
+    console.log(noInspires)
+    const response = await supertest(app)
+      .post('/api/stories/6/inspire')
+      .set('Authorization', `bearer ${token}`)
+      .expect(200)
+
+    const nowInspired = await Inspires.query()
+      .where({ user_id: user.id })
+      .andWhere({ story_id: 6 })
+      .first()
+
+    expect(noInspires).to.not.equal(nowInspired)
   })
 })
