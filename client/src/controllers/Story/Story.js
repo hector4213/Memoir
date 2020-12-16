@@ -13,7 +13,6 @@ import {getSingleStoryAction} from '../../redux/actions/story'
 import InspiringButton from '../../components/ButtonTypes/InspiringButton/InspiringButton'
 
 const Story = props => {
-    const [inspired, setInspired] = useState()
     const {getSingleStory} = props
     const {current} = props
 
@@ -60,10 +59,7 @@ const Story = props => {
                 {
                     story.entries.length > 0?
                     <>
-                    <InspiringButton
-                        inspired={inspired? true: false}
-                        clickFunc={()=> setInspired(!inspired)}
-                    />
+                    <InspiringButton />
                     {createEntries(story)}
                     <div className='progress-container'>
                         <div className='progress' style={{width: `${currentProgress}%`}} />

@@ -1,35 +1,29 @@
-// import axios from 'axios'
+import axios from 'axios'
 
 
 export const addInspiringAction = () => {
 	return async (dispatch, getState) => {
-        // const token = getState().profile.token
+        const token = getState().profile.token
         const storyId = getState().page.current.story.id
 
-        console.log(`mark story ${storyId} as inspiring`)
+        console.log(storyId, token)
 
-        // try {
-        //     const headers = {
-        //         'Content-Type': 'application/json',
-        //         'Authorization': `bearer ${token}`
-        //     }
-        //     const res = await axios.put(`http://localhost:3001/api/stories/edit/${storyId}`, entryInfo, {headers: headers})
+        try {
 
-        //     console.log(res)
+            const headers = {
+                'Content-Type': 'application/json',
+                'Authorization': `bearer ${token}`
+            }
+            const res = await axios.post(`http://localhost:3001/api/stories/${storyId}/inspire`, {headers: headers})
 
-        //     dispatch({
-        //         type: 'TOGGLE_MODAL',
-        //         payload: false
-        //     })
+            console.log(res)
 
-        //     history.go(0)
-
-        // }
-        // catch(error){
-        //     dispatch({
-        //         type: 'ERROR',
-        //         payload: error.response? error.response.data.error : error.message
-        //     })
-        // }
+        }
+        catch(error){
+            dispatch({
+                type: 'ERROR',
+                payload: error.response? error.response.data.error : error.message
+            })
+        }
     }
 }

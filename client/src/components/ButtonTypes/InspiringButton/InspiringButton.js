@@ -8,16 +8,32 @@ import Button from '../../../templates/Button/Button'
 import {HiOutlineLightningBolt} from 'react-icons/hi'
 
 const InspiringButton = props => {
-    const {story, addInspiring, inspired, clickFunc} = props
+    const {story, user, addInspiring} = props
+
+    let clickedBefore
+    if(story.inspiredBy && user){
+        clickedBefore = story.inspiredBy.find( i => i.id === user.id)
+    }
 
     let classes = 'insp-btn '
-    classes += inspired? 'clicked' : ''
+    classes += clickedBefore? 'clicked' : ''
+
+
+    let inspiredLabel
+    if(story.inspiredBy.length > 1){
+        inspiredLabel = `${story.inspiredBy.length} people found this story inspiring`
+    }
+    else if(story.inspiredBy.length === 1){
+        inspiredLabel = '1 person found this story inspiring'
+    }
+    else {
+        inspiredLabel = 'Do you find this story inspiring ?'
+    }
 
     return (
         <Button {...{
-            label: story ? `${story.id} people found this story inspiring` : 'Inspiring',
-            // onClick: story ? addInspiring : '',
-            onClick: clickFunc,
+            label: inspiredLabel,
+            onClick: addInspiring,
             transparent: true,
             icon: <HiOutlineLightningBolt />,
             extraClass: classes,
@@ -27,7 +43,8 @@ const InspiringButton = props => {
 
 const mapStateToProps = state => {
     return {
-        story: state.page.current.story
+        story: state.page.current.story,
+        user: state.profile.user
     }
 }
 
