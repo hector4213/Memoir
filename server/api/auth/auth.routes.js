@@ -25,7 +25,7 @@ router.post('/signup', async (req, res, next) => {
   try {
     const newUser = { username, email, password }
     await schema.validate(newUser)
-    const existingUserName = await User.query.where({ username }).first()
+    const existingUserName = await User.query().where({ username }).first()
     const existingUser = await User.query().where({ email }).first()
     if (existingUser) {
       res.status(403).json({ error: 'email already in use' })
