@@ -25,9 +25,13 @@ router.post('/signup', async (req, res, next) => {
   try {
     const newUser = { username, email, password }
     await schema.validate(newUser)
+    const existingUserName = await User.query.where({ username }).first()
     const existingUser = await User.query().where({ email }).first()
     if (existingUser) {
       res.status(403).json({ error: 'email already in use' })
+    }
+    if (existingUserName) {
+      res.status(403).json({ error: 'username already in use' })
     }
     const hashedPassword = await bcrypt.hash(password, 12)
     const insertUser = await User.query().insert({
