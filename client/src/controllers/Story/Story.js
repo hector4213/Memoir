@@ -48,13 +48,11 @@ const Story = props => {
 
                 <ButtonsForStory {...{storyId}}/>
 
-                <StoryCard
-                    {...{
-                        story: story,
-                        specialStyle:{margin: '0px auto 50px auto', cursor:'auto', opacity:1, maxWidth:'200px'},
-                        inTimeline: true
-                    }}
-                />
+                <StoryCard {...{
+                    story: story,
+                    specialStyle:{margin: '0px auto 50px auto', cursor:'auto', opacity:1, maxWidth:'200px'},
+                    inTimeline: true
+                }}/>
 
                 {
                     story.entries.length > 0?
