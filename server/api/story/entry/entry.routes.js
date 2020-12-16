@@ -89,7 +89,7 @@ router.put('/edit/:id', async (req, res, next) => {
     const decodedToken = await jwt.verify(req.token)
 
     const editItem = await Entry.query().withGraphFetched('story').findById(id)
-    console.log(editItem)
+
     if (!editItem) return res.status(401).json({ error: 'item does not exist' })
     const isVerified = decodedToken.id === editItem.user_id
     await schema.validate({
