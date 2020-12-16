@@ -8,11 +8,13 @@ exports.up = async (knex) => {
         .references('id')
         .inTable(tableNames.users)
         .notNullable()
+        .onDelete('CASCADE')
       table
         .integer('story_id')
         .references('id')
         .inTable(tableNames.story)
         .notNullable()
+        .onDelete('CASCADE')
       table.bool('inspiring')
     }),
   ])
