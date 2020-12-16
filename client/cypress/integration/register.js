@@ -14,24 +14,20 @@ const description = chance.paragraph()
 const year = chance.year()
 
 
-describe('Registers User then Deletes', () => {
-    it('Registers and Delete User', () => {
+describe('Creating and Deleting', () => {
+    it('Profile', () => {
         cy.registerUser(username, email, password)
         cy.deleteUser()
     })
-})
 
-describe('Create and Delete Story', () => {
-    it('Logs in and creates a story', () => {
+    it('Story', () => {
         cy.loginUser('michael', 'michael@email.com', 'hell0World!')
         cy.createStory(username, occupation)
         cy.deleteStory(username)
         cy.logoutUser()
     })
-})
 
-describe('Create and Delete Entry', () => {
-    it('Logs in and creates and entry', () => {
+    it('Entry', () => {
         cy.loginUser('michael', 'michael@email.com', 'hell0World!')
         cy.createEntry(title, description, year)
         cy.deleteEntry(title)
