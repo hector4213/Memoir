@@ -94,7 +94,7 @@ describe('CRUD /story', () => {
     expect(dbStoriesAtEnd.length).to.equal(dbStoriesAtStart.length - 1)
   })
 
-  it.only('logged in user is able to be inspired(like) by a story', async () => {
+  it('logged in user is able to be inspired(like) by a story', async () => {
     const login = await supertest(app)
       .post('/api/auth/login')
       .send({ email: 'tester@test.com', password: 'React!123' })
