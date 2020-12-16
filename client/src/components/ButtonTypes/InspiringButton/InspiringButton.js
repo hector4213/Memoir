@@ -10,7 +10,10 @@ import {HiOutlineLightningBolt} from 'react-icons/hi'
 const InspiringButton = props => {
     const {story, user, addInspiring} = props
 
-    const clickedBefore = story.inspiredBy.find( i => i.id === user.id)
+    let clickedBefore
+    if(story.inspiredBy && user){
+        clickedBefore = story.inspiredBy.find( i => i.id === user.id)
+    }
 
     let classes = 'insp-btn '
     classes += clickedBefore? 'clicked' : ''
