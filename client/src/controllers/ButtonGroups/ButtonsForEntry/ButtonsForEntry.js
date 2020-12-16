@@ -32,7 +32,7 @@ const ButtonsForEntry = props => {
                 <Button {...{
                     label: 'Edit this Entry',
                     transparent: true,
-                    extraClass:'',
+                    extraClass:'editEntry-button',
                     onClick: gotoEdit
                 }} />
                 : ''

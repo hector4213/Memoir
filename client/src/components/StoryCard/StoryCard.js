@@ -24,6 +24,7 @@ const StoryCard = props => {
     return (
         <div
             className='storyCard'
+            name={story.name}
             style={specialStyle}
             onClick={inTimeline? ()=>{} : goToStory}
             >
@@ -41,7 +42,7 @@ const StoryCard = props => {
                     console.log('delete was cancelled')
                 }
 
-            }}> <HiOutlineXCircle/> </div>
+            }}> <HiOutlineXCircle name='delete-btn'/> </div>
             :''
             }
 

@@ -54,7 +54,7 @@ const TextEntry = props => {
             {
                 // IF VIDEO OR AUDIO FORMAT ID SHOW EMBED FIELD
                 formInfo.format_id === 1 || formInfo.format_id === 3?
-                <input style={embed_F? {} : notFilledStyle} type='text'
+                <input name='embed' style={embed_F? {} : notFilledStyle} type='text'
                     placeholder={
                         formInfo.format_id === 1?
                         'Paste YouTube embed text here'
@@ -82,7 +82,11 @@ const TextEntry = props => {
                 <input type="file" onChange={handFileChange} /> : ''
             }
 
-            <input style={title_F? {} : notFilledStyle} type='text' placeholder='Enter the title'
+            <input
+                style={title_F? {} : notFilledStyle}
+                name='title'
+                type='text'
+                placeholder='Enter the title'
                 value = {formInfo.title? formInfo.title : ''}
                 onChange={ e => {
                     if(e.target.value){
@@ -96,6 +100,7 @@ const TextEntry = props => {
             <textarea
                 rows="6"
                 style={description_F? {} : notFilledStyle}
+                name='description'
                 type='text'
                 placeholder='Enter the description'
                 value = {formInfo.description? formInfo.description : ''}

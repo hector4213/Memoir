@@ -6,7 +6,9 @@ const StoryCardTemplate = props => {
     const {story} = props
 
     return (
-        <div className='storycard-template'>
+        <div
+            name={story.name}
+            className='storycard-template'>
             <div
                 className='profile-img'
                 style={{backgroundImage:`url(${story.story_img})`, backgroundSize: 'cover'}}

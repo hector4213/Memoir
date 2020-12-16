@@ -14,25 +14,25 @@ const RegisterForm = props => {
     return (
         <form>
 
-            <input type='text' placeholder='Enter your Username'
+            <input type='text' name='username' placeholder='Enter your Username'
                 onChange={ e =>{
                 setFormInfo( {...formInfo, username : e.target.value })
                 }}
             />
 
-            <input type='email' placeholder='Enter your E-mail'
+            <input type='email' name='email' placeholder='Enter your E-mail'
                 onChange={ e =>{
                 setFormInfo( {...formInfo, email : e.target.value })
                 }}
             />
 
-            <input type='password' placeholder='Enter your Password'
+            <input type='password' name='password' placeholder='Enter your Password'
                 onChange={ e =>{
                     setFormInfo( {...formInfo, password : e.target.value })
                 }}
             />
 
-            <input type='password' placeholder='Re-enter your Password'
+            <input type='password' name='repassword' placeholder='Re-enter your Password'
                 onChange={ e =>{
                     setFormInfo( {...formInfo, confirmPassword : e.target.value })
                 }}
@@ -40,6 +40,7 @@ const RegisterForm = props => {
 
             <Button {...{
                 label:'Submit',
+                extraClass:'submit-register',
                 transparent: false,
                 onClick: registerRequest
             }}/>

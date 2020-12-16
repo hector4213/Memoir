@@ -41,7 +41,7 @@ const ButtonsForStory = props => {
                         <Button {...{
                             label: 'Edit this Story',
                             transparent: true,
-                            extraClass:'',
+                            extraClass:'edit-story',
                             onClick: toggleModal
                         }} />
                         </>

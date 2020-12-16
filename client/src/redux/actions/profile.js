@@ -59,6 +59,10 @@ export const deleteProfileAction = () => {
 
             localStorage.clear()
             dispatch({ type: 'REMOVE_PROFILE'})
+            dispatch({
+                type: 'TOGGLE_MODAL',
+                payload: !getState().page.modal,
+            })
             history.push('/')
 
         }
