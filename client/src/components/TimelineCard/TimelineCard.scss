@@ -29,6 +29,7 @@
         text-align: center;
         margin: 0px;
         padding: 0px;
+        background: $dark_blue;
     }
 
     h1 {
@@ -41,11 +42,18 @@
         font-size: $text_size;
         line-height: $text_lineheight_size;
         font-weight: normal;
+        width: fit-content;
+    }
+
+    p {
+        background: $dark_blue;
     }
 
     .caption {
         padding: 20px;
         box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
     }
 }
 

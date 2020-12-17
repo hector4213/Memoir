@@ -24,14 +24,16 @@ const TimelineCard = props => {
     entryCardClasses += `mediaType-${format_id} `
 
 
-    let hashtagClasses = ''
+    let hashtagDivs = []
     if(hashtags){
-        const specialTags = ['birthday']
-        hashtags.forEach(hash => {
+        const specialTags = ['birthday', 'vacation']
+        hashtags.forEach((hash, i) => {
             const tag = hash.tagname.toLowerCase()
-            if(tag && specialTags.includes(tag)){
+            let specialCounter = 0
+            if( specialCounter < 5 && specialTags.includes(tag)){
                 console.log(`${tag} exists`)
-                hashtagClasses += `${tag} `
+                hashtagDivs.push( <div className={`special-hashtags ${tag}`} /> )
+                specialCounter ++
             }
         })
     }
@@ -118,7 +120,7 @@ const TimelineCard = props => {
                         {format_id === 2 ? <p>{description}</p> : ''}
                     </div>
 
-                    <div className={`special-hashtags ${hashtagClasses}`} />
+                    {hashtagDivs}
                 </div>
 
                 {line()}
