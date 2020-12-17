@@ -4,13 +4,14 @@ import { useHistory } from "react-router-dom";
 import './TimelineCard.scss'
 import './directions.scss'
 import './mediaType.scss'
+import './specialTags/specialTags.scss'
 
 const TimelineCard = props => {
 
     // MEDIA TYPES: 1:VIDE0 , 2:TEXT , 3:AUDIO , 4:IMAGE
 
     const {entry, position} = props
-    const {format_id, embed, title, date, description, id, story_id} = entry
+    const {format_id, embed, title, date, description, id, story_id, hashtags} = entry
     const d = new Date(date)
     const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
     const formattedDate = `${months[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}`
@@ -18,25 +19,34 @@ const TimelineCard = props => {
     let timelineCardClass = 'entryRow '
     timelineCardClass += `${position} `
 
+    // CLASSES
     let entryCardClasses = 'entryCard '
     entryCardClasses += `mediaType-${format_id} `
 
-    const createMarkup = () => {
-        return {__html: embed}
+
+    let hashtagClasses = ''
+    if(hashtags){
+        const specialTags = ['birthday']
+        hashtags.forEach(hash => {
+            const tag = hash.tagname.toLowerCase()
+            if(tag && specialTags.includes(tag)){
+                console.log(`${tag} exists`)
+                hashtagClasses += `${tag} `
+            }
+        })
     }
 
-    const createVideoMarkup = () => {
-        const finalEmbed = `<iframe width="560" height="315" src="https://www.youtube.com/embed/${embed}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`
 
-        return {__html: finalEmbed};
-    }
-
+    // ON CLICK GO TO ENTRY
     const history = useHistory()
     const goToEntry = useCallback(() => {
         const to = `/story/${story_id}/entry/${id}`
         history.push(to)
     }, [history, id, story_id])
 
+
+
+    // CREATE THE TIMELINE LINE THAT CONNECTS BACK TO MAIN LINE
     const line = () => {
         if(position === 'left' || position === 'right'){
             return format_id === 2 ? // TEXT
@@ -56,6 +66,19 @@ const TimelineCard = props => {
         }
     }
 
+
+
+    // HANDLE MEDIA TYPES
+    const createMarkup = () => {
+        return {__html: embed}
+    }
+
+    const createVideoMarkup = () => {
+        const finalEmbed = `<iframe width="560" height="315" src="https://www.youtube.com/embed/${embed}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`
+
+        return {__html: finalEmbed};
+    }
+
     const showImgurEmbed = entry => {
         // USE DELETE HASH TO DELETE IMAGE WHEN DELETING POST
         if(entry.embed.includes('imgur')){
@@ -66,6 +89,9 @@ const TimelineCard = props => {
             return <img alt={entry.title} src={entry.embed}/> 
         }
     }
+
+
+
 
     return (
         <div className={timelineCardClass}>
@@ -91,6 +117,8 @@ const TimelineCard = props => {
                         <h2>{formattedDate}</h2>
                         {format_id === 2 ? <p>{description}</p> : ''}
                     </div>
+
+                    <div className={`special-hashtags ${hashtagClasses}`} />
                 </div>
 
                 {line()}
