@@ -63,11 +63,14 @@ router.get('/:storyId', async (req, res, next) => {
     const story = await Story.query()
       .select('id', 'name', 'occupation', 'story_img')
       .withGraphFetched(
-        '[user(nameAndId), entries.[user(nameAndId),hashtags(onlyName)], inspiredBy(noPass)]'
+        '[user(nameAndId), entries(approved).[user(nameAndId),hashtags(onlyName)], inspiredBy(noPass)]'
       )
       .modifiers({
         noPass(builder) {
           builder.select('users.id', 'username', 'inspiring')
+        },
+        approved(builder) {
+          builder.select('*').where({ entry_status: 1 })
         },
       })
       .findById(storyId)
