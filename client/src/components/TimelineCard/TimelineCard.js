@@ -25,6 +25,12 @@ const TimelineCard = props => {
         return {__html: embed}
     }
 
+    const createVideoMarkup = () => {
+        const finalEmbed = `<iframe width="560" height="315" src="https://www.youtube.com/embed/${embed}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`
+
+        return {__html: finalEmbed};
+    }
+
     const history = useHistory()
     const goToEntry = useCallback(() => {
         const to = `/story/${story_id}/entry/${id}`
@@ -65,13 +71,19 @@ const TimelineCard = props => {
         <div className={timelineCardClass}>
             <div className={`entryPositioner ${position}container mediaType-${format_id}container`}>
                 <div name={title} className={entryCardClasses} onClick={goToEntry}>
+
                     {
-                        format_id === 4 ? showImgurEmbed(entry) : '' // IMAGE
+                        format_id === 1? // VIDEO
+                        <div dangerouslySetInnerHTML={createVideoMarkup()} /> : ''
                     }
 
                     {
-                        format_id === 1 || format_id === 3? // VIDEO OR AUDIO
+                        format_id === 3? // AUDIO
                         <div dangerouslySetInnerHTML={createMarkup()} /> : ''
+                    }
+
+                    {
+                        format_id === 4 ? showImgurEmbed(entry) : '' // IMAGE
                     }
 
                     <div className='caption'>
