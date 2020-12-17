@@ -21,11 +21,10 @@ const schema = yup.object().shape({
 router.post('/', async (req, res, next) => {
   const { storyId } = req.params
   const { title, description, date, embed, format_id, hashtags } = req.body
-  const decodedToken = await jwt.verify(req.token)
-  const story = await Story.query().findById(storyId)
-  const isStoryAuthor = decodedToken.id === story.author_id ? 1 : 2
-
   try {
+    const decodedToken = await jwt.verify(req.token)
+    const story = await Story.query().findById(storyId)
+    const isStoryAuthor = decodedToken.id === story.author_id ? 1 : 2
     await schema.validate({
       title,
       description,
