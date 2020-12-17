@@ -58,7 +58,7 @@
 }
 
 .entryCard:hover {
-    background: $medium_blue;
+    box-shadow: 0px 0px 10px 3px $medium_blue;
 }
 
 .horizontalLine, .textHorizontalLine, .soundHorizontalLine {

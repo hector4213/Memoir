@@ -50,7 +50,12 @@ const Story = props => {
         const viewableEntries = () => {
             if(filter){
                 const filteredStories = story.entries.filter(entry => entry.format_id === filter)
-                return createTimelineCards(filteredStories)
+                if(filteredStories.length > 0){
+                    return createTimelineCards(filteredStories)
+                }
+                else {
+                    return <div className='filter-error'>There are no entries that match that filter.</div>
+                }
             }
             else {
                 return createTimelineCards(story.entries)
