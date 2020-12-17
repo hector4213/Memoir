@@ -9,6 +9,10 @@ $circle_offset: -17px;
     justify-content: center;
     text-align: center;
 
+    .caption {
+        align-items: flex-start;
+    }
+
     .topcontainer {
         display: flex;
         justify-content: center;
@@ -36,6 +40,10 @@ $circle_offset: -17px;
             width: fit-content;
             align-self: flex-end;
         }
+
+        .caption {
+            align-items: flex-end;
+        }
     }
 
     .text {
@@ -60,6 +68,10 @@ $circle_offset: -17px;
 // RIGHT
 .right {
     justify-content: flex-end;
+
+    .caption {
+        align-items: flex-start;
+    }
 
     h1, h2, p {
         text-align: left;
@@ -88,6 +100,10 @@ $circle_offset: -17px;
 .bottom {
     justify-content: center;
     text-align: center;
+
+    .caption {
+        align-items: flex-start;
+    }
 
     .bottomcontainer {
         display: flex;
