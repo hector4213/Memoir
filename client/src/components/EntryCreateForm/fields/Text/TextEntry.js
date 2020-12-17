@@ -89,7 +89,7 @@ const TextEntry = props => {
                     type='text'
                     name='video-embed'
                     style={embed_F? {} : notFilledStyle}
-                    placeholder= 'Paste YouTube embed text here'
+                    placeholder= 'Paste YouTube URL text here'
                     value = {formInfo.embed? formInfo.embed: ''}
                     onChange={handleVideoEmbed}
                 /> : ''

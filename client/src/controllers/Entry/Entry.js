@@ -34,7 +34,9 @@ const Entry = props => {
 
 
         const createMarkup = () => {
-            return {__html: embed};
+            const finalEmbed = `<iframe width="560" height="315" src="https://www.youtube.com/embed/${entry.embed}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`
+
+            return {__html: finalEmbed};
         }
 
         const [previousEntry, nextEntry] = getNavEntries(current.story.entries, id)
@@ -47,8 +49,18 @@ const Entry = props => {
                 <ButtonsForEntry />
 
                 <div className='entry-container'>
-                    {format_id === 1 || format_id === 3? <div dangerouslySetInnerHTML={createMarkup()} /> :''}
+                    {
+                        format_id === 1 ?
+                        <div dangerouslySetInnerHTML={createMarkup()} />
+                        : ''
+                    }
+
+                    {
+                        format_id === 3? <div dangerouslySetInnerHTML={createMarkup()} /> :''
+                    }
+
                     {format_id === 4? <img alt={title} src={embed}/>:''}
+
                     <div className='entry-caption'>
                         <h1>{title}</h1>
                         <h2>{formattedDate}</h2>
