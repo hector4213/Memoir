@@ -1,12 +1,10 @@
 import axios from 'axios'
-
+import {history} from '../../index'
 
 export const addInspiringAction = () => {
 	return async (dispatch, getState) => {
         const token = getState().profile.token
         const storyId = getState().page.current.story.id
-
-        console.log(storyId, token)
 
         try {
 
@@ -14,9 +12,10 @@ export const addInspiringAction = () => {
                 'Content-Type': 'application/json',
                 'Authorization': `bearer ${token}`
             }
-            const res = await axios.post(`http://localhost:3001/api/stories/${storyId}/inspire`, {headers: headers})
+            const res = await axios.post(`http://localhost:3001/api/stories/${storyId}/inspire`, null, {headers: headers})
 
             console.log(res)
+            history.go(0)
 
         }
         catch(error){

@@ -56,17 +56,17 @@ const Entry = props => {
                         <p className='author'>This entry was written by: {user.username}</p>
                         {
                             hashtags.length > 0?
-                                <>
-                                <label>Tags: </label>
-                                <ul className='hashtags'>
-                                    {
-                                    hashtags.map( (hash, i) => {
-                                            return (<li key={i}> {hash.tagname} </li>)
-                                    })
-                                    }
-                                </ul>
-                                </> : ''
-                            }
+                            <>
+                            <label>Tags: </label>
+                            <ul className='hashtags'>
+                                {
+                                hashtags.map( (hash, i) => {
+                                        return (<li key={i}> {hash.tagname} </li>)
+                                })
+                                }
+                            </ul>
+                            </> : ''
+                        }
                     </div>
 
                     <div className='nav-entries' style={previousEntry? {} : {justifyContent:"flex-end"}} >

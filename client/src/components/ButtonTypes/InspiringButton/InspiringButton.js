@@ -12,18 +12,20 @@ const InspiringButton = props => {
 
     let clickedBefore
     if(story.inspiredBy && user){
-        clickedBefore = story.inspiredBy.find( i => i.id === user.id)
+        clickedBefore = story.inspiredBy.find( i => (i.id === user.id && i.inspiring === true) )
     }
 
     let classes = 'insp-btn '
-    classes += clickedBefore? 'clicked' : ''
+    classes += clickedBefore? 'clicked ' : ''
+    classes += user? '': 'not-clickable '
 
+    const inspiredCounter = story.inspiredBy.filter( i => i.inspiring)
 
     let inspiredLabel
-    if(story.inspiredBy.length > 1){
-        inspiredLabel = `${story.inspiredBy.length} people found this story inspiring`
+    if(inspiredCounter.length > 1){
+        inspiredLabel = `${inspiredCounter.length} people found this story inspiring`
     }
-    else if(story.inspiredBy.length === 1){
+    else if(inspiredCounter.length === 1){
         inspiredLabel = '1 person found this story inspiring'
     }
     else {
@@ -33,7 +35,7 @@ const InspiringButton = props => {
     return (
         <Button {...{
             label: inspiredLabel,
-            onClick: addInspiring,
+            onClick: user? addInspiring : ()=>{},
             transparent: true,
             icon: <HiOutlineLightningBolt />,
             extraClass: classes,

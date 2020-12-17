@@ -4,44 +4,58 @@ import {history} from '../../index'
 export const registerUserAction = formInfo => {
 	return async (dispatch, getState) => {
 
-        if(formInfo && formInfo.username && formInfo.email && formInfo.password && formInfo.confirmPassword) {
-            if(formInfo.password === formInfo.confirmPassword){
-                delete formInfo.confirmPassword
+        const allFieldsFilled = formInfo && formInfo.username && formInfo.email && formInfo.password && formInfo.confirmPassword
+        const passwordsMatch = formInfo.password === formInfo.confirmPassword
 
-                try {
-                    const response = await axios.post('http://localhost:3001/api/auth/signup', formInfo)
-                    localStorage.setItem('profile', JSON.stringify(response.data))
+        if(allFieldsFilled) {
+            if(passwordsMatch){
+                if(
+                    formInfo.username.length < 30 &&
+                    formInfo.email.length < 30 &&
+                    formInfo.password.length < 30
+                ){
+                    delete formInfo.confirmPassword
 
+                    try {
+                        const response = await axios.post('http://localhost:3001/api/auth/signup', formInfo)
+                        localStorage.setItem('profile', JSON.stringify(response.data))
+
+                        dispatch({
+                            type: 'ERROR',
+                            payload: null
+                        })
+
+                        dispatch({
+                            type: 'ADD_PROFILE',
+                            payload: response.data
+                        })
+
+                        dispatch({
+                            type: 'TOGGLE_MODAL',
+                            payload: !getState().page.modal
+                        })
+
+                        history.push('/profile')
+                    }
+
+                    catch(error){
+                        if(error.response && error.response.data.error){
+                            dispatch({
+                                type: 'ERROR',
+                                payload: error.response? error.response.data.error : error.message
+                            })
+                        } else {
+                            dispatch({
+                                type: 'ERROR',
+                                payload: error.response? error.response.data : error.message
+                            })
+                        }
+                    }
+                } else {
                     dispatch({
                         type: 'ERROR',
-                        payload: null
+                        payload: 'Fields can not be longer than 30 characters long'
                     })
-
-                    dispatch({
-                        type: 'ADD_PROFILE',
-                        payload: response.data
-                    })
-
-                    dispatch({
-                        type: 'TOGGLE_MODAL',
-                        payload: !getState().page.modal
-                    })
-
-                    history.push('/profile')
-                }
-
-                catch(error){
-                    if(error.response && error.response.data.error){
-                        dispatch({
-                            type: 'ERROR',
-                            payload: error.response? error.response.data.error : error.message
-                        })
-                    } else {
-                        dispatch({
-                            type: 'ERROR',
-                            payload: error.response? error.response.data : error.message
-                        })
-                    }
                 }
             } else {
                 dispatch({
