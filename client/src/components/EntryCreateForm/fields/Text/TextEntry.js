@@ -1,7 +1,7 @@
 import React from 'react'
 import './TextEntry.scss'
 
-import axios from 'axios'
+import {deleteFromImgur, postToImgur} from '../../../api/imgur'
 
 const TextEntry = props => {
 
@@ -49,28 +49,10 @@ const TextEntry = props => {
 
     const handleImageEmbed = async e => {
         if(formInfo.embed.includes('imgur')){
-            const fullEmbed = formInfo.embed.split(' ')
-            const hash = fullEmbed[1]
-
-            await axios({
-                method: 'DELETE',
-                url: `https://api.imgur.com/3/image/${hash}`,
-                headers: {
-                    'Authorization': `Client-ID 39612fe2e37daed`,
-                    'Content-Type': 'image'
-                },
-            })
+            await deleteFromImgur(formInfo.embed)
         }
 
-        const response = await axios({
-            method: 'post',
-            url: 'https://api.imgur.com/3/image',
-            headers: {
-                'Authorization': `Client-ID 39612fe2e37daed`,
-                'Content-Type': 'image'
-            },
-            data : e.target.files[0]
-        })
+        const response = await postToImgur(e.target.files[0])
 
         setFormInfo({
             ...formInfo,
@@ -89,7 +71,7 @@ const TextEntry = props => {
                     type='text'
                     name='video-embed'
                     style={embed_F? {} : notFilledStyle}
-                    placeholder= 'Paste YouTube embed text here'
+                    placeholder= 'Paste YouTube URL text here'
                     value = {formInfo.embed? formInfo.embed: ''}
                     onChange={handleVideoEmbed}
                 /> : ''

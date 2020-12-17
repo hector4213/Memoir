@@ -4,10 +4,25 @@ import Button from '../../templates/Button/Button'
 import {connect} from 'react-redux'
 import {createStoryAction} from '../../redux/actions/story'
 
+import { deleteFromImgur, postToImgur } from '../../components/api/imgur'
+
 const StoryCreate = props => {
     const [formInfo, setFormInfo] = useState()
     const [storyImg, setStoryImg] = useState()
     const {createStory} = props
+
+    const handleImageEmbed = async e => {
+        if(storyImg && storyImg.includes('imgur')){
+            await deleteFromImgur(formInfo.embed)
+        }
+
+        const response = await postToImgur(e.target.files[0])
+        setStoryImg(response.data.data.link)
+        setFormInfo({
+            ...formInfo,
+            story_img: `${response.data.data.link} ${response.data.data.deletehash}`
+        })
+    }
 
     return (
         <form>
@@ -18,13 +33,9 @@ const StoryCreate = props => {
             <h2>Create a new Story</h2>
 
             <input
-                type='text'
-                name='embed'
-                placeholder='Enter the story image link'
-                onChange={ e => {
-                    setStoryImg(e.target.value)
-                    setFormInfo( {...formInfo, story_img: e.target.value })
-                }}
+                type="file"
+                name='image-embed'
+                onChange={handleImageEmbed}
             />
 
             <input

@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import './StoryEdit.scss'
 
 import {connect} from 'react-redux'
+import {deleteFromImgur, postToImgur} from '../../components/api/imgur'
 import {editStoryAction} from '../../redux/actions/story'
 import {deleteStoryAction} from '../../redux/actions/story'
 
@@ -16,19 +17,39 @@ const StoryEdit = props => {
         story_img: story.story_img
     })
 
+    const handleImageEmbed = async e => {
+        console.log(formInfo)
+        if(formInfo.story_img && formInfo.story_img.includes('imgur')){
+            await deleteFromImgur(formInfo.story_img)
+        }
+
+        const response = await postToImgur(e.target.files[0])
+
+        setFormInfo({
+            ...formInfo,
+            story_img: `${response.data.data.link} ${response.data.data.deletehash}`
+        })
+
+    }
+
     return (
         <form className='story-edit'>
             <div className='story-img'>
                 <div
                     className='story-img-picture'
-                    style={{background:`url(${formInfo.story_img})`}}
+                    style={{background:`url(${formInfo.story_img.split(' ')[0]})`}}
                 />
             </div>
 
             <h2>Edit {formInfo.name}'s Story</h2>
 
-            <input type='text' value={formInfo.story_img}
+            {/* <input type='text' value={formInfo.story_img}
                 onChange={ e => setFormInfo( {...formInfo, story_img: e.target.value })}
+            /> */}
+            <input
+                type="file"
+                name='image-embed'
+                onChange={handleImageEmbed}
             />
 
             <input type='text' value={formInfo.name}

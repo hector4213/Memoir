@@ -22,6 +22,14 @@ export const areFieldsValid = (formInfo, date) => {
 }
 
 export const parseForm = (formInfo, date) => {
+
+    // IF EMBED IS VIDEO FORMAT
+    // THEN TAKE ID FROM URL
+    if(formInfo.format_id === 1){
+        const newVideoEmbed = videoURLparse(formInfo.embed)
+        formInfo = {...formInfo, embed: newVideoEmbed}
+    }
+
     return {
         title: formInfo.title,
         description: formInfo.description,
@@ -30,6 +38,11 @@ export const parseForm = (formInfo, date) => {
         format_id: formInfo.format_id,
         hashtags: formInfo.hashtags,
     }
+}
+
+const videoURLparse = (oldEmbed) => {
+    const half = oldEmbed.split('?v=')
+    return half[1]
 }
 
 export const setFormToNotFilled = formInfo => {

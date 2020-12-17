@@ -11,7 +11,10 @@ const StoryCardTemplate = props => {
             className='storycard-template'>
             <div
                 className='profile-img'
-                style={{backgroundImage:`url(${story.story_img})`, backgroundSize: 'cover'}}
+                style={{
+                    backgroundImage:`url(${story.story_img.split(' ')[0]})`,
+                    backgroundSize: 'cover'
+                }}
             />
 
             <h1> {story.name} </h1>
