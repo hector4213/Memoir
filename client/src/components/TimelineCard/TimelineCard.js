@@ -27,13 +27,13 @@ const TimelineCard = props => {
     let hashtagDivs = []
     if(hashtags){
         const specialTags = ['birthday', 'vacation']
-        hashtags.forEach(hash => {
+        hashtags.forEach((hash, i) => {
             const tag = hash.tagname.toLowerCase()
-            if(tag && specialTags.includes(tag)){
+            let specialCounter = 0
+            if( specialCounter < 5 && specialTags.includes(tag)){
                 console.log(`${tag} exists`)
-                hashtagDivs.push(
-                    <div className={`special-hashtags ${tag}`} />
-                )
+                hashtagDivs.push( <div className={`special-hashtags ${tag}`} /> )
+                specialCounter ++
             }
         })
     }
