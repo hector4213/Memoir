@@ -14,7 +14,7 @@ class Hashtag extends Model {
         relation: Model.ManyToManyRelation,
         modelClass: Entry,
         join: {
-          from: 'hashtag.id',
+          from: 'hashtags.id',
           through: {
             from: 'hash_tag_relations.tag_id',
             to: 'hash_tag_relations.entry_id',
