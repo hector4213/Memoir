@@ -35,8 +35,9 @@ const Story = props => {
         e.preventDefault()
         const height = document.body.clientHeight - window.innerHeight
         const current= window.scrollY
+        const total = (current/height)*100
 
-        setCurrentProgress( (current/height)*100 )
+        setCurrentProgress( total )
     }
 
 
