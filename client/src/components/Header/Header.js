@@ -7,8 +7,8 @@ const Header = props => {
     const logo = useRef(null)
 
     const followMouse = e => {
-        setTopPos(`${e.clientY}px`) //e.pageY
-        setLeftPos(`${e.clientX}px`) //e.pageX
+        setTopPos(`${e.clientY-50}px`) //e.pageY
+        setLeftPos(`${e.clientX-450}px`) //e.pageX
     }
 
     const logoStyle = {top:topPos, left:leftPos }

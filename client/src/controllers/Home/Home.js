@@ -10,6 +10,7 @@ import LogInRegisterModal from '../../components/LogInRegister/LogInRegister'
 import {getAllStoriesAction} from '../../redux/actions/story'
 import ButtonsForHome from '../ButtonGroups/ButtonsForHome/ButtonsForHome'
 import HomeCards from './HomeCards'
+import Searchbar from './Searchbar/Searchbar'
 
 const Home = props => {
     const {getAllStories} = props
@@ -25,7 +26,7 @@ const Home = props => {
         {modal? <Modal> <LogInRegisterModal/> </Modal> : ''}
         <ButtonsForHome />
         <Header />
-
+        <Searchbar />
         <HomeCards stories={stories} />
 
     </div>
