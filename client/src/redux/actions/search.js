@@ -32,7 +32,6 @@ export const searchTagAction = searchTerm => {
                 console.log('searching...')
                 const res = await axios.get(`http://localhost:3001/api/search/entries?tag=${searchTerm}`)
                 console.log('found!')
-                console.log(res)
 
                 dispatch({
                     type: 'SEARCH_RESULTS',
