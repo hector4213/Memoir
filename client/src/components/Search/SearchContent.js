@@ -21,13 +21,18 @@ const SearchContent = props => {
             const date = `${months[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}`
 
             resultCards.push(
-                <li key={res.id} onClick={() => goToEntry(res.story_id, res.id)}>
+                <li
+                    key={`${res.id}_${res.date}`}
+                    onClick={() => goToEntry(res.story_id, res.id)}
+                >
                     <h1>{res.title}</h1>
                     <h2>{res.story.name}</h2>
                     <p>{date}</p>
                 </li>
             )
         })
+    } else {
+        resultCards = null
     }
 
     const handleSearchSubmit = e => {
@@ -79,6 +84,7 @@ const SearchContent = props => {
                     </>
                     : ''
                 }
+
             </div>
         </div>
     )

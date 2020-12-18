@@ -9,6 +9,11 @@ export const clearSearchAction = searchTerm => {
             type: 'SEARCH_RESULTS',
             payload: null
         })
+
+        dispatch({
+            type: 'ERROR',
+            payload: null
+        })
     }
 }
 
@@ -31,7 +36,7 @@ export const searchTagAction = searchTerm => {
 
             dispatch({
                 type: 'ERROR',
-                payload: error.response? error.response.data.error : error.message
+                payload: error.response? error.response.data.msg : error.message
             })
         }
     }
