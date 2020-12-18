@@ -127,6 +127,8 @@ router.delete('/:storyId', async (req, res, next) => {
   }
 })
 
+// Be inspired by a story (like)
+
 router.post('/:storyId/inspire', async (req, res, next) => {
   const { storyId } = req.params
   try {
