@@ -125,7 +125,6 @@ const createTimelineCards = entries =>{
 }
 
 const mapStateToProps = (state, ownProps) => {
-    console.log(state)
     return {
         current: state.page.current,
         user: state.profile.user,
