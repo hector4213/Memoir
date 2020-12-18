@@ -37,6 +37,11 @@ export const searchTagAction = searchTerm => {
                     type: 'SEARCH_RESULTS',
                     payload: res.data
                 })
+
+                dispatch({
+                    type: 'ERROR',
+                    payload: null
+                })
             }
             catch(error){
                 console.log({error})
