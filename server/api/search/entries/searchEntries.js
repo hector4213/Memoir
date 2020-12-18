@@ -8,7 +8,7 @@ router.get('/', async (req, res, next) => {
   try {
     const query = Hashtag.query().where('tagname', 'like', `%${tag}%`)
     const isFound = await Hashtag.relatedQuery('entry')
-      .withGraphFetched('story')
+      .withGraphFetched('[hashtags(onlyName),story]')
       .for(query)
       .where({ entry_status: 1 })
 
