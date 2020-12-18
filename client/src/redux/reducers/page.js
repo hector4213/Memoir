@@ -20,6 +20,9 @@ const page = (state = initialState, action) => {
         case 'CURRENT_ENTRY':
             return {...state, current:{ ...state.current, entry: action.payload }}
 
+        case 'SEARCH_RESULTS':
+            return {...state, results: action.payload}
+
         default:
             return state
     }
