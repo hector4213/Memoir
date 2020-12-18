@@ -1,18 +1,24 @@
 const express = require('express')
 const HashTag = require('../../story/entry/hashtag/hashtag.model')
 const Entry = require('../../story/entry/entry.model')
+const Hashtag = require('../../story/entry/hashtag/hashtag.model')
+const { relatedQuery } = require('../../story/entry/entry.model')
 const router = express.Router()
 
 router.get('/', async (req, res, next) => {
-  const { searchTerm } = req.query
+  const { tag } = req.query
+
   try {
-    const findMe = await HashTag.query()
-      .where({ tagname: 'Birthday' })
-      .withGraphFetched('entry.story')
-    if (findMe) {
-      return res.json(findMe)
+    const query = Hashtag.query().where('tagname', 'like', `%${tag}%`)
+    const isFound = await Hashtag.relatedQuery('entry')
+      .withGraphFetched('story')
+      .for(query)
+      .where({ entry_status: 1 })
+
+    if (isFound.length > 0) {
+      return res.json(isFound)
     }
-    return res.status(401)
+    return res.status(401).json({ msg: 'No results found' })
   } catch (error) {
     next(error)
   }
