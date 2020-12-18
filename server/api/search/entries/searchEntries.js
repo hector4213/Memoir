@@ -1,8 +1,5 @@
 const express = require('express')
-const HashTag = require('../../story/entry/hashtag/hashtag.model')
-const Entry = require('../../story/entry/entry.model')
 const Hashtag = require('../../story/entry/hashtag/hashtag.model')
-const { relatedQuery } = require('../../story/entry/entry.model')
 const router = express.Router()
 
 router.get('/', async (req, res, next) => {
@@ -16,7 +13,7 @@ router.get('/', async (req, res, next) => {
       .where({ entry_status: 1 })
 
     if (isFound.length > 0) {
-      return res.json(isFound)
+      return res.status(200).json(isFound)
     }
     return res.status(401).json({ msg: 'No results found' })
   } catch (error) {
