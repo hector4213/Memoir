@@ -1,0 +1,30 @@
+@import '../../../styles/colors';
+@import '../../../styles/sizes';
+
+.search-button {
+    cursor: pointer;
+    margin-left: 100px;
+    color: $medium_blue;
+    font-size: $subtitle_size;
+
+    &:hover {
+        color: $light_blue;
+    }
+}
+
+.search-screen {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,8,0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+
+.search-content {
+    width: 600px;
+}
