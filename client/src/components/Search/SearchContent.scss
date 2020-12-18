@@ -1,0 +1,38 @@
+@import '../../styles/sizes';
+
+$font_size: 30px;
+
+.search-content {
+    width: 100%;
+    height: fit-content;
+    max-width: 600px;
+    font-size: $font_size;
+
+    label {
+        font-size: $font_size;
+        display: block;
+        margin: 0px;
+    }
+}
+
+.search-field {
+    padding: 20px 0px;
+}
+
+.search-tags {
+    display: flex;
+    align-items: center;
+    width: 100%;
+
+    label {
+        width: 60%;
+    }
+    input {
+        width: 40%;
+    }
+}
+
+.results {
+    padding-top: 50px;
+    font-size: $subtitle_size;
+}
