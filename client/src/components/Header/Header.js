@@ -8,8 +8,8 @@ const Header = props => {
     const logo = useRef(null)
 
     const followMouse = e => {
-        setTopPos(`${e.clientY - 50}px`) //e.pageY
-        setLeftPos(`${e.clientX - 250}px`) //e.pageX
+        setTopPos(`${e.clientY-50}px`) //e.pageY
+        setLeftPos(`${e.clientX - 200}px`) //e.pageX
     }
 
     const mouseOut = () =>{

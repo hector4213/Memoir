@@ -33,19 +33,41 @@ export const searchAction = (searchType, searchTerm) => {
                 if(searchType === 'tag'){
                     res = await axios.get(`http://localhost:3001/api/search/entries?tag=${searchTerm}`)
                 }
+
                 else if (searchType === 'title'){
                     res = await axios.get(`http://localhost:3001/api/search/entries/title?title=${searchTerm}`)
                 }
 
-                dispatch({
-                    type: 'SEARCH_RESULTS',
-                    payload: res.data
-                })
+                else if (searchType === 'date'){
+                    console.log(searchTerm)
+                    const m = parseInt(searchTerm.month)
+                    const d = parseInt(searchTerm.day)
+                    const y = parseInt(searchTerm.year)
 
-                dispatch({
-                    type: 'ERROR',
-                    payload: null
-                })
+                    console.log(m, d, y)
+
+                    if( isNaN(m) && isNaN(d) && !isNaN(y) ){
+                        console.log('looking for year only')
+                        res = await axios.get(`http://localhost:3001/api/search/entries/date?year=${y}`)
+                    }
+                    else if( !isNaN(m) && !isNaN(d) && !isNaN(y)){
+                        console.log('not only year')
+                        res = await axios.get(`http://localhost:3001/api/search/entries/date?year=${y}&month=${m}&day=${d} `)
+                    }
+                }
+
+                if(res){
+                    dispatch({
+                        type: 'SEARCH_RESULTS',
+                        payload: res.data
+                    })
+
+                    dispatch({
+                        type: 'ERROR',
+                        payload: null
+                    })
+                }
+
             }
             catch(error){
                 console.log({error})
