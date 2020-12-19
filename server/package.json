@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node index",
-    "dev": "nodemon index.js",
+    "start": "NODE_ENV=production node index",
+    "dev": "NODE_ENV=development nodemon index.js",
     "test": "NODE_ENV=test mocha  \"api/**/**/*.test.js\"",
     "resetdb":"knex migrate:rollback && knex migrate:latest && knex seed:run"
   },
