@@ -6,7 +6,7 @@ module.exports = [
     title: 'Nullam sit amet turpis elementum ligula vehicula consequat.',
     description:
       'Cras in purus eu magna vulputate luctus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.',
-    date: '16-Mar-2020',
+    date: '16-Mar-1999',
     embed: 'http://dummyimage.com/173x217.png/5fa2dd/ffffff',
     entry_status: 1,
   },
@@ -72,7 +72,7 @@ module.exports = [
       'Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.',
     description:
       'Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem. Fusce consequat. Nulla nisl. Nunc nisl. Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus. Duis at velit eu est congue elementum. In hac habitasse platea dictumst. Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante.',
-    date: '30-Jun-2020',
+    date: '30-Jun-1999',
     embed: 'http://dummyimage.com/106x169.bmp/ff4444/ffffff',
     entry_status: 1,
   },
@@ -83,7 +83,7 @@ module.exports = [
     title: 'Nullam molestie nibh in lectus.',
     description:
       'Nulla nisl. Nunc nisl. Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa.',
-    date: '18-Jan-2020',
+    date: '18-Jan-1999',
     embed: 'http://dummyimage.com/221x137.bmp/dddddd/000000',
     entry_status: 1,
   },
@@ -106,7 +106,7 @@ module.exports = [
     title: 'Duis mattis egestas metus. Aenean fermentum.',
     description:
       'Proin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem. Duis aliquam convallis nunc. Proin at turpis a pede posuere nonummy. Integer non velit. Donec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue.',
-    date: '03-Jan-2020',
+    date: '18-Jan-1999',
     embed: 'http://dummyimage.com/188x150.jpg/dddddd/000000',
     entry_status: 1,
   },
@@ -128,7 +128,7 @@ module.exports = [
     title: 'Maecenas rhoncus aliquam lacus.',
     description:
       'Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet. Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo. Pellentesque viverra pede ac diam. Cras pellentesque volutpat dui. Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam.',
-    date: '09-May-2020',
+    date: '18-Jan-1999',
     embed: 'http://dummyimage.com/198x167.png/5fa2dd/ffffff',
     entry_status: 1,
   },

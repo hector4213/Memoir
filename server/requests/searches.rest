@@ -1,1 +1,13 @@
 GET http://localhost:3001/api/search/entries?tag=lol
+
+
+#####
+
+
+
+GET http://localhost:3001/api/search/entries/title?title=mae
+
+
+#####
+
+GET http://localhost:3001/api/search/entries/date?year=2020
