@@ -9,7 +9,7 @@ module.exports = {
       user: config.PG_USER,
       password: config.PG_KEY,
       database: config.PG_DB,
-      port: config.PG_PORT
+      port: config.PG_PORT,
     },
     migrations: {
       directory: './db/migrations',
@@ -26,6 +26,16 @@ module.exports = {
       password: config.PG_KEY,
       database: config.TEST_DB,
     },
+    migrations: {
+      directory: './db/migrations',
+    },
+    seeds: {
+      directory: './db/seeds',
+    },
+  },
+  production: {
+    client: 'pg',
+    connection: config.PRODUCTION_CONNECTION_STR,
     migrations: {
       directory: './db/migrations',
     },
