@@ -43,7 +43,7 @@ describe('Search Routes', () => {
     expect(response.body.length).to.equal(dbEntries.length)
   })
 
-  it.only('should return  responses that matches with queried date', async () => {
+  it('should return  responses that matches with queried date', async () => {
     const queryYear = '1999'
     const queryMonth = '01'
     const queryDay = '18'
