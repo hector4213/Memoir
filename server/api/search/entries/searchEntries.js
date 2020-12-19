@@ -43,14 +43,26 @@ router.get('/title', async (req, res, next) => {
 
 router.get('/date', async (req, res, next) => {
   const { month, year, day } = req.query
+
   try {
-    if (month && year && day) {
-      const result = Entry.query().where('date', `${year}-${month}-${day}`)
-    }
-    if (result.length > 0) {
+    if (!month && !day && year) {
+      const from = `${year}-01-01`
+      const to = `${year}-12-31`
+
+      const result = await Entry.query().whereBetween('date', [from, to])
       return res.status(200).json(result)
     }
-    return res.status(200).json({ msg: 'No results for that date found' })
+
+    if (month && year && day) {
+      const result = await Entry.query().where(
+        'date',
+        `${year}-${month}-${day}`
+      )
+      if (result.length > 0) {
+        return res.status(200).json(result)
+      }
+    }
+    return res.status(200).json({ msg: 'No result for that date found' })
   } catch (error) {
     next(error)
   }
