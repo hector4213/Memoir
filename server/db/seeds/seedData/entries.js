@@ -6,7 +6,7 @@ module.exports = [
     title: 'Nullam sit amet turpis elementum ligula vehicula consequat.',
     description:
       'Cras in purus eu magna vulputate luctus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.',
-    date: '16-Mar-2020',
+    date: '16-Mar-1999',
     embed: 'http://dummyimage.com/173x217.png/5fa2dd/ffffff',
     entry_status: 1,
   },
@@ -72,7 +72,7 @@ module.exports = [
       'Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.',
     description:
       'Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem. Fusce consequat. Nulla nisl. Nunc nisl. Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus. Duis at velit eu est congue elementum. In hac habitasse platea dictumst. Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante.',
-    date: '30-Jun-2020',
+    date: '30-Jun-1999',
     embed: 'http://dummyimage.com/106x169.bmp/ff4444/ffffff',
     entry_status: 1,
   },
@@ -83,7 +83,7 @@ module.exports = [
     title: 'Nullam molestie nibh in lectus.',
     description:
       'Nulla nisl. Nunc nisl. Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa.',
-    date: '18-Jan-2020',
+    date: '18-Jan-1999',
     embed: 'http://dummyimage.com/221x137.bmp/dddddd/000000',
     entry_status: 1,
   },
