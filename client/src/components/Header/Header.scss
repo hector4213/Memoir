@@ -34,6 +34,7 @@
             font-weight: bold;
             margin: 0px;
             padding: 0px;
+            cursor: default;
         }
 
         p {
@@ -41,6 +42,7 @@
             line-height: $subtitle_lineheight_size;
             margin: 0px;
             padding: 0px;
+            cursor: default;
         }
     }
 }

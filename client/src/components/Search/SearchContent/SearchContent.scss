@@ -3,6 +3,16 @@
 
 $font_size: 30px;
 
+.close-search {
+    position: absolute;
+    top: 0px;
+    right: 30px;
+    background: none;
+    color: $light_blue;
+    border: none;
+    font-size: 30px;
+}
+
 .search-content {
     width: 100%;
     height: fit-content;
@@ -17,10 +27,23 @@ $font_size: 30px;
         padding-bottom: 30px;
     }
 
+    input {
+        background: none;
+    }
+
     label {
         font-size: $font_size;
         display: block;
+        width: 100%;
         margin: 0px;
+        line-height: 50px;
+    }
+
+    button {
+        background: none;
+        border: 1px solid $light_blue;
+        color: $light_blue;
+        margin-right: 10px;
     }
 }
 
@@ -60,4 +83,9 @@ $font_size: 30px;
             background: $dark_blue;
         }
     }
+}
+
+.search-type-nav {
+    margin: 50px 0px;
+    display: flex;
 }

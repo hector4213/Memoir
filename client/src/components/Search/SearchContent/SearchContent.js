@@ -8,6 +8,7 @@ import SearchTags from './SearchType/SearchTags'
 import SearchTitle from './SearchType/SearchTitle'
 
 const SearchContent = props => {
+    const [searchType, setSearchType] = useState('')
     const [searchTitleInput, setSearchTitleInput] = useState('')
     const [searchTagInput, setSearchTagInput] = useState('')
 
@@ -45,9 +46,17 @@ const SearchContent = props => {
         clearSearch()
     }
 
+    const handleClose = e => {
+        clearSearch()
+        setSearching(false)
+    }
+
 
     return (
-        <div className='search-screen' onClick={() => {setSearching(false)}}>
+        <div className='search-screen' onClick={handleClose}>
+
+            <button className='close-search' onClick={handleClose}>X</button>
+
             <div
                 className='search-content'
                 onClick={e => {
@@ -56,11 +65,20 @@ const SearchContent = props => {
                 }}
             >
 
+            <div className='search-type-nav'>
+                <button onClick={e=>setSearchType('tag')}> Tag </button>
+                <button onClick={e=>setSearchType('title')}> Title </button>
+            </div>
 
-            <label> I am trying to find </label>
             <form onSubmit={e=>e.preventDefault()}>
-                <SearchTags {...{search, searchTagInput, setSearchTagInput}} />
-                <SearchTitle {...{search, searchTitleInput, setSearchTitleInput}}/>
+                {
+                searchType === 'tag'?
+                <SearchTags {...{search, searchTagInput, setSearchTagInput}} /> :''
+                }
+                {
+                searchType === 'title'?
+                <SearchTitle {...{search, searchTitleInput, setSearchTitleInput}}/> :''
+                }
             </form>
 
             {

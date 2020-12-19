@@ -10,6 +10,8 @@ const SearchTitle = props => {
     }
 
     return (
+        <>
+        <label> I am trying to find </label>
         <div className='search-field search-title'>
             <label>entries that have a title of</label>
             <input
@@ -24,6 +26,7 @@ const SearchTitle = props => {
                 }}
             />
         </div>
+        </>
     )
 }
 
