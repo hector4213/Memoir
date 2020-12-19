@@ -106,7 +106,7 @@ module.exports = [
     title: 'Duis mattis egestas metus. Aenean fermentum.',
     description:
       'Proin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem. Duis aliquam convallis nunc. Proin at turpis a pede posuere nonummy. Integer non velit. Donec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue.',
-    date: '03-Jan-2020',
+    date: '18-Jan-1999',
     embed: 'http://dummyimage.com/188x150.jpg/dddddd/000000',
     entry_status: 1,
   },
@@ -128,7 +128,7 @@ module.exports = [
     title: 'Maecenas rhoncus aliquam lacus.',
     description:
       'Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet. Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo. Pellentesque viverra pede ac diam. Cras pellentesque volutpat dui. Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam.',
-    date: '09-May-2020',
+    date: '18-Jan-1999',
     embed: 'http://dummyimage.com/198x167.png/5fa2dd/ffffff',
     entry_status: 1,
   },
