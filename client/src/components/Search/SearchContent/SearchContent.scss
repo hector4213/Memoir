@@ -1,5 +1,5 @@
-@import '../../styles/sizes';
-@import '../../styles/colors';
+@import '../../../styles/sizes';
+@import '../../../styles/colors';
 
 $font_size: 30px;
 
@@ -8,9 +8,9 @@ $font_size: 30px;
     height: fit-content;
     overflow: scroll;
     max-height: 100%;
-    max-width: 700px;
+    max-width: 900px;
     font-size: $font_size;
-    padding: 150px 50px;
+    padding: 150px;
     box-sizing: border-box;
 
     form {
@@ -31,21 +31,6 @@ $font_size: 30px;
     text-align: center;
     cursor: pointer;
     box-sizing: border-box;
-}
-
-// .search-field {}
-
-.search-tags {
-    display: flex;
-    align-items: center;
-    width: 100%;
-
-    label {
-        width: 60%;
-    }
-    input {
-        width: 40%;
-    }
 }
 
 .results {

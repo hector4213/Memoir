@@ -15,7 +15,7 @@ export const clearSearchAction = searchTerm => {
 }
 
 
-export const searchTagAction = searchTerm => {
+export const searchAction = (searchType, searchTerm) => {
 	return async (dispatch, getState) => {
         if(searchTerm.length < 3){
             dispatch({
@@ -29,7 +29,13 @@ export const searchTagAction = searchTerm => {
             })
         } else {
             try {
-                const res = await axios.get(`http://localhost:3001/api/search/entries?tag=${searchTerm}`)
+                let res
+                if(searchType === 'tag'){
+                    res = await axios.get(`http://localhost:3001/api/search/entries?tag=${searchTerm}`)
+                }
+                else if (searchType === 'title'){
+                    res = await axios.get(`http://localhost:3001/api/search/entries/title?title=${searchTerm}`)
+                }
 
                 dispatch({
                     type: 'SEARCH_RESULTS',

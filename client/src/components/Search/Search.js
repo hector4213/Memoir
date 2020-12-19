@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import './Search.scss'
-import SearchContent from './SearchContent'
+import SearchContent from './SearchContent/SearchContent'
 
 const Searchbar = props => {
 

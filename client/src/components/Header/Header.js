@@ -4,6 +4,7 @@ import './Header.scss'
 const Header = props => {
     const [topPos, setTopPos] = useState()
     const [leftPos, setLeftPos] = useState()
+    const [scaleAmount, setScaleAmount] = useState()
     const logo = useRef(null)
 
     const followMouse = e => {
@@ -16,14 +17,25 @@ const Header = props => {
         setLeftPos('50%')
     }
 
-    const logoStyle = {top:topPos, left:leftPos }
+    const grow = () => setScaleAmount(1.5)
+    const finishGrow = () => setScaleAmount(1)
+
+    const logoStyle = {top:topPos, left:leftPos, transform: `scale(${scaleAmount})` }
 
 return(
-    <div className='header' onMouseMove={followMouse} onMouseOut={mouseOut}>
-        <div className='title'>
+    <div className='header'>
+        <div
+            className='title'
+            onMouseMove={followMouse}
+            onMouseOut={mouseOut}
+        >
             <h1>Memoir</h1>
-            <p>
-                Discover someone’s story
+            <p
+                onMouseMove={grow}
+                onMouseOut={finishGrow}
+            >
+                Discover someone’s story. <br/>
+                Share yours.
             </p>
         </div>
 
