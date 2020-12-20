@@ -5,8 +5,20 @@ const SearchDate = props => {
     const {search, date, setDate} = props
 
     const handleDateSubmit = (value) => {
-        setDate({...date, ...value})
-        search('date' , {...date, ...value})
+        const updatedDate = {...date, ...value}
+        setDate(updatedDate)
+
+        const m = updatedDate.month
+        const d = updatedDate.day
+        const y = updatedDate.year
+
+        const onlyYear = m === 0 && d === 0 && y > 0
+        const fullDate = m > 0 && d > 0 && y > 0
+
+        if( fullDate || onlyYear){
+            console.log('-> going to redux')
+            search('date' , updatedDate)
+        }
     }
 
     const dayOptions = []
@@ -18,7 +30,7 @@ const SearchDate = props => {
         <>
         <label> I am trying to find </label>
         <div className='search-field search-date'>
-            <label>entries made on</label>
+            <label>entries from</label>
 
             <div className='date'>
                 <select
@@ -26,10 +38,10 @@ const SearchDate = props => {
                     value = {date.month? date.month: ''}
                     onChange={e => {
                         e.preventDefault()
-                        handleDateSubmit({month:e.target.value})
+                        handleDateSubmit({month:parseInt(e.target.value)})
                     }}
                 >
-                    <option value=''>Month:</option>
+                    <option value="0">Month:</option>
                     <option value="1">January</option>
                     <option value="2">February</option>
                     <option value="3">March</option>
@@ -49,10 +61,10 @@ const SearchDate = props => {
                     value = {date.day? date.day: ''}
                     onChange={e => {
                         e.preventDefault()
-                        handleDateSubmit({day:e.target.value})
+                        handleDateSubmit({day:parseInt(e.target.value)})
                     }}
                 >
-                    <option value="">Day:</option>
+                    <option value="0">Day:</option>
                     {dayOptions}
                 </select>
 
@@ -65,7 +77,7 @@ const SearchDate = props => {
                             handleDateSubmit({year:e.target.value})
                         }
                     }}
-                    onChange={ e => setDate({...date, year:e.target.value})}
+                    onChange={ e => setDate({...date, year:parseInt(e.target.value)})}
                 />
             </div>
         </div>

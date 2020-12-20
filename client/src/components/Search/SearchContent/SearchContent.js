@@ -22,7 +22,7 @@ const SearchContent = props => {
     let resultCards = []
     const resultsExist = results && results.length > 0
     if(resultsExist){
-        console.log(results)
+        // console.log(results)
         results.forEach( res => {
             const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
             const d = new Date(res.date)
@@ -50,11 +50,12 @@ const SearchContent = props => {
     const handleClear =  e => {
         setSearchTagInput('')
         setSearchTitleInput('')
+        setDate('')
         clearSearch()
     }
 
     const handleClose = e => {
-        clearSearch()
+        handleClear()
         setSearching(false)
     }
 

@@ -39,24 +39,22 @@ export const searchAction = (searchType, searchTerm) => {
                 }
 
                 else if (searchType === 'date'){
-                    console.log(searchTerm)
-                    const m = parseInt(searchTerm.month)
-                    const d = parseInt(searchTerm.day)
-                    const y = parseInt(searchTerm.year)
 
-                    console.log(m, d, y)
+                    const m = searchTerm.month
+                    const d = searchTerm.day
+                    const y = searchTerm.year
 
-                    if( isNaN(m) && isNaN(d) && !isNaN(y) ){
-                        console.log('looking for year only')
-                        res = await axios.get(`http://localhost:3001/api/search/entries/date?year=${y}`)
-                    }
-                    else if( !isNaN(m) && !isNaN(d) && !isNaN(y)){
-                        console.log('not only year')
+                    if( m > 0 && d > 0 && y > 0 ){
+                        console.log('-> searching for full date')
                         res = await axios.get(`http://localhost:3001/api/search/entries/date?year=${y}&month=${m}&day=${d} `)
+                    }
+                    else if( m === 0 && d === 0 && y > 0 ){
+                        console.log('-> searching for year only')
+                        res = await axios.get(`http://localhost:3001/api/search/entries/date?year=${y}`)
                     }
                 }
 
-                if(res){
+                if(res.data.length > 0){
                     dispatch({
                         type: 'SEARCH_RESULTS',
                         payload: res.data
@@ -65,6 +63,11 @@ export const searchAction = (searchType, searchTerm) => {
                     dispatch({
                         type: 'ERROR',
                         payload: null
+                    })
+                } else {
+                    dispatch({
+                        type: 'ERROR',
+                        payload: 'no entries found'
                     })
                 }
 
