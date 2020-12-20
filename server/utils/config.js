@@ -8,6 +8,7 @@ const {
   PG_HOST,
   TEST_DB,
   PG_PORT,
+  PRODUCTION_CONNECTION_STR,
 } = process.env
 
 module.exports = {
@@ -18,4 +19,5 @@ module.exports = {
   JWT_SECRET,
   TEST_DB,
   PG_PORT,
+  PRODUCTION_CONNECTION_STR,
 }
