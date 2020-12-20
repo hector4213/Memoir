@@ -10,6 +10,7 @@ router.get('/', async (req, res, next) => {
   try {
     const query = Hashtag.query().where('tagname', 'ilike', `%${tag}%`)
     const result = await Hashtag.relatedQuery('entry')
+      .distinctOn('id')
       .withGraphFetched('[hashtags(onlyName),story]')
       .for(query)
       .where({ entry_status: 1 })
