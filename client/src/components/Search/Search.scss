@@ -1,9 +1,14 @@
 @import '../../styles/colors';
 @import '../../styles/sizes';
 
+
+.search-container {
+    margin: 50px 0px;
+    width: 100%;
+}
 .search-button {
+    width: fit-content;
     cursor: pointer;
-    margin-left: 100px;
     color: $medium_blue;
     font-size: $subtitle_size;
 

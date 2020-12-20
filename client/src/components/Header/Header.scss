@@ -13,18 +13,19 @@
         border-radius: $logo_size;
 
         background: $yellow;
-        box-shadow: 0px 0px 200px 150px $pink;
+        box-shadow: 0px 0px 10px 10px  #ffbc00,  0px 0px 50px 50px  #ff8100, 0px 0px 75px 75px  #FB1F61,  0px 0px 150px 150px  #1a002a;
 
         z-index: -1;
         position: absolute;
         top: 50%;
         left: 50%;
+        transition: transform 0.5s ease;
     }
 
     .title {
         text-align: right;
         width: 350px;
-        padding: 100px 0px;
+        padding: 100px;
         margin: auto;
         color: $dark_blue;
 
@@ -33,6 +34,7 @@
             font-weight: bold;
             margin: 0px;
             padding: 0px;
+            cursor: default;
         }
 
         p {
@@ -40,6 +42,7 @@
             line-height: $subtitle_lineheight_size;
             margin: 0px;
             padding: 0px;
+            cursor: default;
         }
     }
 }

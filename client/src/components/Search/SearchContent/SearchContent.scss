@@ -1,26 +1,49 @@
-@import '../../styles/sizes';
-@import '../../styles/colors';
+@import '../../../styles/sizes';
+@import '../../../styles/colors';
 
 $font_size: 30px;
+
+.close-search {
+    position: absolute;
+    top: 0px;
+    right: 30px;
+    background: none;
+    color: $light_blue;
+    border: none;
+    font-size: 30px;
+}
 
 .search-content {
     width: 100%;
     height: fit-content;
     overflow: scroll;
     max-height: 100%;
-    max-width: 700px;
+    max-width: 900px;
     font-size: $font_size;
-    padding: 150px 50px;
+    padding: 150px;
     box-sizing: border-box;
 
     form {
         padding-bottom: 30px;
     }
 
+    input {
+        background: none;
+    }
+
     label {
         font-size: $font_size;
         display: block;
+        width: 100%;
         margin: 0px;
+        line-height: 50px;
+    }
+
+    button {
+        background: none;
+        border: 1px solid $light_blue;
+        color: $light_blue;
+        margin-right: 10px;
     }
 }
 
@@ -31,21 +54,6 @@ $font_size: 30px;
     text-align: center;
     cursor: pointer;
     box-sizing: border-box;
-}
-
-// .search-field {}
-
-.search-tags {
-    display: flex;
-    align-items: center;
-    width: 100%;
-
-    label {
-        width: 60%;
-    }
-    input {
-        width: 40%;
-    }
 }
 
 .results {
@@ -75,4 +83,9 @@ $font_size: 30px;
             background: $dark_blue;
         }
     }
+}
+
+.search-type-nav {
+    margin: 50px 0px;
+    display: flex;
 }
