@@ -28,10 +28,8 @@ const SearchDate = props => {
 
     return (
         <>
-        <label> I am trying to find </label>
         <div className='search-field search-date'>
             <label>entries from</label>
-
             <div className='date'>
                 <select
                     name="months" className="months"

@@ -73,6 +73,8 @@ const SearchContent = props => {
                 }}
             >
 
+            <label> I am looking for ... </label>
+
             <div className='search-type-nav'>
                 <button onClick={e=>setSearchType('tag')}> Tag </button>
                 <button onClick={e=>setSearchType('title')}> Title </button>
