@@ -40,6 +40,11 @@
 }
 
 @media only screen and (max-width: 550px) {
+    .header .title {
+        padding: 100px 20px !important;
+        box-sizing: border-box;
+    }
+
     .storyCard {
         flex-basis: 33% !important;
         padding: 5px !important;
@@ -55,5 +60,10 @@
         label {
             width: 100% !important;
         }
+    }
+
+    .modal-content {
+        width: 100% !important;
+        margin: 20px !important;
     }
 }
