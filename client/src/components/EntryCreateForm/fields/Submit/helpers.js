@@ -1,24 +1,53 @@
 
 
 export const areFieldsValid = (formInfo, date) => {
-    if(formInfo.format_id === 2){
-        return (
-            formInfo &&
-            formInfo.format_id &&
-            formInfo.title &&
-            formInfo.description &&
-            date && date.year
+
+    let allFieldsTrue
+
+    if(formInfo){
+
+        const formatId = parseInt(formInfo.format_id)
+        const year = date.year ? date.year : 0
+
+
+        const valid_format_id = true
+
+
+        // EMBED
+        let valid_embed = true
+        // if (formatId === 1){ // VIDEO
+        // }
+        if (formatId === 3){ // AUDIO
+            valid_embed = formInfo.embed.includes('src="https://w.soundcloud')
+        }
+        else if (formatId === 4){ // IMAGE
+            valid_embed = formInfo.embed.includes('imgur')
+        }
+
+
+        const valid_title = formInfo.title !== '' ? true : false
+        const valid_description = formInfo.description !== '' ? true : false
+        const valid_date = 999 < year && year < 3000? true : false
+
+        console.log('valid_format_id', valid_format_id)
+        console.log('valid_embed', valid_embed)
+        console.log('valid_title', valid_title)
+        console.log('valid_description', valid_description)
+        console.log('valid_date', valid_date)
+
+        allFieldsTrue = (
+            valid_format_id &&
+            valid_embed &&
+            valid_title &&
+            valid_description &&
+            valid_date
             )
+
     } else {
-        return (
-            formInfo &&
-            formInfo.embed &&
-            formInfo.format_id &&
-            formInfo.title &&
-            formInfo.description &&
-            date && date.year
-            )
+        allFieldsTrue = false
     }
+
+    return allFieldsTrue? true: false
 }
 
 export const parseForm = (formInfo, date) => {
@@ -58,8 +87,6 @@ export const setFormToNotFilled = formInfo => {
 export const setDateToNotFilled = date => {
     return ({
         ...date,
-        month_F: date.month? true : false,
-        day_F: date.day? true : false,
         year_F: date.year? true : false,
     })
 }

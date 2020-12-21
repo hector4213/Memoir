@@ -11,7 +11,6 @@ const SearchTags = props => {
 
     return (
         <>
-        <label> I am trying to find </label>
         <div className='search-field search-tags'>
             <label>entries that have a tag of</label>
             <input

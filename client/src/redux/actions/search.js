@@ -31,11 +31,11 @@ export const searchAction = (searchType, searchTerm) => {
             try {
                 let res
                 if(searchType === 'tag'){
-                    res = await axios.get(`http://localhost:3001/api/search/entries?tag=${searchTerm}`)
+                    res = await axios.get(`https://memoirbackend.herokuapp.com/api/search/entries?tag=${searchTerm}`)
                 }
 
                 else if (searchType === 'title'){
-                    res = await axios.get(`http://localhost:3001/api/search/entries/title?title=${searchTerm}`)
+                    res = await axios.get(`https://memoirbackend.herokuapp.com/api/search/entries/title?title=${searchTerm}`)
                 }
 
                 else if (searchType === 'date'){
@@ -44,13 +44,15 @@ export const searchAction = (searchType, searchTerm) => {
                     const d = searchTerm.day
                     const y = searchTerm.year
 
+                    console.log('searching throught dates')
+
                     if( m > 0 && d > 0 && y > 0 ){
                         console.log('-> searching for full date')
-                        res = await axios.get(`http://localhost:3001/api/search/entries/date?year=${y}&month=${m}&day=${d} `)
+                        res = await axios.get(`https://memoirbackend.herokuapp.com/api/search/entries/date?year=${y}&month=${m}&day=${d} `)
                     }
                     else if( m === 0 && d === 0 && y > 0 ){
                         console.log('-> searching for year only')
-                        res = await axios.get(`http://localhost:3001/api/search/entries/date?year=${y}`)
+                        res = await axios.get(`https://memoirbackend.herokuapp.com/api/search/entries/date?year=${y}`)
                     }
                 }
 

@@ -28,7 +28,9 @@ const TagsEntry = props => {
             val = document.querySelector('.tagText').value;
         }
 
-        setFormInfo({...formInfo, hashtags: [...formInfo.hashtags, {tagname: val}]})
+        if(val !== ''){
+            setFormInfo({...formInfo, hashtags: [...formInfo.hashtags, {tagname: val}]})
+        }
     }
 
     return (

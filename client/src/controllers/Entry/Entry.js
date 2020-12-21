@@ -36,7 +36,11 @@ const Entry = props => {
         const createMarkup = () => {
             const finalEmbed = `<iframe width="560" height="315" src="https://www.youtube.com/embed/${entry.embed}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`
 
-            return {__html: finalEmbed};
+            return {__html: finalEmbed}
+        }
+
+        const createAudioMarkup = () => {
+            return {__html: entry.embed}
         }
 
         const [previousEntry, nextEntry] = getNavEntries(current.story.entries, id)
@@ -51,12 +55,12 @@ const Entry = props => {
                 <div className='entry-container'>
                     {
                         format_id === 1 ?
-                        <div dangerouslySetInnerHTML={createMarkup()} />
+                        <div className='video-entry' dangerouslySetInnerHTML={createMarkup()} />
                         : ''
                     }
 
                     {
-                        format_id === 3? <div dangerouslySetInnerHTML={createMarkup()} /> :''
+                        format_id === 3? <div className='audio-entry' dangerouslySetInnerHTML={createAudioMarkup()} /> :''
                     }
 
                     {format_id === 4? <img alt={title} src={embed}/>:''}

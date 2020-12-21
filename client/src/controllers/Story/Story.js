@@ -12,12 +12,16 @@ import ErrorDisplay from '../../components/ErrorDisplay/ErrorDisplay'
 import {getSingleStoryAction} from '../../redux/actions/story'
 import InspiringButton from '../../components/ButtonTypes/InspiringButton/InspiringButton'
 import FilterNav from './FilterNav/FilterNav'
+import Modal from '../../components/Modal/Modal'
+import LogInRegisterModal from '../../components/LogInRegister/LogInRegister'
+import StoryEdit from '../../controllers/StoryEdit/StoryEdit'
 
 const Story = props => {
     const {getSingleStory} = props
-    const {current} = props
+    const {current, modal} = props
 
     const [filter, setFilter] = useState(null)
+    const [currentModal, setCurrentModal] = useState()
 
     const story = current? current.story : null
     const { storyId } = useParams()
@@ -65,8 +69,10 @@ const Story = props => {
 
         return (
             <div className='timeline'>
+                {modal && currentModal === 'login'? <Modal> <LogInRegisterModal/> </Modal> : ''}
+                {modal && currentModal === 'storyedit'? <Modal> <StoryEdit/> </Modal> : ''}
 
-                <ButtonsForStory {...{storyId}}/>
+                <ButtonsForStory {...{storyId, setCurrentModal}}/>
 
                 <StoryCard {...{
                     story: story,
@@ -128,6 +134,7 @@ const mapStateToProps = (state, ownProps) => {
     return {
         current: state.page.current,
         user: state.profile.user,
+        modal: state.page.modal
     }
 }
 

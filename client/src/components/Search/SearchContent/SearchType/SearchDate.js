@@ -15,6 +15,8 @@ const SearchDate = props => {
         const onlyYear = m === 0 && d === 0 && y > 0
         const fullDate = m > 0 && d > 0 && y > 0
 
+        console.log('updatedDate', updatedDate, m, d, y)
+
         if( fullDate || onlyYear){
             console.log('-> going to redux')
             search('date' , updatedDate)
@@ -28,10 +30,8 @@ const SearchDate = props => {
 
     return (
         <>
-        <label> I am trying to find </label>
         <div className='search-field search-date'>
             <label>entries from</label>
-
             <div className='date'>
                 <select
                     name="months" className="months"

@@ -17,7 +17,7 @@ export const registerUserAction = formInfo => {
                     delete formInfo.confirmPassword
 
                     try {
-                        const response = await axios.post('http://localhost:3001/api/auth/signup', formInfo)
+                        const response = await axios.post('https://memoirbackend.herokuapp.com/api/auth/signup', formInfo)
                         localStorage.setItem('profile', JSON.stringify(response.data))
 
                         dispatch({

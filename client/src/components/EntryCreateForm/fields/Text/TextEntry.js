@@ -5,29 +5,31 @@ import {deleteFromImgur, postToImgur} from '../../../api/imgur'
 
 const TextEntry = props => {
 
-    const {setFormInfo, notFilledStyle, formInfo, embed_F, title_F, description_F} = props
+    const {setFormInfo, notFilledStyle, formInfo, embed_F, title_F, description_F, setError} = props
 
 
     const handleVideoEmbed = e => {
-        if(e.target.value){
+        if(e.target.value && e.target.value.includes('/watch?v=')){
             setFormInfo({
                 ...formInfo,
                 embed: e.target.value,
                 embed_F:true
             })
+            setError(null)
         }
         else {
             setFormInfo({
                 ...formInfo,
-                embed: e.target.value,
+                embed: '',
                 embed_F:false
             })
+            setError('Please make sure that the URL comes from YouTube')
         }
     }
 
 
     const handleAudioEmbed = e => {
-        if(e.target.value){
+        if(e.target.value && e.target.value.includes('src="https://w.soundcloud')){
             const embedString = e.target.value
             const final = embedString.split('<div')
 
@@ -36,13 +38,15 @@ const TextEntry = props => {
                 embed: final[0],
                 embed_F:true
             })
+            setError(null)
         }
         else {
             setFormInfo({
                 ...formInfo,
-                embed: e.target.value,
+                embed: '',
                 embed_F:false
             })
+            setError('Please make sure that the full embed code comes from SoundCloud')
         }
     }
 
@@ -68,6 +72,7 @@ const TextEntry = props => {
                 // IF VIDEO FORMAT ID
                 formInfo.format_id === 1 ?
                 <input
+                    autoComplete="off"
                     type='text'
                     name='video-embed'
                     style={embed_F? {} : notFilledStyle}
@@ -81,10 +86,11 @@ const TextEntry = props => {
                 // IF AUDIO FORMAT ID
                 formInfo.format_id === 3 ?
                 <input
+                    autoComplete="off"
                     type='text'
                     name='audio-embed'
                     style={embed_F? {} : notFilledStyle}
-                    placeholder= 'Paste SoundCloud embed text here'
+                    placeholder= 'Paste SoundCloud EMBED text here'
                     value = {formInfo.embed? formInfo.embed: ''}
                     onChange={handleAudioEmbed}
                 /> : ''
@@ -94,6 +100,7 @@ const TextEntry = props => {
                 // IF IMAGE FORMAT ID
                 formInfo.format_id === 4 ?
                 <input
+                    autoComplete="off"
                     type="file"
                     name='image-embed'
                     style={embed_F? {} : notFilledStyle}
@@ -102,6 +109,7 @@ const TextEntry = props => {
             }
 
             <input
+                autoComplete="off"
                 style={title_F? {} : notFilledStyle}
                 name='title'
                 type='text'
@@ -117,6 +125,7 @@ const TextEntry = props => {
             />
 
             <textarea
+                autoComplete="off"
                 rows="6"
                 style={description_F? {} : notFilledStyle}
                 name='description'
