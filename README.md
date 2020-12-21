@@ -12,6 +12,10 @@
 - PostgreSQL version 12.4^ download [here](https://www.postgresql.org/download/)
 - [Node.js](https://nodejs.org/en/download/) with npm
 
+### Entity Relationship Diagram
+
+<img src=https://i.imgur.com/6UXIb3t.png />
+
 ### Usage and Installation
 
     $ git clone https://github.com/hector4213/memoir.git (if you haven't already)
