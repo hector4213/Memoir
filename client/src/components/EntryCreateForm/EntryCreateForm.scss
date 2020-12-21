@@ -36,3 +36,30 @@
     }
 }
 
+@media only screen and (max-width: 700px) {
+    .entry-create-form{
+        width: 100%;
+        padding: 10px;
+        box-sizing: border-box;
+    }
+
+    .entry-edit {
+        width: 100% !important;
+    }
+
+    .gotostory-btn {
+        top: 60px;
+    }
+
+    .tag-creation .tag-submit {
+        padding: 10px 25px !important;
+        border-radius: 0px !important;
+    }
+
+    .embedIcons {
+        border-radius: 0px !important;
+    }
+}
+
+@media only screen and (max-width: 550px) {
+}
