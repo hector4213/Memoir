@@ -4,6 +4,19 @@
 .single-entry {
     width: $app_width;
     margin: 200px auto;
+
+    .video-entry {
+        iframe {
+            width: 100vw;
+            height: 500px;
+        }
+    }
+
+    .audio-entry {
+        iframe {
+            width: $app_width;
+        }
+    }
 }
 
 .entry-container {
