@@ -94,3 +94,24 @@ label {
         background: $medium_blue;
     }
 }
+
+
+@media only screen and (max-width: 700px) {
+    .single-entry {
+        width: 100% !important;
+        padding: 200px 20px !important;
+        margin: 0px;
+        box-sizing: border-box !important;
+    }
+
+    .audio-entry {
+        width: 100% !important;
+
+        iframe {
+            width: 100% !important;
+        }
+    }
+}
+
+@media only screen and (max-width: 550px) {
+}

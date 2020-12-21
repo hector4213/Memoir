@@ -12,9 +12,10 @@
 
         .addStory {
             $addstory_btn: $light_blue;
-            flex-basis: 25% !important;
-            padding: 30px !important;
             opacity: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
 
             .addStoryPlus {
                 border-radius: 50%;
@@ -42,5 +43,11 @@
         .addStory:hover {
             border: 2px solid $light_blue;
         }
+    }
+}
+
+@media only screen and (max-width: 700px){
+    .addStory {
+        padding: 30px !important;
     }
 }

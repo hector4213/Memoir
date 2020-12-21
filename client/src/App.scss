@@ -37,3 +37,12 @@ body {
   top: 20px;
   left: calc(50% - 300px);
 }
+
+
+@media only screen and (max-width: 700px) {
+  button {
+    padding: 12px 20px !important;
+    border-radius: 5px !important;
+  }
+
+}

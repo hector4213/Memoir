@@ -39,3 +39,8 @@
     color: $light_blue !important;
 }
 
+@media only screen and (max-width: 700px){
+    .profile {
+        padding: 50px 0px !important;
+    }
+}
