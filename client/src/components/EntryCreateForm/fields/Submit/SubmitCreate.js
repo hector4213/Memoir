@@ -23,6 +23,8 @@ const SubmitCreate = props => {
                 e.preventDefault()
                 const allFieldsCompleted = areFieldsValid(formInfo, date)
 
+                console.log('allFieldsCompleted', allFieldsCompleted)
+
                 if(allFieldsCompleted){
                     const allFields = parseForm(formInfo, date)
                     createEntry(allFields)

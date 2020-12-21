@@ -16,13 +16,7 @@ const DateEntry = props => {
             <select name="months" className="months"
                 style={month_F?{}: notFilledStyle}
                 value = {date.month? date.month: ''}
-                onChange={e =>{
-                    if(e.target.value){
-                        setDate({...date, month:e.target.value, month_F:true})
-                    } else {
-                        setDate({...date, month:e.target.value, month_F:false})
-                    }
-                }}
+                onChange={e => setDate({...date, month:e.target.value, month_F:true})}
             >
                 <option value="">Month:</option>
                 <option value="1">January</option>
@@ -44,13 +38,7 @@ const DateEntry = props => {
                 className="days"
                 style={day_F?{}: notFilledStyle}
                 value = {date.day? date.day: ''}
-                onChange={e =>{
-                    if(e.target.value){
-                        setDate({...date, day:e.target.value, day_F:true})
-                    } else {
-                        setDate({...date, day:e.target.value, day_F:false})
-                    }
-                }}
+                onChange={e => setDate({...date, day:e.target.value, day_F:true})}
             >
                 <option value="">Day:</option>
                 {dayOptions}
