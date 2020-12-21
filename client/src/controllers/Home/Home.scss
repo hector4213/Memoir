@@ -28,11 +28,32 @@
     .search-button {
         margin-left: 50px !important;
     }
+
+    .search-content {
+        padding: 150px 20px !important;
+        max-width: 600px;
+    }
+
+    .results {
+        padding: 20px !important;
+    }
 }
 
 @media only screen and (max-width: 550px) {
     .storyCard {
         flex-basis: 33% !important;
         padding: 5px !important;
+    }
+
+    .storycard-template{
+        padding: 10px !important;
+    }
+
+    .search-tags {
+        flex-wrap: wrap !important;
+
+        label {
+            width: 100% !important;
+        }
     }
 }
