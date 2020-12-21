@@ -31,11 +31,8 @@ return(
             onMouseOut={mouseOut}
         >
             <h1>Memoir</h1>
-            <p
-                // onMouseMove={grow}
-                // onMouseOut={finishGrow}
-            >
-                Discover someone’s story. <br/>
+            <p>
+                Discover a story. <br/>
                 Share yours.
             </p>
         </div>
