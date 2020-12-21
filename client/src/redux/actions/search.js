@@ -44,6 +44,8 @@ export const searchAction = (searchType, searchTerm) => {
                     const d = searchTerm.day
                     const y = searchTerm.year
 
+                    console.log('searching throught dates')
+
                     if( m > 0 && d > 0 && y > 0 ){
                         console.log('-> searching for full date')
                         res = await axios.get(`https://memoirbackend.herokuapp.com/api/search/entries/date?year=${y}&month=${m}&day=${d} `)

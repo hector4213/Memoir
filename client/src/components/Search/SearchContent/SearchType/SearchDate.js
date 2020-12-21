@@ -15,6 +15,8 @@ const SearchDate = props => {
         const onlyYear = m === 0 && d === 0 && y > 0
         const fullDate = m > 0 && d > 0 && y > 0
 
+        console.log(updatedDate)
+
         if( fullDate || onlyYear){
             console.log('-> going to redux')
             search('date' , updatedDate)
