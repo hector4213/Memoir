@@ -26,8 +26,8 @@ export const getAllStoriesAction = () => {
 export const getSingleStoryAction = storyId => {
 	return async (dispatch, getState) => {
         try {
-            const res = await axios.get(`https://memoirbackend.herokuapp.com/api/stories/${storyId}`)
-            let sortedEntries = res.data.entries
+            const response = await axios.get(`https://memoirbackend.herokuapp.com/api/stories/${storyId}`)
+            let sortedEntries = response.data.entries
 
             if(sortedEntries.length > 0){
                 sortedEntries = sortedEntries.sort( (a,b) => {
@@ -37,7 +37,7 @@ export const getSingleStoryAction = storyId => {
 
             dispatch({
                 type: 'CURRENT_STORY',
-                payload: {...res.data, entries:sortedEntries }
+                payload: {...response.data, entries:sortedEntries }
             })
         }
         catch(error){
@@ -71,7 +71,19 @@ export const editStoryAction = entryInfo => {
                 payload: false
             })
 
-            history.go(0)
+            const response = await axios.get(`https://memoirbackend.herokuapp.com/api/stories/${storyId}`)
+            let sortedEntries = response.data.entries
+
+            if(sortedEntries.length > 0){
+                sortedEntries = sortedEntries.sort( (a,b) => {
+                    return new Date(a.date) - new Date(b.date);
+                })
+            }
+
+            dispatch({
+                type: 'CURRENT_STORY',
+                payload: {...response.data, entries:sortedEntries }
+            })
 
         }
         catch(error){
@@ -87,6 +99,7 @@ export const editStoryAction = entryInfo => {
 export const createStoryAction = formInfo => {
 	return async (dispatch, getState) => {
         const token = getState().profile.token
+        const userId = getState().profile.user.id
 
         try {
             const headers = {
@@ -102,7 +115,12 @@ export const createStoryAction = formInfo => {
                 payload: false
             })
 
-            history.go(0)
+            const response = await axios.get(`https://memoirbackend.herokuapp.com/api/profile/${userId}`, {headers: headers})
+
+            dispatch({
+                type: 'ADD_ENTRIES_STORIES',
+                payload: {myStories: response.data.stories, myEntries: response.data.userEntries}
+            })
         }
         catch(error){
             dispatch({
@@ -116,6 +134,7 @@ export const createStoryAction = formInfo => {
 
 export const deleteStoryAction = storyId => {
 	return async (dispatch, getState) => {
+        const userId = getState().profile.user.id
         const token = getState().profile.token
         try {
             const headers = {
@@ -133,7 +152,12 @@ export const deleteStoryAction = storyId => {
 
 
             if(history.location.pathname === '/profile'){
-                history.go(0)
+                const response = await axios.get(`https://memoirbackend.herokuapp.com/api/profile/${userId}`, {headers: headers})
+
+                dispatch({
+                    type: 'ADD_ENTRIES_STORIES',
+                    payload: {myStories: response.data.stories, myEntries: response.data.userEntries}
+                })
             } else {
                 history.push('/profile')
             }

@@ -90,7 +90,7 @@ const TextEntry = props => {
                     type='text'
                     name='audio-embed'
                     style={embed_F? {} : notFilledStyle}
-                    placeholder= 'Paste SoundCloud embed text here'
+                    placeholder= 'Paste SoundCloud EMBED text here'
                     value = {formInfo.embed? formInfo.embed: ''}
                     onChange={handleAudioEmbed}
                 /> : ''

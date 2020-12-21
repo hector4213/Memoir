@@ -27,8 +27,14 @@ export const editEntryAction = entryInfo => {
 
             console.log(res)
 
+            const response = await axios.get(`https://memoirbackend.herokuapp.com/api/stories/${storyId}/entries/${entryId}`)
+
+            dispatch({
+                type: 'CURRENT_ENTRY',
+                payload: response.data
+            })
+
             history.push(`/story/${storyId}/entry/${entryId}`)
-            history.go(0)
 
         }
         catch(error){
@@ -117,6 +123,7 @@ export const deleteEntryAction = (entry) => {
 	return async (dispatch, getState) => {
 
         const token = getState().profile.token
+        const userId = getState().profile.user.id
 
         const storyId = entry.story.id
         const entryId = entry.id
@@ -150,12 +157,16 @@ export const deleteEntryAction = (entry) => {
 
             console.log('entry deleted from database')
 
-            if(history.location.pathname === '/profile'){
-                history.go(0)
-            } else {
+            const response = await axios.get(`https://memoirbackend.herokuapp.com/api/profile/${userId}`, {headers: headers})
+
+            dispatch({
+                type: 'ADD_ENTRIES_STORIES',
+                payload: {myStories: response.data.stories, myEntries: response.data.userEntries}
+            })
+
+            if(history.location.pathname !== '/profile'){
                 history.push(`/story/${storyId}`)
             }
-
         }
         catch(error){
             console.log({error})
