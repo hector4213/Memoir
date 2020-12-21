@@ -14,3 +14,25 @@
     flex-direction: row;
     flex-wrap: wrap;
 }
+
+@media only screen and (max-width: 700px) {
+
+    .home {
+        width: 100% !important;
+    }
+    .storyCard {
+        flex-basis: 33% !important;
+        padding: 10px !important;
+    }
+
+    .search-button {
+        margin-left: 50px !important;
+    }
+}
+
+@media only screen and (max-width: 550px) {
+    .storyCard {
+        flex-basis: 33% !important;
+        padding: 5px !important;
+    }
+}
