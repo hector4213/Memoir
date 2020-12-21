@@ -12,7 +12,7 @@ export const addInspiringAction = () => {
                 'Content-Type': 'application/json',
                 'Authorization': `bearer ${token}`
             }
-            const res = await axios.post(`http://localhost:3001/api/stories/${storyId}/inspire`, null, {headers: headers})
+            const res = await axios.post(`https://memoirbackend.herokuapp.com/api/stories/${storyId}/inspire`, null, {headers: headers})
 
             console.log(res)
             history.go(0)

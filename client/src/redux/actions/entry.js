@@ -23,7 +23,7 @@ export const editEntryAction = entryInfo => {
                 'Authorization': `bearer ${token}`
             }
 
-            const res = await axios.put(`http://localhost:3001/api/stories/${storyId}/entries/edit/${entryId}`, entryInfo, {headers: headers})
+            const res = await axios.put(`https://memoirbackend.herokuapp.com/api/stories/${storyId}/entries/edit/${entryId}`, entryInfo, {headers: headers})
 
             console.log(res)
 
@@ -52,8 +52,8 @@ export const createEntryAction = entryInfo => {
                 'Content-Type': 'application/json',
                 'Authorization': `bearer ${token}`
             }
-            // const res = await axios.post(`http://localhost:3001/api/stories/${storyId}/entries`, entryInfo, {headers: headers})
-            await axios.post(`http://localhost:3001/api/stories/${storyId}/entries`, entryInfo, {headers: headers})
+
+            await axios.post(`https://memoirbackend.herokuapp.com/api/stories/${storyId}/entries`, entryInfo, {headers: headers})
 
             console.log('entry successfully saved on db')
 
@@ -82,7 +82,7 @@ export const createEntryAction = entryInfo => {
 export const getSingleEntryAction = (storyId, entryId) => {
 	return async (dispatch, getState) => {
         try {
-            const res = await axios.get(`http://localhost:3001/api/stories/${storyId}/entries/${entryId}`)
+            const res = await axios.get(`https://memoirbackend.herokuapp.com/api/stories/${storyId}/entries/${entryId}`)
 
             dispatch({
                 type: 'CURRENT_ENTRY',
@@ -135,7 +135,7 @@ export const deleteEntryAction = (entry) => {
                 'Authorization': `bearer ${token}`
             }
 
-            await axios.delete(`http://localhost:3001/api/stories/${storyId}/entries/${entryId}`, {headers: headers})
+            await axios.delete(`https://memoirbackend.herokuapp.com/api/stories/${storyId}/entries/${entryId}`, {headers: headers})
 
             console.log('entry deleted from database')
 

@@ -9,7 +9,7 @@ const Header = props => {
         setLogoStyle({
             top:`${e.clientY}px`,
             left:`${e.clientX}px`,
-            transform: `scale(0.8)`,
+            transform: `scale(1)`,
             position:'fixed'
         })
     }

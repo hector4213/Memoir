@@ -5,7 +5,7 @@ import {history} from '../../index'
 export const getAllStoriesAction = () => {
 	return async (dispatch, getState) => {
         try {
-            const res = await axios.get('http://localhost:3001/api/stories')
+            const res = await axios.get('https://memoirbackend.herokuapp.com/api/stories')
             dispatch({
                 type: 'SET_ALL_STORIES',
                 payload: res.data
@@ -26,7 +26,7 @@ export const getAllStoriesAction = () => {
 export const getSingleStoryAction = storyId => {
 	return async (dispatch, getState) => {
         try {
-            const res = await axios.get(`http://localhost:3001/api/stories/${storyId}`)
+            const res = await axios.get(`https://memoirbackend.herokuapp.com/api/stories/${storyId}`)
             let sortedEntries = res.data.entries
 
             if(sortedEntries.length > 0){
@@ -62,7 +62,7 @@ export const editStoryAction = entryInfo => {
                 'Content-Type': 'application/json',
                 'Authorization': `bearer ${token}`
             }
-            const res = await axios.put(`http://localhost:3001/api/stories/edit/${storyId}`, entryInfo, {headers: headers})
+            const res = await axios.put(`https://memoirbackend.herokuapp.com/api/stories/edit/${storyId}`, entryInfo, {headers: headers})
 
             console.log(res)
 
@@ -93,7 +93,7 @@ export const createStoryAction = formInfo => {
                 'Content-Type': 'application/json',
                 'Authorization': `bearer ${token}`
             }
-            const res = await axios.post(`http://localhost:3001/api/stories/create`, formInfo, {headers: headers})
+            const res = await axios.post(`https://memoirbackend.herokuapp.com/api/stories/create`, formInfo, {headers: headers})
 
             console.log(res)
 
@@ -122,7 +122,7 @@ export const deleteStoryAction = storyId => {
                 'Content-Type': 'application/json',
                 'Authorization': `bearer ${token}`
             }
-            const res = await axios.delete(`http://localhost:3001/api/stories/${storyId}`, {headers: headers})
+            const res = await axios.delete(`https://memoirbackend.herokuapp.com/api/stories/${storyId}`, {headers: headers})
 
             console.log(res)
 
