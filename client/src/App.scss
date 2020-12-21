@@ -22,3 +22,18 @@ body {
   top: 20px;
   left: calc(50% - 300px);
 }
+
+.success-message {
+  width: 600px;
+  position: fixed;
+  z-index: 999;
+  color: $green;
+  border: 3px solid $green;
+  padding: 30px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  font-size: $subtitle_size;
+  text-align: center;
+  top: 20px;
+  left: calc(50% - 300px);
+}

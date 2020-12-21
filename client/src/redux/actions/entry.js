@@ -46,6 +46,10 @@ export const createEntryAction = entryInfo => {
         const token = getState().profile.token
         const storyId = getState().page.current.story.id
 
+        const storyAuthorId = getState().page.current.story.user.id
+        const storyAuthorName = getState().page.current.story.user.username
+        const userId = getState().profile.user.id
+
         try {
 
             const headers = {
@@ -56,6 +60,13 @@ export const createEntryAction = entryInfo => {
             await axios.post(`https://memoirbackend.herokuapp.com/api/stories/${storyId}/entries`, entryInfo, {headers: headers})
 
             console.log('entry successfully saved on db')
+
+            if(storyAuthorId !== userId){
+                dispatch({
+                    type: 'ERROR',
+                    payload: `New entry will be visible when ${storyAuthorName} approves it.`
+                })
+            }
 
             history.push(`/story/${storyId}`)
 

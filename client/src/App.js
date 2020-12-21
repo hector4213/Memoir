@@ -25,7 +25,17 @@ const App = props => {
   return (
     <div className="App">
 
-      {error? <div className='error-message' onClick={() => setError(null)}> {error} </div> : ''}
+      {
+        error && error.startsWith('New entry')?
+        <div className='success-message' onClick={() => setError(null)}> {error} </div>
+        : ''
+      }
+
+      {
+        error && !error.startsWith('New entry') ?
+        <div className='error-message' onClick={() => setError(null)}> {error} </div>
+        : ''
+      }
 
       <Switch>
 
