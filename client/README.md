@@ -3,3 +3,9 @@
 - Redux
 - Sass
 - Jest
+
+
+
+```
+npm start
+```
