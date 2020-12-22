@@ -6,13 +6,11 @@ import {connect} from 'react-redux'
 import {toggleModalAction} from '../../../redux/actions/page'
 
 import Button from '../../../templates/Button/Button'
-import Modal from '../../../components/Modal/Modal'
-import StoryEdit from '../../../controllers/StoryEdit/StoryEdit'
 import GoToProfile from '../../../components/ButtonTypes/GoToProfileButton/GoToProfileButton'
 import GoHomeButton from '../../../components/ButtonTypes/GoHomeButton/GoHomeButton'
 
 const ButtonsForStory = props => {
-    const {storyId, toggleModal, modal, authorId, user} = props
+    const {storyId, toggleModal, authorId, user, setCurrentModal} = props
     const userId = user ? user.id : null
 
     const history = useHistory()
@@ -42,16 +40,30 @@ const ButtonsForStory = props => {
                             label: 'Edit this Story',
                             transparent: true,
                             extraClass:'edit-story',
-                            onClick: toggleModal
+                            onClick: e => {
+                                e.preventDefault()
+                                setCurrentModal('storyedit')
+                                toggleModal()
+                            }
                         }} />
                         </>
                         : ''
                     }
                 </div>
-                : ''
+                :
+                <Button
+                    {...{
+                        label: 'Create your own stories and entries',
+                        transparent : true,
+                        extraClass: 'story-login-btn',
+                        onClick: e => {
+                            e.preventDefault()
+                            setCurrentModal('login')
+                            toggleModal()
+                        }
+                    }}
+                />
             }
-
-            {modal? <Modal> <StoryEdit/> </Modal> : ''}
 
         </>
     )
@@ -59,7 +71,6 @@ const ButtonsForStory = props => {
 
 const mapStateToProps = state => {
     return {
-        modal: state.page.modal,
         user: state.profile.user,
         authorId: state.page.current.story.user.id
     }

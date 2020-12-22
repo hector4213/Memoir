@@ -14,3 +14,60 @@
     flex-direction: row;
     flex-wrap: wrap;
 }
+
+@media only screen and (max-width: 700px) {
+
+    .home {
+        width: 100% !important;
+    }
+    .storyCard {
+        flex-basis: 33% !important;
+        padding: 10px !important;
+    }
+
+    .search-button {
+        margin-left: 50px !important;
+    }
+
+    .search-content {
+        padding: 150px 20px !important;
+        max-width: 600px;
+    }
+
+    .results {
+        padding: 20px !important;
+    }
+
+    .home-buttons {
+        z-index: 100;
+    }
+}
+
+@media only screen and (max-width: 550px) {
+    .header .title {
+        padding: 100px 20px !important;
+        box-sizing: border-box;
+    }
+
+    .storyCard {
+        flex-basis: 33% !important;
+        padding: 5px !important;
+    }
+
+    .storycard-template{
+        padding: 10px !important;
+    }
+
+    .search-tags {
+        flex-wrap: wrap !important;
+
+        label {
+            width: 100% !important;
+        }
+    }
+
+    .modal-content {
+        width: 100% !important;
+        margin: 20px !important;
+    }
+}

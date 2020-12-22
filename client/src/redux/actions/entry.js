@@ -23,12 +23,18 @@ export const editEntryAction = entryInfo => {
                 'Authorization': `bearer ${token}`
             }
 
-            const res = await axios.put(`http://localhost:3001/api/stories/${storyId}/entries/edit/${entryId}`, entryInfo, {headers: headers})
+            const res = await axios.put(`https://memoirbackend.herokuapp.com/api/stories/${storyId}/entries/edit/${entryId}`, entryInfo, {headers: headers})
 
             console.log(res)
 
+            const response = await axios.get(`https://memoirbackend.herokuapp.com/api/stories/${storyId}/entries/${entryId}`)
+
+            dispatch({
+                type: 'CURRENT_ENTRY',
+                payload: response.data
+            })
+
             history.push(`/story/${storyId}/entry/${entryId}`)
-            history.go(0)
 
         }
         catch(error){
@@ -46,16 +52,27 @@ export const createEntryAction = entryInfo => {
         const token = getState().profile.token
         const storyId = getState().page.current.story.id
 
+        const storyAuthorId = getState().page.current.story.user.id
+        const storyAuthorName = getState().page.current.story.user.username
+        const userId = getState().profile.user.id
+
         try {
 
             const headers = {
                 'Content-Type': 'application/json',
                 'Authorization': `bearer ${token}`
             }
-            // const res = await axios.post(`http://localhost:3001/api/stories/${storyId}/entries`, entryInfo, {headers: headers})
-            await axios.post(`http://localhost:3001/api/stories/${storyId}/entries`, entryInfo, {headers: headers})
+
+            await axios.post(`https://memoirbackend.herokuapp.com/api/stories/${storyId}/entries`, entryInfo, {headers: headers})
 
             console.log('entry successfully saved on db')
+
+            if(storyAuthorId !== userId){
+                dispatch({
+                    type: 'ERROR',
+                    payload: `New entry will be visible when ${storyAuthorName} approves it.`
+                })
+            }
 
             history.push(`/story/${storyId}`)
 
@@ -82,7 +99,7 @@ export const createEntryAction = entryInfo => {
 export const getSingleEntryAction = (storyId, entryId) => {
 	return async (dispatch, getState) => {
         try {
-            const res = await axios.get(`http://localhost:3001/api/stories/${storyId}/entries/${entryId}`)
+            const res = await axios.get(`https://memoirbackend.herokuapp.com/api/stories/${storyId}/entries/${entryId}`)
 
             dispatch({
                 type: 'CURRENT_ENTRY',
@@ -106,6 +123,7 @@ export const deleteEntryAction = (entry) => {
 	return async (dispatch, getState) => {
 
         const token = getState().profile.token
+        const userId = getState().profile.user.id
 
         const storyId = entry.story.id
         const entryId = entry.id
@@ -135,16 +153,20 @@ export const deleteEntryAction = (entry) => {
                 'Authorization': `bearer ${token}`
             }
 
-            await axios.delete(`http://localhost:3001/api/stories/${storyId}/entries/${entryId}`, {headers: headers})
+            await axios.delete(`https://memoirbackend.herokuapp.com/api/stories/${storyId}/entries/${entryId}`, {headers: headers})
 
             console.log('entry deleted from database')
 
-            if(history.location.pathname === '/profile'){
-                history.go(0)
-            } else {
+            const response = await axios.get(`https://memoirbackend.herokuapp.com/api/profile/${userId}`, {headers: headers})
+
+            dispatch({
+                type: 'ADD_ENTRIES_STORIES',
+                payload: {myStories: response.data.stories, myEntries: response.data.userEntries}
+            })
+
+            if(history.location.pathname !== '/profile'){
                 history.push(`/story/${storyId}`)
             }
-
         }
         catch(error){
             console.log({error})

@@ -6,7 +6,7 @@ export const logInAction = formInfo => {
 
         if(formInfo && formInfo.email && formInfo.password) {
             try{
-                const response = await axios.post('http://localhost:3001/api/auth/login', formInfo)
+                const response = await axios.post('https://memoirbackend.herokuapp.com/api/auth/login', formInfo)
 
                 dispatch({
                     type: 'ERROR',

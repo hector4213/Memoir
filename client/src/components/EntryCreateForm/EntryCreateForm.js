@@ -5,6 +5,7 @@ import {connect} from 'react-redux'
 import {useParams} from 'react-router-dom'
 
 import {getSingleStoryAction} from '../../redux/actions/story'
+import {setErrorAction} from '../../redux/actions/page'
 
 import MediaType from './fields/Embed/MediaType'
 import DateEntry from './fields/Date/DateEntry'
@@ -16,7 +17,7 @@ import ErrorDisplay from '../ErrorDisplay/ErrorDisplay'
 
 const EntryCreateForm = props => {
 
-    const {getSingleStory} = props
+    const {getSingleStory, setError} = props
     const {current} = props
     const {edit, entry} = props
 
@@ -54,7 +55,7 @@ const EntryCreateForm = props => {
 
     const {format_id_F, embed_F, title_F, description_F} = formInfo
     const {month_F, day_F, year_F} = date
-    const notFilledStyle = { border: '2px solid red'}
+    const notFilledStyle = { border: '2px solid #ff8a8a'}
 
     if(!current || !current.story){
         return <ErrorDisplay message= 'There isnt a story to write an entry to' />
@@ -80,7 +81,7 @@ const EntryCreateForm = props => {
 
             <form>
                 <MediaType {...{format_id_F, setFormInfo, formInfo, notFilledStyle}}/>
-                <TextEntry {...{setFormInfo, notFilledStyle, formInfo, embed_F, title_F, description_F}} />
+                <TextEntry {...{setFormInfo, notFilledStyle, formInfo, embed_F, title_F, description_F, setError}} />
                 <DateEntry {...{month_F, notFilledStyle, setDate, date, day_F, year_F}} />
                 <TagsEntry {...{formInfo, setFormInfo}} />
 
@@ -105,7 +106,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        getSingleStory: storyId => dispatch(getSingleStoryAction(storyId))
+        getSingleStory: storyId => dispatch(getSingleStoryAction(storyId)),
+        setError: errorMessage => dispatch(setErrorAction(errorMessage))
     }
 }
 

@@ -4,7 +4,7 @@
 .header {
     text-align: center;
     position: relative;
-    // cursor: none;
+    cursor: none;
 
     .logo {
         $logo_size: 3px;
@@ -20,6 +20,7 @@
         top: 50%;
         left: 50%;
         transition: transform 0.5s ease;
+        transform: scale(1.5);
     }
 
     .title {

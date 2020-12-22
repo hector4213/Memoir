@@ -28,7 +28,6 @@ const Home = props => {
         <Header />
         <Searchbar />
         <HomeCards stories={stories} />
-
     </div>
     )
 }

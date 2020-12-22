@@ -1,5 +1,4 @@
 import axios from 'axios'
-import {history} from '../../index'
 
 export const addInspiringAction = () => {
 	return async (dispatch, getState) => {
@@ -12,10 +11,25 @@ export const addInspiringAction = () => {
                 'Content-Type': 'application/json',
                 'Authorization': `bearer ${token}`
             }
-            const res = await axios.post(`http://localhost:3001/api/stories/${storyId}/inspire`, null, {headers: headers})
+            const res = await axios.post(`https://memoirbackend.herokuapp.com/api/stories/${storyId}/inspire`, null, {headers: headers})
 
             console.log(res)
-            history.go(0)
+
+            // get story instead of refreshing
+
+            const response = await axios.get(`https://memoirbackend.herokuapp.com/api/stories/${storyId}`)
+            let sortedEntries = response.data.entries
+
+            if(sortedEntries.length > 0){
+                sortedEntries = sortedEntries.sort( (a,b) => {
+                    return new Date(a.date) - new Date(b.date);
+                })
+            }
+
+            dispatch({
+                type: 'CURRENT_STORY',
+                payload: {...response.data, entries:sortedEntries }
+            })
 
         }
         catch(error){

@@ -12,7 +12,7 @@ const SearchContent = props => {
     const [searchType, setSearchType] = useState('')
     const [searchTagInput, setSearchTagInput] = useState('')
     const [searchTitleInput, setSearchTitleInput] = useState('')
-    const [date, setDate] = useState({month:'', day:'', year:''})
+    const [date, setDate] = useState({month:0, day:0, year:0})
 
     const {setSearching, search, results, clearSearch} = props
 
@@ -72,6 +72,8 @@ const SearchContent = props => {
                     e.stopPropagation()
                 }}
             >
+
+            <label> I am looking for ... </label>
 
             <div className='search-type-nav'>
                 <button onClick={e=>setSearchType('tag')}> Tag </button>

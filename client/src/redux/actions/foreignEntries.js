@@ -11,7 +11,7 @@ export const getForeignEntriesAction = () => {
         }
 
         try {
-            const response = await axios.get(`http://localhost:3001/api/profile/${userId}/manage`, {headers: headers})
+            const response = await axios.get(`https://memoirbackend.herokuapp.com/api/profile/${userId}/manage`, {headers: headers})
 
             dispatch({
                 type: 'FOREIGN_ENTRIES',
@@ -38,13 +38,13 @@ export const editForeignEntriesAction = (entryId, entryStatus) => {
         }
 
         try {
-            const response = await axios.put(`http://localhost:3001/api/profile/${userId}/manage/${entryId}`, {
+            const response = await axios.put(`https://memoirbackend.herokuapp.com/api/profile/${userId}/manage/${entryId}`, {
                 entry_status: entryStatus
             }, {headers: headers})
 
             console.log(response)
 
-            const res = await axios.get(`http://localhost:3001/api/profile/${userId}/manage`, {headers: headers})
+            const res = await axios.get(`https://memoirbackend.herokuapp.com/api/profile/${userId}/manage`, {headers: headers})
 
             dispatch({
                 type: 'FOREIGN_ENTRIES',

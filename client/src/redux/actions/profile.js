@@ -12,7 +12,7 @@ export const getMyProfileStuffAction = () => {
         }
 
         try {
-            const response = await axios.get(`http://localhost:3001/api/profile/${userId}`, {headers: headers})
+            const response = await axios.get(`https://memoirbackend.herokuapp.com/api/profile/${userId}`, {headers: headers})
 
             dispatch({
                 type: 'ADD_ENTRIES_STORIES',
@@ -53,7 +53,7 @@ export const deleteProfileAction = () => {
                 'Content-Type': 'application/json',
                 'Authorization': `bearer ${token}`
             }
-            const res = await axios.delete(`http://localhost:3001/api/profile/${profileId}`, {headers: headers})
+            const res = await axios.delete(`https://memoirbackend.herokuapp.com/api/profile/${profileId}`, {headers: headers})
 
             console.log(res)
 
@@ -86,7 +86,7 @@ export const editProfileAction = profileInfo => {
                 'Authorization': `bearer ${token}`
             }
 
-            const res = await axios.put(`http://localhost:3001/api/profile/${profileInfo.id}`, profileInfo, {headers: headers})
+            const res = await axios.put(`https://memoirbackend.herokuapp.com/api/profile/${profileInfo.id}`, profileInfo, {headers: headers})
 
             console.log(res)
 
