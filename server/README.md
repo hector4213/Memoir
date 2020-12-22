@@ -6,17 +6,17 @@
 <tr>
 <td align="center" width="20%">
 <span><b><center></center></b></span>
-<img height=100px width="100" src="https://img.icons8.com/color/344/javascript.png"/>
+<img height=175px width="175" src="https://img.icons8.com/color/344/javascript.png"/>
 </td>
 
 <td align="center" width="20%">
 <span><b><center></center></b></span> 
-<img height=100px width="100" src="https://img.icons8.com/color/344/nodejs.png"/>
+<img height=175px width="175" src="https://img.icons8.com/color/344/nodejs.png"/>
 </td>
 
 <td align="center" width="20%">
 <span><b><center></center></b></span> 
-<img height=100px width="100" src="https://img.icons8.com/color/344/postgreesql.png"/>
+<img height=175px width="175" src="https://img.icons8.com/color/344/postgreesql.png"/>
 </td>
 
 </tr>
