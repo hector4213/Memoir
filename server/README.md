@@ -29,7 +29,7 @@
 </tbody>
 </table>
 
-### Some notes about the backend
+### Some notes
 
 ### Prerequisites
 
@@ -82,7 +82,7 @@ To reset the database to its original application state type
 <tr>
 <td align="center" width="20%">
 <span><b><center></center></b></span>
-<img height=140px width="280" src="https://w7.pngwing.com/pngs/794/590/png-transparent-javascript-test-driven-development-mocha-react-jasmine-onsen-text-logo-nodejs.png/>
+<img height=140px width="280" src="https://w7.pngwing.com/pngs/794/590/png-transparent-javascript-test-driven-development-mocha-react-jasmine-onsen-text-logo-nodejs.png"/>
 </td>
 
 </tr>
