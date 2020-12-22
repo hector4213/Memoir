@@ -5,7 +5,10 @@ import {history} from '../../index'
 export const getAllStoriesAction = () => {
 	return async (dispatch, getState) => {
         try {
+            console.log('-> getting all stories ...')
             const res = await axios.get('https://memoirbackend.herokuapp.com/api/stories')
+            console.log('-> got all stories ...')
+
             dispatch({
                 type: 'SET_ALL_STORIES',
                 payload: res.data

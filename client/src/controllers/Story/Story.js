@@ -17,8 +17,6 @@ import LogInRegisterModal from '../../components/LogInRegister/LogInRegister'
 import StoryEdit from '../../controllers/StoryEdit/StoryEdit'
 
 const Story = props => {
-    console.log('does it at least go into the story ?')
-
     const {getSingleStory} = props
     const {current, modal} = props
 

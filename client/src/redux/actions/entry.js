@@ -27,6 +27,8 @@ export const editEntryAction = entryInfo => {
 
             console.log(res)
 
+            console.log(entryInfo)
+
             const response = await axios.get(`https://memoirbackend.herokuapp.com/api/stories/${storyId}/entries/${entryId}`)
 
             dispatch({

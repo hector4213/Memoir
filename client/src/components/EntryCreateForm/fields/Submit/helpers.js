@@ -59,13 +59,17 @@ export const parseForm = (formInfo, date) => {
         formInfo = {...formInfo, embed: newVideoEmbed}
     }
 
+    const newDate = `${date.year}-${date.month!==""? date.month:'01'}-${date.day!==""? date.day:'01'}`
+
+    const finalHash = formInfo.hashtags === ''? [] : formInfo.hashtags
+
     return {
         title: formInfo.title,
         description: formInfo.description,
-        date:`${date.year}-${date.month? date.month:'01'}-${date.day? date.day:'01'}`,
+        date: newDate,
         embed: formInfo.embed,
         format_id: formInfo.format_id,
-        hashtags: formInfo.hashtags,
+        hashtags: finalHash,
     }
 }
 

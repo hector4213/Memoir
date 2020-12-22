@@ -6,15 +6,16 @@ import './directions.scss'
 import './mediaType.scss'
 import './specialTags/specialTags.scss'
 
+import {formatDate} from '../../helpers/helpers'
+
 const TimelineCard = props => {
 
     // MEDIA TYPES: 1:VIDE0 , 2:TEXT , 3:AUDIO , 4:IMAGE
 
     const {entry, position} = props
     const {format_id, embed, title, date, description, id, story_id, hashtags} = entry
-    const d = new Date(date)
-    const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
-    const formattedDate = `${months[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}`
+    const formattedDate = formatDate(date)
+
 
     let timelineCardClass = 'entryRow '
     timelineCardClass += `${position} `
@@ -68,7 +69,6 @@ const TimelineCard = props => {
     }
 
 
-
     // HANDLE MEDIA TYPES
     const createMarkup = () => {
         return {__html: embed}
@@ -90,9 +90,6 @@ const TimelineCard = props => {
             return <img alt={entry.title} src={entry.embed}/> 
         }
     }
-
-
-
 
     return (
         <div className={timelineCardClass}>

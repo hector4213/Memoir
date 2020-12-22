@@ -44,10 +44,13 @@ const EntryCreateForm = props => {
         editDate = new Date(entry.date)
     }
 
+    // return `${months[d.getUTCMonth()]} ${d.getUTCDate()}, ${d.getUTCFullYear()}`
+
+
     const [date, setDate] = useState({
-        month: edit?  editDate.getMonth()+1 : '' ,
-        day: edit?  editDate.getDate() : '',
-        year: edit?  editDate.getFullYear() : '',
+        month: edit?  editDate.getUTCMonth()+1 : '' ,
+        day: edit?  editDate.getUTCDate() : '',
+        year: edit?  editDate.getUTCFullYear() : '',
         month_F: true,
         day_F: true,
         year_F: true,
