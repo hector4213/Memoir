@@ -12,6 +12,8 @@ import {useCallback} from 'react'
 import {useHistory} from 'react-router-dom'
 import ErrorDisplay from '../../components/ErrorDisplay/ErrorDisplay';
 
+import  {formatDate} from '../../helpers/helpers'
+
 const Entry = props => {
     const {getSingleEntry, getSingleStory} = props
     const {current} = props
@@ -128,12 +130,6 @@ const getNavEntries = (allEntries, entryId) =>{
     }
 
     return [back, next]
-}
-
-const formatDate = date => {
-    const d = new Date(date)
-    const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
-    return `${months[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}`
 }
 
 const mapStateToProps = state => {
