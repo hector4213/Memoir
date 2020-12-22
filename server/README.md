@@ -29,6 +29,8 @@
 </tbody>
 </table>
 
+### Some notes about the backend
+
 ### Prerequisites
 
 - PostgreSQL version 12.4^ download [here](https://www.postgresql.org/download/)
@@ -73,6 +75,20 @@ To reset the database to its original application state type
     $ npm run resetdb
 
 ### Testing
+
+<table>
+<tbody>
+
+<tr>
+<td align="center" width="20%">
+<span><b><center></center></b></span>
+<img height=140px width="280" src="https://w7.pngwing.com/pngs/794/590/png-transparent-javascript-test-driven-development-mocha-react-jasmine-onsen-text-logo-nodejs.png/>
+</td>
+
+</tr>
+
+</tbody>
+</table>
 
 To run tests type
 
