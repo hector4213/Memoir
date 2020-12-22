@@ -16,7 +16,7 @@ $ npm start
 ```
 
 ## Testing
-|![](https://pbs.twimg.com/profile_images/1100804485616566273/sOct-Txm_400x400.png)|![](https://images.opencollective.com/cypressio/b6f8a1e/logo/256.png)|
+|![](https://miro.medium.com/max/7200/1*Jkb_tsMBOvL6wQ8bzldu8Q.png)|![](https://cdn.worldvectorlogo.com/logos/storybook-1.svg)|
 |--|--|
 
 Memoir uses Storybook to test the component User Interface and Cypress for end to end testing to make sure all core fearures are working.
