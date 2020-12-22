@@ -80,9 +80,15 @@ To reset the database to its original application state type
 <tbody>
 
 <tr>
+
 <td align="center" width="20%">
 <span><b><center></center></b></span>
-<img height=140px width="280" src="https://w7.pngwing.com/pngs/794/590/png-transparent-javascript-test-driven-development-mocha-react-jasmine-onsen-text-logo-nodejs.png"/>
+<img height=50px width="50" src="https://cdn.imgbin.com/16/15/14/imgbin-mocha-node-js-javascript-software-testing-npm-github-nt53N8arYf0R89AARgLWh3Bsr.jpg"/>
+</td>
+
+<td align="center" width="20%">
+<span><b><center></center></b></span>
+<img height=50px width="50" src="https://www.chaijs.com/img/chai-logo-small.png"/>
 </td>
 
 </tr>
