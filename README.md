@@ -3,3 +3,4 @@
 ![Banner Image](./client/README_images/banner.png)
 
 # Memoir
+Discover a story. Share yours.
