@@ -1,5 +1,29 @@
 ## Backend
 
+<table>
+<tbody>
+
+<tr>
+<td align="center" width="20%">
+<span><b><center></center></b></span>
+<img height=100px width="100" src="https://img.icons8.com/color/344/javascript.png"/>
+</td>
+
+<td align="center" width="20%">
+<span><b><center></center></b></span> 
+<img height=100px width="100" src="https://img.icons8.com/color/344/nodejs.png"/>
+</td>
+
+<td align="center" width="20%">
+<span><b><center></center></b></span> 
+<img height=100px width="100" src="https://img.icons8.com/color/344/postgreesql.png"/>
+</td>
+
+</tr>
+
+</tbody>
+</table>
+
 ### Prerequisites
 
 - PostgreSQL version 12.4^ download [here](https://www.postgresql.org/download/)
