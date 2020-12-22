@@ -4,24 +4,24 @@
 <tbody>
 
 <tr>
-<td align="center" width="20%">
+<td align="center" width="25%">
 <span><b><center></center></b></span>
-<img height=170px width="170" src="https://img.icons8.com/color/344/javascript.png"/>
+<img height="100vh" width="100wv" src="https://img.icons8.com/color/344/javascript.png"/>
 </td>
 
-<td align="center" width="20%">
+<td align="center" width="25%">
 <span><b><center></center></b></span> 
-<img height=170px width="170" src="https://img.icons8.com/color/344/nodejs.png"/>
+<img height="100vh" width="100vw" src="https://img.icons8.com/color/344/nodejs.png"/>
 </td>
 
-<td align="center" width="20%">
+<td align="center" width="25%">
 <span><b><center></center></b></span> 
-<img height=170px width="170" src="https://img.icons8.com/color/344/postgreesql.png"/>
+<img height="100vh" width="100vw" src="https://img.icons8.com/color/344/postgreesql.png"/>
 </td>
 
-<td align="center" width="20%">
+<td align="center" width="25%">
 <span><b><center></center></b></span> 
-<img height=170px width="170" src="https://img.icons8.com/nolan/344/heroku.png"/>
+<img height="100vh" width="100vw" src="https://img.icons8.com/nolan/344/heroku.png"/>
 </td>
 
 </tr>
