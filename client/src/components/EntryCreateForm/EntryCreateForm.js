@@ -55,7 +55,7 @@ const EntryCreateForm = props => {
 
     const {format_id_F, embed_F, title_F, description_F} = formInfo
     const {month_F, day_F, year_F} = date
-    const notFilledStyle = { border: '2px solid red'}
+    const notFilledStyle = { border: '2px solid #ff8a8a'}
 
     if(!current || !current.story){
         return <ErrorDisplay message= 'There isnt a story to write an entry to' />
