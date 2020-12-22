@@ -14,7 +14,12 @@ const TimelineCard = props => {
     const {format_id, embed, title, date, description, id, story_id, hashtags} = entry
     const d = new Date(date)
     const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
-    const formattedDate = `${months[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}`
+
+    const formattedDate = `
+        ${d.getMonth() === 0 && d.getDate() === 1? '':
+        `${months[d.getMonth()]} ${d.getDate()}, ` }
+        ${d.getFullYear()}
+        `
 
     let timelineCardClass = 'entryRow '
     timelineCardClass += `${position} `
