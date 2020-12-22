@@ -10,7 +10,7 @@ export const areFieldsValid = (formInfo, date) => {
         const year = date.year ? date.year : 0
 
 
-        const valid_format_id = true
+        const valid_format_id = 0 < formatId && formatId < 5
 
 
         // EMBED
