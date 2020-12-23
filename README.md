@@ -36,7 +36,9 @@ Discover a story. Share yours.
 
 </tbody>
 </table>
+
 ![Heroku](https://pyheroku-badge.herokuapp.com/?app=memoirbackend&path=/api&style=plastic)
+
 ### Some notes about the Backend
 
 The backend portion of this application is deployed on heroku. For the Database PostgeSQL is used along with [Objection.js](https://vincit.github.io/objection.js/), although Objectionis most commonly known as an ORM, it would be more accurate to call it a a **relational query builder**. You get all the benefits of an SQL query builder but also a powerful set of tools for working with relations.
