@@ -8,6 +8,8 @@ Discover a story. Share yours.
 
 ## Backend
 
+![Heroku](https://pyheroku-badge.herokuapp.com/?app=memoirbackend&path=/api&style=plastic)
+
 <table>
 <tbody>
 
@@ -37,17 +39,15 @@ Discover a story. Share yours.
 </tbody>
 </table>
 
-![Heroku](https://pyheroku-badge.herokuapp.com/?app=memoirbackend&path=/api&style=plastic)
-
 ### Some notes about the Backend
 
-The backend portion of this application is deployed on heroku. For the Database PostgeSQL is used along with [Objection.js](https://vincit.github.io/objection.js/), although Objectionis most commonly known as an ORM, it would be more accurate to call it a a **relational query builder**. You get all the benefits of an SQL query builder but also a powerful set of tools for working with relations.
+The backend portion of this application is currently deployed on heroku so please be patient with the cold start time. For the Database, PostgreSQL is used along with [Objection.js](https://vincit.github.io/objection.js/), although Objection.js is most commonly known as an ORM, it would be more accurate to call it a a **relational query builder**. You get all the benefits of an SQL query builder but also a powerful set of tools for working with relations.
 
-Objection.js is built on the SQL query builder [knex](https://github.com/knex/knex). All databases supported by knex are supported by objection.js. SQLite3, Postgres and MySQL.
+Objection.js is built on the SQL query builder [knex](https://github.com/knex/knex). All databases supported by knex are supported by Objection.js. SQLite3, Postgres and MySQL.
 
-#### Authenticaion and Encrpytion
+#### Authenticaion and Encryption
 
-Memoir uses [Jsonwebtokens](https://github.com/auth0/node-jsonwebtoken), for authentication and [bcrypt](https://github.com/kelektiv/node.bcrypt.js/) for hashing the password and storing it in the Database
+Memoir uses [Jsonwebtokens](https://github.com/auth0/node-jsonwebtoken), for authentication and [bcrypt](https://github.com/kelektiv/node.bcrypt.js/) for hashing passwords and storing it in the Database.
 
 ### Prerequisites
 
@@ -76,7 +76,7 @@ For more information on how to create databases using PostgreSQL see this [artic
 
 - See env.example for required environment variables
 
-_Only one database is needed for the backend application to run, creating a second database for testing is optional, but reccommended_
+_Only one database is needed for the backend application to run, creating a second database for testing purposes is optional, but reccommended_
 
 ### Seeding your new database
 
