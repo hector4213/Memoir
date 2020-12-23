@@ -101,6 +101,15 @@
 @media only screen and (max-width: 550px) {
     .timeline {
         padding: 150px 10px 0px 10px !important;
+        margin-bottom: 50px !important;
+
+        .insp-btn {
+            margin: 50px auto;
+        }
+    }
+
+    .top {
+        padding-bottom: 30px;
     }
 
     .back-btn {
@@ -120,14 +129,19 @@
         }
     }
 
-    .filter-nav ul{
-        li:nth-child(1){
-            width: 100%;
-            margin-bottom: 10px;
-        }
+    .filter-nav {
+        margin-bottom: 0px !important;
 
-        li {
-            padding: 5px !important;
+        ul {
+
+            li:nth-child(1){
+                width: 100%;
+                margin-bottom: 10px;
+            }
+
+            li {
+                padding: 5px !important;
+            }
         }
     }
 
@@ -141,7 +155,27 @@
 
     .entryCard {
         width: 100% !important;
-        padding: 0px !important;
+        max-width: 100% !important;
         margin-top: 50px !important;
+
+        h1 {
+            width: 100% !important;
+        }
+    }
+
+    .mediaType-2container {
+        padding: 20px 0px !important;
+    }
+
+    .right {
+        .caption {
+            margin-right: 0px !important;
+        }
+    }
+
+    .success-message {
+        width: 100% !important;
+        top: 0px !important;
+        left: 0px !important;
     }
 }

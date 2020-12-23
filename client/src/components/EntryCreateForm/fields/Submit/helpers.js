@@ -29,12 +29,6 @@ export const areFieldsValid = (formInfo, date) => {
         const valid_description = formInfo.description !== '' ? true : false
         const valid_date = 999 < year && year < 3000? true : false
 
-        console.log('valid_format_id', valid_format_id)
-        console.log('valid_embed', valid_embed)
-        console.log('valid_title', valid_title)
-        console.log('valid_description', valid_description)
-        console.log('valid_date', valid_date)
-
         allFieldsTrue = (
             valid_format_id &&
             valid_embed &&
@@ -74,8 +68,16 @@ export const parseForm = (formInfo, date) => {
 }
 
 const videoURLparse = (oldEmbed) => {
-    const half = oldEmbed.split('?v=')
-    return half[1]
+    if(oldEmbed.includes('/watch?v=')){
+        const half = oldEmbed.split('?v=')
+        return half[1]
+    }
+    else if(oldEmbed.includes('youtu.be')) {
+        const half = oldEmbed.split('youtu.be/')
+        return half[1]
+    } else {
+        return oldEmbed
+    }
 }
 
 export const setFormToNotFilled = formInfo => {

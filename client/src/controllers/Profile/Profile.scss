@@ -41,7 +41,8 @@
 
 @media only screen and (max-width: 700px){
     .profile {
-        padding: 50px 0px !important;
+        padding-top: 50px !important;
+        margin-bottom: 0px !important;
     }
 }
 
@@ -55,10 +56,13 @@
         margin: 0px !important;
         font-size: 50px !important;
         margin-top: 50px !important;
+        padding-left: 10px;
+        text-align: left;
     }
 
     .tabs {
         margin: 20px 0px !important;
+        flex-direction: row;
 
         button {
             padding: 5px !important;
@@ -76,10 +80,23 @@
             text-align: right;
 
             .delete-btn {
-                width: 50px;
-                height: 50px;
+                width: 25px;
+                height: 25px;
                 margin-left: 10px;
             }
         }
+    }
+
+    .entries, .listEntries {
+        margin: 10px 0px !important;
+    }
+
+    .yourStories {
+        margin-bottom: 20px !important;
+    }
+
+    .delete {
+        right: 0px !important;
+        top: 0px !important;
     }
 }
