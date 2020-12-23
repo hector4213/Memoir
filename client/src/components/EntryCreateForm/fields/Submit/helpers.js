@@ -74,8 +74,16 @@ export const parseForm = (formInfo, date) => {
 }
 
 const videoURLparse = (oldEmbed) => {
-    const half = oldEmbed.split('?v=')
-    return half[1]
+    if(oldEmbed.includes('/watch?v=')){
+        const half = oldEmbed.split('?v=')
+        return half[1]
+    }
+    else if(oldEmbed.includes('youtu.be')) {
+        const half = oldEmbed.split('youtu.be/')
+        return half[1]
+    } else {
+        return oldEmbed
+    }
 }
 
 export const setFormToNotFilled = formInfo => {
