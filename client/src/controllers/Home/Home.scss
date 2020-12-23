@@ -44,13 +44,24 @@
 }
 
 @media only screen and (max-width: 550px) {
+    .home-buttons {
+        top: 2px !important;
+        left: 2px !important;
+        flex-direction: row !important;
+    }
+
     .header .title {
-        padding: 100px 20px !important;
+        padding: 50px 20px !important;
         box-sizing: border-box;
+        width: 100% !important;
+
+        h1 {
+            font-size: 75px !important;
+        }
     }
 
     .storyCard {
-        flex-basis: 33% !important;
+        flex-basis: 50% !important;
         padding: 5px !important;
     }
 
@@ -58,16 +69,56 @@
         padding: 10px !important;
     }
 
+    .search-container{
+        margin: 20px 0px !important;
+    }
+
+    .search-button {
+        margin-left: 20px !important;
+    }
+
     .search-tags {
         flex-wrap: wrap !important;
 
-        label {
+        label, input {
             width: 100% !important;
         }
     }
 
+    .search-content {
+        padding: 100px 10px !important;
+
+        button {
+            margin-right: 0px !important;
+        }
+    }
+
+    .date {
+        select {
+            -webkit-appearance:none;
+            background: $dark_blue;
+            color: $light_blue;
+            height: 60px;
+        }
+    }
+
+    .modal {
+        z-index: 101 !important;
+    }
+
     .modal-content {
+        padding: 20px !important;
         width: 100% !important;
-        margin: 20px !important;
+        margin:10px !important;
+    }
+
+    .modalTabs {
+        button {
+            padding: 0px 10px !important;
+        }
+
+        .submit-register {
+            padding: 40px !important;
+        }
     }
 }

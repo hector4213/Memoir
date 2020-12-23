@@ -14,7 +14,8 @@ const TimelineCard = props => {
 
     const {entry, position} = props
     const {format_id, embed, title, date, description, id, story_id, hashtags} = entry
-    const formattedDate = formatDate(date)
+    let formattedDate = formatDate(date)
+    formattedDate = formattedDate.startsWith('January 1,')? formattedDate.replace("January 1, ", "") : formattedDate
 
 
     let timelineCardClass = 'entryRow '
