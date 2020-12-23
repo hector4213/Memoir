@@ -91,7 +91,7 @@ The backend portion of this application is currently deployed on heroku so pleas
 
 Objection.js is built on the SQL query builder [knex](https://github.com/knex/knex). All databases supported by knex are supported by Objection.js. SQLite3, Postgres and MySQL.
 
-#### Authenticaion and Encryption
+### Authentication and Encryption
 
 Memoir uses [Jsonwebtokens](https://github.com/auth0/node-jsonwebtoken), for authentication and [bcrypt](https://github.com/kelektiv/node.bcrypt.js/) for hashing passwords and storing it in the Database.
 
