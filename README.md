@@ -151,11 +151,12 @@ Memoir uses Mocha as a test runner and Chai for assertions.
 
 ### Dependencies
 
-- Node.js
-- PostgreSQL
-- Objection.js
-- knex.js
-- Jsonwebtokens
-- bcrypt
-- Mocha
-- chai
+- crypt
+- dotenv
+- express
+- jsonwebtoken
+- knex
+- morgan
+- objection
+- pg
+- yup
