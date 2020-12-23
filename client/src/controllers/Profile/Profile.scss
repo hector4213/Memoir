@@ -44,3 +44,42 @@
         padding: 50px 0px !important;
     }
 }
+
+@media only screen and (max-width: 550px) {
+    .profile-btns {
+        top: 0px !important;
+        right: 0px !important;
+    }
+
+    .pageTitle {
+        margin: 0px !important;
+        font-size: 50px !important;
+        margin-top: 50px !important;
+    }
+
+    .tabs {
+        margin: 20px 0px !important;
+
+        button {
+            padding: 5px !important;
+        }
+    }
+
+    .listEntry {
+
+        h1 {
+            width: 100%;
+        }
+
+        .listEntryRight {
+            width: 150px;
+            text-align: right;
+
+            .delete-btn {
+                width: 50px;
+                height: 50px;
+                margin-left: 10px;
+            }
+        }
+    }
+}
