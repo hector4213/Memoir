@@ -76,34 +76,8 @@ $ npm run cypress
 
 ## Backend
 
-<table>
-<tbody>
-
-<tr>
-<td align="center" width="25%">
-<span><b><center></center></b></span>
-<img height="100vh" width="100wv" src="https://img.icons8.com/color/344/javascript.png"/>
-</td>
-
-<td align="center" width="25%">
-<span><b><center></center></b></span> 
-<img height="100vh" width="100vw" src="https://img.icons8.com/color/344/nodejs.png"/>
-</td>
-
-<td align="center" width="25%">
-<span><b><center></center></b></span> 
-<img height="100vh" width="100vw" src="https://img.icons8.com/color/344/postgreesql.png"/>
-</td>
-
-<td align="center" width="25%">
-<span><b><center></center></b></span> 
-<img height="100vh" width="100vw" src="https://img.icons8.com/nolan/344/heroku.png"/>
-</td>
-
-</tr>
-
-</tbody>
-</table>
+|![](https://img.icons8.com/color/344/javascript.png)|![](https://img.icons8.com/color/344/nodejs.png)|![](https://img.icons8.com/color/344/postgreesql.png)|![](https://img.icons8.com/nolan/344/heroku.png)
+|--|--|--|--|
 
 ![Heroku](https://pyheroku-badge.herokuapp.com/?app=memoirbackend&path=/api&style=plastic)
 
