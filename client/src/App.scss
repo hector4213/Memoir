@@ -57,6 +57,10 @@ body {
   .error-message {
     width: 100%;
     left: 0px;
+    top: 0px;
   }
 
+  .close-search {
+    right: 0px !important;
+  }
 }
