@@ -144,25 +144,8 @@ Memoir uses [Jsonwebtokens](https://github.com/auth0/node-jsonwebtoken), for aut
 
 ### Testing
 
-<table>
-<tbody>
-
-<tr>
-
-<td align="center" width="20%">
-<span><b><center></center></b></span>
-<img height=50px width="50" src="https://cdn.imgbin.com/16/15/14/imgbin-mocha-node-js-javascript-software-testing-npm-github-nt53N8arYf0R89AARgLWh3Bsr.jpg"/>
-</td>
-
-<td align="center" width="20%">
-<span><b><center></center></b></span>
-<img height=50px width="50" src="https://www.chaijs.com/img/chai-logo-small.png"/>
-</td>
-
-</tr>
-
-</tbody>
-</table>
+| ![](https://github.com/mochajs/mocha/blob/master/assets/mocha-logo-192.png?raw=true) | ![](https://github.com/chaijs/chaijs.github.io/blob/master/img/chai-logo.png) |
+| ------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------- |
 
 To run tests type
 
