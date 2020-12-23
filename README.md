@@ -138,10 +138,6 @@ To reset the database to its original application state type
 
     $ npm run resetdb
 
-#### Authentication and Encryption
-
-Memoir uses [Jsonwebtokens](https://github.com/auth0/node-jsonwebtoken), for authentication and [bcrypt](https://github.com/kelektiv/node.bcrypt.js/) for hashing the password and storing it in the Database
-
 ### Testing
 
 | ![](https://github.com/mochajs/mocha/blob/master/assets/mocha-logo-192.png?raw=true) | ![](https://github.com/chaijs/chaijs.github.io/blob/master/img/chai-logo.png) |
