@@ -9,7 +9,7 @@ Discover a story. Share yours.
 ## Table of contents
 
 - [Table of contents](#table-of-contents)
-- [Features]
+- [Features](#features)
 - [Frontend](#frontend)
   - [Some notes about the Front end](#some-notes-about-the-frontend)
   - [Usage and Installation](#usage-and-installation)
@@ -28,6 +28,8 @@ Discover a story. Share yours.
   - [Dependencies](#dependencies)
 
 ### Features
+
+Features and screens here
 
 ## Frontend
 
