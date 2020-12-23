@@ -6,6 +6,29 @@
 
 Discover a story. Share yours.
 
+Table of contents
+=================
+
+
+   * [Table of contents](#table-of-contents)
+   * [Frontend](#frontend)
+   <!---michealstuffhere--->
+   * [Backend](#backend)
+      * [Notes About the Backend](#some-notes-about-the-backend)
+      * [Prerequisites](#prerequisites)
+      * [Usage and Installation](#usage-and-installation)
+      * [Entity Relationship Diagram](#entity-relationship-diagram)
+      * [Creating the Databases](#creating-databases)
+      * [Setting your environment variables](#setting-your-environment-variables)
+      * [Seeding your new database](#seeding-your-new-database)
+      * [Authentication and Encryption](#authentication-and-encryption)
+      * [Testing](#testing)
+      
+
+## Frontend
+
+
+
 ## Backend
 
 <table>
@@ -45,18 +68,11 @@ The backend portion of this application is deployed on heroku. For the Database 
 
 Objection.js is built on the SQL query builder [knex](https://github.com/knex/knex). All databases supported by knex are supported by objection.js. SQLite3, Postgres and MySQL.
 
-#### Authenticaion and Encrpytion
-
-Memoir uses [Jsonwebtokens](https://github.com/auth0/node-jsonwebtoken), for authentication and [bcrypt](https://github.com/kelektiv/node.bcrypt.js/) for hashing the password and storing it in the Database
 
 ### Prerequisites
 
 - PostgreSQL version 12.4^ download [here](https://www.postgresql.org/download/)
 - [Node.js](https://nodejs.org/en/download/) with npm
-
-### Entity Relationship Diagram
-
-<img src=https://i.imgur.com/6UXIb3t.png />
 
 ### Usage and Installation
 
@@ -64,6 +80,10 @@ Memoir uses [Jsonwebtokens](https://github.com/auth0/node-jsonwebtoken), for aut
     $ cd server
     $ npm install
     $ npm run dev
+
+### Entity Relationship Diagram
+
+<img src=https://i.imgur.com/6UXIb3t.png />
 
 ### Creating Databases
 
@@ -91,6 +111,11 @@ This command will create tables for the database, to seed the database type
 To reset the database to its original application state type
 
     $ npm run resetdb
+    
+    
+#### Authentication and Encryption
+
+Memoir uses [Jsonwebtokens](https://github.com/auth0/node-jsonwebtoken), for authentication and [bcrypt](https://github.com/kelektiv/node.bcrypt.js/) for hashing the password and storing it in the Database
 
 ### Testing
 
@@ -129,4 +154,4 @@ Memoir uses Mocha as a test runner and Chai for assertions.
 - Jsonwebtokens
 - bcrypt
 - Mocha
-- Chai
+- chai
