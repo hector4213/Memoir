@@ -6,15 +6,15 @@
 
 Discover a story. Share yours.
 
-# Table of contents
+## Table of contents
 
 - [Table of contents](#table-of-contents)
+- [Features]
 - [Frontend](#frontend)
   - [Some notes about the Front end](#some-notes-about-the-frontend)
   - [Usage and Installation](#usage-and-installation)
   - [Testing](#testing)
   - [Dependencies](#dependencies)
-  <!---michealstuffhere--->
 - [Backend](#backend)
   - [Notes About the Backend](#some-notes-about-the-backend)
   - [Prerequisites](#prerequisites)
@@ -26,6 +26,8 @@ Discover a story. Share yours.
   - [Authentication and Encryption](#authentication-and-encryption)
   - [Testing](#testing)
   - [Dependencies](#dependencies)
+
+### Features
 
 ## Frontend
 
@@ -151,7 +153,7 @@ Memoir uses Mocha as a test runner and Chai for assertions.
 
 ### Dependencies
 
-- crypt
+- bcrypt
 - dotenv
 - express
 - jsonwebtoken
