@@ -93,7 +93,7 @@ Objection.js is built on the SQL query builder [knex](https://github.com/knex/kn
 
 #### Authenticaion and Encryption
 
-# Memoir uses [Jsonwebtokens](https://github.com/auth0/node-jsonwebtoken), for authentication and [bcrypt](https://github.com/kelektiv/node.bcrypt.js/) for hashing passwords and storing it in the Database.
+Memoir uses [Jsonwebtokens](https://github.com/auth0/node-jsonwebtoken), for authentication and [bcrypt](https://github.com/kelektiv/node.bcrypt.js/) for hashing passwords and storing it in the Database.
 
 ### Prerequisites
 
