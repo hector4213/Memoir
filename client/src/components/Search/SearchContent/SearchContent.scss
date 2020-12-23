@@ -13,6 +13,10 @@ $font_size: 30px;
     font-size: 30px;
 }
 
+.search-content::-webkit-scrollbar {
+    display: none;
+}
+
 .search-content {
     width: 100%;
     height: fit-content;
@@ -22,6 +26,8 @@ $font_size: 30px;
     font-size: $font_size;
     padding: 150px;
     box-sizing: border-box;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
 
     form {
         padding-bottom: 30px;
