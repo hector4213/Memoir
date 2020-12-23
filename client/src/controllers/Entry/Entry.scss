@@ -115,4 +115,23 @@ label {
 }
 
 @media only screen and (max-width: 550px) {
+    .single-entry {
+        padding: 150px 10px 20px 10px !important;
+
+        h1 {
+            line-height: 35px;
+        }
+    }
+
+    .gotostory-btn {
+        top: 45px !important;
+        left: 0px !important;
+        width: auto !important;
+    }
+
+    .nav-entries {
+        button {
+            border-radius: 0px !important;
+        }
+    }
 }
