@@ -52,7 +52,7 @@
     }
 
     .tag-creation .tag-submit {
-        padding: 10px 25px !important;
+        padding: 9px 25px !important;
         border-radius: 0px !important;
     }
 
@@ -62,4 +62,15 @@
 }
 
 @media only screen and (max-width: 550px) {
+    .entry-create-form{
+        padding: 0px !important;
+    }
+
+    .embedIcons {
+        padding: 5px !important;
+    }
+
+    .entry-edit {
+        margin-bottom: 100px !important;
+    }
 }
