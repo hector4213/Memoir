@@ -48,6 +48,43 @@ body {
   scrollbar-width: none;  /* Firefox */
 }
 
+.loader {
+  width: 50%;
+  margin: auto;
+  box-sizing: border-box;
+  text-align: center;
+  position: relative;
+
+  .hi {
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    position: absolute;
+    bottom: 0px;
+    animation: movehi 1s ease-in infinite;
+  }
+}
+@keyframes movehi {
+  0% {
+    background: $pink;
+    width: 10px;
+    left: 0px;
+  }
+
+  50% {
+    background: $orange;
+    width: 100px;
+    left: calc(50% - 50px);
+  }
+
+  100% {
+    background: $yellow;
+    width: 10px;
+    left: 100%;
+  }
+}
+
+
 @media only screen and (max-width: 700px) {
   button {
     padding: 12px 20px !important;
