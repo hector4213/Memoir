@@ -21,6 +21,10 @@ const HomeCards = props => {
         })
     }
 
+    if(cards.length === 0){
+        return <div className='loader'> <div className='hi'/> </div>
+    }
+
     return (
         <div className='storyCards'>
             {cards}

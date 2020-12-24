@@ -18,8 +18,13 @@
 }
 
 // TEXT
+.mediaType-2container {
+    .textHorizontalLine {
+        width: 20%;
+    }
+}
 .mediaType-2 {
-    width: 50%;
+    width: 80%;
     padding: 20px;
 
     .caption {
