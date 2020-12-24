@@ -18,7 +18,7 @@ const TextEntry = props => {
             setError(null)
         }
 
-        if(e.target.value && e.target.value.includes('youtu.be/')){
+        else if(e.target.value && e.target.value.includes('youtu.be/')){
             setFormInfo({
                 ...formInfo,
                 embed: e.target.value,
