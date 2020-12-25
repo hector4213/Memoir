@@ -1,8 +1,8 @@
-import React from 'react'
+import React, {useRef} from 'react'
 import './TagsEntry.scss'
 
 const TagsEntry = props => {
-
+    const tagInput = useRef();
     const {formInfo, setFormInfo} = props
     const tags = formInfo.hashtags ? formInfo.hashtags : []
 
@@ -20,17 +20,14 @@ const TagsEntry = props => {
 
     const handleTagSubmit = e => {
         e.preventDefault()
-        let val
 
-        if (e.key === 'Enter') {
-            val = e.target.value
-        } else {
-            val = document.querySelector('.tagText').value;
-        }
+        const val = tagInput.current.value
 
         if(val !== ''){
             setFormInfo({...formInfo, hashtags: [...formInfo.hashtags, {tagname: val}]})
         }
+
+        tagInput.current.value = ''
     }
 
     return (
@@ -39,12 +36,17 @@ const TagsEntry = props => {
                 <ul> {tagTabs} </ul>
             </div>
             <div className='tag-creation'>
-                <input type='text' className='tagText' placeholder='Add a Tag' onKeyDown={e=>{
-                    if (e.key === 'Enter') {
-                        handleTagSubmit(e)
-                        e.target.value = ''
+                <input
+                    ref={tagInput}
+                    type='text'
+                    className='tagText'
+                    placeholder='Add a Tag'
+                    onKeyDown={e=>{
+                        if (e.key === 'Enter') {
+                            handleTagSubmit(e)
+                        }
                     }
-                }}/>
+                }/>
                 <button className='tag-submit' onClick={handleTagSubmit}> + </button>
             </div>
         </div>
