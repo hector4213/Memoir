@@ -52,11 +52,17 @@ const StoryEdit = props => {
                 onChange={handleImageEmbed}
             />
 
-            <input type='text' value={formInfo.name}
+            <input
+                type='text'
+                value={formInfo.name}
+                placeholder='Enter Story name'
                 onChange={ e => setFormInfo( {...formInfo, name: e.target.value })}
             />
 
-            <input type='text' value={formInfo.occupation}
+            <input
+                type='text'
+                value={formInfo.occupation}
+                placeholder='Enter the persons occupation'
                 onChange={ e => setFormInfo( {...formInfo, occupation: e.target.value })}
             />
 
