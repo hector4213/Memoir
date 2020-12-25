@@ -23,7 +23,9 @@ const TagsEntry = props => {
 
         const val = tagInput.current.value
 
-        if(val !== ''){
+        const duplicates = formInfo.hashtags? formInfo.hashtags.filter(hash => hash.tagname === val) : []
+
+        if(val !== '' && duplicates.length === 0){
             setFormInfo({...formInfo, hashtags: [...formInfo.hashtags, {tagname: val}]})
         }
 
