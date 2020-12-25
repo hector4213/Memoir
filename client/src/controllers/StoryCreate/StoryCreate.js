@@ -3,7 +3,7 @@ import './StoryCreate.scss'
 import Button from '../../templates/Button/Button'
 import {connect} from 'react-redux'
 import {createStoryAction} from '../../redux/actions/story'
-
+import {setErrorAction} from '../../redux/actions/page'
 import { deleteFromImgur, postToImgur } from '../../components/api/imgur'
 
 const StoryCreate = props => {
@@ -13,7 +13,7 @@ const StoryCreate = props => {
         occupation_f: true
     })
     const [storyImg, setStoryImg] = useState()
-    const {createStory} = props
+    const {createStory, setError} = props
 
     const handleImageEmbed = async e => {
         if(storyImg && storyImg.includes('imgur')){
@@ -96,6 +96,8 @@ const StoryCreate = props => {
                     ){
                         createStory(formInfo)
                     } else {
+                        setError(`Failed to Add Story:  ${formInfo.story_img? '': 'No Image Uploaded. '} ${formInfo.name? '': 'A Name was not given. '} ${formInfo.occupation? '':'No occupation was provided.'}`)
+
                         setFormInfo({
                             ...formInfo,
                             image_f: formInfo.story_img? true: false,
@@ -111,7 +113,8 @@ const StoryCreate = props => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        createStory: (formInfo) => dispatch(createStoryAction(formInfo))
+        createStory: (formInfo) => dispatch(createStoryAction(formInfo)),
+        setError: errorMessage => dispatch(setErrorAction(errorMessage))
     }
 }
 
