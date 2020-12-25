@@ -44,7 +44,7 @@ const OthersStuff = props => {
             }
         })
     } else {
-        return <ErrorDisplay message='There seems to not be any entries from other people'/>
+        return <ErrorDisplay message='This is where you will see Entries that other users have added to your Stories. Right now it seems you do not have any Entries from other users invite some friends to add to your Stories.'/>
     }
 
     return (
