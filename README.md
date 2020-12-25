@@ -5,6 +5,7 @@
 # Memoir
 
 Discover a story. Share yours.
+
 See deployed version here: [Memoir App](https://memoirapp.netlify.app/)
 
 ## Table of contents
