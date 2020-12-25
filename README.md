@@ -27,9 +27,53 @@ Discover a story. Share yours.
   - [Testing](#testing)
   - [Dependencies](#dependencies)
 
+
+---
+
 ### Features
 
-Features and screens here
+#### Home
+**Stories** are all listed out in the front page
+![Stories](./client/README_images/stories.png)
+
+#### Story
+Each Story has it's own page with a unique URL
+![Timeline](./client/README_images/timeline_main.png)
+
+#### Entries
+Each Story has **Entries** that are shown on a timeline in chronological order
+![Timeline](./client/README_images/timeline.png)
+
+#### Inspired Button
+Each Story can be marked as **inspiring** to recommend to others
+![Inspired Button](./client/README_images/inspired_button.png)
+
+#### Single Entry View
+Each Entry in the Story can be viewed on it's own page.
+This single Entry view shows a presentation mode to look through the other Entries in the Story.
+![View Entry](./client/README_images/view_entry.png)
+
+#### Foreign Entries
+A person can add an Entry to any Story. If an Entry is added to someone else's Story then it must be approved before it is shown.
+![Add Entry](./client/README_images/add_entry.png)
+
+#### Profile
+Every signed in user will have a profile page where they can see the Stories and Entries they have created.
+![View Profile](./client/README_images/view_profile.png)
+
+#### Approve/Deny Foreign Entries
+The profile has a seperate section with foreign Entries that need to be approved in order to be shown on their timeline.
+![Approve Foreign Entries](./client/README_images/approve_foreign.png)
+
+#### Search
+If you're looking for an Entry with a specific tag, title, or date then there is a search feature on the Home page that can help.
+![Search](./client/README_images/search.png)
+
+#### Mobile Friendly
+Memoir was also adapted to be mobile friendly.
+![Mobile Friendly](./client/README_images/mobile.png)
+
+---
 
 ## Frontend
 
