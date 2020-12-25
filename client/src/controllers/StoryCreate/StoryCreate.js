@@ -7,7 +7,11 @@ import {createStoryAction} from '../../redux/actions/story'
 import { deleteFromImgur, postToImgur } from '../../components/api/imgur'
 
 const StoryCreate = props => {
-    const [formInfo, setFormInfo] = useState()
+    const [formInfo, setFormInfo] = useState({
+        image_f: true,
+        name_f: true,
+        occupation_f: true
+    })
     const [storyImg, setStoryImg] = useState()
     const {createStory} = props
 
@@ -24,6 +28,8 @@ const StoryCreate = props => {
         })
     }
 
+    const notFilledStyle = {border: '2px solid red'}
+
     return (
         <form>
             <div className='story-img'>
@@ -33,23 +39,45 @@ const StoryCreate = props => {
             <h2>Create a new Story</h2>
 
             <input
+                autoComplete="off"
                 type="file"
                 name='image-embed'
+                style={formInfo.image_f? {} : notFilledStyle}
                 onChange={handleImageEmbed}
             />
 
             <input
+                autoComplete="off"
                 type='text'
                 name='name'
                 placeholder='Enter story name'
-                onChange={ e => setFormInfo( {...formInfo, name: e.target.value })}
+                style={formInfo.name_f? {} : notFilledStyle}
+                onChange={ e => {
+                    e.preventDefault()
+                    const val = e.target.value
+                    if(val !== ''){
+                        setFormInfo( {...formInfo, name: val, name_f:true })
+                    } else {
+                        setFormInfo( {...formInfo, name: val, name_f:false })
+                    }
+                }}
             />
 
             <input
+                autoComplete="off"
                 type='text'
                 name='occupation'
                 placeholder='Enter the persons occupation'
-                onChange={ e => setFormInfo( {...formInfo, occupation: e.target.value })}
+                style={formInfo.occupation_f? {} : notFilledStyle}
+                onChange={ e =>{
+                    e.preventDefault()
+                    const val = e.target.value
+                    if(val !== ''){
+                        setFormInfo( {...formInfo, occupation: val, occupation_f:true })
+                    } else {
+                        setFormInfo( {...formInfo, occupation: val, occupation_f:false })
+                    }
+                }}
             />
 
             <Button {...{
@@ -58,7 +86,16 @@ const StoryCreate = props => {
                 extraClass:'submit-createStory',
                 onClick: e => {
                     e.preventDefault()
-                    createStory(formInfo)
+                    console.log(formInfo)
+                    if( formInfo.story_img && formInfo.name && formInfo.occupation){
+                        createStory(formInfo)
+                    } else {
+                        setFormInfo({
+                            image_f: formInfo.story_img? true: false,
+                            name_f: formInfo.name? true: false,
+                            occupation_f: formInfo.occupation? true: false
+                        })
+                    }
                 }
             }}/>
         </form>
