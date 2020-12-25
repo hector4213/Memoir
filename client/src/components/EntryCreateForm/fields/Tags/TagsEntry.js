@@ -8,13 +8,15 @@ const TagsEntry = props => {
 
     const tagTabs = tags.map( (tag, i) => {
         return <li key={i} onClick={ e => {
-            const filtered = tags.filter( tag => {
-                const tagname = tag.tagname
-                const clicked = e.target.innerHTML.trim()
-                const notEqual = tagname !== clicked
-                return notEqual
-            })
-            setFormInfo({...formInfo, hashtags: filtered})
+            if(window.confirm(`Are you sure you want to delete ${tag.tagname} ?`)){
+                const filtered = tags.filter( tag => {
+                    const tagname = tag.tagname
+                    const clicked = e.target.innerHTML.trim()
+                    const notEqual = tagname !== clicked
+                    return notEqual
+                })
+                setFormInfo({...formInfo, hashtags: filtered})
+            }
         }}> {tag.tagname} </li>
     })
 
