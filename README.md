@@ -30,7 +30,7 @@ Discover a story. Share yours.
 
 ---
 
-### Features
+## Features
 
 #### Home
 **Stories** are all listed out in the front page
