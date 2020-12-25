@@ -87,13 +87,20 @@ const StoryCreate = props => {
                 onClick: e => {
                     e.preventDefault()
                     console.log(formInfo)
-                    if( formInfo.story_img && formInfo.name && formInfo.occupation){
+                    if(
+                        formInfo.story_img &&
+                        formInfo.name &&
+                        formInfo.name.length>=3 &&
+                        formInfo.occupation&&
+                        formInfo.occupation.length>=3
+                    ){
                         createStory(formInfo)
                     } else {
                         setFormInfo({
+                            ...formInfo,
                             image_f: formInfo.story_img? true: false,
-                            name_f: formInfo.name? true: false,
-                            occupation_f: formInfo.occupation? true: false
+                            name_f: formInfo.name && formInfo.name.length>=3? true: false,
+                            occupation_f: formInfo.occupation && formInfo.occupation.length>=3? true: false
                         })
                     }
                 }
