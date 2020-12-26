@@ -43,22 +43,18 @@ return(
 
     <div className='description'>
         <p>
-        Have you ever heard the Story of someone's life and been amazed ? <br/>
-        The experiences and hardships that they've had to go through to get to an inspiring place in their lives ?
+        Have you ever heard the Story of someone's life and been inspired ? <br/>
+        Surprised by the experiences and hardships that they've had to go through to get to an inspiring place in their lives ...
         </p>
 
         <p>
-        It's these stories that inspired Memoir. <br/>
-        A visual experience where you will be able to scroll through people's lives and see that life's Story is full of small entries.
-        </p>
-
-        <p>
-        Is there someone you know a lot about ? Are you a big fan of someone ? <br/>
+        It's these stories that inspired <b>Memoir</b>. <br/>
+        A visual experience where you will be able to scroll through people's lives and see that life's Story is full of small entries. Is there someone you know a lot about?  a friend?  a loved one? a pet? <br/>
         Share that story!
         </p>
 
         <p>
-        Memoir was made to share, learn, and empathize with your fellow human beings.
+        Memoir was made to share, learn, and empathize with your fellow human beings
         </p>
     </div>
 
