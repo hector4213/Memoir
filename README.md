@@ -85,7 +85,6 @@ Memoir was also adapted to be mobile friendly.
 
 ![Mobile Friendly](./client/README_images/mobile.png)
 
----
 
 ## Frontend
 
