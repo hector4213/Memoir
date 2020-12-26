@@ -10,7 +10,7 @@ See deployed version here: [Memoir App](https://memoirapp.netlify.app/)
 
 Memoir is an application where users can share their [stories](#creating-a-story) about their friends, loved ones, pets, anybody really! Users can post [entries](#posting-an-entry) about a memorable moment they had with that individual.
 
-Since stories can be told in many ways, memoir encourages you post in many formats!. Post an entry with a YouTube link of a video that reminds you of them, post a picture of your favourite trip with them, send them a love song from a soundcloud link or keep it simple with plain text.
+Since stories can be told in many ways, memoir encourages you post in many formats! Post an entry with a YouTube link of a video that reminds you of them, post a picture of your favourite trip with them, send them a love song from a soundcloud link or keep it simple with plain text.
 
 ## Table of contents
 
@@ -48,7 +48,7 @@ Since stories can be told in many ways, memoir encourages you post in many forma
 
 #### Home
 
-**Stories** are all listed out in the front page
+User created stories are displayed in the front page
 
 ![Stories](./client/README_images/stories.png)
 
@@ -58,7 +58,7 @@ Users can create a "story" for a person
 
 #### _What is a Story?_
 
-A story is resembles a profile, a persons named is entered, a picture of them and their occupation. From there yourself or other users can add entries related to that user "story"
+A story resembles a profile, a persons named is entered, a picture of them and their occupation. From there yourself or other users can add entries related to that user "story"
 
 ![Timeline](./client/README_images/timeline_main.png)
 
