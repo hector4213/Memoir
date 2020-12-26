@@ -29,62 +29,76 @@ See deployed version here: [Memoir App](https://memoirapp.netlify.app/)
   - [Testing](#testing)
   - [Dependencies](#dependencies)
 
-
 ---
 
 ## Features
 
 #### Home
+
 **Stories** are all listed out in the front page
 
 ![Stories](./client/README_images/stories.png)
 
 #### Story
-Each Story has it's own page with a unique URL
+
+**Creating a Story**
+Users can create a "story" for a person
+
+_What is a Story?_
+A story is resembles a profile a persons named is entered, a picture of them and their occupation. From there yourself or other users can add entries related to that user "story"
 
 ![Timeline](./client/README_images/timeline_main.png)
 
 #### Entries
-Each Story has **Entries** that are shown on a timeline in chronological order
+
+Entries are a unique feature that users can post to stories. An entry can have one of four formats. Plain text. Audio in the form of a SoundCloud embed link, video in the form of a Youtube link either directly copied from your browser, or from a share link. Entries should somewhat pertain to the User is it posted to. For example, you could post an image of a dancing chicken to remind your friend he is not so good at doing the dougie.
+
+Entries are displayed in a chronological order. From earliest to latest entry.
 
 ![Timeline](./client/README_images/timeline.png)
 
 #### Inspired Button
+
 Each Story can be marked as **inspiring** to recommend to others
 
 ![Inspired Button](./client/README_images/inspired_button.png)
 
 #### Single Entry View
+
 Each Entry in the Story can be viewed on it's own page.
 This single Entry view shows a presentation mode to look through the other Entries in the Story.
 
 ![View Entry](./client/README_images/view_entry.png)
 
 #### Foreign Entries
+
 A person can add an Entry to any Story. If an Entry is added to someone else's Story then it must be approved before it is shown.
 
 ![Add Entry](./client/README_images/add_entry.png)
 
 #### Profile
+
 Every signed in user will have a profile page where they can see the Stories and Entries they have created.
 
 ![View Profile](./client/README_images/view_profile.png)
 
 #### Approve/Deny Foreign Entries
+
 The profile has a seperate section with foreign Entries that need to be approved in order to be shown on their timeline.
 
 ![Approve Foreign Entries](./client/README_images/approve_foreign.png)
 
 #### Search
+
 If you're looking for an Entry with a specific tag, title, or date then there is a search feature on the Home page that can help.
 
 ![Search](./client/README_images/search.png)
 
 #### Mobile Friendly
+
 Memoir was also adapted to be mobile friendly.
 
 ![Mobile Friendly](./client/README_images/mobile_friendly.png)
-
 
 ## Frontend
 
