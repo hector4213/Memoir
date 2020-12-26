@@ -51,11 +51,7 @@ A story is resembles a profile, a persons named is entered, a picture of them an
 
 #### Entries
 
-Entries are a unique feature that users can post to stories. An entry can have one of four formats. Plain text. Audio in the form of a SoundCloud embed link, video in the form of a Youtube link either directly copied from your browser, or from a share link. Entries should somewhat pertain to the User is it posted to. For example, you could post an image of a dancing chicken to remind your friend he is not so good at doing the dougie.
-
-Posting an entry also has the feature of adding tags! You can make your entries more memorable with adding tags to your entries. With tags in your entries, other users are able to find similar entries with Memoirs search functionality.
-
-Entries are displayed in a chronological order. From earliest to latest entry date.
+Entries are a unique feature that users can post to stories. An entry can have one of four formats. Plain text. Audio in the form of a SoundCloud embed link, video in the form of a Youtube link either directly copied from your browser, or from a share link. Entries are displayed in a chronological order, in a timeline From earliest to latest entry date.
 
 ![Timeline](./client/README_images/timeline.png)
 
