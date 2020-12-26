@@ -12,6 +12,15 @@ See deployed version here: [Memoir App](https://memoirapp.netlify.app/)
 
 - [Table of contents](#table-of-contents)
 - [Features](#features)
+  [Create a Story](#creating-a-story)
+  [Create an entry](#create-an-entry)
+  [Posting an Entry](#posting-an-entry)
+  [Single View Entry](#single-view-entry)
+  [Inspired Button](#inspired-button)
+  [User Dashboard](#user-dashboard)
+  [Entry Management](#entry-management)
+  [Search](#search)
+  [Responsiveness](#responsiveness)
 - [Frontend](#frontend)
   - [Some notes about the Front end](#some-notes-about-the-frontend)
   - [Usage and Installation](#usage-and-installation)
@@ -49,11 +58,25 @@ A story is resembles a profile, a persons named is entered, a picture of them an
 
 ![Timeline](./client/README_images/timeline_main.png)
 
-#### Entries
+#### Create an entry
 
 Entries are a unique feature that users can post to stories. An entry can have one of four formats. Plain text. Audio in the form of a SoundCloud embed link, video in the form of a Youtube link either directly copied from your browser, or from a share link. Entries are displayed in a chronological order, in a timeline From earliest to latest entry date.
 
 ![Timeline](./client/README_images/timeline.png)
+
+#### Posting an Entry
+
+Memoir doesn't discriminate when users post an entry to a story, any user can post to any story. Except if the user is not original author of the story, the story will not be visible until it is approved by the story author. Preventing malicious people from posting distasteful posts. Entries should somewhat pertain to the story is it posted to. For example, you could post an image of a dancing chicken to remind your friend he is not so good at doing the dougie.
+
+Posting an entry also has the feature of adding tags! You can make your entries more memorable with adding tags to your entries. With tags in your entries, other users are able to find similar entries with Memoirs search functionality.
+
+![Add Entry](./client/README_images/add_entry.png)
+
+#### Single Entry View
+
+Each entry in the story can be viewed on it's individual page. The single entry view shows a presentation mode , users are able to look through other entries in that particular story.
+
+![View Entry](./client/README_images/view_entry.png)
 
 #### Inspired Button
 
@@ -61,28 +84,15 @@ Each Story can be marked as **inspiring** to recommend to others
 
 ![Inspired Button](./client/README_images/inspired_button.png)
 
-#### Single Entry View
+#### User Dashboard
 
-Each Entry in the Story can be viewed on it's own page.
-This single Entry view shows a presentation mode to look through the other Entries in the Story.
-
-![View Entry](./client/README_images/view_entry.png)
-
-#### Posting an Entry
-
-Memoir doesnt discriminate when users post an entry to a story, any user can post to any story. Except if the user is not original author of the story, the story will not be visible until it is approved by the story author. This way, we prevent malicious people from posting malicious distasteful posts.
-
-![Add Entry](./client/README_images/add_entry.png)
-
-#### Profile
-
-Every signed in user will have a profile page where they can see the Stories and Entries they have created.
+Every signed in user will see their story dashboard. The user will see the stories they have created in addition to all entries they have written. In their story dashboard users have access to [manage other entries](#entry-management) that were not written by them.
 
 ![View Profile](./client/README_images/view_profile.png)
 
-#### Approve/Deny Foreign Entries
+#### Entry Management
 
-The profile has a seperate section with foreign Entries that need to be approved in order to be shown on their timeline.
+The profile view has a divided section showing entries the user has authored in their stories and entries that were written by other users. As mentioned previously if a user posts an entry to a story is not theirs, it will not be visible and they must wait until it is approved by the author. Story authors have the ability to approved or deny entries to their stories, a new story from a foreign user will always be marked pending in the dashboard.
 
 ![Approve Foreign Entries](./client/README_images/approve_foreign.png)
 
@@ -94,9 +104,9 @@ _i.e_ YYYY_MM_DD
 
 ![Search](./client/README_images/search.png)
 
-#### Mobile Friendly
+#### Responsiveness
 
-Memoir was also adapted to be mobile friendly.
+Memoir is responsive and mobile-friendly!.
 
 ![Mobile Friendly](./client/README_images/mobile_friendly.png)
 
