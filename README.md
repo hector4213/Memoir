@@ -16,7 +16,7 @@ Since stories can be told in many ways, memoir encourages you post in many forma
 
 - [Table of contents](#table-of-contents)
 - [Features](#features)
-  - [Create a Story](#creating-a-story)
+  - [Create a Story](#creating-a-story-on-memoir)
   - [Create an Entry](#create-an-entry)
   - [Posting an Entry](#posting-an-entry)
   - [Single View Entry](#single-view-entry)
