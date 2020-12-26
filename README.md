@@ -52,11 +52,9 @@ User created stories are displayed in the front page
 
 ![Stories](./client/README_images/stories.png)
 
-#### Creating a Story
+#### Creating a Story on Memoir
 
-Users can create a "story" for a person
-
-#### _What is a Story?_
+ _What is a Story?_
 
 A story resembles a profile, a persons named is entered, a picture of them and their occupation. From there yourself or other users can add entries related to that user "story"
 
