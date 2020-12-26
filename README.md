@@ -8,6 +8,8 @@ Discover a story. Share yours.
 
 See deployed version here: [Memoir App](https://memoirapp.netlify.app/)
 
+Memoir is an application where it allows users to share their stories about their friends, loved ones, pets, anybody really! Users can post entries about a memorable moment they had with that individual, since stories can be told in multiple ways, memoir lets you post in different formats!. Post a YouTube link of a video that reminds you of them, post a picture of your favourite trip with them, send them a love song from a soundcloud link or keep it classic with a text post poem.
+
 ## Table of contents
 
 - [Table of contents](#table-of-contents)
