@@ -15,6 +15,7 @@ input, textarea {
     font-family: $font_fam;
     font-size: $text_size;
     line-height: $text_lineheight_size;
+    resize: none;
 }
 
 input::placeholder, textarea::placeholder {
