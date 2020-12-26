@@ -83,7 +83,7 @@ If you're looking for an Entry with a specific tag, title, or date then there is
 #### Mobile Friendly
 Memoir was also adapted to be mobile friendly.
 
-![Mobile Friendly](./client/README_images/mobile.png)
+![Mobile Friendly](./client/README_images/mobile_friendly.png)
 
 
 ## Frontend
