@@ -39,12 +39,12 @@ See deployed version here: [Memoir App](https://memoirapp.netlify.app/)
 
 ![Stories](./client/README_images/stories.png)
 
-#### Story
+#### Creating a Story
 
-**Creating a Story**
 Users can create a "story" for a person
 
-_What is a Story?_
+#### _What is a Story?_
+
 A story is resembles a profile a persons named is entered, a picture of them and their occupation. From there yourself or other users can add entries related to that user "story"
 
 ![Timeline](./client/README_images/timeline_main.png)
@@ -53,7 +53,7 @@ A story is resembles a profile a persons named is entered, a picture of them and
 
 Entries are a unique feature that users can post to stories. An entry can have one of four formats. Plain text. Audio in the form of a SoundCloud embed link, video in the form of a Youtube link either directly copied from your browser, or from a share link. Entries should somewhat pertain to the User is it posted to. For example, you could post an image of a dancing chicken to remind your friend he is not so good at doing the dougie.
 
-Entries are displayed in a chronological order. From earliest to latest entry.
+Entries are displayed in a chronological order. From earliest to latest entry date.
 
 ![Timeline](./client/README_images/timeline.png)
 
