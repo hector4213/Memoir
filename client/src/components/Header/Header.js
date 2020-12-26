@@ -24,6 +24,7 @@ const Header = props => {
     }
 
 return(
+    <>
     <div className='header'>
         <div
             className='title'
@@ -31,14 +32,37 @@ return(
             onMouseOut={mouseOut}
         >
             <h1>Memoir</h1>
-            <p>
+            <h2>
                 Discover a story. <br/>
                 Share yours.
-            </p>
+            </h2>
         </div>
 
         <div className='logo' ref={logo} style={logoStyle}/>
     </div>
+
+    <div className='description'>
+        <p>
+        Have you ever heard the Story of someone's life and been amazed ? <br/>
+        The experiences and hardships that they've had to go through to get to an inspiring place in their lives ?
+        </p>
+
+        <p>
+        It's these stories that inspired Memoir. <br/>
+        A visual experience where you will be able to scroll through people's lives and see that life's Story is full of small entries.
+        </p>
+
+        <p>
+        Is there someone you know a lot about ? Are you a big fan of someone ? <br/>
+        Share that story!
+        </p>
+
+        <p>
+        Memoir was made to share, learn, and empathize with your fellow human beings.
+        </p>
+    </div>
+
+    </>
 )
 }
 

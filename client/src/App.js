@@ -26,13 +26,14 @@ const App = props => {
     <div className="App">
 
       {
-        error && error.startsWith('New entry')?
+        // error && error.startsWith('New entry')?
+        error && error.startsWith('*')?
         <div className='success-message' onClick={() => setError(null)}> {error} </div>
         : ''
       }
 
       {
-        error && !error.startsWith('New entry') ?
+        error && !error.startsWith('*') ?
         <div className='error-message' onClick={() => setError(null)}> {error} </div>
         : ''
       }

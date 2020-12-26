@@ -65,16 +65,19 @@ export const createEntryAction = entryInfo => {
                 'Authorization': `bearer ${token}`
             }
 
-            await axios.post(`https://memoirbackend.herokuapp.com/api/stories/${storyId}/entries`, entryInfo, {headers: headers})
+            const res = await axios.post(`https://memoirbackend.herokuapp.com/api/stories/${storyId}/entries`, entryInfo, {headers: headers})
 
             console.log('entry successfully saved on db')
 
             if(storyAuthorId !== userId){
                 dispatch({
                     type: 'ERROR',
-                    payload: `New entry will be visible when ${storyAuthorName} approves it.`
+                    payload: `* New entry will be visible when ${storyAuthorName} approves it.`
                 })
             }
+
+            console.log(res)
+            // this is where the ENTRY ID is needed to redirect to entry
 
             history.push(`/story/${storyId}`)
 
