@@ -72,9 +72,9 @@ This single Entry view shows a presentation mode to look through the other Entri
 
 ![View Entry](./client/README_images/view_entry.png)
 
-#### Foreign Entries
+#### Posting an Entry
 
-A person can add an Entry to any Story. If an Entry is added to someone else's Story then it must be approved before it is shown.
+Memoir doesnt discriminate when users post an entry to a story, any user can post to any story. Except if the user is not original author of the story, the story will not be visible until it is approved by the story author. This way, we prevent malicious people from posting malicious distasteful posts.
 
 ![Add Entry](./client/README_images/add_entry.png)
 
