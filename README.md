@@ -8,14 +8,16 @@ Discover a story. Share yours.
 
 See deployed version here: [Memoir App](https://memoirapp.netlify.app/)
 
-Memoir is an application where it allows users to share their stories about their friends, loved ones, pets, anybody really! Users can post entries about a memorable moment they had with that individual, since stories can be told in multiple ways, memoir lets you post in different formats!. Post a YouTube link of a video that reminds you of them, post a picture of your favourite trip with them, send them a love song from a soundcloud link or keep it classic with a text post poem.
+Memoir is an application where users can share their [stories](#creating-a-story) about their friends, loved ones, pets, anybody really! Users can post [entries](#posting-an-entry) about a memorable moment they had with that individual.
+
+Since stories can be told in many ways, memoir encourages you post in many formats!. Post an entry with a YouTube link of a video that reminds you of them, post a picture of your favourite trip with them, send them a love song from a soundcloud link or keep it simple with plain text.
 
 ## Table of contents
 
 - [Table of contents](#table-of-contents)
 - [Features](#features)
   - [Create a Story](#creating-a-story)
-  - [Create an entry](#create-an-entry)
+  - [Create an Entry](#create-an-entry)
   - [Posting an Entry](#posting-an-entry)
   - [Single View Entry](#single-view-entry)
   - [Inspired Button](#inspired-button)
@@ -62,13 +64,15 @@ A story is resembles a profile, a persons named is entered, a picture of them an
 
 #### Create an entry
 
-Entries are a unique feature that users can post to stories. An entry can have one of four formats. Plain text. Audio in the form of a SoundCloud embed link, video in the form of a Youtube link either directly copied from your browser, or from a share link. Entries are displayed in a chronological order, in a timeline From earliest to latest entry date.
+Entries are a unique feature that users can post to stories. An entry can have one of four formats. Plain text. Audio in the form of a SoundCloud embed link, video in the form of a Youtube link either directly copied from your browser, or from a share link. Entries are displayed in a chronological order, in a timeline From earliest to latest entry date. 
+
+_An entry should have a format selected, a description  and date for submission. Tags are optional._
 
 ![Timeline](./client/README_images/timeline.png)
 
 #### Posting an Entry
 
-Memoir doesn't discriminate when users post an entry to a story, any user can post to any story. Except if the user is not original author of the story, the story will not be visible until it is approved by the story author. Preventing malicious people from posting distasteful posts. Entries should somewhat pertain to the story is it posted to. For example, you could post an image of a dancing chicken to remind your friend he is not so good at doing the dougie.
+Memoir doesn't discriminate when users post an entry to a story, any user can post to any story. If the user is not original author of the story, the entry will not be visible until it is approved by the story author. This way we prevent malicious people from posting distasteful posts. Entries should somewhat pertain to the story is it posted to. For example, you could post an image of a dancing chicken to remind your friend he is not so good at doing the dougie.
 
 Posting an entry also has the feature of adding tags! You can make your entries more memorable with adding tags to your entries. With tags in your entries, other users are able to find similar entries with Memoirs search functionality.
 
@@ -76,7 +80,7 @@ Posting an entry also has the feature of adding tags! You can make your entries 
 
 #### Single Entry View
 
-Each entry in the story can be viewed on it's individual page. The single entry view shows a presentation mode , users are able to look through other entries in that particular story.
+Each entry in a story can be viewed on it's individual page. The single entry view shows a presentation mode , users are able to look through other entries for that particular story.
 
 ![View Entry](./client/README_images/view_entry.png)
 
@@ -88,13 +92,13 @@ Each Story can be marked as **inspiring** to recommend to others
 
 #### User Dashboard
 
-Every signed in user will see their story dashboard. The user will see the stories they have created in addition to all entries they have written. In their story dashboard users have access to [manage other entries](#entry-management) that were not written by them.
+Every user has a story dashboard. The dashboard enables users to see the stories they have created in addition to creating new ones. Additionally users in their dashboard can [manage foreign entries](#entry-management) that were not written by them.
 
 ![View Profile](./client/README_images/view_profile.png)
 
 #### Entry Management
 
-The profile view has a divided section showing entries the user has authored in their stories and entries that were written by other users. As mentioned previously if a user posts an entry to a story is not theirs, it will not be visible and they must wait until it is approved by the author. Story authors have the ability to approved or deny entries to their stories, a new story from a foreign user will always be marked pending in the dashboard.
+The dashboard view has a divided section showing entries the user has authored in their stories and entries that were written by other users. As mentioned previously if a user posts an entry to a story is not theirs, it will not be visible and they must wait until it is approved by the story author. Story authors have the ability to approved or deny entries to their stories, a new entry from a foreign user will always be marked pending in the dashboard for the story author.
 
 ![Approve Foreign Entries](./client/README_images/approve_foreign.png)
 
