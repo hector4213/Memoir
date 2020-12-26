@@ -8,6 +8,18 @@ Discover a story. Share yours.
 
 See deployed version here: [Memoir App](https://memoirapp.netlify.app/)
 
+Have you ever heard the Story of someone's life and been amazed ?
+
+The experiences and hardships that they've had to go through to get to an inspiring place in their lives ?
+
+It's these stories that inspired Memoir. A visual experience where you will be able to scroll through people's lives and see that life's Story is full of small entries.
+
+Is there someone you know a lot about ? Are you a big fan of someone ? Share that story!
+
+Users can share stories about their friends, loved ones, pets, anybody you love ! One account can have as many stories as you can think of. Users can also post entries about a memorable moment they had with that individual. Since entries can be told in many ways, Memoir encourages you to post in many formats. Post an entry with a YouTube link of them, post a picture of your favorite trip with them, send them a love song from a SoundCloud embed or keep it simple with plain text.
+
+Memoir was made to share, learn, and empathize with your fellow human beings. Start your own stories and discover someone else's.
+
 ## Table of contents
 
 - [Table of contents](#table-of-contents)
