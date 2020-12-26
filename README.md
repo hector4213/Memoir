@@ -45,13 +45,15 @@ Users can create a "story" for a person
 
 #### _What is a Story?_
 
-A story is resembles a profile a persons named is entered, a picture of them and their occupation. From there yourself or other users can add entries related to that user "story"
+A story is resembles a profile, a persons named is entered, a picture of them and their occupation. From there yourself or other users can add entries related to that user "story"
 
 ![Timeline](./client/README_images/timeline_main.png)
 
 #### Entries
 
 Entries are a unique feature that users can post to stories. An entry can have one of four formats. Plain text. Audio in the form of a SoundCloud embed link, video in the form of a Youtube link either directly copied from your browser, or from a share link. Entries should somewhat pertain to the User is it posted to. For example, you could post an image of a dancing chicken to remind your friend he is not so good at doing the dougie.
+
+Posting an entry also has the feature of adding tags! You can make your entries more memorable with adding tags to your entries. With tags in your entries, other users are able to find similar entries with Memoirs search functionality.
 
 Entries are displayed in a chronological order. From earliest to latest entry date.
 
@@ -90,7 +92,9 @@ The profile has a seperate section with foreign Entries that need to be approved
 
 #### Search
 
-If you're looking for an Entry with a specific tag, title, or date then there is a search feature on the Home page that can help.
+Memoir has search functionality, where users can search either by tag, specific date or entry title. Memoir uses a fuzzy searching to find matching strings. Dates must be specific.
+
+_i.e_ YYYY_MM_DD
 
 ![Search](./client/README_images/search.png)
 
