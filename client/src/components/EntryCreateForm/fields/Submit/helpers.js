@@ -27,7 +27,7 @@ export const areFieldsValid = (formInfo, date) => {
 
         const valid_title = formInfo.title !== '' ? true : false
         const valid_description = formInfo.description !== '' ? true : false
-        const valid_date = 999 < year && year < 3000? true : false
+        const valid_date = 0 < year ? true : false
 
         allFieldsTrue = (
             valid_format_id &&
