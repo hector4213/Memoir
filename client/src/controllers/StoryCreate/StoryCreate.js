@@ -8,6 +8,7 @@ import { deleteFromImgur, postToImgur } from '../../components/api/imgur'
 
 const StoryCreate = props => {
     const [formInfo, setFormInfo] = useState({
+        story_img: '', name: '', occupation:'',
         image_f: true,
         name_f: true,
         occupation_f: true
@@ -94,9 +95,16 @@ const StoryCreate = props => {
                         formInfo.occupation&&
                         formInfo.occupation.length>=3
                     ){
+                        setError(null)
                         createStory(formInfo)
                     } else {
-                        setError(`Failed to Add Story:  ${formInfo.story_img? '': 'No Image Uploaded. '} ${formInfo.name? '': 'A Name was not given. '} ${formInfo.occupation? '':'No occupation was provided.'}`)
+                        setError(`Failed to Add Story:
+                        ${formInfo.story_img? '': 'No Image Uploaded. '}
+                        ${formInfo.name? '': 'A Name was not given. '}
+                        ${formInfo.occupation? '':'No occupation was provided.'}
+                        ${formInfo.name.length>=3? '':'Name must be longer than 3 characters.'}
+                        ${formInfo.occupation.length>=3? '':'Occupation must be longer than 3 characters.'}
+                        `)
 
                         setFormInfo({
                             ...formInfo,
