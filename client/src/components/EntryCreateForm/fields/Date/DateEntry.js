@@ -1,12 +1,14 @@
-import React from 'react'
+import React, {useState} from 'react'
 import './DateEntry.scss'
 
 const DateEntry = props => {
 
     const {notFilledStyle, setDate, date, month_F, day_F, year_F} = props
 
-    const dayOptions = []
-    for(let i=1; i<=31; i++){
+    const [daysLength, setDaysLength] = useState(date.month? daysInMonth(date.month):0)
+
+    let dayOptions = []
+    for(let i = 1; i <= daysLength ; i++){
         dayOptions.push(<option key={i} value={i}> {i} </option>)
     }
 
@@ -16,7 +18,13 @@ const DateEntry = props => {
             <select name="months" className="months"
                 style={month_F?{}: notFilledStyle}
                 value = {date.month? date.month: ''}
-                onChange={e => setDate({...date, month:e.target.value, month_F:true})}
+                onChange={e => {
+                    e.preventDefault()
+
+                    const month = e.target.value
+                    setDaysLength(daysInMonth(month))
+                    setDate({...date, month:month, month_F:true})
+                }}
             >
                 <option value="">Month:</option>
                 <option value="1">January</option>
@@ -60,6 +68,23 @@ const DateEntry = props => {
             />
         </div>
     )
+}
+
+const daysInMonth = month => {
+    let daylength = 0
+
+    if( // MONTHS WITH 30 DAYS
+        month === '4' ||
+        month === '6' ||
+        month === '9' ||
+        month === '11'
+        ) {
+            daylength = 30
+    }
+    else if (month === '2') { daylength = 28}
+    else { daylength = 31 }
+
+    return daylength
 }
 
 export default DateEntry

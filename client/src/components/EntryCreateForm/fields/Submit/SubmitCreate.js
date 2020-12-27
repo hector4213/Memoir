@@ -24,14 +24,22 @@ const SubmitCreate = props => {
                 const allFieldsCompleted = areFieldsValid(formInfo, date)
 
                 if(allFieldsCompleted){
-                    const allFields = parseForm(formInfo, date)
+                    let allFields = parseForm(formInfo, date)
+
+                    // add a tag if there is one in the text input
+                    const tagField = document.querySelector('.tagText').value
+
+                    if(tagField){
+                        allFields = {...allFields, hashtags: [...formInfo.hashtags, {tagname: tagField}]}
+                    }
+
                     createEntry(allFields)
                     setError(null)
                 }
                 else {
                     setFormInfo(setFormToNotFilled(formInfo))
                     setDate(setDateToNotFilled(date))
-                    setError('All fields must be filled out')
+                    setError('Please check all fields to make sure they are filled out and longer than 3 characters')
                 }
             }
         }}/>
