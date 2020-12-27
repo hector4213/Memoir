@@ -63,7 +63,7 @@ const SubmitEdit = props => {
                 else {
                     setFormInfo(setFormToNotFilled(formInfo))
                     setDate(setDateToNotFilled(date))
-                    setError('All fields must be filled out')
+                    setError('Please check all fields to make sure they are filled out and longer than 3 characters')
                 }
             }
         }} />
