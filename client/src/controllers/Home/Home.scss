@@ -46,8 +46,11 @@
 @media only screen and (max-width: 550px) {
     .home-buttons {
         top: 2px !important;
-        left: 2px !important;
-        flex-direction: row !important;
+        right: 2px !important;
+
+        button {
+            margin-bottom: 0px !important;
+        }
     }
 
     .header .title {
