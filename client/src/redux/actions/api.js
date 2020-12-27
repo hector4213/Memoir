@@ -11,23 +11,23 @@ const baseUrl = 'https://memoirbackend.herokuapp.com/api'
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 const getAllStories = async () => {
-    return await axios.get('https://memoirbackend.herokuapp.com/api/stories')
+    return await axios.get(`${baseUrl}/stories`)
 }
 
 const getStory = async (storyId) => {
-    return await axios.get(`https://memoirbackend.herokuapp.com/api/stories/${storyId}`)
+    return await axios.get(`${baseUrl}/stories/${storyId}`)
 }
 
 const createStory = async (formInfo, headers) => {
-    return await axios.post(`https://memoirbackend.herokuapp.com/api/stories/create`, formInfo, {headers: headers})
+    return await axios.post(`${baseUrl}/stories/create`, formInfo, {headers: headers})
 }
 
 const editStory = async (storyId, entryInfo, headers) => {
-    return await axios.put(`https://memoirbackend.herokuapp.com/api/stories/edit/${storyId}`, entryInfo, {headers: headers})
+    return await axios.put(`${baseUrl}/stories/edit/${storyId}`, entryInfo, {headers: headers})
 }
 
 const deleteStory = async (storyId, headers) => {
-    return await axios.delete(`https://memoirbackend.herokuapp.com/api/stories/${storyId}`, {headers: headers})
+    return await axios.delete(`${baseUrl}/api/stories/${storyId}`, {headers: headers})
 }
 
 
