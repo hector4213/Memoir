@@ -20,6 +20,9 @@ const page = (state = initialState, action) => {
         case 'CURRENT_ENTRY':
             return {...state, current:{ ...state.current, entry: action.payload }}
 
+        case 'CLEAR_CURRENT':
+            return {...state, current:null}
+
         case 'SEARCH_RESULTS':
             return {...state, results: action.payload}
 

@@ -34,3 +34,9 @@ export const clearErrorAction = () => {
         })
 	}
 }
+
+export const clearCurrentAction = () => {
+    return async (dispatch, getState) => {
+        dispatch({ type: 'CLEAR_CURRENT'})
+	}
+}

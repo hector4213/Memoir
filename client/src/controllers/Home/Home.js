@@ -8,17 +8,20 @@ import Modal from '../../components/Modal/Modal'
 import LogInRegisterModal from '../../components/LogInRegister/LogInRegister'
 
 import {getAllStoriesAction} from '../../redux/actions/story'
+import {clearCurrentAction} from '../../redux/actions/page'
+
 import ButtonsForHome from '../ButtonGroups/ButtonsForHome/ButtonsForHome'
 import HomeCards from './HomeCards'
 import Searchbar from '../../components/Search/Search'
 
 const Home = props => {
-    const {getAllStories} = props
+    const {getAllStories, clearCurrent} = props
     const {modal, stories} = props
 
     useEffect(()=>{
         getAllStories()
-    }, [getAllStories])
+        clearCurrent()
+    }, [clearCurrent, getAllStories])
 
     return (
     <div className='home'>
@@ -42,6 +45,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         getAllStories: () => dispatch(getAllStoriesAction()),
+        clearCurrent: () => dispatch(clearCurrentAction())
     }
 }
 

@@ -5,13 +5,15 @@ import YourEntries from './YourEntries/YourEntries'
 import {connect} from 'react-redux'
 
 import {getMyProfileStuffAction} from '../../../redux/actions/profile'
+import {clearCurrentAction} from '../../../redux/actions/page'
 
 const YourStuff = props => {
-    const {getMyProfileStuff} = props
+    const {getMyProfileStuff, clearCurrent} = props
 
     useEffect(()=>{
         getMyProfileStuff()
-    },[getMyProfileStuff])
+        clearCurrent()
+    },[clearCurrent, getMyProfileStuff])
 
     return (
         <div className='yourStuff'>
@@ -23,7 +25,8 @@ const YourStuff = props => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        getMyProfileStuff: () => dispatch(getMyProfileStuffAction())
+        getMyProfileStuff: () => dispatch(getMyProfileStuffAction()),
+        clearCurrent: () => dispatch(clearCurrentAction())
     }
 }
 
