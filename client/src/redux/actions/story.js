@@ -1,4 +1,4 @@
-import axios from 'axios'
+import api from './api'
 import {history} from '../../index'
 
 
@@ -6,7 +6,7 @@ export const getAllStoriesAction = () => {
 	return async (dispatch, getState) => {
         try {
             console.log('-> getting all stories ...')
-            const res = await axios.get('https://memoirbackend.herokuapp.com/api/stories')
+            const res = await api.getAllStories()
             console.log('-> got all stories ...')
 
             dispatch({
@@ -29,7 +29,7 @@ export const getAllStoriesAction = () => {
 export const getSingleStoryAction = storyId => {
 	return async (dispatch, getState) => {
         try {
-            const response = await axios.get(`https://memoirbackend.herokuapp.com/api/stories/${storyId}`)
+            const response = await api.getStory(storyId)
             let sortedEntries = response.data.entries
 
             if(sortedEntries.length > 0){
@@ -65,16 +65,17 @@ export const editStoryAction = entryInfo => {
                 'Content-Type': 'application/json',
                 'Authorization': `bearer ${token}`
             }
-            const res = await axios.put(`https://memoirbackend.herokuapp.com/api/stories/edit/${storyId}`, entryInfo, {headers: headers})
 
-            console.log(res)
+            await api.editStory(storyId, entryInfo, headers)
 
             dispatch({
                 type: 'TOGGLE_MODAL',
                 payload: false
             })
 
-            const response = await axios.get(`https://memoirbackend.herokuapp.com/api/stories/${storyId}`)
+            // after editing get revised story
+
+            const response = await api.getStory(storyId)
             let sortedEntries = response.data.entries
 
             if(sortedEntries.length > 0){
@@ -109,16 +110,17 @@ export const createStoryAction = formInfo => {
                 'Content-Type': 'application/json',
                 'Authorization': `bearer ${token}`
             }
-            const res = await axios.post(`https://memoirbackend.herokuapp.com/api/stories/create`, formInfo, {headers: headers})
 
-            console.log(res)
+            await api.createStory(formInfo, headers)
 
             dispatch({
                 type: 'TOGGLE_MODAL',
                 payload: false
             })
 
-            const response = await axios.get(`https://memoirbackend.herokuapp.com/api/profile/${userId}`, {headers: headers})
+            // after create story add it to profile
+
+            const response = await api.getProfile(userId, headers)
 
             dispatch({
                 type: 'ADD_ENTRIES_STORIES',
@@ -144,7 +146,7 @@ export const deleteStoryAction = storyId => {
                 'Content-Type': 'application/json',
                 'Authorization': `bearer ${token}`
             }
-            const res = await axios.delete(`https://memoirbackend.herokuapp.com/api/stories/${storyId}`, {headers: headers})
+            const res = await api.deleteStory(storyId, headers)
 
             console.log(res)
 
@@ -155,7 +157,7 @@ export const deleteStoryAction = storyId => {
 
 
             if(history.location.pathname === '/profile'){
-                const response = await axios.get(`https://memoirbackend.herokuapp.com/api/profile/${userId}`, {headers: headers})
+                const response = await api.getProfile(userId)
 
                 dispatch({
                     type: 'ADD_ENTRIES_STORIES',

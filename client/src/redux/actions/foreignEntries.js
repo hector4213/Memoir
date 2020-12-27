@@ -1,4 +1,4 @@
-import axios from 'axios'
+import api from './api'
 
 export const getForeignEntriesAction = () => {
 	return async (dispatch, getState) => {
@@ -11,8 +11,7 @@ export const getForeignEntriesAction = () => {
         }
 
         try {
-            const response = await axios.get(`https://memoirbackend.herokuapp.com/api/profile/${userId}/manage`, {headers: headers})
-
+            const response = await api.getForeignEntries(userId, headers)
             dispatch({
                 type: 'FOREIGN_ENTRIES',
                 payload: response.data
@@ -38,13 +37,10 @@ export const editForeignEntriesAction = (entryId, entryStatus) => {
         }
 
         try {
-            const response = await axios.put(`https://memoirbackend.herokuapp.com/api/profile/${userId}/manage/${entryId}`, {
-                entry_status: entryStatus
-            }, {headers: headers})
 
-            console.log(response)
-
-            const res = await axios.get(`https://memoirbackend.herokuapp.com/api/profile/${userId}/manage`, {headers: headers})
+            await api.editForeignEntries(userId, entryId, entryStatus, headers)
+            // edit Foreign Entries then get Updated
+            const res = await api.getForeignEntries(userId, headers)
 
             dispatch({
                 type: 'FOREIGN_ENTRIES',

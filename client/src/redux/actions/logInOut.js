@@ -1,12 +1,13 @@
-import axios from 'axios'
+import api from './api'
 import {history} from '../../index'
 
 export const logInAction = formInfo => {
 	return async (dispatch, getState) => {
 
         if(formInfo && formInfo.email && formInfo.password) {
-            try{
-                const response = await axios.post('https://memoirbackend.herokuapp.com/api/auth/login', formInfo)
+            try {
+
+                const response = await api.logIn(formInfo)
 
                 dispatch({
                     type: 'ERROR',

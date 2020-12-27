@@ -1,5 +1,5 @@
-import axios from 'axios'
 import {history} from '../../index'
+import api from './api'
 
 export const editEntryAction = entryInfo => {
 	return async (dispatch, getState) => {
@@ -8,7 +8,6 @@ export const editEntryAction = entryInfo => {
         const entryId = getState().page.current.entry.id
 
         try {
-
             entryInfo = {
                 date: entryInfo.date,
                 description: entryInfo.description,
@@ -23,13 +22,9 @@ export const editEntryAction = entryInfo => {
                 'Authorization': `bearer ${token}`
             }
 
-            const res = await axios.put(`https://memoirbackend.herokuapp.com/api/stories/${storyId}/entries/edit/${entryId}`, entryInfo, {headers: headers})
-
-            console.log(res)
-
-            console.log(entryInfo)
-
-            const response = await axios.get(`https://memoirbackend.herokuapp.com/api/stories/${storyId}/entries/${entryId}`)
+            await api.editEntry(storyId, entryId, entryInfo, headers)
+            // after edit get revised entry
+            const response = await api.getEntry(storyId, entryId)
 
             dispatch({
                 type: 'CURRENT_ENTRY',
@@ -65,7 +60,7 @@ export const createEntryAction = entryInfo => {
                 'Authorization': `bearer ${token}`
             }
 
-            const res = await axios.post(`https://memoirbackend.herokuapp.com/api/stories/${storyId}/entries`, entryInfo, {headers: headers})
+            const res = await api.createEntry(storyId, entryInfo, headers)
 
             console.log('entry successfully saved on db')
 
@@ -104,7 +99,7 @@ export const createEntryAction = entryInfo => {
 export const getSingleEntryAction = (storyId, entryId) => {
 	return async (dispatch, getState) => {
         try {
-            const res = await axios.get(`https://memoirbackend.herokuapp.com/api/stories/${storyId}/entries/${entryId}`)
+            const res = await api.getEntry(storyId, entryId)
 
             dispatch({
                 type: 'CURRENT_ENTRY',
@@ -139,30 +134,20 @@ export const deleteEntryAction = (entry) => {
             const hash = splitEmbed[1]
 
             if(entry && entry.embed.includes('imgur')){
-                await axios({
-                    method: 'DELETE',
-                    url: `https://api.imgur.com/3/image/${hash}`,
-                    headers: {
-                        'Authorization': `Client-ID 39612fe2e37daed`,
-                        'Content-Type': 'image'
-                    },
-                })
-
+                await api.deleteIMGUR(hash)
                 console.log('image deleted from imgur')
             }
-
-
 
             const headers = {
                 'Content-Type': 'application/json',
                 'Authorization': `bearer ${token}`
             }
 
-            await axios.delete(`https://memoirbackend.herokuapp.com/api/stories/${storyId}/entries/${entryId}`, {headers: headers})
+            await api.deleteEntry(storyId, entryId, headers)
 
             console.log('entry deleted from database')
 
-            const response = await axios.get(`https://memoirbackend.herokuapp.com/api/profile/${userId}`, {headers: headers})
+            const response = await api.getProfile(userId, headers)
 
             dispatch({
                 type: 'ADD_ENTRIES_STORIES',

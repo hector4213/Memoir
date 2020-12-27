@@ -1,5 +1,5 @@
-import axios from 'axios'
 import {history} from '../../index'
+import api from './api'
 
 export const getMyProfileStuffAction = () => {
 	return async (dispatch, getState) => {
@@ -12,7 +12,7 @@ export const getMyProfileStuffAction = () => {
         }
 
         try {
-            const response = await axios.get(`https://memoirbackend.herokuapp.com/api/profile/${userId}`, {headers: headers})
+            const response = await api.getProfile(userId, headers)
 
             dispatch({
                 type: 'ADD_ENTRIES_STORIES',
@@ -53,9 +53,8 @@ export const deleteProfileAction = () => {
                 'Content-Type': 'application/json',
                 'Authorization': `bearer ${token}`
             }
-            const res = await axios.delete(`https://memoirbackend.herokuapp.com/api/profile/${profileId}`, {headers: headers})
 
-            console.log(res)
+            await api.deleteProfile(profileId, headers)
 
             localStorage.clear()
             dispatch({ type: 'REMOVE_PROFILE'})
@@ -86,7 +85,7 @@ export const editProfileAction = profileInfo => {
                 'Authorization': `bearer ${token}`
             }
 
-            const res = await axios.put(`https://memoirbackend.herokuapp.com/api/profile/${profileInfo.id}`, profileInfo, {headers: headers})
+            const res = await api.editProfile(profileInfo, headers)
 
             console.log(res)
 

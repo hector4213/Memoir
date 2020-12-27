@@ -1,4 +1,4 @@
-import axios from 'axios'
+import api from './api'
 
 export const addInspiringAction = () => {
 	return async (dispatch, getState) => {
@@ -11,13 +11,12 @@ export const addInspiringAction = () => {
                 'Content-Type': 'application/json',
                 'Authorization': `bearer ${token}`
             }
-            const res = await axios.post(`https://memoirbackend.herokuapp.com/api/stories/${storyId}/inspire`, null, {headers: headers})
 
-            console.log(res)
+            await api.setInspired(storyId, headers)
 
-            // get story instead of refreshing
+            // get story after setting Inspired
 
-            const response = await axios.get(`https://memoirbackend.herokuapp.com/api/stories/${storyId}`)
+            const response = await api.getStory(storyId)
             let sortedEntries = response.data.entries
 
             if(sortedEntries.length > 0){

@@ -1,4 +1,4 @@
-import axios from 'axios'
+import api from './api'
 
 export const clearSearchAction = searchTerm => {
     return (dispatch, getState) => {
@@ -31,11 +31,11 @@ export const searchAction = (searchType, searchTerm) => {
             try {
                 let res
                 if(searchType === 'tag'){
-                    res = await axios.get(`https://memoirbackend.herokuapp.com/api/search/entries?tag=${searchTerm}`)
+                    res = await api.searchTag(searchTerm)
                 }
 
                 else if (searchType === 'title'){
-                    res = await axios.get(`https://memoirbackend.herokuapp.com/api/search/entries/title?title=${searchTerm}`)
+                    res = await api.searchTitle(searchTerm)
                 }
 
                 else if (searchType === 'date'){
@@ -48,11 +48,11 @@ export const searchAction = (searchType, searchTerm) => {
 
                     if( m > 0 && d > 0 && y > 0 ){
                         console.log('-> searching for full date')
-                        res = await axios.get(`https://memoirbackend.herokuapp.com/api/search/entries/date?year=${y}&month=${m}&day=${d} `)
+                        res = await api.searchDate_full(m,d,y)
                     }
                     else if( m === 0 && d === 0 && y > 0 ){
                         console.log('-> searching for year only')
-                        res = await axios.get(`https://memoirbackend.herokuapp.com/api/search/entries/date?year=${y}`)
+                        res = await api.searchDate_year(y)
                     }
                 }
 
@@ -83,6 +83,5 @@ export const searchAction = (searchType, searchTerm) => {
                 })
             }
         }
-
     }
 }

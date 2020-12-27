@@ -1,4 +1,4 @@
-import axios from 'axios'
+import api from './api'
 import {history} from '../../index'
 
 export const registerUserAction = formInfo => {
@@ -17,7 +17,7 @@ export const registerUserAction = formInfo => {
                     delete formInfo.confirmPassword
 
                     try {
-                        const response = await axios.post('https://memoirbackend.herokuapp.com/api/auth/signup', formInfo)
+                        const response = await api.register(formInfo)
                         localStorage.setItem('profile', JSON.stringify(response.data))
 
                         dispatch({
