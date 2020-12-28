@@ -86,7 +86,9 @@ const Story = props => {
                     <InspiringButton />
                     <FilterNav filter={filter} setFilter={setFilter} />
 
-                    {viewableEntries()}
+                    <div className='all-entries'>
+                        {viewableEntries()}
+                    </div>
 
                     <div className='progress-container'>
                         <div className='progress' style={{width: `${currentProgress}%`}} />
