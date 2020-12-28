@@ -14,7 +14,7 @@ const RegisterForm = props => {
     return (
         <form>
 
-            <input type='text' name='username' placeholder='Enter your Username'
+            <input type='text' name='username' placeholder='Create a Username'
                 onChange={ e =>{
                 setFormInfo( {...formInfo, username : e.target.value })
                 }}
@@ -26,7 +26,7 @@ const RegisterForm = props => {
                 }}
             />
 
-            <input type='password' name='password' placeholder='Enter your Password'
+            <input type='password' name='password' placeholder='Password must include a number'
                 onChange={ e =>{
                     setFormInfo( {...formInfo, password : e.target.value })
                 }}
