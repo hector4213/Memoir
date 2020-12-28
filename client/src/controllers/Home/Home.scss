@@ -44,6 +44,11 @@
 }
 
 @media only screen and (max-width: 550px) {
+
+    .home {
+        padding-top: 100px !important;
+    }
+
     .home-buttons {
         top: 2px !important;
         right: 2px !important;
@@ -65,6 +70,7 @@
 
     .description {
         width: 95% !important;
+        margin-bottom: 50px !important;
     }
 
     .storyCard {
