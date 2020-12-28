@@ -34,20 +34,22 @@ router.post('/', async (req, res, next) => {
       storyId,
     })
     if (story) {
-      await Entry.query().insertGraph({
-        title,
-        description,
-        date,
-        embed,
-        format_id,
-        user_id: decodedToken.id,
-        hashtags, // array of hashtags from body
-        story_id: storyId,
-        entry_status: isStoryAuthor,
-      })
+      const newEntry = await Entry.query()
+        .insertGraph({
+          title,
+          description,
+          date,
+          embed,
+          format_id,
+          user_id: decodedToken.id,
+          hashtags, // array of hashtags from body
+          story_id: storyId,
+          entry_status: isStoryAuthor,
+        })
+        .returning('id')
       return res
         .status(201)
-        .json({ msg: `Entry added to ${story.name}'s story` })
+        .json({ msg: `Entry added to ${story.name}'s story`, id: newEntry.id })
     }
     return res.status(401).json({ error: 'Story not found' })
   } catch (error) {
