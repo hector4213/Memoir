@@ -2,7 +2,7 @@
 import axios from 'axios'
 
 const baseUrl = 'https://memoirbackend.herokuapp.com/api'
-// const baseUrl = 'http://localhost:3001'
+// const baseUrl = process.env.production || "http://localhost:3001/api"
 
 
 
