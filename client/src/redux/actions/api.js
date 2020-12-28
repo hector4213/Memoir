@@ -27,7 +27,7 @@ const editStory = async (storyId, entryInfo, headers) => {
 }
 
 const deleteStory = async (storyId, headers) => {
-    return await axios.delete(`${baseUrl}/api/stories/${storyId}`, {headers: headers})
+    return await axios.delete(`${baseUrl}/stories/${storyId}`, {headers: headers})
 }
 
 

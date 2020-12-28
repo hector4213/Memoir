@@ -157,7 +157,7 @@ export const deleteStoryAction = storyId => {
 
 
             if(history.location.pathname === '/profile'){
-                const response = await api.getProfile(userId)
+                const response = await api.getProfile(userId, headers)
 
                 dispatch({
                     type: 'ADD_ENTRIES_STORIES',

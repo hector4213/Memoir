@@ -6,14 +6,18 @@ import {createStoryAction} from '../../redux/actions/story'
 import {setErrorAction} from '../../redux/actions/page'
 import { deleteFromImgur, postToImgur } from '../../components/api/imgur'
 
+const sampleImage = 'https://i.ibb.co/9NzsxZv/Smiley-face-square.jpg'
+
 const StoryCreate = props => {
     const [formInfo, setFormInfo] = useState({
-        story_img: '', name: '', occupation:'',
+        story_img: sampleImage,
+        name: '',
+        occupation:'',
         image_f: true,
         name_f: true,
         occupation_f: true
     })
-    const [storyImg, setStoryImg] = useState()
+    const [storyImg, setStoryImg] = useState(sampleImage)
     const {createStory, setError} = props
 
     const handleImageEmbed = async e => {

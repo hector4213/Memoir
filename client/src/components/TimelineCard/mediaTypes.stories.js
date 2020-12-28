@@ -13,7 +13,7 @@ VideoEntryCard.args = {
     position: 'left',
     entry: {
         format_id: 1,
-        embed: '<iframe width="560" height="315" src="https://www.youtube.com/embed/u21W_tfPVrY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
+        embed: 'OwAkYX23ef4',
         title: 'something',
         date: 'January 1, 2010',
         description: 'something',
