@@ -35,7 +35,6 @@ Cypress.Commands.add('loginUser', (username, email, password) => {
     cy.get('input[name=password]').type(password)
     cy.get('.submit-login').click()
 
-
     cy.get('.pageTitle')
         .should('contain', username)
 })
