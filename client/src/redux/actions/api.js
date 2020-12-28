@@ -1,7 +1,7 @@
 /* eslint-disable import/no-anonymous-default-export */
 import axios from 'axios'
 
-const baseUrl = process.env.production || "http://localhost:3001/api"
+const baseUrl = process.env.REACT_APP_production || process.env.production || "http://localhost:3001/api"
 
 
 

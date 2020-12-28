@@ -15,6 +15,9 @@ import {setErrorAction} from './redux/actions/page'
 import EntryCreate from './controllers/EntryCreate/EntryCreate';
 import EntryEdit from './controllers/EntryEdit/EntryEdit'
 
+require('dotenv').config()
+console.log(process.env)
+
 const App = props => {
   const {storedProfile, setError, error} = props
 
