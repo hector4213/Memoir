@@ -9,8 +9,8 @@ const Template = (args) => <ListEntryTemplate {...args} />
 
 // created buttons
 
-export const Transparent = Template.bind({})
-Transparent.args = {
+export const ListRow = Template.bind({})
+ListRow.args = {
     entry: {
         title: 'Title of an Entry',
         story: {

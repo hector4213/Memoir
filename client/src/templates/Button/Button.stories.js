@@ -30,3 +30,10 @@ Red.args = {
     transparent : true,
     red: true
 }
+
+export const Green = Template.bind({})
+Green.args = {
+    label: 'This is a delete button',
+    transparent : true,
+    green: true
+}
