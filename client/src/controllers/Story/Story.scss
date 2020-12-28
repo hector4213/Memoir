@@ -193,6 +193,18 @@
         }
     }
 
+    .top, .bottom {
+        img {
+            border-radius: 5px;
+        }
+    }
+
+    .left, .right {
+        img {
+            border-radius: 5px 0px 0px 5px;
+        }
+    }
+
     .right {
         .caption {
             margin-right: 0px !important;
