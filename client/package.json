@@ -56,6 +56,5 @@
     "@storybook/react": "^6.1.5",
     "cypress": "^6.1.0",
     "sass": "^1.29.0"
-  },
-  "proxy": "http://localhost:3001/"
+  }
 }
