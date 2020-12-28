@@ -71,10 +71,7 @@ export const createEntryAction = entryInfo => {
                 })
             }
 
-            console.log(res)
-            // this is where the ENTRY ID is needed to redirect to entry
-
-            history.push(`/story/${storyId}`)
+            history.push(`/story/${storyId}/entry/${res.data.id}`)
 
         }
         catch(error){
