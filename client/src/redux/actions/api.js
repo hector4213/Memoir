@@ -94,7 +94,7 @@ const getForeignEntries = async (userId, headers) => {
 }
 
 const editForeignEntries = async (userId, entryId, entryStatus, headers) => {
-    return await axios.put(`${baseUrl}profile/${userId}/manage/${entryId}`, {
+    return await axios.put(`${baseUrl}/profile/${userId}/manage/${entryId}`, {
         entry_status: entryStatus
     }, {headers: headers})
 }
