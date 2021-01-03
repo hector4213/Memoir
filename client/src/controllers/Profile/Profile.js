@@ -27,13 +27,13 @@ const Profile = props => {
                     className={yourStuff? 'active' : '' }
                     onClick={()=>isYourStuff(true)}
                 >
-                Your Stuff </button>
+                Yours </button>
 
                 <button
                     className={yourStuff? '' : 'active' }
                     onClick={()=>isYourStuff(false)}
                 >
-                Others Stuff </button>
+                Others </button>
             </div>
 
             {yourStuff? <YourStuff/> : <OthersStuff/> }
