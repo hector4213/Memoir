@@ -1,35 +1,36 @@
-import React from 'react'
-import './HomeCards.scss'
+import React from "react";
+import "./HomeCards.scss";
 
-import StoryCard from '../../components/StoryCard/StoryCard'
+import StoryCard from "../../components/StoryCard/StoryCard";
 
-const HomeCards = props => {
-    const {stories} = props
+const HomeCards = (props) => {
+  const { stories } = props;
 
-    let cards = []
+  let cards = [];
 
-    if(stories){
-        stories.forEach((story, i) => {
-            cards.push(
-                <StoryCard
-                    {...{
-                        key: i,
-                        story: story
-                    }}
-                />
-            )
-        })
-    }
+  if (stories) {
+    stories.forEach((story, i) => {
+      cards.push(
+        <StoryCard
+          {...{
+            key: i,
+            story: story,
+          }}
+        />
+      );
+    });
+  }
 
-    if(cards.length === 0){
-        return <div className='loader'> <div className='hi'/> </div>
-    }
-
+  if (cards.length === 0) {
     return (
-        <div className='storyCards'>
-            {cards}
-        </div>
-    )
-}
+      <div className="loader">
+        {" "}
+        <div className="hi" />{" "}
+      </div>
+    );
+  }
 
-export default HomeCards
+  return <div className="storyCards">{cards}</div>;
+};
+
+export default HomeCards;

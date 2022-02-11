@@ -1,31 +1,30 @@
-import React from 'react'
-import './LogOutButton.scss'
-import {connect} from 'react-redux'
+import React from "react";
+import "./LogOutButton.scss";
+import { connect } from "react-redux";
 
-import {logOutAction} from '../../../redux/actions/logInOut'
-import Button from '../../../templates/Button/Button'
+import { logOutAction } from "../../../redux/actions/logInOut";
+import Button from "../../../templates/Button/Button";
 
-const LogOutButton = props => {
+const LogOutButton = (props) => {
+  const { logOut } = props;
 
-    const {logOut} = props
+  return (
+    <Button
+      {...{
+        label: "Log Out",
+        extraClass: "logout-button",
+        transparent: true,
+        red: true,
+        onClick: logOut,
+      }}
+    />
+  );
+};
 
-    return (
-        <Button
-            {...{
-                label: 'Log Out',
-                extraClass:'logout-button',
-                transparent : true,
-                red: true,
-                onClick: logOut
-            }}
-        />
-    )
-}
+const mapDispatchToProps = (dispatch) => {
+  return {
+    logOut: () => dispatch(logOutAction()),
+  };
+};
 
-const mapDispatchToProps = dispatch => {
-    return {
-        logOut: () => dispatch(logOutAction())
-    }
-}
-
-export default connect(null, mapDispatchToProps)(LogOutButton)
+export default connect(null, mapDispatchToProps)(LogOutButton);

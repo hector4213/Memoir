@@ -1,22 +1,20 @@
-import React, {useState} from 'react'
-import './Search.scss'
-import SearchContent from './SearchContent/SearchContent'
+import React, { useState } from "react";
+import "./Search.scss";
+import SearchContent from "./SearchContent/SearchContent";
 
-const Searchbar = props => {
+const Searchbar = (props) => {
+  const [searching, setSearching] = useState(false);
 
-    const [searching, setSearching] = useState(false)
+  return (
+    <div className="search-container">
+      <div className="search-button" onClick={() => setSearching(true)}>
+        {" "}
+        Search{" "}
+      </div>
 
-    return (
-        <div className='search-container'>
-            <div className='search-button' onClick={() => setSearching(true)}> Search </div>
+      {searching ? <SearchContent setSearching={setSearching} /> : ""}
+    </div>
+  );
+};
 
-            {
-                searching?
-                <SearchContent setSearching={setSearching} />
-                :''
-            }
-        </div>
-    )
-}
-
-export default Searchbar
+export default Searchbar;

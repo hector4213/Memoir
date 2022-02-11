@@ -1,61 +1,61 @@
-@import '../../styles/colors';
-@import '../../styles/sizes';
+@import "../../styles/colors";
+@import "../../styles/sizes";
 
 .modal {
-    z-index: 100;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: rgba(0, 0, 0, 0.5);
+  z-index: 100;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.5);
 }
 
 .modal-content {
-    background: $dark_blue;
-    padding: 30px;
-    width: 600px;
-    animation: fadeInDown 0.5s;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    border-radius: 10px;
+  background: $dark_blue;
+  padding: 30px;
+  width: 600px;
+  animation: fadeInDown 0.5s;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  border-radius: 10px;
 }
 
 @keyframes fadeInDown {
-    from {
-        opacity: 0;
-        -webkit-transform: translate3d(0, -100%, 0);
-        transform: translate3d(0, -100%, 0);
-    }
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -100%, 0);
+    transform: translate3d(0, -100%, 0);
+  }
 
-    to {
-        opacity: 1;
-        -webkit-transform: translate3d(0, 0, 0);
-        transform: translate3d(0, 0, 0);
-    }
+  to {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
 }
 
 .modalTabs {
-    width: 100%;
-    display: flex;
-    flex-direction: row-reverse;
-    margin-bottom: 20px;
+  width: 100%;
+  display: flex;
+  flex-direction: row-reverse;
+  margin-bottom: 20px;
 
-    button {
-        background: none;
-        color: $medium_blue;
-        border: none;
-        width: fit-content;
-        font-size: $subtitle_size;
-        padding: 10px;
-    }
+  button {
+    background: none;
+    color: $medium_blue;
+    border: none;
+    width: fit-content;
+    font-size: $subtitle_size;
+    padding: 10px;
+  }
 }
 
 .active {
-    color: $light_blue !important;
+  color: $light_blue !important;
 }

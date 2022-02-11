@@ -1,66 +1,73 @@
-import React from 'react'
+import React from "react";
 import { HiPlus } from "react-icons/hi";
-import StoryCard from '../../../../components/StoryCard/StoryCard'
-import './YourStories.scss'
-import {connect} from 'react-redux'
-import { toggleModalAction } from '../../../../redux/actions/page';
-import Modal from '../../../../components/Modal/Modal';
-import StoryCreate from '../../../StoryCreate/StoryCreate'
+import StoryCard from "../../../../components/StoryCard/StoryCard";
+import "./YourStories.scss";
+import { connect } from "react-redux";
+import { toggleModalAction } from "../../../../redux/actions/page";
+import Modal from "../../../../components/Modal/Modal";
+import StoryCreate from "../../../StoryCreate/StoryCreate";
 
-const YourStories = props => {
-    const {toggleModal, modal, showingPage, myStories} = props
+const YourStories = (props) => {
+  const { toggleModal, modal, showingPage, myStories } = props;
 
-    let myEntryCards = []
+  let myEntryCards = [];
 
-    if(myStories){
-        myEntryCards = myStories.map(story => {
-            return <StoryCard {...{
-                key: story.id,
-                story: story,
-                specialStyle: {opacity: 1},
-                deleteCard: true
-            }}/>
-        })
-    }
+  if (myStories) {
+    myEntryCards = myStories.map((story) => {
+      return (
+        <StoryCard
+          {...{
+            key: story.id,
+            story: story,
+            specialStyle: { opacity: 1 },
+            deleteCard: true,
+          }}
+        />
+      );
+    });
+  }
 
-    return (
-        <div className='yourStories'>
+  return (
+    <div className="yourStories">
+      <label> Your Stories: </label>
+      <div className="cards">
+        {myEntryCards}
 
-
-            <label> Your Stories: </label>
-            <div className='cards'>
-                {myEntryCards}
-
-                <div
-                    className='storyCard addStory'
-                    onClick={() => toggleModal('addStory')}
-                >
-                    <div className='addStoryPlus'>
-                    <HiPlus/>
-                    </div>
-                    <h1>Add Story</h1>
-                </div>
-            </div>
-
-            {showingPage === 'addStory' && modal? <Modal> <StoryCreate/> </Modal>: ''}
-
+        <div
+          className="storyCard addStory"
+          onClick={() => toggleModal("addStory")}
+        >
+          <div className="addStoryPlus">
+            <HiPlus />
+          </div>
+          <h1>Add Story</h1>
         </div>
-    )
-}
+      </div>
 
-const mapStateToProps = state => {
+      {showingPage === "addStory" && modal ? (
+        <Modal>
+          {" "}
+          <StoryCreate />{" "}
+        </Modal>
+      ) : (
+        ""
+      )}
+    </div>
+  );
+};
 
-    return {
-        modal: state.page.modal,
-        showingPage: state.page.showingPage,
-        myStories: state.profile.myStories,
-    }
-}
+const mapStateToProps = (state) => {
+  return {
+    modal: state.page.modal,
+    showingPage: state.page.showingPage,
+    myStories: state.profile.myStories,
+  };
+};
 
-const mapDispatchToProps = dispatch => {
-    return {
-        toggleModal: (showingPage) => dispatch(toggleModalAction(showingPage))
-    }
-}
+const mapDispatchToProps = (dispatch) => {
+  return {
+    toggleModal: (showingPage) => dispatch(toggleModalAction(showingPage)),
+  };
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(YourStories)
+export default connect(mapStateToProps, mapDispatchToProps)(YourStories);

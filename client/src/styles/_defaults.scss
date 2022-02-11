@@ -1,26 +1,25 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto:400,700Bold');
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,700Bold");
 
-@import './colors';
-@import './sizes';
+@import "./colors";
+@import "./sizes";
 
 $border: $border_size solid $light_blue;
 $font_fam: Roboto, Helvetica, Arial, sans-serif;
 
 @mixin top-right {
-    
 }
 
 @mixin top-left {
-    display: flex;
-    flex-direction: column;
-    width: fit-content;
-    position: absolute;
-    top: 10px;
-    right: -10px;
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  position: absolute;
+  top: 10px;
+  right: -10px;
 
-    button {
-        margin-bottom: 10px;
-    }
+  button {
+    margin-bottom: 10px;
+  }
 }
 
-@include top-right
+@include top-right;

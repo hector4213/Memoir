@@ -1,5 +1,5 @@
-@import './styles/colors';
-@import './styles/defaults';
+@import "./styles/colors";
+@import "./styles/defaults";
 
 body {
   background: $dark_blue;
@@ -21,7 +21,7 @@ body {
   text-align: center;
   top: 20px;
   left: calc(50% - 300px);
-  background: rgba(0,0,18,0.8);
+  background: rgba(0, 0, 18, 0.8);
 }
 
 .success-message {
@@ -37,7 +37,7 @@ body {
   text-align: center;
   top: 20px;
   left: calc(50% - 300px);
-  background: rgba(0,0,18, 0.8);
+  background: rgba(0, 0, 18, 0.8);
 }
 
 .example::-webkit-scrollbar {
@@ -46,8 +46,8 @@ body {
 
 /* Hide scrollbar for IE, Edge and Firefox */
 .example {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
 
 .loader {
@@ -85,7 +85,6 @@ body {
     left: 100%;
   }
 }
-
 
 @media only screen and (max-width: 700px) {
   button {

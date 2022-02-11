@@ -1,84 +1,87 @@
-@import '../../styles/defaults';
-@import '../../styles/colors';
-@import '../../styles/sizes';
+@import "../../styles/defaults";
+@import "../../styles/colors";
+@import "../../styles/sizes";
 
 .entryRow {
-    width: 100%;
-    display: flex;
-    position: relative;
+  width: 100%;
+  display: flex;
+  position: relative;
 }
 
 .entryPositioner {
-    width: calc(50% + 2.5px);
-    height: 50%;
-    display: flex;
-    align-items: center;
-    box-sizing: border-box;
-    padding: 0px;
+  width: calc(50% + 2.5px);
+  height: 50%;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 0px;
 }
 
 .entryCard {
-    max-width: 95%;
-    z-index: 1;
-    border-radius: 5px;
-    cursor: pointer;
-    word-wrap: break-word;
-    position: relative;
-    line-height: 25px;
+  max-width: 95%;
+  z-index: 1;
+  border-radius: 5px;
+  cursor: pointer;
+  word-wrap: break-word;
+  position: relative;
+  line-height: 25px;
 
-    h1, h2 {
-        text-align: center;
-        margin: 0px;
-        padding: 0px;
-        background: $dark_blue;
-    }
+  h1,
+  h2 {
+    text-align: center;
+    margin: 0px;
+    padding: 0px;
+    background: $dark_blue;
+  }
 
-    h1 {
-        font-size: $subtitle_size;
-        line-height: $subtitle_lineheight_size;
-        font-weight: 900;
-    }
+  h1 {
+    font-size: $subtitle_size;
+    line-height: $subtitle_lineheight_size;
+    font-weight: 900;
+  }
 
-    h2 {
-        font-size: $text_size;
-        line-height: $text_lineheight_size;
-        font-weight: normal;
-        width: fit-content;
-    }
+  h2 {
+    font-size: $text_size;
+    line-height: $text_lineheight_size;
+    font-weight: normal;
+    width: fit-content;
+  }
 
-    p {
-        background: $dark_blue;
-    }
+  p {
+    background: $dark_blue;
+  }
 
-    .caption {
-        padding: 20px;
-        box-sizing: border-box;
-        display: flex;
-        flex-direction: column;
-    }
+  .caption {
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 .entryCard:hover {
-    box-shadow: 0px 0px 10px 3px $medium_blue;
+  box-shadow: 0px 0px 10px 3px $medium_blue;
 }
 
-.horizontalLine, .textHorizontalLine, .soundHorizontalLine {
-    border-bottom: $border;
-    width: 50%;
-    position: relative;
+.horizontalLine,
+.textHorizontalLine,
+.soundHorizontalLine {
+  border-bottom: $border;
+  width: 50%;
+  position: relative;
 }
 
 .horizontalLine {
-    width: 5%;
+  width: 5%;
 }
 
 .timelineCircles {
-    $circle_size: 20px;
-    width: $circle_size;
-    height: $circle_size;
-    border-radius: $circle_size;
-    border: $border;
-    background: $dark_blue;
-    position: absolute;
-    bottom: -17px;
+  $circle_size: 20px;
+  width: $circle_size;
+  height: $circle_size;
+  border-radius: $circle_size;
+  border: $border;
+  background: $dark_blue;
+  position: absolute;
+  bottom: -17px;
 }

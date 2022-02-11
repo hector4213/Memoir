@@ -1,36 +1,38 @@
-import React from 'react'
-import ListEntry from '../../../../components/ListEntry/ListEntry'
-import './YourEntries.scss'
-import {connect} from 'react-redux'
+import React from "react";
+import ListEntry from "../../../../components/ListEntry/ListEntry";
+import "./YourEntries.scss";
+import { connect } from "react-redux";
 
-const YourEntries = props => {
-    const {myEntries} = props
+const YourEntries = (props) => {
+  const { myEntries } = props;
 
-    let myEntryCards;
-    if(myEntries){
-        myEntryCards = myEntries.map( entry => {
-            return <ListEntry {...{
-                key: entry.id,
-                entry: entry
-            }}/>
-        })
-    }
+  let myEntryCards;
+  if (myEntries) {
+    myEntryCards = myEntries.map((entry) => {
+      return (
+        <ListEntry
+          {...{
+            key: entry.id,
+            entry: entry,
+          }}
+        />
+      );
+    });
+  }
 
-    return (
-        <div className='entries'>
-            <label> Your Entries: </label>
+  return (
+    <div className="entries">
+      <label> Your Entries: </label>
 
-            <div className='listEntries'>
-                {myEntryCards}
-            </div>
-        </div>
-    )
-}
+      <div className="listEntries">{myEntryCards}</div>
+    </div>
+  );
+};
 
-const mapStateToProps = state => {
-    return {
-        myEntries: state.profile.myEntries
-    }
-}
+const mapStateToProps = (state) => {
+  return {
+    myEntries: state.profile.myEntries,
+  };
+};
 
-export default connect(mapStateToProps)(YourEntries)
+export default connect(mapStateToProps)(YourEntries);

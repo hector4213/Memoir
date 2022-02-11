@@ -1,11 +1,10 @@
-
-import LogInForm from './LogInForm'
-import RegisterForm from './RegisterForm'
+import LogInForm from "./LogInForm";
+import RegisterForm from "./RegisterForm";
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
-    title: 'Forms',
-}
+  title: "Forms",
+};
 
-export const LogIn = () => <LogInForm />
-export const Register = () => <RegisterForm />
+export const LogIn = () => <LogInForm />;
+export const Register = () => <RegisterForm />;

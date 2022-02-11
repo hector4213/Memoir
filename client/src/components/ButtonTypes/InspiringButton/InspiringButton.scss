@@ -1,17 +1,17 @@
-@import '../../../styles/colors';
+@import "../../../styles/colors";
 
 .insp-btn {
-    display: block;
-    width: fit-content;
-    padding: 10px 20px;
-    color: $light_blue;
-    border-color: $dark_blue;
+  display: block;
+  width: fit-content;
+  padding: 10px 20px;
+  color: $light_blue;
+  border-color: $dark_blue;
 }
 
 .clicked {
-    color: $green;
+  color: $green;
 }
 
 .not-clickable {
-    cursor: default;
+  cursor: default;
 }

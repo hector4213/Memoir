@@ -1,50 +1,54 @@
-import React, {useState} from 'react'
-import {connect} from 'react-redux'
-import './Profile.scss'
+import React, { useState } from "react";
+import { connect } from "react-redux";
+import "./Profile.scss";
 
-import YourStuff from './YourStuff/YourStuff'
-import OthersStuff from './OthersStuff/OthersStuff'
-import ButtonsForProfile from '../ButtonGroups/ButtonsForProfile/ButtonsForProfile'
+import YourStuff from "./YourStuff/YourStuff";
+import OthersStuff from "./OthersStuff/OthersStuff";
+import ButtonsForProfile from "../ButtonGroups/ButtonsForProfile/ButtonsForProfile";
 
-import ErrorDisplay from '../../components/ErrorDisplay/ErrorDisplay'
+import ErrorDisplay from "../../components/ErrorDisplay/ErrorDisplay";
 
-const Profile = props => {
-    const [yourStuff, isYourStuff] = useState(true)
-    const {user} = props
+const Profile = (props) => {
+  const [yourStuff, isYourStuff] = useState(true);
+  const { user } = props;
 
-    if(!user){
-        return <ErrorDisplay message='You must log in or register to see your profile'/>
-    }
-
+  if (!user) {
     return (
-        <div className='profile'>
-            <ButtonsForProfile />
+      <ErrorDisplay message="You must log in or register to see your profile" />
+    );
+  }
 
-            <h1 className='pageTitle'>{user.username}</h1>
+  return (
+    <div className="profile">
+      <ButtonsForProfile />
 
-            <div className='tabs'>
-                <button
-                    className={yourStuff? 'active' : '' }
-                    onClick={()=>isYourStuff(true)}
-                >
-                Yours </button>
+      <h1 className="pageTitle">{user.username}</h1>
 
-                <button
-                    className={yourStuff? '' : 'active' }
-                    onClick={()=>isYourStuff(false)}
-                >
-                Others </button>
-            </div>
+      <div className="tabs">
+        <button
+          className={yourStuff ? "active" : ""}
+          onClick={() => isYourStuff(true)}
+        >
+          Yours{" "}
+        </button>
 
-            {yourStuff? <YourStuff/> : <OthersStuff/> }
-        </div>
-    )
-}
+        <button
+          className={yourStuff ? "" : "active"}
+          onClick={() => isYourStuff(false)}
+        >
+          Others{" "}
+        </button>
+      </div>
 
-const mapStateToProps = state => {
-    return {
-        user: state.profile.user,
-    }
-}
+      {yourStuff ? <YourStuff /> : <OthersStuff />}
+    </div>
+  );
+};
 
-export default connect(mapStateToProps)(Profile)
+const mapStateToProps = (state) => {
+  return {
+    user: state.profile.user,
+  };
+};
+
+export default connect(mapStateToProps)(Profile);

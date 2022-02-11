@@ -1,19 +1,19 @@
-@import '../../../styles/colors';
-@import '../../../styles/sizes';
+@import "../../../styles/colors";
+@import "../../../styles/sizes";
 
 .approved {
-    color: $green;
+  color: $green;
 }
 
 .denied {
-    color: $red;
+  color: $red;
 }
 
 .entries {
-    margin-bottom: 100px;
+  margin-bottom: 100px;
 
-    label {
-        display:inline-block;
-        margin: 20px 0px;
-    }
+  label {
+    display: inline-block;
+    margin: 20px 0px;
+  }
 }

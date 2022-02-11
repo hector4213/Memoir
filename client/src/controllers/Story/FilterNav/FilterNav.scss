@@ -1,39 +1,39 @@
-@import '../../../styles/colors';
-@import '../../../styles/sizes';
+@import "../../../styles/colors";
+@import "../../../styles/sizes";
 
 .filter-nav {
-    width: fit-content;
-    margin: 0px auto 100px auto;
+  width: fit-content;
+  margin: 0px auto 100px auto;
 
-    ul {
-        padding: 0px;
-        margin: 0px;
-        display: flex;
+  ul {
+    padding: 0px;
+    margin: 0px;
+    display: flex;
 
-        li {
-            list-style-type: none;
-            margin: 0px;
-            padding: 30px;
-            cursor: pointer;
-            color: $medium_blue;
+    li {
+      list-style-type: none;
+      margin: 0px;
+      padding: 30px;
+      cursor: pointer;
+      color: $medium_blue;
 
-            &:hover {
-                color: $light_blue;
-            }
+      &:hover {
+        color: $light_blue;
+      }
 
-            .active {
-                color: $green;
-            }
-        }
-
-        li:nth-child(1) {
-            padding-left: 0px;
-            color: $light_blue;
-
-            &:hover {
-                color: $light_blue;
-                cursor: default;
-            }
-        }
+      .active {
+        color: $green;
+      }
     }
+
+    li:nth-child(1) {
+      padding-left: 0px;
+      color: $light_blue;
+
+      &:hover {
+        color: $light_blue;
+        cursor: default;
+      }
+    }
+  }
 }
