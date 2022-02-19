@@ -7,7 +7,7 @@ import { Routes, Route } from 'react-router-dom'
 import Home from './controllers/Home/Home'
 import Story from './controllers/Story'
 import Profile from './controllers/Profile'
-import FourZeroFour from './controllers/FourZeroFour/FourZeroFour'
+import FourZeroFour from './controllers/404'
 
 import { storedProfileAction } from './redux/actions/profile'
 import { setErrorAction } from './redux/actions/page'
