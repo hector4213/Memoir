@@ -1,29 +1,23 @@
-import React, { useCallback } from "react";
-import "./GoToStoryButton.scss";
-import { useHistory, useParams } from "react-router-dom";
+import React from 'react'
+import './GoToStoryButton.scss'
+import { useParams, Link } from 'react-router-dom'
 
-import Button from "../../../templates/Button/Button";
+import Button from '../../../templates/Button/Button'
 
-const GoToStoryButton = (props) => {
-  const { storyId } = useParams();
+const GoToStoryButton = () => {
+	const { storyId } = useParams()
 
-  const history = useHistory();
+	return (
+		<Link to={`/story/${storyId}`}>
+			<Button
+				{...{
+					label: 'Back to Story',
+					transparent: true,
+					extraClass: 'gotostory-btn',
+				}}
+			/>
+		</Link>
+	)
+}
 
-  const goToStory = useCallback(() => {
-    const to = `/story/${storyId}`;
-    history.push(to);
-  }, [history, storyId]);
-
-  return (
-    <Button
-      {...{
-        label: "Back to Story",
-        onClick: goToStory,
-        transparent: true,
-        extraClass: "gotostory-btn",
-      }}
-    />
-  );
-};
-
-export default GoToStoryButton;
+export default GoToStoryButton

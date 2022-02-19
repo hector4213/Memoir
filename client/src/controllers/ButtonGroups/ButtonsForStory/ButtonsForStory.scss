@@ -1,34 +1,36 @@
-@import "../../../styles/colors";
-@import "../../../styles/sizes";
+@import '../../../styles/colors';
+@import '../../../styles/sizes';
 
 .story-buttons {
-  display: flex;
-  flex-direction: column;
-  width: fit-content;
-  position: absolute;
-  top: 10px;
-  right: 10px;
+	display: flex;
+	flex-direction: column;
+	width: fit-content;
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	z-index: 2;
 
-  button {
-    margin-bottom: 10px;
-  }
+	button {
+		margin-bottom: 10px;
+	}
 
-  .profile-btn {
-    position: static;
-  }
+	.profile-btn {
+		position: static;
+	}
 }
 
 .story-login-btn {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  width: 175px;
-  padding: 10px 20px;
-  line-height: 25px;
-  box-sizing: border-box;
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	width: 175px;
+	padding: 10px 20px;
+	line-height: 25px;
+	box-sizing: border-box;
+	z-index: 2;
 }
 
 .story-login-btn:hover {
-  border-color: $green;
-  color: $green;
+	border-color: $green;
+	color: $green;
 }

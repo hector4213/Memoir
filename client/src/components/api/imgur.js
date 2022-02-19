@@ -4,7 +4,6 @@ export const deleteFromImgur = async embed => {
 	const fullEmbed = embed.split(' ')
 	const hash = fullEmbed[1]
 
-	console.log('..deleting image')
 	await axios({
 		method: 'DELETE',
 		url: `https://api.imgur.com/3/image/${hash}`,
@@ -13,11 +12,9 @@ export const deleteFromImgur = async embed => {
 			'Content-Type': 'image',
 		},
 	})
-	console.log('image deleted')
 }
 
 export const postToImgur = async picture => {
-	console.log('..posting image')
 	const res = await axios({
 		method: 'post',
 		url: 'https://api.imgur.com/3/image',
@@ -27,7 +24,6 @@ export const postToImgur = async picture => {
 		},
 		data: picture,
 	})
-	console.log('image posted')
 
 	return res
 }

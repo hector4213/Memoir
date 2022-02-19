@@ -1,96 +1,97 @@
-import React, { useState } from "react";
-import "./ProfileEdit.scss";
+import React, { useState } from 'react'
+import './ProfileEdit.scss'
 
-import { connect } from "react-redux";
-import { editProfileAction } from "../../redux/actions/profile";
-import { deleteProfileAction } from "../../redux/actions/profile";
-import Button from "../../templates/Button/Button";
+import { connect } from 'react-redux'
+import { editProfileAction } from '../../redux/actions/profile'
+import { deleteProfileAction } from '../../redux/actions/profile'
+import Button from '../../templates/Button/Button'
+import { useNavigate } from 'react-router-dom'
 
-const ProfileEdit = (props) => {
-  const { user, editProfile, deleteProfile } = props;
-  const [profileForm, setProfileForm] = useState({
-    username: user.username,
-    email: user.email,
-  });
+const ProfileEdit = ({ user, editProfile, deleteProfile }) => {
+	let navigate = useNavigate()
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const final = { ...user, ...profileForm };
-    editProfile(final);
-  };
+	const [profileForm, setProfileForm] = useState({
+		username: user.username,
+		email: user.email,
+	})
 
-  return (
-    <div className="profile-edit">
-      <h2>Profile Edit</h2>
-      <form>
-        <input
-          type="text"
-          value={profileForm.username}
-          onChange={(e) => {
-            e.preventDefault();
-            setProfileForm({ ...profileForm, username: e.target.value });
-          }}
-        />
+	function handleSubmit(e) {
+		e.preventDefault()
+		const final = { ...user, ...profileForm }
+		editProfile(final)
+	}
 
-        <input
-          type="text"
-          value={profileForm.email}
-          onChange={(e) => {
-            e.preventDefault();
-            setProfileForm({ ...profileForm, email: e.target.value });
-          }}
-        />
+	async function delete_profile(e) {
+		e.preventDefault()
+		if (
+			// eslint-disable-next-line no-restricted-globals
+			confirm(`Are you sure you want to delete ${user.username}'s story?`)
+		) {
+			const deleted = await deleteProfile()
+			if (deleted) navigate('/')
+		}
+	}
 
-        <div className="profile-edit-buttons">
-          <Button
-            {...{
-              label: "Submit",
-              onClick: (e) => {
-                e.preventDefault();
-                handleSubmit(e);
-              },
-              transparent: false,
-            }}
-          />
+	return (
+		<div className='profile-edit'>
+			<h2>Profile Edit</h2>
+			<form>
+				<input
+					type='text'
+					value={profileForm.username}
+					onChange={e => {
+						e.preventDefault()
+						setProfileForm({ ...profileForm, username: e.target.value })
+					}}
+				/>
 
-          <Button
-            {...{
-              label: "Delete Profile",
-              onClick: (e) => {
-                e.preventDefault();
-                // eslint-disable-next-line no-restricted-globals
-                if (
-                  confirm(
-                    `Are you sure you want to delete ${user.username}'s story?`
-                  )
-                ) {
-                  deleteProfile();
-                } else {
-                  console.log("delete was cancelled");
-                }
-              },
-              transparent: true,
-              extraClass: "delete-profile",
-              red: true,
-            }}
-          />
-        </div>
-      </form>
-    </div>
-  );
-};
+				<input
+					type='text'
+					value={profileForm.email}
+					onChange={e => {
+						e.preventDefault()
+						setProfileForm({ ...profileForm, email: e.target.value })
+					}}
+				/>
 
-const mapStateToProps = (state) => {
-  return {
-    user: state.profile.user,
-  };
-};
+				<div className='profile-edit-buttons'>
+					<Button
+						{...{
+							label: 'Submit',
+							onClick: e => {
+								e.preventDefault()
+								handleSubmit(e)
+							},
+							transparent: false,
+						}}
+					/>
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    editProfile: (profileInfo) => dispatch(editProfileAction(profileInfo)),
-    deleteProfile: (profileInfo) => dispatch(deleteProfileAction(profileInfo)),
-  };
-};
+					<Button
+						{...{
+							label: 'Delete Profile',
+							onClick: delete_profile,
+							transparent: true,
+							extraClass: 'delete-profile',
+							red: true,
+						}}
+					/>
+				</div>
+			</form>
+		</div>
+	)
+}
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProfileEdit);
+const mapStateToProps = state => {
+	return {
+		user: state.profile.user,
+	}
+}
+
+const mapDispatchToProps = dispatch => {
+	return {
+		editProfile: profileInfo => dispatch(editProfileAction(profileInfo)),
+		deleteProfile: profileInfo => dispatch(deleteProfileAction(profileInfo)),
+	}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProfileEdit)

@@ -1,171 +1,161 @@
-import api from "./api";
-import { history } from "../../index";
+import api from './api'
 
 export const getAllStoriesAction = () => {
-  return async (dispatch, getState) => {
-    try {
-      console.log("-> getting all stories ...");
-      const res = await api.getAllStories();
-      console.log("-> got all stories ...");
+	return async (dispatch, getState) => {
+		try {
+			const res = await api.getAllStories()
 
-      dispatch({
-        type: "SET_ALL_STORIES",
-        payload: res.data,
-      });
-    } catch (error) {
-      console.log({ error });
+			dispatch({
+				type: 'SET_ALL_STORIES',
+				payload: res.data,
+			})
+		} catch (error) {
+			dispatch({
+				type: 'ERROR',
+				payload: error.response ? error.response.data.error : error.message,
+			})
+		}
+	}
+}
 
-      dispatch({
-        type: "ERROR",
-        payload: error.response ? error.response.data.error : error.message,
-      });
-    }
-  };
-};
+export const getSingleStoryAction = storyId => {
+	return async (dispatch, getState) => {
+		try {
+			const response = await api.getStory(storyId)
+			let sortedEntries = response.data.entries
 
-export const getSingleStoryAction = (storyId) => {
-  return async (dispatch, getState) => {
-    try {
-      const response = await api.getStory(storyId);
-      let sortedEntries = response.data.entries;
+			if (sortedEntries.length > 0) {
+				sortedEntries = sortedEntries.sort((a, b) => {
+					return new Date(a.date) - new Date(b.date)
+				})
+			}
 
-      if (sortedEntries.length > 0) {
-        sortedEntries = sortedEntries.sort((a, b) => {
-          return new Date(a.date) - new Date(b.date);
-        });
-      }
+			dispatch({
+				type: 'CURRENT_STORY',
+				payload: { ...response.data, entries: sortedEntries },
+			})
+		} catch (error) {
+			dispatch({
+				type: 'ERROR',
+				payload: error.response ? error.response.data.error : error.message,
+			})
+		}
+	}
+}
 
-      dispatch({
-        type: "CURRENT_STORY",
-        payload: { ...response.data, entries: sortedEntries },
-      });
-    } catch (error) {
-      console.log({ error });
+export const editStoryAction = entryInfo => {
+	return async (dispatch, getState) => {
+		const token = getState().profile.token
+		const storyId = getState().page.current.story.id
 
-      dispatch({
-        type: "ERROR",
-        payload: error.response ? error.response.data.error : error.message,
-      });
-    }
-  };
-};
+		try {
+			const headers = {
+				'Content-Type': 'application/json',
+				Authorization: `bearer ${token}`,
+			}
 
-export const editStoryAction = (entryInfo) => {
-  return async (dispatch, getState) => {
-    const token = getState().profile.token;
-    const storyId = getState().page.current.story.id;
+			await api.editStory(storyId, entryInfo, headers)
 
-    try {
-      const headers = {
-        "Content-Type": "application/json",
-        Authorization: `bearer ${token}`,
-      };
+			dispatch({
+				type: 'TOGGLE_MODAL',
+				payload: false,
+			})
 
-      await api.editStory(storyId, entryInfo, headers);
+			// after editing get revised story
 
-      dispatch({
-        type: "TOGGLE_MODAL",
-        payload: false,
-      });
+			const response = await api.getStory(storyId)
+			let sortedEntries = response.data.entries
 
-      // after editing get revised story
+			if (sortedEntries.length > 0) {
+				sortedEntries = sortedEntries.sort((a, b) => {
+					return new Date(a.date) - new Date(b.date)
+				})
+			}
 
-      const response = await api.getStory(storyId);
-      let sortedEntries = response.data.entries;
+			dispatch({
+				type: 'CURRENT_STORY',
+				payload: { ...response.data, entries: sortedEntries },
+			})
+		} catch (error) {
+			dispatch({
+				type: 'ERROR',
+				payload: error.response ? error.response.data.error : error.message,
+			})
+		}
+	}
+}
 
-      if (sortedEntries.length > 0) {
-        sortedEntries = sortedEntries.sort((a, b) => {
-          return new Date(a.date) - new Date(b.date);
-        });
-      }
+export const createStoryAction = formInfo => {
+	return async (dispatch, getState) => {
+		const token = getState().profile.token
+		const userId = getState().profile.user.id
 
-      dispatch({
-        type: "CURRENT_STORY",
-        payload: { ...response.data, entries: sortedEntries },
-      });
-    } catch (error) {
-      dispatch({
-        type: "ERROR",
-        payload: error.response ? error.response.data.error : error.message,
-      });
-    }
-  };
-};
+		try {
+			const headers = {
+				'Content-Type': 'application/json',
+				Authorization: `bearer ${token}`,
+			}
 
-export const createStoryAction = (formInfo) => {
-  return async (dispatch, getState) => {
-    const token = getState().profile.token;
-    const userId = getState().profile.user.id;
+			await api.createStory(formInfo, headers)
 
-    try {
-      const headers = {
-        "Content-Type": "application/json",
-        Authorization: `bearer ${token}`,
-      };
+			dispatch({
+				type: 'TOGGLE_MODAL',
+				payload: false,
+			})
 
-      await api.createStory(formInfo, headers);
+			// after create story add it to profile
 
-      dispatch({
-        type: "TOGGLE_MODAL",
-        payload: false,
-      });
+			const response = await api.getProfile(userId, headers)
 
-      // after create story add it to profile
+			dispatch({
+				type: 'ADD_ENTRIES_STORIES',
+				payload: {
+					myStories: response.data.stories,
+					myEntries: response.data.userEntries,
+				},
+			})
+		} catch (error) {
+			dispatch({
+				type: 'ERROR',
+				payload: error.response ? error.response.data.error : error.message,
+			})
+		}
+	}
+}
 
-      const response = await api.getProfile(userId, headers);
+export const deleteStoryAction = storyId => {
+	return async (dispatch, getState) => {
+		const userId = getState().profile.user.id
+		const token = getState().profile.token
+		try {
+			const headers = {
+				'Content-Type': 'application/json',
+				Authorization: `bearer ${token}`,
+			}
 
-      dispatch({
-        type: "ADD_ENTRIES_STORIES",
-        payload: {
-          myStories: response.data.stories,
-          myEntries: response.data.userEntries,
-        },
-      });
-    } catch (error) {
-      dispatch({
-        type: "ERROR",
-        payload: error.response ? error.response.data.error : error.message,
-      });
-    }
-  };
-};
+			await api.deleteStory(storyId, headers)
 
-export const deleteStoryAction = (storyId) => {
-  return async (dispatch, getState) => {
-    const userId = getState().profile.user.id;
-    const token = getState().profile.token;
-    try {
-      const headers = {
-        "Content-Type": "application/json",
-        Authorization: `bearer ${token}`,
-      };
-      const res = await api.deleteStory(storyId, headers);
+			dispatch({
+				type: 'TOGGLE_MODAL',
+				payload: false,
+			})
 
-      console.log(res);
+			const response = await api.getProfile(userId, headers)
 
-      dispatch({
-        type: "TOGGLE_MODAL",
-        payload: false,
-      });
+			dispatch({
+				type: 'ADD_ENTRIES_STORIES',
+				payload: {
+					myStories: response.data.stories,
+					myEntries: response.data.userEntries,
+				},
+			})
 
-      if (history.location.pathname === "/profile") {
-        const response = await api.getProfile(userId, headers);
-
-        dispatch({
-          type: "ADD_ENTRIES_STORIES",
-          payload: {
-            myStories: response.data.stories,
-            myEntries: response.data.userEntries,
-          },
-        });
-      } else {
-        history.push("/profile");
-      }
-    } catch (error) {
-      dispatch({
-        type: "ERROR",
-        payload: error.response ? error.response.data.error : error.message,
-      });
-    }
-  };
-};
+			return true
+		} catch (error) {
+			dispatch({
+				type: 'ERROR',
+				payload: error.response ? error.response.data.error : error.message,
+			})
+		}
+	}
+}

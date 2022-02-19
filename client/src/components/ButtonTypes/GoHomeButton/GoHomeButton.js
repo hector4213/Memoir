@@ -1,36 +1,32 @@
-import React, { useCallback } from "react";
-import "./GoHomeButton.scss";
+import React from 'react'
+import './GoHomeButton.scss'
 
-import { connect } from "react-redux";
-import { useHistory } from "react-router-dom";
-import Button from "../../../templates/Button/Button";
+import { Link } from 'react-router-dom'
 
-import { clearErrorAction } from "../../../redux/actions/page";
+import { connect } from 'react-redux'
+import Button from '../../../templates/Button/Button'
 
-const GoHomeButton = (props) => {
-  const { clearError } = props;
-  const history = useHistory();
-  const goHome = useCallback(() => history.push(`/`), [history]);
+import { clearErrorAction } from '../../../redux/actions/page'
 
-  return (
-    <Button
-      {...{
-        label: "Home",
-        transparent: true,
-        extraClass: "back-btn",
-        onClick: (e) => {
-          clearError();
-          goHome();
-        },
-      }}
-    />
-  );
-};
+const GoHomeButton = ({ clearError }) => {
+	return (
+		<Link to={'/'}>
+			<Button
+				{...{
+					label: 'Home',
+					transparent: true,
+					extraClass: 'back-btn',
+					onClick: e => clearError(),
+				}}
+			/>
+		</Link>
+	)
+}
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    clearError: () => dispatch(clearErrorAction()),
-  };
-};
+const mapDispatchToProps = dispatch => {
+	return {
+		clearError: () => dispatch(clearErrorAction()),
+	}
+}
 
-export default connect(null, mapDispatchToProps)(GoHomeButton);
+export default connect(null, mapDispatchToProps)(GoHomeButton)

@@ -1,89 +1,91 @@
-import React, { useCallback } from "react";
-import "./ButtonsForStory.scss";
+import React from 'react'
+import './ButtonsForStory.scss'
 
-import { useHistory } from "react-router-dom";
-import { connect } from "react-redux";
-import { toggleModalAction } from "../../../redux/actions/page";
+import { connect } from 'react-redux'
+import { toggleModalAction } from '../../../redux/actions/page'
 
-import Button from "../../../templates/Button/Button";
-import GoToProfile from "../../../components/ButtonTypes/GoToProfileButton/GoToProfileButton";
-import GoHomeButton from "../../../components/ButtonTypes/GoHomeButton/GoHomeButton";
+import Button from '../../../templates/Button/Button'
+import GoToProfileButton from '../../../components/ButtonTypes/GoToProfileButton/GoToProfileButton'
+import GoHomeButton from '../../../components/ButtonTypes/GoHomeButton/GoHomeButton'
+import { Link } from 'react-router-dom'
 
-const ButtonsForStory = (props) => {
-  const { storyId, toggleModal, authorId, user, setCurrentModal } = props;
-  const userId = user ? user.id : null;
+const ButtonsForStory = ({
+	storyId,
+	toggleModal,
+	authorId,
+	user,
+	setCurrentModal,
+}) => {
+	const userId = user ? user.id : null
 
-  const history = useHistory();
-  const gotoCreate = useCallback(
-    () => history.push(`/story/${storyId}/addEntry`),
-    [history, storyId]
-  );
+	function btn_clicked(e) {
+		e.preventDefault()
+		setCurrentModal('login')
+		toggleModal()
+	}
 
-  return (
-    <>
-      <GoHomeButton />
+	return (
+		<>
+			<GoHomeButton />
 
-      {user ? (
-        <div className="story-buttons">
-          <GoToProfile />
+			{user ? (
+				<div className='story-buttons'>
+					<GoToProfileButton />
 
-          <Button
-            {...{
-              label: "Add an Entry",
-              transparent: true,
-              green: true,
-              onClick: gotoCreate,
-            }}
-          />
+					<Link to={`/story/${storyId}/addEntry`}>
+						<Button
+							{...{
+								label: 'Add an Entry',
+								transparent: true,
+								green: true,
+							}}
+						/>
+					</Link>
 
-          {userId === authorId ? (
-            <>
-              <Button
-                {...{
-                  label: "Edit this Story",
-                  transparent: true,
-                  extraClass: "edit-story",
-                  onClick: (e) => {
-                    e.preventDefault();
-                    setCurrentModal("storyedit");
-                    toggleModal();
-                  },
-                }}
-              />
-            </>
-          ) : (
-            ""
-          )}
-        </div>
-      ) : (
-        <Button
-          {...{
-            label: "Create your own stories and entries",
-            transparent: true,
-            extraClass: "story-login-btn",
-            onClick: (e) => {
-              e.preventDefault();
-              setCurrentModal("login");
-              toggleModal();
-            },
-          }}
-        />
-      )}
-    </>
-  );
-};
+					{userId === authorId ? (
+						<>
+							<Button
+								{...{
+									label: 'Edit this Story',
+									transparent: true,
+									extraClass: 'edit-story',
+									onClick: e => {
+										e.preventDefault()
+										setCurrentModal('storyedit')
+										toggleModal()
+									},
+								}}
+							/>
+						</>
+					) : (
+						''
+					)}
+				</div>
+			) : (
+				<Button
+					{...{
+						label: 'Create your own stories and entries',
+						transparent: true,
+						extraClass: 'story-login-btn',
+						onClick: btn_clicked,
+					}}
+				/>
+			)}
+		</>
+	)
+}
 
-const mapStateToProps = (state) => {
-  return {
-    user: state.profile.user,
-    authorId: state.page.current.story.user.id,
-  };
-};
+const mapStateToProps = state => {
+	return {
+		user: state.profile.user,
+		authorId: state.page.current.story.user.id,
+	}
+}
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    toggleModal: () => dispatch(toggleModalAction()),
-  };
-};
+const mapDispatchToProps = dispatch => {
+	return {
+		toggleModal: () => dispatch(toggleModalAction()),
+	}
+}
 
-export default connect(mapStateToProps, mapDispatchToProps)(ButtonsForStory);
+export default connect(mapStateToProps, mapDispatchToProps)(ButtonsForStory)

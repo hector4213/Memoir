@@ -1,46 +1,49 @@
-import React, { useState } from "react";
-import "./FormStyle.scss";
-import Button from "../Button/Button";
+import React, { useState } from 'react'
+import './FormStyle.scss'
+import Button from '../Button/Button'
+import { useNavigate } from 'react-router-dom'
 
-const LogInForm = (props) => {
-  const [formInfo, setFormInfo] = useState();
-  const { logIn } = props;
+const LogInForm = ({ logIn }) => {
+	let navigate = useNavigate()
 
-  const loginRequest = (e) => {
-    e.preventDefault();
-    logIn(formInfo);
-  };
+	const [formInfo, setFormInfo] = useState()
 
-  return (
-    <form>
-      <input
-        type="text"
-        name="email"
-        placeholder="Enter your E-mail"
-        onChange={(e) => {
-          setFormInfo({ ...formInfo, email: e.target.value });
-        }}
-      />
+	async function loginRequest(e) {
+		e.preventDefault()
+		const loggedIn = await logIn(formInfo)
+		if (loggedIn) navigate('/profile')
+	}
 
-      <input
-        type="password"
-        name="password"
-        placeholder="Enter your Password"
-        onChange={(e) => {
-          setFormInfo({ ...formInfo, password: e.target.value });
-        }}
-      />
+	return (
+		<form>
+			<input
+				type='text'
+				name='email'
+				placeholder='Enter your E-mail'
+				onChange={e => {
+					setFormInfo({ ...formInfo, email: e.target.value })
+				}}
+			/>
 
-      <Button
-        {...{
-          label: "Submit",
-          extraClass: "submit-login",
-          transparent: false,
-          onClick: loginRequest,
-        }}
-      />
-    </form>
-  );
-};
+			<input
+				type='password'
+				name='password'
+				placeholder='Enter your Password'
+				onChange={e => {
+					setFormInfo({ ...formInfo, password: e.target.value })
+				}}
+			/>
 
-export default LogInForm;
+			<Button
+				{...{
+					label: 'Submit',
+					extraClass: 'submit-login',
+					transparent: false,
+					onClick: loginRequest,
+				}}
+			/>
+		</form>
+	)
+}
+
+export default LogInForm

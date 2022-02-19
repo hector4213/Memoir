@@ -1,34 +1,29 @@
-import React, { useCallback } from "react";
-import "./GoToProfileButton.scss";
-import { connect } from "react-redux";
+import React from 'react'
+import './GoToProfileButton.scss'
+import { connect } from 'react-redux'
 
-import { useHistory } from "react-router-dom";
-import Button from "../../../templates/Button/Button";
+import Button from '../../../templates/Button/Button'
+import { Link } from 'react-router-dom'
 
-const GoToProfileButton = (props) => {
-  const { user } = props;
-  const history = useHistory();
-  const goProfile = useCallback(() => history.push(`/profile`), [history]);
+const GoToProfileButton = ({ user }) => {
+	if (!user) return <div></div>
 
-  if (!user) {
-    return <div></div>;
-  }
+	return (
+		<Link to={'/profile'}>
+			<Button
+				{...{
+					label: `${user.username}'s Profile`,
+					transparent: true,
+					extraClass: 'profile-btn',
+				}}
+			/>
+		</Link>
+	)
+}
 
-  return (
-    <Button
-      {...{
-        label: `${user.username}'s Profile`,
-        transparent: true,
-        extraClass: "profile-btn",
-        onClick: goProfile,
-      }}
-    />
-  );
-};
-
-const mapStateToProps = (state) => {
-  return {
-    user: state.profile.user,
-  };
-};
-export default connect(mapStateToProps)(GoToProfileButton);
+const mapStateToProps = state => {
+	return {
+		user: state.profile.user,
+	}
+}
+export default connect(mapStateToProps)(GoToProfileButton)
