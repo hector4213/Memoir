@@ -1,7 +1,7 @@
 import React from 'react'
 import './ErrorDisplay.scss'
 
-import GoHomeButton from '../ButtonTypes/GoHome'
+import GoHomeButton from '../../templates/Button/Types/GoHome'
 
 const ErrorDisplay = props => {
 	const { message } = props

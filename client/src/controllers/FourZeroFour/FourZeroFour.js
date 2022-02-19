@@ -1,5 +1,5 @@
 import React from 'react'
-import GoHomeButton from '../../components/ButtonTypes/GoHome'
+import GoHomeButton from '../../templates/Button/Types/GoHome'
 
 const FourZeroFour = props => {
 	return (

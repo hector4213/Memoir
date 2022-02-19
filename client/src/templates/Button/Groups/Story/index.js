@@ -2,11 +2,11 @@ import React from 'react'
 import './ButtonsForStory.scss'
 
 import { connect } from 'react-redux'
-import { toggleModalAction } from '../../../redux/actions/page'
+import { toggleModalAction } from '../../../../redux/actions/page'
 
-import Button from '../../../templates/Button/Button'
-import GoToProfileButton from '../../../components/ButtonTypes/GoToProfile'
-import GoHomeButton from '../../../components/ButtonTypes/GoHome'
+import Button from '../../Button'
+import GoToProfileButton from '../../Types/GoToProfile'
+import GoHomeButton from '../../Types/GoHome'
 import { Link } from 'react-router-dom'
 
 const ButtonsForStory = ({

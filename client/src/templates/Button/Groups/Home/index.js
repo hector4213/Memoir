@@ -3,11 +3,11 @@ import './ButtonsForHome.scss'
 
 import { connect } from 'react-redux'
 
-import GoToProfileButton from '../../../components/ButtonTypes/GoToProfile'
-import LogOutButton from '../../../components/ButtonTypes/LogOut'
-import Button from '../../../templates/Button/Button'
+import GoToProfileButton from '../../Types/GoToProfile'
+import LogOutButton from '../../Types/LogOut'
+import Button from '../../Button'
 
-import { toggleModalAction } from '../../../redux/actions/page'
+import { toggleModalAction } from '../../../../redux/actions/page'
 
 const ButtonsForHome = props => {
 	const { user, toggleModal } = props

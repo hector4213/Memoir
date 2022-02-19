@@ -6,11 +6,11 @@ import { useParams } from 'react-router-dom'
 
 import StoryCard from '../../components/StoryCard/StoryCard'
 import TimelineCard from '../../components/TimelineCard/TimelineCard'
-import ButtonsForStory from '../ButtonGroups/ButtonsForStory/ButtonsForStory'
+import ButtonsForStory from '../../templates/Button/Groups/Story'
 import ErrorDisplay from '../../components/ErrorDisplay/ErrorDisplay'
 
 import { getSingleStoryAction } from '../../redux/actions/story'
-import InspiringButton from '../../components/ButtonTypes/Inspiring'
+import InspiringButton from '../../templates/Button/Types/Inspiring'
 import FilterNav from './FilterNav/FilterNav'
 import Modal from '../../components/Modal/Modal'
 import LogInRegisterModal from '../../components/LogInRegister/LogInRegister'

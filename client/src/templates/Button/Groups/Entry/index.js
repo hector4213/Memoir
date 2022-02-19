@@ -4,10 +4,10 @@ import './ButtonsForEntry.scss'
 import { Link, useParams } from 'react-router-dom'
 import { connect } from 'react-redux'
 
-import Button from '../../../templates/Button/Button'
-import GoToProfile from '../../../components/ButtonTypes/GoToProfile'
-import GoHomeButton from '../../../components/ButtonTypes/GoHome'
-import GoToStoryButton from '../../../components/ButtonTypes/GoToStory'
+import Button from '../../Button'
+import GoToProfile from '../../Types/GoToProfile'
+import GoHomeButton from '../../Types/GoHome'
+import GoToStoryButton from '../../Types/GoToStory'
 
 const ButtonsForEntry = ({ user, authorId }) => {
 	const { storyId, entryId } = useParams()

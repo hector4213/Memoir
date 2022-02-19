@@ -3,12 +3,12 @@ import './ButtonsForProfile.scss'
 
 import { connect } from 'react-redux'
 
-import Button from '../../../templates/Button/Button'
-import GoHomeButton from '../../../components/ButtonTypes/GoHome'
-import LogOutButton from '../../../components/ButtonTypes/LogOut'
-import { toggleModalAction } from '../../../redux/actions/page'
-import Modal from '../../../components/Modal/Modal'
-import ProfileEdit from '../../ProfileEdit/ProfileEdit'
+import Button from '../../Button'
+import GoHomeButton from '../../Types/GoHome'
+import LogOutButton from '../../Types/LogOut'
+import { toggleModalAction } from '../../../../redux/actions/page'
+import Modal from '../../../../components/Modal/Modal'
+import ProfileEdit from '../../../../controllers/ProfileEdit/ProfileEdit'
 
 const ButtonsForProfile = props => {
 	const { toggleModal, modal, showingPage } = props
