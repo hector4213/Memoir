@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import './StoryEdit.scss'
 
 import { connect } from 'react-redux'
-import { deleteFromImgur, postToImgur } from '../../../2_components/api/imgur'
+import { deleteFromImgur, postToImgur } from '../../../helpers/imgur'
 import { editStoryAction } from '../../../redux/actions/story'
 import { deleteStoryAction } from '../../../redux/actions/story'
 import { useNavigate } from 'react-router-dom'

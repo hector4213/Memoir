@@ -68,17 +68,13 @@ const App = ({ storedProfile, setError, error }) => {
 	)
 }
 
-const mapStateToProps = state => {
-	return {
-		error: state.page.error,
-	}
-}
+const mapStateToProps = state => ({
+	error: state.page.error,
+})
 
-const mapDispatchToProps = dispatch => {
-	return {
-		storedProfile: () => dispatch(storedProfileAction()),
-		setError: message => dispatch(setErrorAction(message)),
-	}
-}
+const mapDispatchToProps = dispatch => ({
+	storedProfile: () => dispatch(storedProfileAction()),
+	setError: message => dispatch(setErrorAction(message)),
+})
 
 export default connect(mapStateToProps, mapDispatchToProps)(App)

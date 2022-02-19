@@ -4,7 +4,7 @@ import Button from '../../../3_templates/Button'
 import { connect } from 'react-redux'
 import { createStoryAction } from '../../../redux/actions/story'
 import { setErrorAction } from '../../../redux/actions/page'
-import { deleteFromImgur, postToImgur } from '../../../2_components/api/imgur'
+import { deleteFromImgur, postToImgur } from '../../../helpers/imgur'
 
 const sampleImage = 'https://i.ibb.co/9NzsxZv/Smiley-face-square.jpg'
 
