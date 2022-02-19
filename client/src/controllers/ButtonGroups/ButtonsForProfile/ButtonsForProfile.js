@@ -1,58 +1,58 @@
-import React from "react";
-import "./ButtonsForProfile.scss";
+import React from 'react'
+import './ButtonsForProfile.scss'
 
-import { connect } from "react-redux";
+import { connect } from 'react-redux'
 
-import Button from "../../../templates/Button/Button";
-import GoHomeButton from "../../../components/ButtonTypes/GoHomeButton/GoHomeButton";
-import LogOutButton from "../../../components/ButtonTypes/LogOutButton/LogOutButton";
-import { toggleModalAction } from "../../../redux/actions/page";
-import Modal from "../../../components/Modal/Modal";
-import ProfileEdit from "../../ProfileEdit/ProfileEdit";
+import Button from '../../../templates/Button/Button'
+import GoHomeButton from '../../../components/ButtonTypes/GoHome'
+import LogOutButton from '../../../components/ButtonTypes/LogOut'
+import { toggleModalAction } from '../../../redux/actions/page'
+import Modal from '../../../components/Modal/Modal'
+import ProfileEdit from '../../ProfileEdit/ProfileEdit'
 
-const ButtonsForProfile = (props) => {
-  const { toggleModal, modal, showingPage } = props;
+const ButtonsForProfile = props => {
+	const { toggleModal, modal, showingPage } = props
 
-  return (
-    <>
-      <GoHomeButton />
+	return (
+		<>
+			<GoHomeButton />
 
-      <div className="profile-btns">
-        <Button
-          {...{
-            label: "Edit Profile",
-            onClick: () => toggleModal("editProfile"),
-            transparent: true,
-            extraClass: "edit-profile-btn",
-          }}
-        />
+			<div className='profile-btns'>
+				<Button
+					{...{
+						label: 'Edit Profile',
+						onClick: () => toggleModal('editProfile'),
+						transparent: true,
+						extraClass: 'edit-profile-btn',
+					}}
+				/>
 
-        <LogOutButton />
+				<LogOutButton />
 
-        {showingPage === "editProfile" && modal ? (
-          <Modal>
-            {" "}
-            <ProfileEdit />{" "}
-          </Modal>
-        ) : (
-          ""
-        )}
-      </div>
-    </>
-  );
-};
+				{showingPage === 'editProfile' && modal ? (
+					<Modal>
+						{' '}
+						<ProfileEdit />{' '}
+					</Modal>
+				) : (
+					''
+				)}
+			</div>
+		</>
+	)
+}
 
-const mapStateToProps = (state) => {
-  return {
-    modal: state.page.modal,
-    showingPage: state.page.showingPage,
-  };
-};
+const mapStateToProps = state => {
+	return {
+		modal: state.page.modal,
+		showingPage: state.page.showingPage,
+	}
+}
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    toggleModal: (showingPage) => dispatch(toggleModalAction(showingPage)),
-  };
-};
+const mapDispatchToProps = dispatch => {
+	return {
+		toggleModal: showingPage => dispatch(toggleModalAction(showingPage)),
+	}
+}
 
-export default connect(mapStateToProps, mapDispatchToProps)(ButtonsForProfile);
+export default connect(mapStateToProps, mapDispatchToProps)(ButtonsForProfile)

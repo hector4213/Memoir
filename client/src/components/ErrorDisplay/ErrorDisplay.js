@@ -1,17 +1,17 @@
-import React from "react";
-import "./ErrorDisplay.scss";
+import React from 'react'
+import './ErrorDisplay.scss'
 
-import GoHomeButton from "../ButtonTypes/GoHomeButton/GoHomeButton";
+import GoHomeButton from '../ButtonTypes/GoHome'
 
-const ErrorDisplay = (props) => {
-  const { message } = props;
+const ErrorDisplay = props => {
+	const { message } = props
 
-  return (
-    <div className="error-display">
-      <GoHomeButton />
-      {message ? <div className="message">{message}</div> : ""}
-    </div>
-  );
-};
+	return (
+		<div className='error-display'>
+			<GoHomeButton />
+			{message ? <div className='message'>{message}</div> : ''}
+		</div>
+	)
+}
 
-export default ErrorDisplay;
+export default ErrorDisplay
