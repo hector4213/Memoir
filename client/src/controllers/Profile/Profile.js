@@ -4,7 +4,7 @@ import './Profile.scss'
 
 import YourStuff from './YourStuff/YourStuff'
 import OthersStuff from './OthersStuff/OthersStuff'
-import ButtonsForProfile from '../../templates/Button/Groups/Profile'
+import ButtonsForProfile from '../../templates/Button/Groups/ForProfile'
 
 import ErrorDisplay from '../../components/ErrorDisplay/ErrorDisplay'
 

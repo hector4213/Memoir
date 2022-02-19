@@ -6,7 +6,7 @@ import { useParams } from 'react-router-dom'
 
 import StoryCard from '../../components/StoryCard/StoryCard'
 import TimelineCard from '../../components/TimelineCard/TimelineCard'
-import ButtonsForStory from '../../templates/Button/Groups/Story'
+import ButtonsForStory from '../../templates/Button/Groups/ForStory'
 import ErrorDisplay from '../../components/ErrorDisplay/ErrorDisplay'
 
 import { getSingleStoryAction } from '../../redux/actions/story'

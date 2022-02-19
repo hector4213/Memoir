@@ -6,7 +6,7 @@ import { connect } from 'react-redux'
 
 import { getSingleEntryAction } from '../../redux/actions/entry'
 import { getSingleStoryAction } from '../../redux/actions/story'
-import ButtonsForEntry from '../../templates/Button/Groups/Entry'
+import ButtonsForEntry from '../../templates/Button/Groups/ForEntry'
 import ErrorDisplay from '../../components/ErrorDisplay/ErrorDisplay'
 
 import { formatDate } from '../../helpers/helpers'

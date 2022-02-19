@@ -10,7 +10,7 @@ import LogInRegisterModal from '../../components/LogInRegister/LogInRegister'
 import { getAllStoriesAction } from '../../redux/actions/story'
 import { clearCurrentAction } from '../../redux/actions/page'
 
-import ButtonsForHome from '../../templates/Button/Groups/Home'
+import ButtonsForHome from '../../templates/Button/Groups/ForHome'
 import HomeCards from './HomeCards'
 import Searchbar from '../../components/Search/Search'
 
