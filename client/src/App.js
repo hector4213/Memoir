@@ -4,17 +4,17 @@ import { connect } from 'react-redux'
 
 import { Routes, Route } from 'react-router-dom'
 
-import Home from './controllers/Home/Home'
-import Story from './controllers/Story'
-import Profile from './controllers/Profile'
-import FourZeroFour from './controllers/404'
+import Home from './1_controllers/Home/Home'
+import Story from './1_controllers/Story'
+import Profile from './1_controllers/Profile'
+import FourZeroFour from './1_controllers/404'
 
 import { storedProfileAction } from './redux/actions/profile'
 import { setErrorAction } from './redux/actions/page'
 
-import Entry from './controllers/Entry'
-import EntryCreate from './controllers/Entry/Create'
-import EntryEdit from './controllers/Entry/Edit'
+import Entry from './1_controllers/Entry'
+import EntryCreate from './1_controllers/Entry/Create'
+import EntryEdit from './1_controllers/Entry/Edit'
 
 // console.log(process.env.REACT_APP_production)
 
