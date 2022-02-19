@@ -4,7 +4,7 @@ import './GoHomeButton.scss'
 import { Link } from 'react-router-dom'
 
 import { connect } from 'react-redux'
-import Button from '../../Button'
+import Button from '../..'
 
 import { clearErrorAction } from '../../../../redux/actions/page'
 

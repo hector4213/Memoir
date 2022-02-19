@@ -4,10 +4,10 @@ import './EntryEdit.scss'
 import { connect } from 'react-redux'
 import { useParams } from 'react-router-dom'
 
-import { getSingleEntryAction } from '../../redux/actions/entry'
-import EntryCreateForm from '../../components/EntryCreateForm/EntryCreateForm'
-import GoHomeButton from '../../templates/Button/Types/GoHome'
-import GoToEntryButton from '../../templates/Button/Types/GoToEntry'
+import { getSingleEntryAction } from '../../../redux/actions/entry'
+import EntryCreateForm from '../../../components/EntryCreateForm/EntryCreateForm'
+import GoHomeButton from '../../../templates/Button/Types/GoHome'
+import GoToEntryButton from '../../../templates/Button/Types/GoToEntry'
 
 const EntryEdit = props => {
 	const { getSingleEntry, current } = props

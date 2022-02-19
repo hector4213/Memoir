@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import { addInspiringAction } from '../../../../redux/actions/inspiring'
 import { setErrorAction } from '../../../../redux/actions/page'
 
-import Button from '../../Button'
+import Button from '../../../Button'
 import { HiOutlineLightningBolt } from 'react-icons/hi'
 
 const InspiringButton = props => {

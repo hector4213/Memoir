@@ -4,7 +4,7 @@ import './ButtonsForEntry.scss'
 import { Link, useParams } from 'react-router-dom'
 import { connect } from 'react-redux'
 
-import Button from '../../Button'
+import Button from '../../../Button'
 import GoToProfile from '../../Types/GoToProfile'
 import GoHomeButton from '../../Types/GoHome'
 import GoToStoryButton from '../../Types/GoToStory'

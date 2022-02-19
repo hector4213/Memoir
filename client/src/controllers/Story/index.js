@@ -14,7 +14,7 @@ import InspiringButton from '../../templates/Button/Types/Inspiring'
 import FilterNav from './FilterNav/FilterNav'
 import Modal from '../../components/Modal/Modal'
 import LogInRegisterModal from '../../components/LogInRegister/LogInRegister'
-import StoryEdit from '../../controllers/StoryEdit/StoryEdit'
+import StoryEdit from '../../controllers/Story/Edit'
 
 const Story = ({ getSingleStory, current, modal }) => {
 	const [filter, setFilter] = useState(null)

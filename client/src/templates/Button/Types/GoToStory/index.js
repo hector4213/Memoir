@@ -2,7 +2,7 @@ import React from 'react'
 import './GoToStoryButton.scss'
 import { useParams, Link } from 'react-router-dom'
 
-import Button from '../../Button'
+import Button from '../..'
 
 const GoToStoryButton = () => {
 	const { storyId } = useParams()

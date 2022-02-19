@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 
 import GoToProfileButton from '../../Types/GoToProfile'
 import LogOutButton from '../../Types/LogOut'
-import Button from '../../Button'
+import Button from '../../../Button'
 
 import { toggleModalAction } from '../../../../redux/actions/page'
 

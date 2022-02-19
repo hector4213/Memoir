@@ -3,7 +3,7 @@ import './GoToProfileButton.scss'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 
-import Button from '../../Button'
+import Button from '../../../Button'
 
 const GoToProfileButton = ({ user }) => {
 	if (!user) return <div></div>

@@ -1,0 +1,11 @@
+@import '../../../styles/colors';
+@import '../../../styles/sizes';
+@import '../../../styles/defaults';
+
+.entry-create {
+	margin: 108px 0px;
+
+	.storyCard {
+		max-width: 200px;
+	}
+}

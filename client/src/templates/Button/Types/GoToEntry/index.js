@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link, useParams } from 'react-router-dom'
 
-import Button from '../../Button'
+import Button from '../..'
 
 const GoToEntryButton = () => {
 	const { storyId, entryId } = useParams()

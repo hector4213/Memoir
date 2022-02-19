@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
 import { logOutAction } from '../../../../redux/actions/logInOut'
-import Button from '../../Button'
+import Button from '../..'
 
 const LogOutButton = ({ logOut }) => {
 	let navigate = useNavigate()

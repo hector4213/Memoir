@@ -3,12 +3,12 @@ import './EntryCreate.scss'
 import { useParams } from 'react-router-dom'
 
 import { connect } from 'react-redux'
-import { getSingleStoryAction } from '../../redux/actions/story'
+import { getSingleStoryAction } from '../../../redux/actions/story'
 
-import EntryCreateForm from '../../components/EntryCreateForm/EntryCreateForm'
-import GoHomeButton from '../../templates/Button/Types/GoHome'
-import GoToStoryButton from '../../templates/Button/Types/GoToStory'
-import StoryCard from '../../components/StoryCard/StoryCard'
+import EntryCreateForm from '../../../components/EntryCreateForm/EntryCreateForm'
+import GoHomeButton from '../../../templates/Button/Types/GoHome'
+import GoToStoryButton from '../../../templates/Button/Types/GoToStory'
+import StoryCard from '../../../components/StoryCard/StoryCard'
 
 const EntryCreate = props => {
 	const { storyId } = useParams()

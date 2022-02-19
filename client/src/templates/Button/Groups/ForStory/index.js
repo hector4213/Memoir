@@ -4,7 +4,7 @@ import './ButtonsForStory.scss'
 import { connect } from 'react-redux'
 import { toggleModalAction } from '../../../../redux/actions/page'
 
-import Button from '../../Button'
+import Button from '../../../Button'
 import GoToProfileButton from '../../Types/GoToProfile'
 import GoHomeButton from '../../Types/GoHome'
 import { Link } from 'react-router-dom'
