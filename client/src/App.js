@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import './App.scss'
 import { connect } from 'react-redux'
 
@@ -38,30 +38,15 @@ const App = ({ storedProfile, setError, error }) => {
 			)}
 
 			<Routes>
-				<Route exact path='/' element={<Home />} />
-
-				<Route exact path='/story/:storyId' element={<Story />} />
-
+				<Route path='/' element={<Home />} />
+				<Route path='/story/:storyId' element={<Story />} />
+				<Route path='/story/:storyId/entry/:entryId' element={<Entry />} />
+				<Route path='/profile' element={<Profile />} />
+				<Route path='/story/:storyId/addEntry' element={<EntryCreate />} />
 				<Route
-					exact
-					path='/story/:storyId/entry/:entryId'
-					element={<Entry />}
-				/>
-
-				<Route exact path='/profile' element={<Profile />} />
-
-				<Route
-					exact
-					path='/story/:storyId/addEntry'
-					element={<EntryCreate />}
-				/>
-
-				<Route
-					exact
 					path='/story/:storyId/entry/:entryId/editEntry'
 					element={<EntryEdit />}
 				/>
-
 				<Route element={<FourZeroFour />} />
 			</Routes>
 		</div>
