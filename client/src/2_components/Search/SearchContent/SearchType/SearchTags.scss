@@ -1,0 +1,12 @@
+.search-tags {
+  display: flex;
+  align-items: center;
+  width: 100%;
+
+  label {
+    width: 60%;
+  }
+  input {
+    width: 40%;
+  }
+}

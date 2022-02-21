@@ -1,0 +1,60 @@
+@import "../../styles/colors";
+@import "../../styles/sizes";
+
+.header {
+  text-align: center;
+  position: relative;
+  cursor: none;
+
+  .logo {
+    $logo_size: 3px;
+    width: $logo_size;
+    height: $logo_size;
+    border-radius: $logo_size;
+
+    background: $yellow;
+    box-shadow: 0px 0px 10px 10px #ffbc00, 0px 0px 30px 30px #ff8100,
+      0px 0px 65px 65px #fb1f61, 0px 0px 80px 80px #1a002a;
+
+    z-index: -1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transition: transform 0.5s ease;
+    transform: scale(1.5);
+  }
+
+  .title {
+    text-align: right;
+    width: 350px;
+    padding: 100px;
+    margin: auto;
+    color: $dark_blue;
+
+    h1 {
+      font-size: $title_size;
+      font-weight: bold;
+      margin: 0px;
+      padding: 0px;
+      cursor: default;
+    }
+
+    h2 {
+      font-size: $subtitle_size;
+      line-height: $subtitle_lineheight_size;
+      margin: 0px;
+      padding: 0px;
+      cursor: default;
+    }
+  }
+}
+
+.description {
+  width: 75%;
+  display: block;
+  margin: 100px auto;
+  cursor: default;
+  font-size: $text_size;
+  line-height: 30px;
+  color: $light_blue;
+}

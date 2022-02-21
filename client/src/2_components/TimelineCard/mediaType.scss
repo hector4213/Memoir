@@ -1,0 +1,62 @@
+@import "../../styles/defaults";
+@import "../../styles/colors";
+@import "../../styles/sizes";
+
+// MEDIA TYPES: 1:VIDE0 , 2:TEXT , 3:AUDIO , 4:IMAGE
+
+// VIDEO
+.mediaType-1 {
+  width: 90%;
+  aspect-ratio: 16/9;
+
+  iframe {
+    width: 100%;
+    min-height: 200px;
+    border: $border;
+    box-sizing: border-box;
+  }
+}
+
+// TEXT
+.mediaType-2container {
+  .textHorizontalLine {
+    width: 20%;
+  }
+}
+.mediaType-2 {
+  width: 80%;
+  padding: 20px;
+
+  .caption {
+    padding: 0px;
+  }
+}
+
+// AUDIO
+.mediaType-3 {
+  width: 100%;
+
+  iframe {
+    border: $border;
+    height: 115px;
+    box-sizing: border-box;
+  }
+}
+
+.mediaType-3container {
+  align-items: flex-start;
+
+  .horizontalLine {
+    height: 50px;
+  }
+}
+
+// IMAGE
+.mediaType-4 {
+  img {
+    border: $border;
+    max-width: 100%;
+    min-height: 200px;
+    box-sizing: border-box;
+  }
+}
